@@ -23,7 +23,7 @@
 
 ## 一般使用者安裝方式
 
-1. 前往 [Releases](https://github.com/kevin02128/gg-Input/releases) 下載最新版本的 `gg 輸入法.dmg`。
+1. 前往 [Releases](https://github.com/kevin02128/gg-Input/releases) 下載最新版本的 `gg 輸入法 (完整版).dmg`（建議，內建 KyonLM 神經模型）或 `gg 輸入法 (輕量版).dmg`（極簡純詞庫版）。
 2. 打開映像檔，將 `gg 控制台.app` 拖曳至 `Applications`（應用程式）資料夾。
 3. 開啟「gg 控制台.app」，點擊「同意並安裝 gg 輸入法」。
 4. 前往「系統設定 > 鍵盤 > 輸入法」新增並啟用 **gg** 即可開始打字。
