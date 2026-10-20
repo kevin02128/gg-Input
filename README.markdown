@@ -23,10 +23,8 @@
 
 ## 一般使用者安裝方式
 
-1. 前往 [Releases](https://github.com/kevin02128/gg-Input/releases) 下載最新版本的 `gg 輸入法 (完整版).dmg`（建議，內建 KyonLM 神經模型）或 `gg 輸入法 (輕量版).dmg`（極簡純詞庫版）。
-2. 打開映像檔，將 `gg 控制台.app` 拖曳至 `Applications`（應用程式）資料夾。
-3. 開啟「gg 控制台.app」，點擊「同意並安裝 gg 輸入法」。
-4. 前往「系統設定 > 鍵盤 > 輸入法」新增並啟用 **gg** 即可開始打字。
+1. 前往 [Releases](https://github.com/kevin02128/gg-Input/releases) 下載最新版本的 `gg 輸入法.dmg`（內建 KyonLM 神經模型）或 `gg 輸入法 (輕量版).dmg`（極簡純詞庫版）。
+2. 前往「系統設定 > 鍵盤 > 輸入法」新增並啟用 **gg** 即可開始打字。
 
 ## 開發者建置指南
 
@@ -35,13 +33,12 @@
 git clone https://github.com/kevin02128/gg-Input.git
 cd gg-Input
 
-# 2. 初始化 KyonLM 模型目錄（自動從 Release 下載權重或建立編譯骨架）
+# 2. 初始化 KyonLM 模型目錄
 ./scripts/setup_model.sh
 
-# 3. 日常開發秒級熱重載（3 秒內自動編譯並重啟輸入法）
-./dev_reload.sh
+# 3. 開發熱重載
 
-# 4. 產出可發布之 DMG 安裝包
+# 4. 產出 DMG 安裝包
 ./package_dmg.command
 ```
 
