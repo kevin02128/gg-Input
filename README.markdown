@@ -36,9 +36,7 @@ cd gg-Input
 # 2. 初始化 KyonLM 模型目錄
 ./scripts/setup_model.sh
 
-# 3. 開發熱重載
-
-# 4. 產出 DMG 安裝包
+# 3. 產出 DMG 安裝包
 ./package_dmg.command
 ```
 
