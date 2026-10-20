@@ -108,7 +108,7 @@ VariantAnnotator::Result VariantAnnotator::annotateSingleCharacter(
 
   // Now try the fallback.
   variant = findUnannotatedVariant(value);
-  if (variant.empty() || variant == reading) {
+  if (variant.empty() || variant == value) {
     return Result{value, false, false};
   }
 
@@ -178,11 +178,5 @@ std::string VariantAnnotator::findUnannotatedVariant(
   return findDefaultOrAnnotatedVariant(value, kUnannotatedReading);
 }
 
-void VariantAnnotator::closeMemoryMapFiles() {
-  puaMap_ = nullptr;
-  variantsMap_ = nullptr;
-  bpmfvsPUAFile_.close();
-  bpmfvsVariantsFile_.close();
-}
 
 }  // namespace McBopomofo

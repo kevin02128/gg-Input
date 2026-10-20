@@ -23,7 +23,7 @@
 
 import Testing
 
-@testable import McBopomofo
+@testable import gg
 
 @Suite("Test macros")
 final class InputMacroTests {
@@ -123,7 +123,7 @@ final class InputMacroTests {
         let day = components[2]
         #expect(Int(year) ?? 0 >= 2023)
         #expect(Int(month) ?? 0 >= 1 && Int(month) ?? 0 <= 12)
-        #expect(Int(day) ?? 0 >= 1 && Int(month) ?? 0 <= 31)
+        #expect(Int(day) ?? 0 >= 1 && Int(day) ?? 0 <= 31)
     }
 
     @Test func testYesterdayShort() {
@@ -137,7 +137,7 @@ final class InputMacroTests {
         let day = components[2]
         #expect(Int(year) ?? 0 >= 2023)
         #expect(Int(month) ?? 0 >= 1 && Int(month) ?? 0 <= 12)
-        #expect(Int(day) ?? 0 >= 1 && Int(month) ?? 0 <= 31)
+        #expect(Int(day) ?? 0 >= 1 && Int(day) ?? 0 <= 31)
     }
 
     @Test func testTomorrowShort() {
@@ -151,7 +151,7 @@ final class InputMacroTests {
         let day = components[2]
         #expect(Int(year) ?? 0 >= 2023)
         #expect(Int(month) ?? 0 >= 1 && Int(month) ?? 0 <= 12)
-        #expect(Int(day) ?? 0 >= 1 && Int(month) ?? 0 <= 31)
+        #expect(Int(day) ?? 0 >= 1 && Int(day) ?? 0 <= 31)
     }
 
     @Test func testTodayMedium() {
@@ -310,4 +310,18 @@ final class InputMacroTests {
         #expect(output[output.index(output.endIndex, offsetBy: -1)] == "年")
     }
 
+    @Test func testTomorrow2Weekday() {
+        let macro = "MACRO@DATE_TOMORROW2_WEEKDAY"
+        let output = InputMacroController.shared.handle(macro)
+        #expect(output.starts(with: "禮拜"))
+    }
+
+    @Test func testChineseZodiacOffsets() {
+        let thisYear = InputMacroController.shared.handle("MACRO@THIS_YEAR_CHINESE_ZODIAC")
+        let lastYear = InputMacroController.shared.handle("MACRO@LAST_YEAR_CHINESE_ZODIAC")
+        let nextYear = InputMacroController.shared.handle("MACRO@NEXT_YEAR_CHINESE_ZODIAC")
+        #expect(thisYear != lastYear)
+        #expect(thisYear != nextYear)
+        #expect(lastYear != nextYear)
+    }
 }

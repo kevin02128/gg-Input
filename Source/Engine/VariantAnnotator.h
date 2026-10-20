@@ -97,7 +97,6 @@ class VariantAnnotator {
   [[nodiscard]] std::string findUnannotatedVariant(
       const std::string& value) const;
 
-  void closeMemoryMapFiles();
 
   std::unique_ptr<ParselessPhraseDB> variantsMap_;
   std::unique_ptr<ParselessPhraseDB> puaMap_;

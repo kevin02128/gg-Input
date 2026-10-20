@@ -209,7 +209,8 @@ McBopomofoLM::getUnigrams(const std::string& key) {
     std::vector<Formosa::Gramambular2::LanguageModel::Unigram>
         rewrittenUserUnigrams;
     for (const auto& unigram : userUnigrams) {
-      rewrittenUserUnigrams.emplace_back(unigram.value(), boostedScore);
+      rewrittenUserUnigrams.emplace_back(unigram.value(), boostedScore,
+                                         unigram.rawValue());
     }
     allUnigrams.insert(allUnigrams.begin(), rewrittenUserUnigrams.begin(),
                        rewrittenUserUnigrams.end());

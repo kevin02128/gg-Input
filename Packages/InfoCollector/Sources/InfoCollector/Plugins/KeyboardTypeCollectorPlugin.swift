@@ -51,8 +51,14 @@ struct KeyboardTypeCollectorPlugin: InfoCollectorPlugin {
 
     func collect(callback: @escaping (Result<String, Error>) -> Void) {
         let matching = IOServiceMatching("IOHIDDevice")
+        let mainPort: mach_port_t
+        if #available(macOS 12.0, *) {
+            mainPort = kIOMainPortDefault
+        } else {
+            mainPort = kIOMasterPortDefault
+        }
         var iter: io_iterator_t = 0
-        let kr = IOServiceGetMatchingServices(kIOMasterPortDefault, matching, &iter)
+        let kr = IOServiceGetMatchingServices(mainPort, matching, &iter)
         guard kr == KERN_SUCCESS else {
             callback(
                 .failure(

@@ -5,7 +5,7 @@
 # Add your phrases and their respective Bopomofo reading below. Use hyphen ("-")
 # to connect the Bopomofo syllables.
 #
-#   小麥注音 ㄒㄧㄠˇ-ㄇㄞˋ-ㄓㄨˋ-ㄧㄣ
+#   注音 ㄓㄨˋ-ㄧㄣ
 #
 # Any line that starts with "#" is treated as comment.
 

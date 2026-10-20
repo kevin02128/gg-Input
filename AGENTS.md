@@ -8,7 +8,7 @@ McBopomofo (小麥注音輸入法) is a Traditional Chinese input method engine 
 
 ## System Requirements
 
-**Runtime:** macOS 10.15 (Catalina) or later
+**Runtime:** macOS 13.0 (Ventura) or later
 
 **Development:**
 - macOS 14.7 or later

@@ -56,6 +56,7 @@ class McBopomofoInputMethodController: IMKInputController {
     var currentClient: Any?
     var keyHandler: KeyHandler = KeyHandler()
     var state: InputState = InputState.Empty()
+    private var lastReviewedGridRevision: UInt64 = 0
 
     // Share the stored issues, so a set of issues is shown as notification only once.
     static var latestUserFileIssues: [String] = []
@@ -65,6 +66,14 @@ class McBopomofoInputMethodController: IMKInputController {
     override init!(server: IMKServer!, delegate: Any!, client inputClient: Any!) {
         super.init(server: server, delegate: delegate, client: inputClient)
         keyHandler.delegate = self
+        keyHandler.onUserRejectedReviewedCandidate = { reading, rejected, kept, leftContext in
+            WTFNeuralReranker.shared.recordNegativeFeedback(
+                reading: reading,
+                rejected: rejected,
+                kept: kept,
+                leftContext: leftContext
+            )
+        }
     }
 
     override func menu() -> NSMenu! {
@@ -143,10 +152,8 @@ class McBopomofoInputMethodController: IMKInputController {
             action: #selector(reloadUserPhrases(_:)), keyEquivalent: "")
 
         if !McBopomofoInputMethodController.latestUserFileIssues.isEmpty {
-            // Setting menuItem.image does not work in input method menus even on macOS 26,
-            // so we just use the alert emoji in the menu item title.
             let menuItem = NSMenuItem(
-                title: NSLocalizedString("Show Issues in User Files ⚠️", comment: ""),
+                title: NSLocalizedString("Show Issues in User Files", comment: ""),
                 action: #selector(showUserFileIssues(_:)), keyEquivalent: "")
             menu.addItem(menuItem)
         }
@@ -168,6 +175,7 @@ class McBopomofoInputMethodController: IMKInputController {
     // MARK: - IMKStateSetting protocol methods
 
     override func activateServer(_ client: Any!) {
+        Preferences.chooseCandidateUsingSpace = false
         UserDefaults.standard.synchronize()
 
         // Override the keyboard layout. Use US if not set.
@@ -184,6 +192,8 @@ class McBopomofoInputMethodController: IMKInputController {
 
     override func deactivateServer(_ client: Any!) {
         currentClient = nil
+        WTFMixedInputManager.shared.clear()
+        hideTooltip()
         keyHandler.clear()
         self.handle(state: .Deactivated(), client: client)
     }
@@ -209,6 +219,14 @@ class McBopomofoInputMethodController: IMKInputController {
     // MARK: - IMKServerInput protocol methods
 
     override func commitComposition(_ client: Any!) {
+        if WTFMixedInputManager.shared.isPureEnglishMode {
+            let buf = WTFMixedInputManager.shared.currentBuffer
+            if !buf.isEmpty {
+                commit(text: buf, isEnglish: true, client: client)
+            }
+        }
+        WTFMixedInputManager.shared.clear()
+        hideTooltip()
         keyHandler.handleForceCommit(stateCallback: { newState in
             self.handle(state: newState, client: client)
         })
@@ -226,16 +244,8 @@ class McBopomofoInputMethodController: IMKInputController {
             return false
         }
 
-        if event.type == .flagsChanged {
-            if Preferences.switchInputSourceUponCommandKeyPressEnabled,
-               (event.keyCode == UInt16(kVK_Command) || event.keyCode == UInt16(kVK_RightCommand)),
-               event.modifierFlags.contains(.command) {
-                keyHandler.clear()
-                handle(state: InputState.SwitchingInputSource(sourceID: Preferences.switchInputSourceUponCommandKeyPressInputSourceID), client: client)
-                return false
-            }
-
-            if state is InputState.Empty {
+        if event.type == .keyUp {
+            if (state is InputState.Empty) && !WTFMixedInputManager.shared.isPureEnglishMode {
                 return false
             }
             // Handle key up events during active input state.
@@ -248,6 +258,13 @@ class McBopomofoInputMethodController: IMKInputController {
         }
 
         if event.type == .flagsChanged {
+            if Preferences.switchInputSourceUponCommandKeyPressEnabled,
+               (event.keyCode == UInt16(kVK_Command) || event.keyCode == UInt16(kVK_RightCommand)),
+               event.modifierFlags.contains(.command) {
+                keyHandler.clear()
+                handle(state: InputState.SwitchingInputSource(sourceID: Preferences.switchInputSourceUponCommandKeyPressInputSourceID), client: client)
+                return false
+            }
             let functionKeyKeyboardLayoutID = Preferences.functionKeyboardLayout
             let basisKeyboardLayoutID = Preferences.basisKeyboardLayout
 
@@ -268,6 +285,13 @@ class McBopomofoInputMethodController: IMKInputController {
             return false
         }
 
+        // gg 輸入法 (公司: wtf) - 中英混打雙軌模組攔截
+        if WTFMixedInputManager.shared.isEnabled {
+            if let handled = handleWTFMixedInput(event: event, client: client) {
+                return handled
+            }
+        }
+
         var textFrame = NSRect.zero
         let attributes: [AnyHashable: Any]? = (client as? IMKTextInput)?.attributes(
             forCharacterIndex: 0, lineHeightRectangle: &textFrame)
@@ -282,6 +306,30 @@ class McBopomofoInputMethodController: IMKInputController {
                 NSSound.beep()
             }
         }
+
+        if result, WTFMixedInputManager.shared.isEnabled, event.type == .keyDown {
+            postProcessWTFMixedInput(event: event, client: client)
+        } else if !result, event.type == .keyDown {
+            let keyCode = event.keyCode
+            // Backspace (51) or arrow keys (123-126) when buffer is empty: reset committed context
+            if keyCode == 51 || (keyCode >= 123 && keyCode <= 126) {
+                WTFMixedInputManager.shared.resetCommittedContext()
+            } else if event.modifierFlags.intersection([.command, .control, .option]).isEmpty,
+                      let chars = event.characters, !chars.isEmpty,
+                      let first = chars.first, first.isASCII, !first.isNewline,
+                      first >= " " && first <= "~" {
+                // Direct pass-through ASCII input (e.g. CapsLock English mode or unconsumed numbers/symbols)
+                if WTFMixedInputManager.shared.panguSpacingEnabled,
+                   let prev = WTFMixedInputManager.shared.lastCommittedChar,
+                   WTFMixedInputManager.needsPanguSpace(left: prev, right: first) {
+                    commit(text: chars, isEnglish: true, client: client)
+                    return true
+                }
+                WTFMixedInputManager.shared.lastCommittedChar = chars.last
+                WTFMixedInputManager.shared.lastCommitWasEnglishWord = WTFMixedInputManager.isASCIIAlphanumeric(first)
+            }
+        }
+
         return result
     }
 
@@ -407,19 +455,37 @@ extension McBopomofoInputMethodController {
 
         switch newState {
         case let newState as InputState.Deactivated:
+            WTFMixedInputManager.shared.clear()
+            WTFMixedInputManager.shared.resetCommittedContext()
+            hideTooltip()
             handle(state: newState, previous: previous, client: client)
             state = .Empty()
         case let newState as InputState.SwitchingInputSource:
+            WTFMixedInputManager.shared.clear()
+            WTFMixedInputManager.shared.resetCommittedContext()
+            hideTooltip()
             handle(state: newState, previous: previous, client: client)
             state = .Empty()
             if !InputSourceHelper.selectInputSource(withID: newState.sourceID) {
                 NSLog("Unable to switch to input source: %@", newState.sourceID)
             }
         case let newState as InputState.Empty:
+            if !WTFMixedInputManager.shared.isPureEnglishMode {
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
+            }
             handle(state: newState, previous: previous, client: client)
         case let newState as InputState.EmptyIgnoringPreviousState:
+            if !WTFMixedInputManager.shared.isPureEnglishMode {
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
+            }
             handle(state: newState, previous: previous, client: client)
         case let newState as InputState.Committing:
+            if !WTFMixedInputManager.shared.isPureEnglishMode {
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
+            }
             handle(state: newState, previous: previous, client: client)
         case let newState as InputState.Inputting:
             handle(state: newState, previous: previous, client: client)
@@ -452,7 +518,7 @@ extension McBopomofoInputMethodController {
         }
     }
 
-    private func commit(text: String, client: Any!) {
+    private func commit(text: String, isEnglish: Bool = false, skipCorrection: Bool = false, client: Any!) {
 
         func convertToSimplifiedChineseIfRequired(_ text: String) -> String {
             if !Preferences.chineseConversionEnabled {
@@ -464,12 +530,36 @@ extension McBopomofoInputMethodController {
             return OpenCCBridge.shared.convertToSimplified(text) ?? ""
         }
 
-        let buffer = convertToSimplifiedChineseIfRequired(text)
+        var buffer = text
+        buffer = isEnglish ? buffer : convertToSimplifiedChineseIfRequired(buffer)
         if buffer.isEmpty {
             return
         }
+
+        // Pangu Auto-Spacing (中英自動空格):
+        // Automatically insert a half-width space at CJK <-> ASCII alphanumeric boundaries,
+        // both within mixed phrases and across consecutive Chinese/English commits.
+        buffer = WTFMixedInputManager.shared.applyPanguSpacing(
+            to: buffer,
+            isEnglishWord: isEnglish && buffer.count > 1 && !buffer.hasSuffix(" ")
+        )
+
         (client as? IMKTextInput)?.insertText(
             buffer, replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+
+        // 中文送出後，若開啟聯想字且非英文模式，觸發下一字聯想 (對齊開發書第 7 章)
+        if !isEnglish && Preferences.associatedPhrasesEnabled && WTFMixedInputManager.shared.currentBuffer.isEmpty {
+            if let lastChar = buffer.last, lastChar >= "\u{4E00}" && lastChar <= "\u{9FA5}" {
+                if let nextWord = keyHandler.findTopAssociatedPhraseSuffix(forPrefix: String(lastChar)) {
+                    WTFMixedInputManager.shared.associatedSuggestion = nextWord
+                    showTooltipForMixedInput("聯想: \(nextWord)  [Tab 補全]", client: client)
+                } else {
+                    WTFMixedInputManager.shared.associatedSuggestion = nil
+                }
+            } else {
+                WTFMixedInputManager.shared.associatedSuggestion = nil
+            }
+        }
     }
 
     private func handle(state: InputState.Deactivated, previous: InputState, client: Any?) {
@@ -542,7 +632,7 @@ extension McBopomofoInputMethodController {
 
         let poppedText = state.poppedText
         if !poppedText.isEmpty {
-            commit(text: poppedText, client: client)
+            commit(text: poppedText, skipCorrection: true, client: client)
         }
         client.setMarkedText(
             "", selectionRange: NSMakeRange(0, 0),
@@ -557,15 +647,47 @@ extension McBopomofoInputMethodController {
             return
         }
 
-        // the selection range is where the cursor is, with the length being 0 and replacement range NSNotFound,
-        // i.e. the client app needs to take care of where to put this composing buffer
+        var effectiveState = state
+        let currentRev = keyHandler.gridRevision
+
+        if currentRev != lastReviewedGridRevision {
+            lastReviewedGridRevision = currentRev
+            // 只有組字緩衝區至少 2 個字時才需要整句重排（單字無上下文，跳過可節省 50% 以上不必要的推論以極大降低延遲）
+            if effectiveState.composingBuffer.count >= 2,
+               Preferences.wtfContextCorrectionEnabled && WTFNeuralReranker.shared.isEnabled {
+                let hypotheses = keyHandler.currentNBestHypotheses(8)
+                if !hypotheses.isEmpty,
+                   let reviewedWords = WTFNeuralReranker.shared.reviewNBestHypotheses(hypotheses) {
+                    keyHandler.reviewedNodeValues = reviewedWords
+                    if let rebuilt = keyHandler.buildInputtingState(withNodeValues: reviewedWords) as? InputState.Inputting {
+                        effectiveState = rebuilt
+                        self.state = rebuilt
+                    }
+                }
+            }
+        }
+
+        // Live Pangu spacing when starting a new Chinese/Bopomofo composition right after committed English/numbers
+        if (previous is InputState.Empty || previous is InputState.EmptyIgnoringPreviousState),
+           WTFMixedInputManager.shared.panguSpacingEnabled,
+           let lastChar = WTFMixedInputManager.shared.lastCommittedChar,
+           WTFMixedInputManager.isASCIIAlphanumeric(lastChar),
+           let firstComposing = effectiveState.composingBuffer.first,
+           WTFMixedInputManager.isBopomofoOrCJK(firstComposing) {
+            client.insertText(" ", replacementRange: NSMakeRange(NSNotFound, NSNotFound))
+            WTFMixedInputManager.shared.lastCommittedChar = " "
+            WTFMixedInputManager.shared.lastCommitWasEnglishWord = false
+        }
+
+        let attrString = effectiveState.attributedString
+        let safeCursor = min(max(0, Int(effectiveState.cursorIndex)), attrString.length)
         client.setMarkedText(
-            state.attributedString, selectionRange: NSMakeRange(Int(state.cursorIndex), 0),
+            attrString, selectionRange: NSMakeRange(safeCursor, 0),
             replacementRange: NSMakeRange(NSNotFound, NSNotFound))
-        if !state.tooltip.isEmpty {
+        if !effectiveState.tooltip.isEmpty {
             show(
-                tooltip: state.tooltip, composingBuffer: state.composingBuffer,
-                cursorIndex: state.cursorIndex, client: client)
+                tooltip: effectiveState.tooltip, composingBuffer: effectiveState.composingBuffer,
+                cursorIndex: effectiveState.cursorIndex, client: client)
         }
     }
 
@@ -971,6 +1093,393 @@ extension McBopomofoInputMethodController {
                 NotifierController.notify(
                     message: NSLocalizedString(
                         "Check McBopomofo menu for user file issues", comment: ""), stay: true)
+            }
+        }
+    }
+
+    // MARK: - gg 輸入法 (公司: wtf) - 中英混打雙軌引擎
+
+    private func showTooltipForMixedInput(_ tooltip: String, client: Any!) {
+        var lineHeightRect = NSMakeRect(0.0, 0.0, 16.0, 16.0)
+        (client as? IMKTextInput)?.attributes(
+            forCharacterIndex: 0, lineHeightRectangle: &lineHeightRect)
+        if lineHeightRect.origin.x != 0 || lineHeightRect.origin.y != 0 {
+            McBopomofoInputMethodController.tooltipController.show(
+                tooltip: tooltip, at: NSMakePoint(lineHeightRect.origin.x, lineHeightRect.origin.y - 4.0))
+        } else {
+            McBopomofoInputMethodController.tooltipController.show(
+                tooltip: tooltip, at: NSEvent.mouseLocation)
+        }
+    }
+
+    private func handleWTFMixedInput(event: NSEvent, client: Any!) -> Bool? {
+        guard event.type == .keyDown else { return nil }
+
+        // Caps Lock 鎖定大寫時，交由注音引擎/原生直接輸出英文字母與數字，避開雙軌組字與浮動提示
+        if event.modifierFlags.contains(.capsLock) {
+            if !WTFMixedInputManager.shared.currentBuffer.isEmpty || WTFMixedInputManager.shared.isPureEnglishMode {
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
+            }
+            return nil
+        }
+
+        // 忽略包含 Command 或 Control 的快捷組合鍵
+        if event.modifierFlags.contains(.command) || event.modifierFlags.contains(.control) {
+            if !WTFMixedInputManager.shared.currentBuffer.isEmpty || WTFMixedInputManager.shared.isPureEnglishMode {
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
+            }
+            return nil
+        }
+
+        // 候選字窗展開中時，不干預選字邏輯
+        let isCandidateWindowVisible = (gCurrentCandidateController?.visible == true) || (state is InputState.ChoosingCandidate)
+        if isCandidateWindowVisible {
+            return nil
+        }
+
+        let keyCode = event.keyCode
+        let kTab: UInt16 = 48
+        let kReturn: UInt16 = 36
+        let kEnterNumPad: UInt16 = 76
+        let kSpace: UInt16 = 49
+        let kDelete: UInt16 = 51
+        let kEscape: UInt16 = 53
+
+        // 若有未處理的中文聯想字，只要按的不是 Tab，立刻清除並關閉提示 (對齊開發書第 7 章)
+        if keyCode != kTab && WTFMixedInputManager.shared.associatedSuggestion != nil {
+            WTFMixedInputManager.shared.associatedSuggestion = nil
+            if WTFMixedInputManager.shared.currentBuffer.isEmpty {
+                hideTooltip()
+            }
+        }
+
+        // Option 鍵字面輸出 (對齊開發書第 9.7 節：按住 Option + 數字/標點直接輸出字面字元，免切換英文)
+        if event.modifierFlags.contains(.option) && !event.modifierFlags.contains(.command) && !event.modifierFlags.contains(.control) {
+            var literalChar: String? = nil
+            let isShift = event.modifierFlags.contains(.shift)
+
+            switch keyCode {
+            case 18: literalChar = isShift ? "!" : "1"
+            case 19: literalChar = isShift ? "@" : "2"
+            case 20: literalChar = isShift ? "#" : "3"
+            case 21: literalChar = isShift ? "$" : "4"
+            case 23: literalChar = isShift ? "%" : "5"
+            case 22: literalChar = isShift ? "^" : "6"
+            case 26: literalChar = isShift ? "&" : "7"
+            case 28: literalChar = isShift ? "*" : "8"
+            case 25: literalChar = isShift ? "(" : "9"
+            case 29: literalChar = isShift ? ")" : "0"
+            case 43: literalChar = isShift ? "<" : ","
+            case 47: literalChar = isShift ? ">" : "."
+            case 27: literalChar = isShift ? "_" : "-"
+            case 24: literalChar = isShift ? "+" : "="
+            default: break
+            }
+
+            if let literal = literalChar {
+                if WTFMixedInputManager.shared.isPureEnglishMode {
+                    let buf = WTFMixedInputManager.shared.currentBuffer
+                    if !buf.isEmpty { commit(text: buf, isEnglish: true, client: client) }
+                }
+                keyHandler.handleForceCommit { [weak self] commitState in
+                    self?.handle(state: commitState, client: client)
+                }
+                WTFMixedInputManager.shared.clear()
+                keyHandler.clear()
+                self.handle(state: InputState.EmptyIgnoringPreviousState(), client: client)
+                (client as? IMKTextInput)?.setMarkedText(
+                    "", selectionRange: NSRange(location: 0, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+
+                commit(text: literal, isEnglish: true, client: client)
+                hideTooltip()
+                return true
+            }
+        }
+
+        // 1. 純英文模式 (Pure English Mode)
+        if WTFMixedInputManager.shared.isPureEnglishMode {
+            // Backspace: 逐字刪除英文
+            if keyCode == kDelete {
+                WTFMixedInputManager.shared.removeLastKey()
+                if WTFMixedInputManager.shared.currentBuffer.isEmpty {
+                    WTFMixedInputManager.shared.clear()
+                    (client as? IMKTextInput)?.setMarkedText(
+                        "", selectionRange: NSRange(location: 0, length: 0),
+                        replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                    hideTooltip()
+                } else {
+                    let buf = WTFMixedInputManager.shared.currentBuffer
+                    (client as? IMKTextInput)?.setMarkedText(
+                        buf, selectionRange: NSRange(location: buf.count, length: 0),
+                        replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                    if let tip = WTFMixedInputManager.shared.tooltipDisplay {
+                        showTooltipForMixedInput(tip, client: client)
+                    } else {
+                        hideTooltip()
+                    }
+                }
+                return true
+            }
+
+            // Escape: 取消整段輸入
+            if keyCode == kEscape {
+                WTFMixedInputManager.shared.clear()
+                keyHandler.clear()
+                self.handle(state: InputState.EmptyIgnoringPreviousState(), client: client)
+                (client as? IMKTextInput)?.setMarkedText(
+                    "", selectionRange: NSRange(location: 0, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                hideTooltip()
+                return true
+            }
+
+            // Space: 送出英文字 + 空白
+            if keyCode == kSpace {
+                let word = WTFMixedInputManager.shared.currentBuffer + " "
+                commit(text: word, isEnglish: true, client: client)
+                WTFMixedInputManager.shared.clear()
+                keyHandler.clear()
+                self.handle(state: InputState.EmptyIgnoringPreviousState(), client: client)
+                (client as? IMKTextInput)?.setMarkedText(
+                    "", selectionRange: NSRange(location: 0, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                hideTooltip()
+                return true
+            }
+
+            // Return / Enter: 送出英文字 (無空格)
+            if keyCode == kReturn || keyCode == kEnterNumPad {
+                let word = WTFMixedInputManager.shared.currentBuffer
+                commit(text: word, isEnglish: true, client: client)
+                WTFMixedInputManager.shared.clear()
+                keyHandler.clear()
+                self.handle(state: InputState.EmptyIgnoringPreviousState(), client: client)
+                (client as? IMKTextInput)?.setMarkedText(
+                    "", selectionRange: NSRange(location: 0, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                hideTooltip()
+                return true
+            }
+
+            // Tab: 接受英文預測詞補全並送出
+            if keyCode == kTab {
+                let targetWord = WTFMixedInputManager.shared.predictedWord ?? WTFMixedInputManager.shared.currentBuffer
+                commit(text: targetWord, isEnglish: true, client: client)
+                WTFMixedInputManager.shared.clear()
+                keyHandler.clear()
+                self.handle(state: InputState.EmptyIgnoringPreviousState(), client: client)
+                (client as? IMKTextInput)?.setMarkedText(
+                    "", selectionRange: NSRange(location: 0, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                hideTooltip()
+                return true
+            }
+
+            // 在純英文模式下的字母輸入
+            if let chars = event.characters, let first = chars.first, first.isASCII, !first.isWhitespace {
+                WTFMixedInputManager.shared.appendKey(first)
+                let buf = WTFMixedInputManager.shared.currentBuffer
+                (client as? IMKTextInput)?.setMarkedText(
+                    buf, selectionRange: NSRange(location: buf.count, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                if let tip = WTFMixedInputManager.shared.tooltipDisplay {
+                    showTooltipForMixedInput(tip, client: client)
+                } else {
+                    hideTooltip()
+                }
+                return true
+            }
+            return nil
+        }
+
+        // 2. 雙軌狀態 (尚未鎖定純英文)
+        // Tab 鍵：送出整句（若有英文預測詞則補全英文後送出；若有中文聯想字則一鍵補全中文）
+        if keyCode == kTab && !isCandidateWindowVisible {
+            if let word = WTFMixedInputManager.shared.predictedWord, !word.isEmpty {
+                // 如果前面有未確定的中文，先強制送出中文！
+                keyHandler.handleForceCommit { [weak self] commitState in
+                    self?.handle(state: commitState, client: client)
+                }
+                commit(text: word, isEnglish: true, client: client)
+                WTFMixedInputManager.shared.clear()
+                keyHandler.clear()
+                self.handle(state: InputState.EmptyIgnoringPreviousState(), client: client)
+                (client as? IMKTextInput)?.setMarkedText(
+                    "", selectionRange: NSRange(location: 0, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                hideTooltip()
+                return true
+            } else if (state is InputState.Inputting) || !WTFMixedInputManager.shared.currentBuffer.isEmpty {
+                // 中文或雙軌組字狀態下，Tab 直接確認並送出整句！
+                keyHandler.handleForceCommit { [weak self] commitState in
+                    self?.handle(state: commitState, client: client)
+                }
+                WTFMixedInputManager.shared.clear()
+                keyHandler.clear()
+                self.handle(state: InputState.EmptyIgnoringPreviousState(), client: client)
+                (client as? IMKTextInput)?.setMarkedText(
+                    "", selectionRange: NSRange(location: 0, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                hideTooltip()
+                return true
+            } else if let suggestion = WTFMixedInputManager.shared.associatedSuggestion, !suggestion.isEmpty {
+                // 中文聯想字：Tab 一鍵補全接續字！ (對齊開發書第 7 章)
+                commit(text: suggestion, isEnglish: false, client: client)
+                WTFMixedInputManager.shared.associatedSuggestion = nil
+                hideTooltip()
+                return true
+            }
+            return nil
+        }
+
+        // 3. ← → 以外的方向鍵與翻頁鍵：送出整句
+        // Page Up (116), Page Down (121), Home (115), End (119)
+        if (keyCode == 116 || keyCode == 121 || keyCode == 115 || keyCode == 119) && !isCandidateWindowVisible {
+            if (state is InputState.Inputting) || WTFMixedInputManager.shared.isPureEnglishMode {
+                if WTFMixedInputManager.shared.isPureEnglishMode {
+                    let buf = WTFMixedInputManager.shared.currentBuffer
+                    if !buf.isEmpty { commit(text: buf, isEnglish: true, client: client) }
+                }
+                keyHandler.handleForceCommit { [weak self] commitState in
+                    self?.handle(state: commitState, client: client)
+                }
+                WTFMixedInputManager.shared.clear()
+                keyHandler.clear()
+                self.handle(state: InputState.EmptyIgnoringPreviousState(), client: client)
+                (client as? IMKTextInput)?.setMarkedText(
+                    "", selectionRange: NSRange(location: 0, length: 0),
+                    replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                hideTooltip()
+                return false // 讓翻頁鍵繼續在文件中生效
+            }
+        }
+
+        // Backspace 鍵：同步縮減英文緩衝區，但絕不攔截，交由注音引擎/macOS原生處理刪除！
+        if keyCode == kDelete {
+            if !WTFMixedInputManager.shared.currentBuffer.isEmpty {
+                WTFMixedInputManager.shared.removeLastKey()
+                if WTFMixedInputManager.shared.currentBuffer.isEmpty {
+                    hideTooltip()
+                } else if let tip = WTFMixedInputManager.shared.tooltipDisplay {
+                    showTooltipForMixedInput(tip, client: client)
+                }
+            }
+            // 返回 nil，確保 KeyHandler 或 macOS 收到 Delete 鍵，刪除完全順暢無阻！
+            return nil
+        }
+
+        // 字母輸入判斷
+        if let chars = event.characters, let first = chars.first {
+            // 只有 ASCII 英文字母 (a-z, A-Z) 參與雙軌預測
+            if (first >= "a" && first <= "z") || (first >= "A" && first <= "Z") {
+                let testBuffer = WTFMixedInputManager.shared.currentBuffer + String(first)
+                let isValidBpmf = WTFMixedInputManager.shared.validateBopomofo(input: testBuffer).isValid
+                let isMultiBpmf = WTFMixedInputManager.shared.validateMultiSyllableBopomofo(input: testBuffer)
+                let prediction = WTFMixedInputManager.shared.predictEnglish(prefix: testBuffer)
+
+                let isExplicitUpper = first.isUppercase
+                let isInvalidBpmf = !isValidBpmf && !isMultiBpmf && (prediction != nil || testBuffer.count >= 2)
+
+                if isExplicitUpper || isInvalidBpmf {
+                    // 非法注音音節或大寫字母：切入純英文模式！
+                    // 【關鍵修正】：必須先將 isPureEnglishMode 設為 true，並把完整英文字串 (testBuffer) 存好！
+                    // 這樣隨後呼叫 handleForceCommit 觸發 handle(state: Committing) 時，才不會因 !isPureEnglishMode 誤清空英文緩衝區！
+                    WTFMixedInputManager.shared.isPureEnglishMode = true
+                    WTFMixedInputManager.shared.currentBuffer = testBuffer
+                    WTFMixedInputManager.shared.predictedWord = prediction
+
+                    // 強制送出前面尚未確定/排隊中的中文詞彙 (例如「今天」)
+                    keyHandler.handleForceCommit { [weak self] commitState in
+                        self?.handle(state: commitState, client: client)
+                    }
+
+                    keyHandler.clear()
+                    self.state = InputState.Empty()
+
+                    // Live Pangu spacing right before the English marked text when switching from Chinese
+                    if WTFMixedInputManager.shared.panguSpacingEnabled,
+                       let prev = WTFMixedInputManager.shared.lastCommittedChar,
+                       let firstEng = testBuffer.first,
+                       WTFMixedInputManager.needsPanguSpace(left: prev, right: firstEng) {
+                        (client as? IMKTextInput)?.insertText(
+                            " ", replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                        WTFMixedInputManager.shared.lastCommittedChar = " "
+                        WTFMixedInputManager.shared.lastCommitWasEnglishWord = false
+                    }
+
+                    let buf = WTFMixedInputManager.shared.currentBuffer
+                    (client as? IMKTextInput)?.setMarkedText(
+                        buf, selectionRange: NSRange(location: buf.count, length: 0),
+                        replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
+                    if let tip = WTFMixedInputManager.shared.tooltipDisplay {
+                        showTooltipForMixedInput(tip, client: client)
+                    } else {
+                        hideTooltip()
+                    }
+                    return true
+                }
+            } else {
+                // 輸入非字母鍵（數字、標點、符號等）：必定屬於中文注音流程，清空英文緩衝區！
+                if !WTFMixedInputManager.shared.currentBuffer.isEmpty {
+                    WTFMixedInputManager.shared.clear()
+                    hideTooltip()
+                }
+            }
+        }
+
+        return nil
+    }
+
+    private func postProcessWTFMixedInput(event: NSEvent, client: Any!) {
+        guard event.type == .keyDown else { return }
+        if event.modifierFlags.contains(.capsLock) {
+            return
+        }
+        let keyCode = event.keyCode
+
+        // 全形句末標點 。 ！ ？ 送出整句（含標點）
+        if let inputting = self.state as? InputState.Inputting {
+            let buf = inputting.composingBuffer
+            if buf.hasSuffix("。") || buf.hasSuffix("！") || buf.hasSuffix("？") {
+                keyHandler.handleForceCommit { [weak self] commitState in
+                    self?.handle(state: commitState, client: client)
+                }
+                self.handle(state: InputState.Empty(), client: client)
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
+                return
+            }
+        }
+
+        // 空白、Enter、Escape 代表段落完成，清空狀態
+        if keyCode == 49 || keyCode == 36 || keyCode == 76 || keyCode == 53 {
+            WTFMixedInputManager.shared.clear()
+            hideTooltip()
+            return
+        }
+
+        if let chars = event.characters, let first = chars.first {
+            // 聲調鍵 (3, 4, 6, 7) 代表注音完成
+            if first == "3" || first == "4" || first == "6" || first == "7" {
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
+                return
+            }
+
+            // 只有英文字母才累加進緩衝區
+            if (first >= "a" && first <= "z") || (first >= "A" && first <= "Z") {
+                WTFMixedInputManager.shared.appendKey(first)
+                if let tip = WTFMixedInputManager.shared.tooltipDisplay {
+                    showTooltipForMixedInput(tip, client: client)
+                } else {
+                    hideTooltip()
+                }
+            } else {
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
             }
         }
     }

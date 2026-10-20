@@ -23,7 +23,7 @@
 
 import Testing
 
-@testable import McBopomofo
+@testable import gg
 
 @Suite("Preference Tests", .serialized)
 final class PreferencesTests {
@@ -135,9 +135,9 @@ final class PreferencesTests {
 
     @Test("Test space key candidate selection")
     func testChooseCandidateUsingSpace() {
-        #expect(Preferences.chooseCandidateUsingSpace == true)
-        Preferences.chooseCandidateUsingSpace = false
         #expect(Preferences.chooseCandidateUsingSpace == false)
+        Preferences.chooseCandidateUsingSpace = true
+        #expect(Preferences.chooseCandidateUsingSpace == true)
     }
 
     @Test("Test Chinese conversion toggle")

@@ -1,8 +1,8 @@
 /* No comment provided by engineer. */
-"About McBopomofo…" = "關於小麥注音…";
+"About McBopomofo…" = "關於 gg 輸入法…";
 
 /* No comment provided by engineer. */
-"McBopomofo Preferences" = "小麥注音偏好設定";
+"McBopomofo Preferences" = "gg 輸入法偏好設定";
 
 /* No comment provided by engineer. */
 "Check for Updates…" = "檢查是否有新版…";
@@ -29,7 +29,7 @@
 "Visit Website" = "前往網站";
 
 /* No comment provided by engineer. */
-"You're currently using McBopomofo %@ (%@), a new version %@ (%@) is now available. Do you want to visit McBopomofo's website to download the version?%@" = "目前使用的小麥注音版本是 %1$@ (%2$@)，網路上有更新版本 %3$@ (%4$@) 可供下載。是否要前往小麥注音網站下載新版來安裝？%5$@";
+"You're currently using McBopomofo %@ (%@), a new version %@ (%@) is now available. Do you want to visit McBopomofo's website to download the version?%@" = "目前使用的 gg 輸入法版本是 %1$@ (%2$@)，網路上有更新版本 %3$@ (%4$@) 可供下載。是否要前往網站下載新版來安裝？%5$@";
 
 "Convert to Simplified Chinese" = "輸出簡體中文";
 
@@ -95,7 +95,7 @@
 
 "Check for Update Completed" = "版本檢查完成";
 
-"McBopomofo is up to date." = "您的小麥注音不需要更新。";
+"McBopomofo is up to date." = "您的 gg 輸入法不需要更新。";
 
 "Look up \"%1$@\" in %2$@" = "在%2$@查詢「%1$@」";
 
@@ -133,11 +133,11 @@
 
 "Roman Numbers (Full-Width Lower Case)" = "羅馬數字 (小寫全形)";
 
-"Show Issues in User Files ⚠️" = "列出自訂詞庫中的問題 ⚠️";
+"Show Issues in User Files" = "列出自訂詞庫中的問題";
 
 "Issues were found in the following user phrase files:" = "以下是用戶自訂詞庫檔案中發現的問題：";
 
-"Check McBopomofo menu for user file issues" = "自訂詞庫有誤，請從小麥注音選單點選「列出自訂詞庫中的問題」";
+"Check McBopomofo menu for user file issues" = "自訂詞庫有誤，請從 gg 輸入法選單點選「列出自訂詞庫中的問題」";
 
 "User phrase file" = "使用者自訂詞彙檔";
 
@@ -178,7 +178,7 @@
 "Add Variant Annotation (Need BPMF IVS Font Support)" = "加上破音字標記 (需要使用注音字體)";
 
 "Unicode Name" = "Unicode 名稱";
-"Phoenetic" = "注音";
+"Phonetic" = "注音";
 "Pinyin" = "拼音";
 "Canjie" = "倉頡字根";
 "Canjie Keys" = "倉頡按鍵";

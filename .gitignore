@@ -1,19 +1,40 @@
+# Xcode & Build Artifacts
 build
 .build
+*/build
+Packages/*/build
+DerivedData
 *.pbxuser
 *.mode1v3
 *.tm_build_errors
-*.dmg
-.DS_Store
+*.xcresult
+27.1-*
 project.xcworkspace
 xcuserdata
-# Credits.rtf
-# the executable we used to count the occurance of a string in a file
-# that can be built by make -C Source/Data/bin/C_Version
-# C_count.occ.exe
+*.xcuserstate
+
+# Packaging & App Bundles
+*.dmg
+*.app
+*.tar.gz
+*.zip
+
+# Large Core ML / PyTorch Weights (>100MB GitHub limit; managed via scripts/setup_model.sh & Releases)
+Source/Resources/Model/KyonLM.mlpackage/
+Source/Resources/Model/KyonLM.mlmodelc/weights/weight.bin
+Trainer/checkpoints/
+Trainer/export/
+Trainer/corpus/
+Trainer/output/
+*.pt
+*.pth
+*.bin
+
+# OS & Editor
+.DS_Store
 .idea
 .swiftpm
 .vscode
 __pycache__
+*.pyc
 codecov_comment.md
-DerivedData

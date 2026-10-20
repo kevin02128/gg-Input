@@ -23,7 +23,7 @@
 
 #import "LanguageModelManager.h"
 #import "LanguageModelManager+Privates.h"
-#import "McBopomofo-Swift.h"
+#import "gg-Swift.h"
 
 #include "UTF8Helper.h"
 #include "AssociatedPhrasesV2.h"
@@ -297,7 +297,7 @@ static void LTLoadVariantAnnotatorData()
                 [readFile seekToFileOffset:fileSize - 1];
                 NSData *data = [readFile readDataToEndOfFile];
                 const void *bytes = data.bytes;
-                if (*(char *)bytes != '\n') {
+                if (data.length > 0 && *(const char *)bytes != '\n') {
                     addLineBreakAtFront = YES;
                 }
                 [readFile closeFile];

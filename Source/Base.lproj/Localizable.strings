@@ -1,8 +1,8 @@
 /* No comment provided by engineer. */
-"About McBopomofo…" = "About McBopomofo…";
+"About McBopomofo…" = "About gg…";
 
 /* No comment provided by engineer. */
-"McBopomofo Preferences" = "McBopomofo Preferences";
+"McBopomofo Preferences" = "gg Preferences";
 
 /* No comment provided by engineer. */
 "Check for Updates…" = "Check for Updates…";
@@ -29,7 +29,7 @@
 "Visit Website" = "Visit Website";
 
 /* No comment provided by engineer. */
-"You're currently using McBopomofo %@ (%@), a new version %@ (%@) is now available. Do you want to visit McBopomofo's website to download the version?%@" = "You're currently using McBopomofo %@ (%@), a new version %@ (%@) is now available. Do you want to visit McBopomofo's website to download the version?%@";
+"You're currently using McBopomofo %@ (%@), a new version %@ (%@) is now available. Do you want to visit McBopomofo's website to download the version?%@" = "You're currently using gg %@ (%@), a new version %@ (%@) is now available. Do you want to visit gg's website to download the version?%@";
 
 "Convert to Simplified Chinese" = "Convert to Simplified Chinese";
 
@@ -95,7 +95,7 @@
 
 "Check for Update Completed" = "Check for Update Completed";
 
-"McBopomofo is up to date." = "McBopomofo is up to date.";
+"McBopomofo is up to date." = "gg is up to date.";
 
 "Look up \"%1$@\" in %2$@" = "Look up \"%1$@\" in %2$@";
 
@@ -133,11 +133,11 @@
 
 "Roman Numbers (Full-Width Lower Case)" = "Roman Numbers (Full-Width Lower Case)";
 
-"Show Issues in User Files ⚠️" = "Show Issues in User Files ⚠️";
+"Show Issues in User Files" = "Show Issues in User Files";
 
 "Issues were found in the following user phrase files:" = "Issues were found in the following user phrase files:";
 
-"Check McBopomofo menu for user file issues" = "Check McBopomofo menu for user file issues";
+"Check McBopomofo menu for user file issues" = "Check gg menu for user file issues";
 
 "User phrase file" = "User phrase file";
 
@@ -178,7 +178,7 @@
 "Add Variant Annotation (Need BPMF IVS Font Support)" = "Add Variant Annotation (Need BPMF IVS Font Support)";
 
 "Unicode Name" = "Unicode Name";
-"Phoenetic" = "Phoenetic";
+"Phonetic" = "Phonetic";
 "Pinyin" = "Pinyin";
 "Canjie" = "Canjie";
 "Canjie Keys" = "Canjie Keys";

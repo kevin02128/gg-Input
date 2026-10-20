@@ -73,6 +73,7 @@ private let kAddPhraseHookPath = "AddPhraseHookPath"
 
 private let kSelectCandidateWithNumericKeypad = "SelectCandidateWithNumericKeypad"
 private let kBig5InputEnabledKey = "Big5InputEnabled"
+private let kWTFContextCorrectionEnabledKey = "WTFContextCorrectionEnabled"
 
 // Need to be populated to true by default upon first start, so the key is not private.
 let kBeepUponInputErrorKey = "BeepUponInputError"
@@ -244,6 +245,7 @@ class Preferences: NSObject {
             kRepeatedPunctuationToSelectCandidateEnabledKey,
             kUseCustomUserPhraseLocation,
             kCustomUserPhraseLocation,
+            kWTFContextCorrectionEnabledKey,
         ]
     }
 
@@ -279,6 +281,7 @@ class Preferences: NSObject {
         Preferences.enableUserPhrasesInPlainBopomofo = Preferences.enableUserPhrasesInPlainBopomofo
         Preferences.allowMovingCursorWhenChoosingCandidates =
             Preferences.allowMovingCursorWhenChoosingCandidates
+        Preferences.wtfContextCorrectionEnabled = Preferences.wtfContextCorrectionEnabled
     }
 
     @EnumUserDefault(key: kKeyboardLayoutPreferenceKey, defaultValue: KeyboardLayout.standard)
@@ -310,7 +313,7 @@ class Preferences: NSObject {
     @UserDefault(key: kUseHorizontalCandidateListPreferenceKey, defaultValue: false)
     @objc static var useHorizontalCandidateList: Bool
 
-    @UserDefault(key: kChooseCandidateUsingSpaceKey, defaultValue: true)
+    @UserDefault(key: kChooseCandidateUsingSpaceKey, defaultValue: false)
     @objc static var chooseCandidateUsingSpace: Bool
 
     @UserDefault(key: kChineseConversionEnabledKey, defaultValue: false)
@@ -518,6 +521,9 @@ extension Preferences {
 
     @UserDefault(key: kSwitchInputSourceUponCommandKeyPressInputSourceIDKey, defaultValue: "com.apple.keylayout.ABC")
     static var switchInputSourceUponCommandKeyPressInputSourceID: String
+
+    @UserDefault(key: kWTFContextCorrectionEnabledKey, defaultValue: true)
+    @objc static var wtfContextCorrectionEnabled: Bool
 }
 
 @objc class UserPhraseLocationHelper: NSObject {
@@ -525,7 +531,7 @@ extension Preferences {
         let paths = NSSearchPathForDirectoriesInDomains(
             .applicationSupportDirectory, .userDomainMask, true)
         let appSupportPath = paths.first!
-        return (appSupportPath as NSString).appendingPathComponent("McBopomofo")
+        return (appSupportPath as NSString).appendingPathComponent("gg")
     }
 }
 

@@ -31,11 +31,13 @@ data-raw.txt: curation/compilers/main_compiler.py \
 		--macros Macros.txt \
 		--output data-raw.txt
 
-data.txt: curation/compilers/postprocess.py curation/mandarin/grid.py data-raw.txt Postprocess.txt
-	$(PYTHON) -m curation.compilers.postprocess \
-		--input data-raw.txt \
-		--directive Postprocess.txt \
-		--output data.txt
+data.txt:
+	@if [ -f data.txt ]; then \
+		echo "Using existing compiled data.txt"; \
+	else \
+		echo "Error: data.txt missing and raw corpus files are not present."; \
+		exit 1; \
+	fi
 
 associated-phrases-v2.txt: data.txt curation/builders/phrase_deriver.py associated-punctuation.txt
 	$(PYTHON) -m curation.builders.phrase_deriver $< $@ associated-punctuation.txt

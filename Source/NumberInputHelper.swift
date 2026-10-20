@@ -8,7 +8,7 @@ class NumberInputHelper: NSObject {
     static func split(numberString: String) -> [String] {
         var intPart = ""
         var decPart = ""
-        let components = numberString.split(separator: ".")
+        let components = numberString.split(separator: ".", omittingEmptySubsequences: false)
         if components.count > 0 {
             intPart = String(components[0])
         }

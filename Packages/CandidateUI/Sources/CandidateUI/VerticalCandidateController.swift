@@ -33,73 +33,51 @@ private class VerticalKeyLabelStripView: NSView {
         true
     }
 
+    override func hitTest(_ point: NSPoint) -> NSView? {
+        // Let mouse events pass directly through to the table view underneath
+        return nil
+    }
+
     override func draw(_: NSRect) {
-        var bigSurOrHigher = false
-        if #available(macOS 10.16, *) {
-            bigSurOrHigher = true
-        }
-
-        let bounds = self.bounds
-        if !bigSurOrHigher {
-            NSColor.white.setFill()
-            NSBezierPath.fill(bounds)
-        }
-
         let count = UInt(keyLabels.count)
         if count == 0 {
             return
         }
         let cellHeight: CGFloat = bounds.size.height / CGFloat(count)
-        let black = NSColor.black
-        let darkGray = NSColor(deviceWhite: 0.7, alpha: 1.0)
-        let lightGray = NSColor(deviceWhite: 0.8, alpha: 1.0)
 
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.setParagraphStyle(NSParagraphStyle.default)
         paraStyle.alignment = .center
 
-        let textAttr: [NSAttributedString.Key: AnyObject] =
-            bigSurOrHigher
-            ? [
-                .font: keyLabelFont,
-                .foregroundColor: NSColor.labelColor,
-                .paragraphStyle: paraStyle,
-            ]
-            : [
-                .font: keyLabelFont,
-                .foregroundColor: black,
-                .paragraphStyle: paraStyle,
-            ]
-        let textAttrHighlighted: [NSAttributedString.Key: AnyObject] = [
+        let textAttrNormal: [NSAttributedString.Key: AnyObject] = [
             .font: keyLabelFont,
-            .foregroundColor: NSColor.selectedControlTextColor,
+            .foregroundColor: NSColor.secondaryLabelColor,
             .paragraphStyle: paraStyle,
         ]
+        let textAttrHighlighted: [NSAttributedString.Key: AnyObject] = [
+            .font: keyLabelFont,
+            .foregroundColor: NSColor.white.withAlphaComponent(0.85),
+            .paragraphStyle: paraStyle,
+        ]
+
         for index in 0..<count {
             let textRect = NSRect(
                 x: 0.0, y: CGFloat(index) * cellHeight + labelOffsetY, width: bounds.size.width,
                 height: cellHeight - labelOffsetY)
-            var cellRect = NSRect(
-                x: 0.0, y: CGFloat(index) * cellHeight, width: bounds.size.width, height: cellHeight
-            )
-            if !bigSurOrHigher, index + 1 < count {
-                cellRect.size.height -= 1.0
-            }
-
             let text = keyLabels[Int(index)]
-            if bigSurOrHigher {
-                if index == highlightedIndex {
-                    NSColor.selectedControlColor.setFill()
-                    NSBezierPath.fill(cellRect)
-                }
-                (text as NSString).draw(
-                    in: textRect,
-                    withAttributes: (index == highlightedIndex) ? textAttrHighlighted : textAttr)
-            } else {
-                (index == highlightedIndex ? darkGray : lightGray).setFill()
-                NSBezierPath.fill(cellRect)
-                (text as NSString).draw(in: textRect, withAttributes: textAttr)
-            }
+            let attr = (Int(index) == highlightedIndex) ? textAttrHighlighted : textAttrNormal
+            (text as NSString).draw(in: textRect, withAttributes: attr)
+        }
+    }
+}
+
+private final class CandidateRowView: NSTableRowView {
+    override func drawSelection(in dirtyRect: NSRect) {
+        if isSelected {
+            let selectionRect = bounds.insetBy(dx: 4.0, dy: 1.5)
+            let path = NSBezierPath(roundedRect: selectionRect, xRadius: 6.0, yRadius: 6.0)
+            NSColor.controlAccentColor.setFill()
+            path.fill()
         }
     }
 }
@@ -109,13 +87,6 @@ private let kCandidateTextLeftMargin: CGFloat = 8.0
 private let kCandidateTextPaddingWithMandatedTableViewPadding: CGFloat = 18.0
 private let kCandidateTextLeftMarginWithMandatedTableViewPadding: CGFloat = 0.0
 
-// Only used in macOS 10.15 (Catalina) or lower
-private class BackgroundView: NSView {
-    override func draw(_: NSRect) {
-        NSColor.windowBackgroundColor.setFill()
-        NSBezierPath.fill(bounds)
-    }
-}
 
 private protocol VerticalCandidateTableViewDelegate: AnyObject {
     func view(
@@ -237,11 +208,6 @@ public class VerticalCandidateController: CandidateController {
     private var tooltipView: NSTextField
 
     public init() {
-        var bigSurOrHigher = false
-        if #available(macOS 10.16, *) {
-            bigSurOrHigher = true
-        }
-
         var contentRect = NSRect(x: 128.0, y: 128.0, width: 0.0, height: 0.0)
         let styleMask: NSWindow.StyleMask = [.borderless, .nonactivatingPanel]
         let panel = NSPanel(
@@ -249,19 +215,15 @@ public class VerticalCandidateController: CandidateController {
         panel.level = NSWindow.Level(Int(kCGPopUpMenuWindowLevel) + 1)
         panel.hasShadow = true
 
-        if bigSurOrHigher {
-            panel.backgroundColor = .clear
-            panel.isOpaque = false
+        panel.backgroundColor = .clear
+        panel.isOpaque = false
 
-            let effect = NSVisualEffectView(frame: NSRect(x: 0, y: 0, width: 0, height: 0))
-            effect.blendingMode = .behindWindow
-            effect.material = .popover
-            effect.state = .active
-            effect.maskImage = .mask(withCornerRadius: 4)
-            panel.contentView = effect
-        } else {
-            panel.contentView = BackgroundView()
-        }
+        let effect = NSVisualEffectView(frame: NSRect(x: 0, y: 0, width: 0, height: 0))
+        effect.blendingMode = .behindWindow
+        effect.material = .popover
+        effect.state = .active
+        effect.maskImage = .mask(withCornerRadius: 12)
+        panel.contentView = effect
 
         tooltipView = NSTextField(frame: NSRect.zero)
         tooltipView.isEditable = false
@@ -269,13 +231,13 @@ public class VerticalCandidateController: CandidateController {
         tooltipView.isBezeled = false
         tooltipView.drawsBackground = true
         tooltipView.backgroundColor = NSColor.clear
+        tooltipView.textColor = NSColor.secondaryLabelColor
         tooltipView.lineBreakMode = .byTruncatingTail
 
         contentRect.origin = NSPoint.zero
         var stripRect = contentRect
         stripRect.size.width = 10.0
         keyLabelStripView = VerticalKeyLabelStripView(frame: stripRect)
-        panel.contentView?.addSubview(keyLabelStripView)
 
         var scrollViewRect = contentRect
         scrollViewRect.origin.x = stripRect.size.width
@@ -283,10 +245,8 @@ public class VerticalCandidateController: CandidateController {
         scrollView = NSScrollView(frame: scrollViewRect)
         scrollView.verticalScrollElasticity = .none
         scrollView.contentView.postsBoundsChangedNotifications = true
-        if bigSurOrHigher {
-            scrollView.drawsBackground = false
-            scrollView.contentView.drawsBackground = false
-        }
+        scrollView.drawsBackground = false
+        scrollView.contentView.drawsBackground = false
 
         tableView = VerticalCandidateTableView(frame: contentRect)
         let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "candidate"))
@@ -297,21 +257,18 @@ public class VerticalCandidateController: CandidateController {
         candidateTextLeftMargin = kCandidateTextLeftMargin
 
         tableView.addTableColumn(column)
-        tableView.intercellSpacing = NSSize(width: 0.0, height: 1.0)
+        tableView.intercellSpacing = NSSize(width: 0.0, height: 3.0)
         tableView.headerView = nil
         tableView.allowsMultipleSelection = false
         tableView.allowsEmptySelection = false
-        if bigSurOrHigher {
-            tableView.backgroundColor = .clear
-        }
-        if #available(macOS 10.16, *) {
-            tableView.style = .fullWidth
-            candidateTextPadding = kCandidateTextPaddingWithMandatedTableViewPadding
-            candidateTextLeftMargin = kCandidateTextLeftMarginWithMandatedTableViewPadding
-        }
+        tableView.backgroundColor = .clear
+        tableView.style = .fullWidth
+        candidateTextPadding = kCandidateTextPaddingWithMandatedTableViewPadding
+        candidateTextLeftMargin = kCandidateTextLeftMarginWithMandatedTableViewPadding
 
         scrollView.documentView = tableView
         panel.contentView?.addSubview(scrollView)
+        panel.contentView?.addSubview(keyLabelStripView)
 
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.setParagraphStyle(NSParagraphStyle.default)
@@ -477,10 +434,13 @@ extension VerticalCandidateController: NSTableViewDataSource, NSTableViewDelegat
         if row < delegate.candidateCountForController(self) {
             candidate = delegate.candidateController(self, candidateAtIndex: UInt(row))
         }
+        let isRowSelected = (row == tableView.selectedRow)
+        let textColor = isRowSelected ? NSColor.white : NSColor.labelColor
         let attrString = NSAttributedString(
             string: candidate,
             attributes: [
                 .font: candidateFont,
+                .foregroundColor: textColor,
                 .paragraphStyle: candidateTextParagraphStyle,
             ])
 
@@ -523,6 +483,16 @@ extension VerticalCandidateController: NSTableViewDataSource, NSTableViewDelegat
         return attrString
     }
 
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let identifier = NSUserInterfaceItemIdentifier("CandidateRowView")
+        var rowView = tableView.makeView(withIdentifier: identifier, owner: self) as? CandidateRowView
+        if rowView == nil {
+            rowView = CandidateRowView()
+            rowView?.identifier = identifier
+        }
+        return rowView
+    }
+
     public func tableViewSelectionDidChange(_: Notification) {
         let selectedRow = tableView.selectedRow
         if selectedRow != -1 {
@@ -537,6 +507,7 @@ extension VerticalCandidateController: NSTableViewDataSource, NSTableViewDelegat
 
             keyLabelStripView.setNeedsDisplay(keyLabelStripView.frame)
         }
+        tableView.setNeedsDisplay(tableView.bounds)
     }
 
     @objc func rowDoubleClicked(_: Any) {
@@ -658,7 +629,8 @@ extension VerticalCandidateController: NSTableViewDataSource, NSTableViewDelegat
             (keyLabelFontSize >= candidateFontSize)
             ? 0.0 : floor((candidateFontSize - keyLabelFontSize) / 2.0)
 
-        let rowHeight = ceil(fontSize * 1.25)
+        let kWindowPadding: CGFloat = 6.0
+        let rowHeight = ceil(fontSize * 1.55)
         tableView.rowHeight = rowHeight
 
         var maxKeyLabelWidth = keyLabelFontSize
@@ -672,10 +644,13 @@ extension VerticalCandidateController: NSTableViewDataSource, NSTableViewDelegat
         }
 
         let rowSpacing = tableView.intercellSpacing.height
-        let stripWidth = ceil(maxKeyLabelWidth * 1.20)
-        let tableViewStartWidth = ceil(maxCandidateAttrStringWidth + scrollerWidth)
-        let windowWidth = max(stripWidth + 1.0 + tableViewStartWidth, tooltipWidth)
-        let windowHeight = CGFloat(keyLabelCount) * (rowHeight + rowSpacing) + tooltipHeight
+        let stripWidth = ceil(maxKeyLabelWidth * 1.35) + 4.0
+        candidateTextParagraphStyle.firstLineHeadIndent = stripWidth + 8.0
+
+        let contentWidth = ceil(stripWidth + 8.0 + maxCandidateAttrStringWidth + scrollerWidth)
+        let windowWidth = max(contentWidth + kWindowPadding * 2, tooltipWidth + kWindowPadding * 2)
+        let contentHeight = CGFloat(keyLabelCount) * (rowHeight + rowSpacing)
+        let windowHeight = contentHeight + tooltipHeight + kWindowPadding * 2
 
         var frameRect = window?.frame ?? NSRect.zero
         let topLeftPoint = NSMakePoint(
@@ -684,13 +659,26 @@ extension VerticalCandidateController: NSTableViewDataSource, NSTableViewDelegat
         frameRect.size = NSMakeSize(windowWidth, windowHeight)
         frameRect.origin = NSMakePoint(topLeftPoint.x, topLeftPoint.y - frameRect.size.height)
 
-        keyLabelStripView.frame = NSRect(
-            x: 0.0, y: 0, width: stripWidth, height: windowHeight - tooltipHeight)
+        if let column = tableView.tableColumns.first {
+            column.width = windowWidth - kWindowPadding * 2
+        }
+
         scrollView.frame = NSRect(
-            x: stripWidth + 1.0, y: 0, width: windowWidth - stripWidth - 1,
-            height: windowHeight - tooltipHeight)
+            x: kWindowPadding, y: kWindowPadding,
+            width: windowWidth - kWindowPadding * 2,
+            height: contentHeight)
+
+        keyLabelStripView.frame = NSRect(
+            x: kWindowPadding + 2.0, y: kWindowPadding,
+            width: stripWidth,
+            height: contentHeight)
+
+        keyLabelStripView.labelOffsetY = floor((rowHeight - keyLabelFontSize) / 2.0)
+
         tooltipView.frame = NSRect(
-            x: tooltipPadding, y: windowHeight - tooltipHeight + tooltipPadding, width: windowWidth,
+            x: tooltipPadding + kWindowPadding,
+            y: windowHeight - tooltipHeight - kWindowPadding + tooltipPadding,
+            width: windowWidth - kWindowPadding * 2,
             height: tooltipHeight)
         window?.setFrame(frameRect, display: false)
     }

@@ -56,45 +56,6 @@ extension DictionaryService {
     var shouldSkipTest: Bool { false }
 }
 
-/// The dictionary service that helps to speak out the given phrase.
-private struct Speak: DictionaryService {
-    let speechSynthesizer: NSSpeechSynthesizer? = {
-        let voices = NSSpeechSynthesizer.availableVoices
-        let firstZhTWVoice = voices.first { voice in
-            voice.rawValue.contains("zh-TW")
-        }
-        guard let firstZhTWVoice else {
-            return nil
-        }
-        return NSSpeechSynthesizer.init(voice: firstZhTWVoice)
-    }()
-
-    var name: String {
-        NSLocalizedString("Speak", comment: "")
-    }
-
-    func lookUp(
-        phrase: String, state: InputState, serviceIndex: Int, stateCallback: (InputState) -> Void
-    ) -> Bool {
-        guard let speechSynthesizer else {
-            return false
-        }
-        speechSynthesizer.stopSpeaking()
-        speechSynthesizer.startSpeaking(phrase)
-        return true
-    }
-
-    func textForMenu(selectedString: String) -> String {
-        String(format: NSLocalizedString("Speak \"%@\"…", comment: ""), selectedString)
-    }
-
-    var shouldSkipTest: Bool {
-        // Note: the test machine may be without Chinese TTS installed and
-        // it causes tests to fail.
-        true
-    }
-}
-
 /// The dictionary service that helps to display the character information.
 private struct CharacterInfo: DictionaryService {
     var name: String {
@@ -175,7 +136,6 @@ class DictionaryServices: NSObject {
 
     override init() {
         var services: [DictionaryService] = []
-        services.append(Speak())
         services.append(CharacterInfo())
 
         let bundle = Bundle(for: DictionaryServices.self)

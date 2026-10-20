@@ -24,7 +24,7 @@
 import CandidateUI
 import XCTest
 
-@testable import McBopomofo
+@testable import gg
 
 func charCode(_ string: String) -> UInt16 {
     let scalars = string.unicodeScalars
@@ -3291,8 +3291,28 @@ extension KeyHandlerBopomofoTests {
         }
         XCTAssertTrue(state is InputState.SelectingFeature, "\(state)")
         XCTAssertNotNil(commiting)
-        if let committing = state as? InputState.Committing {
+        if let committing = commiting {
             XCTAssertEqual(committing.poppedText, "你好")
         }
     }
+
+    func testJingJingTi() {
+        var state: InputState = InputState.Empty()
+        let keys = Array("ru/ ru/ wu3").map { String($0) }
+        for key in keys {
+            let input = KeyHandlerInput(
+                inputText: key, keyCode: 0, charCode: charCode(key), flags: [],
+                isVerticalMode: false)
+            handler.handle(input: input, state: state) { newState in
+                state = newState
+            } errorCallback: {
+            }
+        }
+        if let inputting = state as? InputState.Inputting {
+            XCTAssertEqual(inputting.composingBuffer, "晶晶體")
+        } else {
+            XCTFail("State is not Inputting: \(state)")
+        }
+    }
 }
+

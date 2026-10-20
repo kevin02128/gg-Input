@@ -531,7 +531,14 @@ class InputState: NSObject {
             composingBuffer: String, cursorIndex: UInt, candidates: [Candidate],
             useVerticalMode: Bool
         ) {
-            self.candidates = candidates
+            let shouldRerank = type(of: self) == ChoosingCandidate.self
+            let finalCandidates = shouldRerank ? WTFNeuralReranker.shared.rerank(
+                candidates: candidates,
+                composingBuffer: composingBuffer,
+                cursorIndex: Int(cursorIndex)
+            ) : candidates
+
+            self.candidates = finalCandidates
             self.useVerticalMode = useVerticalMode
             self.originalCursorIndex = cursorIndex
             super.init(composingBuffer: composingBuffer, cursorIndex: cursorIndex)
@@ -622,7 +629,7 @@ class InputState: NSObject {
         }
 
         var candidateCount: Int {
-            autoTriggered ? 1 : candidates.count
+            autoTriggered ? min(1, candidates.count) : candidates.count
         }
 
         func candidate(at index: Int) -> String {
@@ -807,7 +814,7 @@ class InputState: NSObject {
             {
                 let mapping: [(String, String?)] = [
                     (NSLocalizedString("Unicode Name", comment: ""), result.name),
-                    (NSLocalizedString("Phoenetic", comment: ""), result.phonetic),
+                    (NSLocalizedString("Phonetic", comment: ""), result.phonetic),
                     (NSLocalizedString("Pinyin", comment: ""), result.pinyinRoc),
                     (NSLocalizedString("Canjie", comment: ""), result.canjie),
                     (NSLocalizedString("Canjie Keys", comment: ""), result.canjieKeys),

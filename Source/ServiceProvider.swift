@@ -232,15 +232,13 @@ extension ServiceProvider {
             let token = tokenTuple.0
             let type = tokenTuple.1
             if addSpace, let previousToken, let previousTokenType {
-                let lastChar = output[output.index(before: output.endIndex)]
-                if lastChar != " " {
+                if let lastChar = output.last, lastChar != " " {
                     if previousTokenType.contains(.isCJWordMask)
-                        && (!type.contains(.isCJWordMask) && token[token.startIndex].isASCII)
+                        && (!type.contains(.isCJWordMask) && (token.first?.isASCII ?? false))
                     {
                         output.append(" ")
                     } else if (!previousTokenType.contains(.isCJWordMask)
-                        && previousToken[previousToken.index(before: previousToken.endIndex)]
-                        .isASCII)
+                        && (previousToken.last?.isASCII ?? false))
                         && type.contains(.isCJWordMask)
                     {
                         output.append(" ")

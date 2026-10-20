@@ -23,14 +23,18 @@
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"Close Installer" = "Close Installer";
+"Close Installer" = "Done & Close";
+
+"Installation Guide & Quick Start" = "gg IME Installed! Please see below for setup and quick guide:";
+"Open Keyboard Settings" = "Keyboard Settings";
+"Open Privacy & Security" = "Privacy & Security";
 
 /* No comment provided by engineer. */
-"McBopomofo is ready to use." = "McBopomofo is ready to use.";
+"gg is ready to use." = "gg IME is ready to use.";
 
 "Stopping the old version. This may take up to one minute…" = "Stopping the old version. This may take up to one minute…";
 "Attention" = "Attention";
-"McBopomofo is upgraded, but please log out or reboot for the new version to be fully functional." = "McBopomofo is upgraded, but please log out or reboot for the new version to be fully functional.";
+"gg is upgraded, but please log out or reboot for the new version to be fully functional." = "gg IME is upgraded, but please log out or reboot for the new version to be fully functional.";
 
 "Fatal Error" = "Fatal Error";
 "Abort" = "Abort";

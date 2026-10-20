@@ -163,38 +163,20 @@ private class HorizontalCandidateView: NSView {
     }
 
     func set(keyLabelFont labelFont: NSFont, candidateFont: NSFont) {
-        var bigSurOrHigher = false
-        if #available(macOS 10.16, *) {
-            bigSurOrHigher = true
-        }
-
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.setParagraphStyle(NSParagraphStyle.default)
         paraStyle.alignment = .center
 
-        if bigSurOrHigher {
-            keyLabelAttrDict = [
-                .font: labelFont,
-                .paragraphStyle: paraStyle,
-                .foregroundColor: NSColor.labelColor,
-            ]
-            candidateAttrDict = [
-                .font: candidateFont,
-                .paragraphStyle: paraStyle,
-                .foregroundColor: NSColor.labelColor,
-            ]
-        } else {
-            keyLabelAttrDict = [
-                .font: labelFont,
-                .paragraphStyle: paraStyle,
-                .foregroundColor: NSColor.black,
-            ]
-            candidateAttrDict = [
-                .font: candidateFont,
-                .paragraphStyle: paraStyle,
-                .foregroundColor: NSColor.textColor,
-            ]
-        }
+        keyLabelAttrDict = [
+            .font: labelFont,
+            .paragraphStyle: paraStyle,
+            .foregroundColor: NSColor.labelColor,
+        ]
+        candidateAttrDict = [
+            .font: candidateFont,
+            .paragraphStyle: paraStyle,
+            .foregroundColor: NSColor.labelColor,
+        ]
 
         let labelFontSize = labelFont.pointSize
         let candidateFontSize = candidateFont.pointSize
@@ -206,20 +188,6 @@ private class HorizontalCandidateView: NSView {
     }
 
     override func draw(_: NSRect) {
-        var bigSurOrHigher = false
-        if #available(macOS 10.16, *) {
-            bigSurOrHigher = true
-        }
-
-        let backgroundColor = NSColor.controlBackgroundColor
-        let lightGray = NSColor(deviceWhite: 0.8, alpha: 1.0)
-        let darkGray = NSColor(deviceWhite: 0.7, alpha: 1.0)
-        let bounds = self.bounds
-
-        if !bigSurOrHigher {
-            backgroundColor.setFill()
-            NSBezierPath.fill(bounds)
-        }
         if let toolTip = toolTip {
             let tooltipFrame = NSRect(
                 x: 0, y: 0, width: tooltipSize.width, height: tooltipSize.height
@@ -239,40 +207,28 @@ private class HorizontalCandidateView: NSView {
             )
 
             var activeKeyLabelAttrDict = keyLabelAttrDict
-            if bigSurOrHigher {
-                if index == highlightedIndex {
-                    NSColor.selectedControlColor.setFill()
-                    NSBezierPath.fill(labelRect)
-                    activeKeyLabelAttrDict[.foregroundColor] = NSColor.selectedControlTextColor
-                }
+            var activeCandidateAttr = candidateAttrDict
+
+            let isHighlighted = (index == highlightedIndex)
+            if isHighlighted {
+                let itemRect = NSRect(
+                    x: accuWidth, y: tooltipSize.height, width: currentWidth,
+                    height: keyLabelHeight + candidateTextHeight + 1.0
+                )
+                let capsuleRect = itemRect.insetBy(dx: 2.0, dy: 2.0)
+                let path = NSBezierPath(roundedRect: capsuleRect, xRadius: 6.0, yRadius: 6.0)
+                NSColor.controlAccentColor.setFill()
+                path.fill()
+                activeKeyLabelAttrDict[.foregroundColor] = NSColor.white.withAlphaComponent(0.85)
+                activeCandidateAttr[.foregroundColor] = NSColor.white
             } else {
-                (index == highlightedIndex ? darkGray : lightGray).setFill()
-                NSBezierPath.fill(labelRect)
+                activeKeyLabelAttrDict[.foregroundColor] = NSColor.secondaryLabelColor
+                activeCandidateAttr[.foregroundColor] = NSColor.labelColor
             }
+
             (keyLabels[index] as NSString).draw(
                 in: labelRect, withAttributes: activeKeyLabelAttrDict
             )
-
-            var activeCandidateAttr = candidateAttrDict
-            if bigSurOrHigher {
-                if index == highlightedIndex {
-                    if #available(macOS 10.14, *) {
-                        NSColor.controlAccentColor.setFill()
-                    } else {
-                        NSColor.selectedControlColor.setFill()
-                    }
-                    NSBezierPath.fill(candidateRect)
-                    activeCandidateAttr[.foregroundColor] = NSColor.white
-                }
-            } else {
-                if index == highlightedIndex {
-                    NSColor.selectedTextBackgroundColor.setFill()
-                    activeCandidateAttr[.foregroundColor] = NSColor.selectedTextColor
-                } else {
-                    backgroundColor.setFill()
-                }
-                NSBezierPath.fill(candidateRect)
-            }
             (displayedCandidates[index].candidate as NSString).draw(
                 in: candidateRect, withAttributes: activeCandidateAttr
             )
@@ -397,11 +353,6 @@ public class HorizontalCandidateController: CandidateController {
     private var currentPage: UInt = 0
 
     public init() {
-        var bigSurOrHigher = false
-        if #available(macOS 10.16, *) {
-            bigSurOrHigher = true
-        }
-
         var contentRect = NSRect(x: 128.0, y: 128.0, width: 0.0, height: 0.0)
         let styleMask: NSWindow.StyleMask = [.borderless, .nonactivatingPanel]
         let panel = NSPanel(
@@ -410,17 +361,15 @@ public class HorizontalCandidateController: CandidateController {
         panel.level = NSWindow.Level(Int(kCGPopUpMenuWindowLevel) + 1)
         panel.hasShadow = true
 
-        if bigSurOrHigher {
-            panel.backgroundColor = .clear
-            panel.isOpaque = false
+        panel.backgroundColor = .clear
+        panel.isOpaque = false
 
-            let effect = NSVisualEffectView(frame: NSRect(x: 0, y: 0, width: 0, height: 0))
-            effect.blendingMode = .behindWindow
-            effect.material = .popover
-            effect.state = .active
-            effect.maskImage = .mask(withCornerRadius: 4)
-            panel.contentView = effect
-        }
+        let effect = NSVisualEffectView(frame: NSRect(x: 0, y: 0, width: 0, height: 0))
+        effect.blendingMode = .behindWindow
+        effect.material = .popover
+        effect.state = .active
+        effect.maskImage = .mask(withCornerRadius: 12)
+        panel.contentView = effect
 
         contentRect.origin = NSPoint.zero
         candidateView = HorizontalCandidateView(frame: contentRect)
@@ -431,22 +380,14 @@ public class HorizontalCandidateController: CandidateController {
         nextPageButton = NSButton(frame: contentRect)
         nextPageButton.setButtonType(.momentaryLight)
         nextPageButton.bezelStyle = .smallSquare
-        if bigSurOrHigher {
-            nextPageButton.isBordered = false
-            nextPageButton.attributedTitle = "»".withColor(.controlTextColor)
-        } else {
-            nextPageButton.title = "»"
-        }
+        nextPageButton.isBordered = false
+        nextPageButton.attributedTitle = "»".withColor(.controlTextColor)
 
         prevPageButton = NSButton(frame: contentRect)
         prevPageButton.setButtonType(.momentaryLight)
         prevPageButton.bezelStyle = .smallSquare
-        if bigSurOrHigher {
-            prevPageButton.isBordered = false
-            prevPageButton.attributedTitle = "«".withColor(.controlTextColor)
-        } else {
-            prevPageButton.title = "«"
-        }
+        prevPageButton.isBordered = false
+        prevPageButton.attributedTitle = "«".withColor(.controlTextColor)
 
         panel.contentView?.addSubview(nextPageButton)
         panel.contentView?.addSubview(prevPageButton)

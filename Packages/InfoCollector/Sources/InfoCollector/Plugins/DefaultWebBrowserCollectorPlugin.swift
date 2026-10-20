@@ -42,11 +42,14 @@ struct DefaultWebBrowserCollectorPlugin: InfoCollectorPlugin {
         }
 
         // Fallback to Launch Services by role handler for http if the URL lookup fails
-        if let handlerCF = LSCopyDefaultHandlerForURLScheme("http" as CFString) {
-            let handler = handlerCF.takeRetainedValue() as String
-            let path = NSWorkspace.shared.urlForApplication(withBundleIdentifier: handler)
-            let displayName = path?.deletingPathExtension().lastPathComponent ?? handler
-            callback(.success("- Default Browser: \(displayName) (\(handler))"))
+        if let appURL = NSWorkspace.shared.urlForApplication(toOpen: URL(string: "http:")!) {
+            let bundle = Bundle(url: appURL)
+            let displayName =
+                bundle?.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+                ?? bundle?.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
+                ?? (appURL.deletingPathExtension().lastPathComponent)
+            let bundleID = bundle?.bundleIdentifier ?? "unknown.bundle.id"
+            callback(.success("- Default Browser: \(displayName) (\(bundleID))"))
             return
         }
 

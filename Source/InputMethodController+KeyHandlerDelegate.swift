@@ -56,11 +56,7 @@ extension McBopomofoInputMethodController: KeyHandlerDelegate {
             process.environment = ["PATH": "/opt/homebrew/bin:/usr/bin:/usr/local/bin:/bin"]
 
             let path = LanguageModelManager.dataFolderPath
-            if #available(macOS 10.13, *) {
-                process.currentDirectoryURL = URL(fileURLWithPath: path)
-            } else {
-                FileManager.default.changeCurrentDirectoryPath(path)
-            }
+            process.currentDirectoryURL = URL(fileURLWithPath: path)
 
             #if DEBUG
                 let pipe = Pipe()

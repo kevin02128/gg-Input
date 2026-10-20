@@ -462,6 +462,11 @@ struct InputMacroWeekdayTomorrow2: InputMacroDayOfTheWeek {
     var dayOffset: Int { 1 }
     var pattern: String { "EEEE" }
     var name: String { "MACRO@DATE_TOMORROW2_WEEKDAY" }
+
+    var replacement: String {
+        let original = formatWithPattern(calendarName: calendarName, yearOffset: 0, dayOffset: dayOffset, pattern: pattern)
+        return original.replacingOccurrences(of: "星期", with: "禮拜")
+    }
 }
 
 struct InputMacroWeekdayTomorrowJapanese: InputMacroDayOfTheWeek {
@@ -520,12 +525,12 @@ struct InputMacroThisYearChineseZodiac: InputMacroZodiac {
 }
 
 struct InputMacroLastYearChineseZodiac: InputMacroZodiac {
-    var yearOffset: Int { 0 }
+    var yearOffset: Int { -1 }
     var name: String { "MACRO@LAST_YEAR_CHINESE_ZODIAC" }
 }
 
 struct InputMacroNextYearChineseZodiac: InputMacroZodiac {
-    var yearOffset: Int { 0 }
+    var yearOffset: Int { 1 }
     var name: String { "MACRO@NEXT_YEAR_CHINESE_ZODIAC" }
 }
 

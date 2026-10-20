@@ -1,6 +1,5 @@
-CFBundleName = "McBopomofo";
-CFBundleDisplayName = "McBopomofo";
-NSHumanReadableCopyright = "Copyright © 2011-2026 Mengjuei Hsieh et al.\nAll Rights Reserved.";
-"org.openvanilla.inputmethod.McBopomofo.Bopomofo" = "Bopomofo";
-"org.openvanilla.inputmethod.McBopomofo.PlainBopomofo" = "Plain Bopomofo";
+CFBundleName = "gg IME";
+CFBundleDisplayName = "gg IME";
+NSHumanReadableCopyright = "Copyright © 2026 wtf.\nAll Rights Reserved.";
+"com.wtf.inputmethod.gg.Bopomofo" = "gg IME";
 

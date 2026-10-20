@@ -607,7 +607,7 @@ const BPMF BPMF::FromComposedString(const std::string& str) {
     }
     // NOLINTEND(readability-magic-numbers)
 
-    if (iter + (utf8_length - 1) == str.end()) {
+    if (str.end() - iter < utf8_length) {
       break;
     }
 

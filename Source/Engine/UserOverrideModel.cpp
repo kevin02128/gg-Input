@@ -151,6 +151,9 @@ UserOverrideModel::Suggestion UserOverrideModel::suggest(
     const Formosa::Gramambular2::ReadingGrid::WalkResult& currentWalk,
     size_t cursor, double timestamp) {
   auto nodeIter = currentWalk.findNodeAt(cursor);
+  if (nodeIter == currentWalk.nodes.cend()) {
+    return Suggestion();
+  }
   std::string key = FormObservationKey(nodeIter, currentWalk.nodes.begin());
   return suggest(key, timestamp);
 }

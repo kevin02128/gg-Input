@@ -194,17 +194,180 @@ ReadingGrid::WalkResult ReadingGrid::walk() {
   // Reconstruct the most likely path by tracing back from the end of the grid
   // to the root using the back-pointers
   size_t totalReadingLen = 0;
+  double rawScoreSum = 0.0;
   for (size_t curr = readingLen; curr > 0; curr = viterbi[curr].fromIndex) {
-    assert(viterbi[curr].fromNode != nullptr);
+    if (viterbi[curr].fromNode == nullptr) {
+      break;
+    }
     totalReadingLen += viterbi[curr].fromNode->spanningLength();
+    rawScoreSum += viterbi[curr].fromNode->currentUnigram().score();
     result.nodes.emplace_back(std::move(viterbi[curr].fromNode));
   }
   std::reverse(result.nodes.begin(), result.nodes.end());
   assert(totalReadingLen == readingLen);
   result.totalReadings = totalReadingLen;
+  result.totalScore = rawScoreSum;
 
   result.elapsedMicroseconds = GetEpochNowInMicroseconds() - start;
   return result;
+}
+
+std::vector<ReadingGrid::WalkResult> ReadingGrid::walkNBest(
+    size_t k, size_t maxUnigramsPerNode) {
+  std::vector<WalkResult> results;
+  if (spans_.empty() || k == 0) {
+    return results;
+  }
+
+  int64_t start = GetEpochNowInMicroseconds();
+  WalkResult top1 = walk();
+  if (top1.nodes.empty()) {
+    return results;
+  }
+  results.push_back(top1);
+  if (k == 1) {
+    return results;
+  }
+
+  struct Hypothesis {
+    size_t fromPos = 0;
+    size_t fromRank = 0;
+    ReadingGrid::NodePtr node = nullptr;
+    std::string chosenValue;
+    double rawScore = 0.0;
+    double rankingScore = 0.0;
+    std::string prefixText;
+  };
+
+  const size_t readingLen = readings_.size();
+  const size_t beamWidth = std::max(k * 2, static_cast<size_t>(16));
+  std::vector<std::vector<Hypothesis>> dp(readingLen + 1);
+  dp[0].push_back(Hypothesis{0, 0, nullptr, "", 0.0, 0.0, ""});
+
+  struct UnigramChoice {
+    std::string value;
+    double rawScore;
+    double rankScore;
+  };
+
+  for (size_t pos = 0; pos <= readingLen; ++pos) {
+    if (pos > 0 && dp[pos].size() > 1) {
+      std::stable_sort(dp[pos].begin(), dp[pos].end(),
+                       [](const Hypothesis& a, const Hypothesis& b) {
+                         return a.rankingScore > b.rankingScore;
+                       });
+      std::vector<Hypothesis> deduped;
+      deduped.reserve( std::min(dp[pos].size(), beamWidth) );
+      for (auto& h : dp[pos]) {
+        bool exists = false;
+        for (const auto& d : deduped) {
+          if (d.prefixText == h.prefixText) {
+            exists = true;
+            break;
+          }
+        }
+        if (!exists) {
+          deduped.push_back(std::move(h));
+          if (deduped.size() >= beamWidth) {
+            break;
+          }
+        }
+      }
+      dp[pos] = std::move(deduped);
+    }
+
+    if (pos == readingLen || dp[pos].empty()) {
+      continue;
+    }
+
+    const ReadingGrid::Span& span = spans_[pos];
+    const size_t maxSpanLen = span.maxLength();
+
+    for (size_t spanLen = 1; spanLen <= maxSpanLen; ++spanLen) {
+      const ReadingGrid::NodePtr& node = span.nodeOf(spanLen);
+      if (node == nullptr) {
+        continue;
+      }
+
+      std::vector<UnigramChoice> choices;
+      if (node->isOverridden() || node->unigrams().empty() ||
+          maxUnigramsPerNode <= 1) {
+        choices.push_back(UnigramChoice{
+            node->value(), node->currentUnigram().score(), node->score()});
+      } else {
+        const auto& unigrams = node->unigrams();
+        const std::string defaultVal = node->value();
+        choices.push_back(UnigramChoice{
+            defaultVal, node->currentUnigram().score(), node->score()});
+        for (const auto& u : unigrams) {
+          if (u.value() != defaultVal) {
+            choices.push_back(UnigramChoice{u.value(), u.score(), u.score()});
+            if (choices.size() >= maxUnigramsPerNode) {
+              break;
+            }
+          }
+        }
+      }
+
+      const size_t nextPos = pos + spanLen;
+      for (size_t r = 0; r < dp[pos].size(); ++r) {
+        const Hypothesis& prev = dp[pos][r];
+        for (const auto& c : choices) {
+          Hypothesis nextHyp;
+          nextHyp.fromPos = pos;
+          nextHyp.fromRank = r;
+          nextHyp.node = node;
+          nextHyp.chosenValue = c.value;
+          nextHyp.rawScore = prev.rawScore + c.rawScore;
+          nextHyp.rankingScore = prev.rankingScore + c.rankScore;
+          nextHyp.prefixText = prev.prefixText + c.value;
+          dp[nextPos].push_back(std::move(nextHyp));
+        }
+      }
+    }
+  }
+
+  std::string top1Sentence;
+  for (const auto& n : top1.nodes) {
+    top1Sentence += n->value();
+  }
+
+  uint64_t elapsed = GetEpochNowInMicroseconds() - start;
+  for (size_t r = 0; r < dp[readingLen].size() && results.size() < k; ++r) {
+    const Hypothesis& finalHyp = dp[readingLen][r];
+    if (finalHyp.prefixText == top1Sentence) {
+      continue;
+    }
+
+    WalkResult wr;
+    wr.totalReadings = readingLen;
+    wr.vertices = top1.vertices;
+    wr.edges = top1.edges;
+    wr.elapsedMicroseconds = elapsed;
+    wr.totalScore = finalHyp.rawScore;
+
+    size_t currPos = readingLen;
+    size_t currRank = r;
+    while (currPos > 0) {
+      const Hypothesis& step = dp[currPos][currRank];
+      if (step.node == nullptr) {
+        break;
+      }
+      if (step.chosenValue == step.node->value()) {
+        wr.nodes.push_back(step.node);
+      } else {
+        auto cloned = std::make_shared<Node>(*step.node);
+        cloned->selectUnigramWithoutOverride(step.chosenValue);
+        wr.nodes.push_back(std::move(cloned));
+      }
+      currPos = step.fromPos;
+      currRank = step.fromRank;
+    }
+    std::reverse(wr.nodes.begin(), wr.nodes.end());
+    results.push_back(std::move(wr));
+  }
+
+  return results;
 }
 
 std::vector<ReadingGrid::Candidate> ReadingGrid::candidatesAt(size_t loc) {
@@ -486,6 +649,16 @@ bool ReadingGrid::Node::selectOverrideUnigram(
     if (value == it->value()) {
       unigramIter_ = it;
       overrideType_ = type;
+      return true;
+    }
+  }
+  return false;
+}
+
+bool ReadingGrid::Node::selectUnigramWithoutOverride(const std::string& value) {
+  for (auto it = unigrams_.begin(), end = unigrams_.end(); it != end; ++it) {
+    if (value == it->value()) {
+      unigramIter_ = it;
       return true;
     }
   }

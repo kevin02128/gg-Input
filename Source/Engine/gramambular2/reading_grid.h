@@ -138,10 +138,12 @@ class ReadingGrid {
     [[nodiscard]] double score() const;
 
     [[nodiscard]] bool isOverridden() const;
+    [[nodiscard]] OverrideType overrideType() const { return overrideType_; }
 
     void reset();
 
     bool selectOverrideUnigram(const std::string& value, OverrideType type);
+    bool selectUnigramWithoutOverride(const std::string& value);
 
     // A sufficiently high score to cause the walk to go through an overriding
     // node. Although this can be 0, setting it to a positive value has the
@@ -178,6 +180,7 @@ class ReadingGrid {
     size_t vertices = 0;
     size_t edges = 0;
     uint64_t elapsedMicroseconds = 0;
+    double totalScore = 0.0;
 
     // Convenient method for finding the node at the cursor. Returns
     // nodes.cend() if the value of cursor argument doesn't make sense. An
@@ -205,11 +208,13 @@ class ReadingGrid {
       }
 
       return WalkResult{copiedNodes, totalReadings, vertices, edges,
-                        elapsedMicroseconds};
+                        elapsedMicroseconds, totalScore};
     }
   };
 
   WalkResult walk();
+  std::vector<WalkResult> walkNBest(size_t k = 8,
+                                    size_t maxUnigramsPerNode = 4);
 
   struct Candidate {
     Candidate(std::string r, std::string v, std::string rv = "")

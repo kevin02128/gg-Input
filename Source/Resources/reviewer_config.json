@@ -1,0 +1,9 @@
+{
+  "alphaLM": 1.0,
+  "betaLex": 0.05,
+  "temperature": 0.15,
+  "minBestProb": 0.58,
+  "minProbMargin": 0.12,
+  "singleRuleScale": 0.3,
+  "maxTotalRuleBias": 0.6
+}

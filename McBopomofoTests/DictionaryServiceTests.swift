@@ -23,20 +23,10 @@
 
 import Testing
 
-@testable import McBopomofo
+@testable import gg
 
 @Suite("Dictionary Service Tests")
 final class DictionaryServiceTests {
-
-    @Test
-    func testSpeak() {
-        let result = DictionaryServices.shared.lookUp(
-            phrase: "你", withServiceAtIndex: 0, state: InputState.Empty()
-        ) { _ in
-
-        }
-        #expect(result)
-    }
 
     @Test
     func testDictionaryService() {
