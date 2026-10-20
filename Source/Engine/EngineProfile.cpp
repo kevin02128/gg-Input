@@ -37,7 +37,7 @@
 #endif
 
 #include "Mandarin/Mandarin.h"
-#include "McBopomofoLM.h"
+#include "ggLM.h"
 #include "gramambular2/reading_grid.h"
 
 namespace {

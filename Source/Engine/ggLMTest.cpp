@@ -26,7 +26,7 @@
 #include <string>
 #include <utility>
 
-#include "McBopomofoLM.h"
+#include "ggLM.h"
 #include "gtest/gtest.h"
 
 namespace McBopomofo {

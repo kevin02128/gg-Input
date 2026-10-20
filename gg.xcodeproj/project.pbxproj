@@ -36,7 +36,7 @@
 		6ACA41FB15FC1D9000935EF6 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA41EC15FC1D9000935EF6 /* License.rtf */; };
 		6ACA41FC15FC1D9000935EF6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA41EE15FC1D9000935EF6 /* Localizable.strings */; };
 		6ACA41FD15FC1D9000935EF6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA41F015FC1D9000935EF6 /* MainMenu.xib */; };
-		6ACA420215FC1E5200935EF6 /* McBopomofo.app in Resources */ = {isa = PBXBuildFile; fileRef = 6A0D4EA215FC0D2D00ABF4B3 /* McBopomofo.app */; };
+		6ACA420215FC1E5200935EF6 /* gg.app in Resources */ = {isa = PBXBuildFile; fileRef = 6A0D4EA215FC0D2D00ABF4B3 /* gg.app */; };
 		6ACC3D442793701600F1B140 /* ParselessPhraseDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6ACC3D402793701600F1B140 /* ParselessPhraseDB.cpp */; };
 		6ACC3D452793701600F1B140 /* ParselessLM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6ACC3D422793701600F1B140 /* ParselessLM.cpp */; };
 		6AD7CBC815FE555000691B5B /* data-plain-bpmf.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6AD7CBC715FE555000691B5B /* data-plain-bpmf.txt */; };
@@ -53,7 +53,7 @@
 		D402D66D3002779000CF3746 /* PreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D402D6663002779000CF3746 /* PreferencesModel.swift */; };
 		D40EFFA22EB669F900C1728A /* InfoCollector in Frameworks */ = {isa = PBXBuildFile; productRef = D40EFFA12EB669F900C1728A /* InfoCollector */; };
 		D41355D8278D74B5005E5CBD /* LanguageModelManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D41355D7278D7409005E5CBD /* LanguageModelManager.mm */; };
-		D41355DB278E6D17005E5CBD /* McBopomofoLM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D41355D9278E6D17005E5CBD /* McBopomofoLM.cpp */; };
+		D41355DB278E6D17005E5CBD /* ggLM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D41355D9278E6D17005E5CBD /* ggLM.cpp */; };
 		D41355DE278EA3ED005E5CBD /* UserPhrasesLM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D41355DC278EA3ED005E5CBD /* UserPhrasesLM.cpp */; };
 		D41B626C2B86EAE900583148 /* BopomofoBraille in Frameworks */ = {isa = PBXBuildFile; productRef = D41B626B2B86EAE900583148 /* BopomofoBraille */; };
 		D41B626F2B87B5C100583148 /* ServiceProviderInputHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D41B626E2B87B5C100583148 /* ServiceProviderInputHelper.mm */; };
@@ -120,14 +120,14 @@
 			containerPortal = 6A0D4E9415FC0CFA00ABF4B3 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6A0D4EA115FC0D2D00ABF4B3;
-			remoteInfo = McBopomofo;
+			remoteInfo = gg;
 		};
 		D485D3BA2796A8A000657FF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6A0D4E9415FC0CFA00ABF4B3 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6A0D4EA115FC0D2D00ABF4B3;
-			remoteInfo = McBopomofo;
+			remoteInfo = gg;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -137,11 +137,11 @@
 		WTF000010000000000000005 /* WTFNeuralReranker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFNeuralReranker.swift; sourceTree = "<group>"; };
 		WTF000010000000000000001 /* WTFMixedInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFMixedInputManager.swift; sourceTree = "<group>"; };
 		CC0000080000000000000001 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
-		6A0D4EA215FC0D2D00ABF4B3 /* McBopomofo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McBopomofo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A0D4EA215FC0D2D00ABF4B3 /* gg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A0D4EEF15FC0DA600ABF4B3 /* gg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = gg.tiff; sourceTree = "<group>"; };
 		6A0D4EF015FC0DA600ABF4B3 /* gg@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "gg@2x.tiff"; sourceTree = "<group>"; };
-		6A0D4EF515FC0DA600ABF4B3 /* McBopomofo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "McBopomofo-Info.plist"; sourceTree = "<group>"; };
-		6A0D4EF615FC0DA600ABF4B3 /* McBopomofo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "McBopomofo-Prefix.pch"; sourceTree = "<group>"; };
+		6A0D4EF515FC0DA600ABF4B3 /* gg-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gg-Info.plist"; sourceTree = "<group>"; };
+		6A0D4EF615FC0DA600ABF4B3 /* gg-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gg-Prefix.pch"; sourceTree = "<group>"; };
 		6A0D4F2015FC0EB100ABF4B3 /* Mandarin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mandarin.cpp; sourceTree = "<group>"; };
 		6A0D4F2115FC0EB100ABF4B3 /* Mandarin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mandarin.h; sourceTree = "<group>"; };
 		6A15B32421A51F2300B92CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -204,14 +204,14 @@
 		D40EFFA02EB669BB00C1728A /* InfoCollector */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = InfoCollector; path = Packages/InfoCollector; sourceTree = "<group>"; };
 		D41355D6278D7409005E5CBD /* LanguageModelManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageModelManager.h; sourceTree = "<group>"; };
 		D41355D7278D7409005E5CBD /* LanguageModelManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LanguageModelManager.mm; sourceTree = "<group>"; };
-		D41355D9278E6D17005E5CBD /* McBopomofoLM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = McBopomofoLM.cpp; sourceTree = "<group>"; };
-		D41355DA278E6D17005E5CBD /* McBopomofoLM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = McBopomofoLM.h; sourceTree = "<group>"; };
+		D41355D9278E6D17005E5CBD /* ggLM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ggLM.cpp; sourceTree = "<group>"; };
+		D41355DA278E6D17005E5CBD /* ggLM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ggLM.h; sourceTree = "<group>"; };
 		D41355DC278EA3ED005E5CBD /* UserPhrasesLM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UserPhrasesLM.cpp; sourceTree = "<group>"; };
 		D41355DD278EA3ED005E5CBD /* UserPhrasesLM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserPhrasesLM.h; sourceTree = "<group>"; };
 		D41B626A2B86EAD400583148 /* BopomofoBraille */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BopomofoBraille; path = Packages/BopomofoBraille; sourceTree = "<group>"; };
 		D41B626D2B87B5C100583148 /* ServiceProviderInputHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceProviderInputHelper.h; sourceTree = "<group>"; };
 		D41B626E2B87B5C100583148 /* ServiceProviderInputHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ServiceProviderInputHelper.mm; sourceTree = "<group>"; };
-		D427A9BF25ED28CC005D43E0 /* McBopomofo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "McBopomofo-Bridging-Header.h"; sourceTree = "<group>"; };
+		D427A9BF25ED28CC005D43E0 /* gg-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gg-Bridging-Header.h"; sourceTree = "<group>"; };
 		D427F768278C9D0D004A2160 /* CandidateUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CandidateUI; path = Packages/CandidateUI; sourceTree = "<group>"; };
 		D427F76B278CA1BA004A2160 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D427F7A727905E43004A2160 /* TooltipUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TooltipUI; path = Packages/TooltipUI; sourceTree = "<group>"; };
@@ -238,14 +238,14 @@
 		D47F7DCF278C0897002F9DD7 /* NonModalAlertWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonModalAlertWindowController.swift; sourceTree = "<group>"; };
 		D47F7DD1278C1263002F9DD7 /* UserOverrideModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOverrideModel.h; sourceTree = "<group>"; };
 		D47F7DD2278C1263002F9DD7 /* UserOverrideModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserOverrideModel.cpp; sourceTree = "<group>"; };
-		D485D3B62796A8A000657FF3 /* McBopomofoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = McBopomofoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D485D3B62796A8A000657FF3 /* ggTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ggTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D485D3B82796A8A000657FF3 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		D485D3BF2796CE3200657FF3 /* VersionUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateTests.swift; sourceTree = "<group>"; };
 		D48F853C2EACCDE900C2FDAB /* RomanNumbers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RomanNumbers; path = Packages/RomanNumbers; sourceTree = "<group>"; };
 		D495583A27A5C6C4006ADE1C /* LanguageModelManager+Privates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LanguageModelManager+Privates.h"; sourceTree = "<group>"; };
 		D4A13D5927A59D5C003BE359 /* InputMethodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMethodController.swift; sourceTree = "<group>"; };
 		D4A8E43527A9E982002F7A07 /* KeyHandlerPlainBopomofoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyHandlerPlainBopomofoTests.swift; sourceTree = "<group>"; };
-		D4C2A9852B4309D600113711 /* McBopomofoTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "McBopomofoTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		D4C2A9852B4309D600113711 /* McBopomofoTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		D4C2A9862B4309D700113711 /* UTF8HelperTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = UTF8HelperTest.mm; sourceTree = "<group>"; };
 		D4C9CAAF27AAC8EC0058DFEA /* NSStringUtils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = NSStringUtils; path = Packages/NSStringUtils; sourceTree = "<group>"; };
 		D4CB1A5A2B3891FB006EA984 /* DictionaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryService.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 			children = (
 				D427F766278C9CBD004A2160 /* Packages */,
 				6A0D4EC215FC0D3C00ABF4B3 /* Source */,
-				D485D3B72796A8A000657FF3 /* McBopomofoTests */,
+				D485D3B72796A8A000657FF3 /* ggTests */,
 				6A0D4EA315FC0D2D00ABF4B3 /* Products */,
 				D47D73C127A7200500255A50 /* Frameworks */,
 			);
@@ -322,9 +322,9 @@
 		6A0D4EA315FC0D2D00ABF4B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A0D4EA215FC0D2D00ABF4B3 /* McBopomofo.app */,
+				6A0D4EA215FC0D2D00ABF4B3 /* gg.app */,
 				6ACA41CB15FC1D7500935EF6 /* McBopomofoInstaller.app */,
-				D485D3B62796A8A000657FF3 /* McBopomofoTests.xctest */,
+				D485D3B62796A8A000657FF3 /* ggTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -361,8 +361,8 @@
 				D41B626E2B87B5C100583148 /* ServiceProviderInputHelper.mm */,
 				B058C5262AC9DF51002EDD66 /* ServiceProvider.swift */,
 				D47B92BF27972AC800458394 /* main.swift */,
-				6A0D4EF615FC0DA600ABF4B3 /* McBopomofo-Prefix.pch */,
-				D427A9BF25ED28CC005D43E0 /* McBopomofo-Bridging-Header.h */,
+				6A0D4EF615FC0DA600ABF4B3 /* gg-Prefix.pch */,
+				D427A9BF25ED28CC005D43E0 /* gg-Bridging-Header.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -388,8 +388,8 @@
 				6ADF5B182BA513E000577D98 /* AssociatedPhrasesV2.h */,
 				6A660A6F2EAF371000D53D7B /* ByteBlockBackedDictionary.cpp */,
 				6A660A6E2EAF371000D53D7B /* ByteBlockBackedDictionary.h */,
-				D41355D9278E6D17005E5CBD /* McBopomofoLM.cpp */,
-				D41355DA278E6D17005E5CBD /* McBopomofoLM.h */,
+				D41355D9278E6D17005E5CBD /* ggLM.cpp */,
+				D41355DA278E6D17005E5CBD /* ggLM.h */,
 				6ADF5B152BA513E000577D98 /* MemoryMappedFile.cpp */,
 				6ADF5B142BA513E000577D98 /* MemoryMappedFile.h */,
 				6ACC3D422793701600F1B140 /* ParselessLM.cpp */,
@@ -427,7 +427,7 @@
 				6A6ED162279764CD0012872E /* Custom Phrase Templates */,
 				6AFF97F0253B299E007F1C49 /* NonModalAlertWindowController.xib */,
 				6A0D4EEE15FC0DA600ABF4B3 /* Images */,
-				6A0D4EF515FC0DA600ABF4B3 /* McBopomofo-Info.plist */,
+				6A0D4EF515FC0DA600ABF4B3 /* gg-Info.plist */,
 				D4E33D8D27A838F0006DB1CF /* InfoPlist.strings */,
 				D4E33D8827A838CF006DB1CF /* Localizable.strings */,
 				B0781B372ACA2655003D9F75 /* ServicesMenu.strings */,
@@ -526,7 +526,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D485D3B72796A8A000657FF3 /* McBopomofoTests */ = {
+		D485D3B72796A8A000657FF3 /* ggTests */ = {
 			isa = PBXGroup;
 			children = (
 				D436E23E2CD20B9E00C6155D /* AssociatedPhrasesTests.swift */,
@@ -540,7 +540,7 @@
 				D4C2A9862B4309D700113711 /* UTF8HelperTest.mm */,
 				D4C2A9852B4309D600113711 /* McBopomofoTests-Bridging-Header.h */,
 			);
-			path = McBopomofoTests;
+			path = ggTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,7 +565,7 @@
 /* Begin PBXNativeTarget section */
 		6A0D4EA115FC0D2D00ABF4B3 /* McBopomofo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A0D4EC015FC0D2E00ABF4B3 /* Build configuration list for PBXNativeTarget "McBopomofo" */;
+			buildConfigurationList = 6A0D4EC015FC0D2E00ABF4B3 /* Build configuration list for PBXNativeTarget "gg" */;
 			buildPhases = (
 				6A0D4E9E15FC0D2D00ABF4B3 /* Sources */,
 				6A0D4E9F15FC0D2D00ABF4B3 /* Frameworks */,
@@ -576,7 +576,7 @@
 			dependencies = (
 				6A38BC2615FC131100A8A51F /* PBXTargetDependency */,
 			);
-			name = McBopomofo;
+			name = gg;
 			packageProductDependencies = (
 				D427F769278C9E29004A2160 /* CandidateUI */,
 				D427F7A827905E90004A2160 /* TooltipUI */,
@@ -591,8 +591,8 @@
 				D48F853D2EACDB6C00C2FDAB /* RomanNumbers */,
 				D40EFFA12EB669F900C1728A /* InfoCollector */,
 			);
-			productName = McBopomofo;
-			productReference = 6A0D4EA215FC0D2D00ABF4B3 /* McBopomofo.app */;
+			productName = gg;
+			productReference = 6A0D4EA215FC0D2D00ABF4B3 /* gg.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6ACA41CA15FC1D7500935EF6 /* McBopomofoInstaller */ = {
@@ -616,9 +616,9 @@
 			productReference = 6ACA41CB15FC1D7500935EF6 /* McBopomofoInstaller.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D485D3B52796A8A000657FF3 /* McBopomofoTests */ = {
+		D485D3B52796A8A000657FF3 /* ggTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D485D3BE2796A8A000657FF3 /* Build configuration list for PBXNativeTarget "McBopomofoTests" */;
+			buildConfigurationList = D485D3BE2796A8A000657FF3 /* Build configuration list for PBXNativeTarget "ggTests" */;
 			buildPhases = (
 				D485D3B22796A8A000657FF3 /* Sources */,
 				D485D3B32796A8A000657FF3 /* Frameworks */,
@@ -629,9 +629,9 @@
 			dependencies = (
 				D485D3BB2796A8A000657FF3 /* PBXTargetDependency */,
 			);
-			name = McBopomofoTests;
-			productName = McBopomofoTests;
-			productReference = D485D3B62796A8A000657FF3 /* McBopomofoTests.xctest */;
+			name = ggTests;
+			productName = ggTests;
+			productReference = D485D3B62796A8A000657FF3 /* ggTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -676,7 +676,7 @@
 				6A0D4EA115FC0D2D00ABF4B3 /* McBopomofo */,
 				6ACA41CA15FC1D7500935EF6 /* McBopomofoInstaller */,
 				6A38BC2115FC12FD00A8A51F /* Data */,
-				D485D3B52796A8A000657FF3 /* McBopomofoTests */,
+				D485D3B52796A8A000657FF3 /* ggTests */,
 			);
 		};
 /* End PBXProject section */
@@ -716,7 +716,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ACA420215FC1E5200935EF6 /* McBopomofo.app in Resources */,
+				6ACA420215FC1E5200935EF6 /* gg.app in Resources */,
 				6A2E40F9253A6AA000D1AE1D /* Images.xcassets in Resources */,
 				6ACA41FA15FC1D9000935EF6 /* InfoPlist.strings in Resources */,
 				6ACA41FB15FC1D9000935EF6 /* License.rtf in Resources */,
@@ -764,7 +764,7 @@
 				6A4F5F982879E838008C4307 /* reading_grid.cpp in Sources */,
 				D47F7DD0278C0897002F9DD7 /* NonModalAlertWindowController.swift in Sources */,
 				D456576E279E4F7B00DF6BC9 /* KeyHandlerInput.swift in Sources */,
-				D41355DB278E6D17005E5CBD /* McBopomofoLM.cpp in Sources */,
+				D41355DB278E6D17005E5CBD /* ggLM.cpp in Sources */,
 				D47F7DD3278C1263002F9DD7 /* UserOverrideModel.cpp in Sources */,
 				6A0D4F4515FC0EB100ABF4B3 /* Mandarin.cpp in Sources */,
 				6ACC3D452793701600F1B140 /* ParselessLM.cpp in Sources */,
@@ -1091,7 +1091,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Source/McBopomofo-Prefix.pch";
+				GCC_PREFIX_HEADER = "Source/gg-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1112,17 +1112,17 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Source/McBopomofo-Info.plist";
+				INFOPLIST_FILE = "Source/gg-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.openvanilla.inputmethod.McBopomofo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wtf.inputmethod.gg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "Source/McBopomofo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/gg-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
@@ -1153,7 +1153,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Source/McBopomofo-Prefix.pch";
+				GCC_PREFIX_HEADER = "Source/gg-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -1169,16 +1169,16 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Source/McBopomofo-Info.plist";
+				INFOPLIST_FILE = "Source/gg-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.openvanilla.inputmethod.McBopomofo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wtf.inputmethod.gg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "Source/McBopomofo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/gg-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1376,15 +1376,15 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cerence.McBopomofoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wtf.ggTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "McBopomofoTests/McBopomofoTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ggTests/ggTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/McBopomofo.app/Contents/MacOS/McBopomofo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gg.app/Contents/MacOS/gg";
 			};
 			name = Debug;
 		};
@@ -1424,14 +1424,14 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cerence.McBopomofoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wtf.ggTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "McBopomofoTests/McBopomofoTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ggTests/ggTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/McBopomofo.app/Contents/MacOS/McBopomofo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gg.app/Contents/MacOS/gg";
 			};
 			name = Release;
 		};
@@ -1447,7 +1447,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A0D4EC015FC0D2E00ABF4B3 /* Build configuration list for PBXNativeTarget "McBopomofo" */ = {
+		6A0D4EC015FC0D2E00ABF4B3 /* Build configuration list for PBXNativeTarget "gg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A0D4EBE15FC0D2E00ABF4B3 /* Debug */,
@@ -1474,7 +1474,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D485D3BE2796A8A000657FF3 /* Build configuration list for PBXNativeTarget "McBopomofoTests" */ = {
+		D485D3BE2796A8A000657FF3 /* Build configuration list for PBXNativeTarget "ggTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D485D3BC2796A8A000657FF3 /* Debug */,

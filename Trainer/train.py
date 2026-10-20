@@ -340,7 +340,7 @@ def main() -> None:
     torch.manual_seed(args.seed)
 
     lexicon_path = os.path.join(args.gg_root, "Source/Data/data.txt")
-    regression_tsv = os.path.join(args.gg_root, "McBopomofoTests/Fixtures/homophone_regression.tsv")
+    regression_tsv = os.path.join(args.gg_root, "ggTests/Fixtures/homophone_regression.tsv")
     gg_model_dir = os.path.join(args.gg_root, "Source/Resources/Model")
 
     vocab_path = os.path.join(args.trainer_root, "data/vocab.txt")

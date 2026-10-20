@@ -23,7 +23,7 @@
 
 #import "ServiceProviderInputHelper.h"
 #import "gg-Swift.h"
-#import "McBopomofoLM.h"
+#import "ggLM.h"
 #import "Mandarin.h"
 #import "LanguageModelManager+Privates.h"
 

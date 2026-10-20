@@ -22,7 +22,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 
 #import "LanguageModelManager.h"
-#import "McBopomofoLM.h"
+#import "ggLM.h"
 #import "UserOverrideModel.h"
 #import "VariantAnnotator.h"
 

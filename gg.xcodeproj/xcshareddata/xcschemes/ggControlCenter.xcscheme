@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6A0D4EA115FC0D2D00ABF4B3"
-               BuildableName = "McBopomofo.app"
+               BuildableName = "gg.app"
                ReferencedContainer = "container:gg.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

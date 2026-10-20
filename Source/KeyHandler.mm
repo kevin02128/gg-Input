@@ -25,7 +25,7 @@
 #import "LanguageModelManager+Privates.h"
 #import "Mandarin.h"
 #import "gg-Swift.h"
-#import "McBopomofoLM.h"
+#import "ggLM.h"
 #import "UTF8Helper.h"
 #import "UserOverrideModel.h"
 #import "reading_grid.h"

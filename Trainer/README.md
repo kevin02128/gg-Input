@@ -22,7 +22,7 @@
 
 1. **無洩漏純字元輸入**：移除舊版訓練器中會造成標籤洩漏（Label Leakage）的輔助訊號與雜湊快取，模型僅接收字元 ID。
 2. **動態同音負樣本抽樣（[`HomophoneSampler`](dataset.py)）**：直接索引 `/Users/kevin/development/gg/Source/Data/data.txt` 中超過 22,000 組同音字詞群組與高頻易混同音對（如 `不在/不再`、`慢慢地/慢慢的`、`戴著/帶著`、`偵測/政策`、`冗餘/茸於`、`測試/策試`、`國家/果家`、`蘋果汁/蘋國汁`、`反應/反映`、`紀錄/記錄` 等），每個 Epoch 動態在線替換同音字產生難負樣本。
-3. **測試集嚴格隔離**：[`prepare_corpus.py`](prepare_corpus.py) 自動讀取 `McBopomofoTests/Fixtures/homophone_regression.tsv` 並將測試集句子自訓練與驗證語料中完全剔除。
+3. **測試集嚴格隔離**：[`prepare_corpus.py`](prepare_corpus.py) 自動讀取 `ggTests/Fixtures/homophone_regression.tsv` 並將測試集句子自訓練與驗證語料中完全剔除。
 
 ## 三、一鍵隔夜訓練與部署（9～10 小時）
 

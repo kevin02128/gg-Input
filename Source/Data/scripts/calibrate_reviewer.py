@@ -5,7 +5,7 @@ calibrate_reviewer.py
 
 Grid-search calibration tool for gg's whole-sentence N-Best ReviewerConfig.
 Evaluates parameter combinations (alphaLM, betaLex, temperature, minBestProb, minProbMargin)
-against McBopomofoTests/Fixtures/homophone_regression.tsv:
+against ggTests/Fixtures/homophone_regression.tsv:
 - Enforces control group false-modification rate <= 1% (0% target).
 - Maximizes correction accuracy on homophone and particle categories.
 - Writes the calibrated parameters to Source/Resources/reviewer_config.json.
@@ -287,7 +287,7 @@ def evaluate_config(cases: list, beta_lex: float, temperature: float, min_best_p
 
 def main():
     parser = argparse.ArgumentParser(description="Calibrate ReviewerConfig parameters against homophone_regression.tsv")
-    parser.add_argument("--benchmark", default="McBopomofoTests/Fixtures/homophone_regression.tsv")
+    parser.add_argument("--benchmark", default="ggTests/Fixtures/homophone_regression.tsv")
     parser.add_argument("--output", default="Source/Resources/reviewer_config.json")
     args = parser.parse_args()
 

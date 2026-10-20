@@ -47,4 +47,4 @@ cd gg-Input
 
 ## 軟體授權與致謝
 
-本專案採用 [MIT License](file:///Users/kevin/development/gg/LICENSE.txt) 釋出。特別感謝 OpenVanilla / McBopomofo 團隊與相關開源社群，完整第三方授權列表請參閱 [`ACKNOWLEDGEMENTS.md`](file:///Users/kevin/development/gg/ACKNOWLEDGEMENTS.md)。
+本專案採用 [MIT License](file:///Users/kevin/development/gg/LICENSE) 釋出。特別感謝 OpenVanilla / McBopomofo 團隊與相關開源社群，完整第三方授權列表請參閱 [`ACKNOWLEDGEMENTS.md`](file:///Users/kevin/development/gg/ACKNOWLEDGEMENTS.md)。

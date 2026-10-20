@@ -14,7 +14,7 @@ Implements Section 5 of the KyonLM v1/v2 training specification:
   3. Normalizes half-width punctuation to full-width, removes emojis and control
      characters, splits by 。！？； and newlines, and filters to length 4..46.
   4. Strictly removes any sentence appearing in the held-out IME regression
-     benchmark (McBopomofoTests/Fixtures/homophone_regression.tsv) to prevent
+     benchmark (ggTests/Fixtures/homophone_regression.tsv) to prevent
      test leakage.
 """
 
@@ -624,7 +624,7 @@ def prepare_corpus(
     rng = random.Random(seed)
     data_txt_path = os.path.join(gg_root, "Source/Data/data.txt")
     assoc_path = os.path.join(gg_root, "Source/Data/associated-phrases-v2.txt")
-    regression_tsv = os.path.join(gg_root, "McBopomofoTests/Fixtures/homophone_regression.tsv")
+    regression_tsv = os.path.join(gg_root, "ggTests/Fixtures/homophone_regression.tsv")
     raw_dir = os.path.join(trainer_root, "corpus/raw")
     out_dir = os.path.join(trainer_root, "corpus")
     os.makedirs(out_dir, exist_ok=True)
