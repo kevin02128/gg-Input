@@ -21,18 +21,18 @@
 ## 二、訓練方法（聯合交叉熵 + 動態同音對比排序損失）
 
 1. **無洩漏純字元輸入**：移除舊版訓練器中會造成標籤洩漏（Label Leakage）的輔助訊號與雜湊快取，模型僅接收字元 ID。
-2. **動態同音負樣本抽樣（[`HomophoneSampler`](dataset.py)）**：直接索引 `/Users/kevin/development/gg/Source/Data/data.txt` 中超過 22,000 組同音字詞群組與高頻易混同音對（如 `不在/不再`、`慢慢地/慢慢的`、`戴著/帶著`、`偵測/政策`、`冗餘/茸於`、`測試/策試`、`國家/果家`、`蘋果汁/蘋國汁`、`反應/反映`、`紀錄/記錄` 等），每個 Epoch 動態在線替換同音字產生難負樣本。
+2. **動態同音負樣本抽樣（[`HomophoneSampler`](dataset.py)）**：直接索引 `./Source/Data/data.txt` 中超過 22,000 組同音字詞群組與高頻易混同音對（如 `不在/不再`、`慢慢地/慢慢的`、`戴著/帶著`、`偵測/政策`、`冗餘/茸於`、`測試/策試`、`國家/果家`、`蘋果汁/蘋國汁`、`反應/反映`、`紀錄/記錄` 等），每個 Epoch 動態在線替換同音字產生難負樣本。
 3. **測試集嚴格隔離**：[`prepare_corpus.py`](prepare_corpus.py) 自動讀取 `ggTests/Fixtures/homophone_regression.tsv` 並將測試集句子自訓練與驗證語料中完全剔除。
 
 ## 三、一鍵隔夜訓練與部署（9～10 小時）
 
 ```bash
-cd /Users/kevin/development/gg_trainer
+cd ../gg_trainer
 ./run_train.sh
 ```
 
 - 預設啟用 `caffeinate -i` 防止 Mac 休眠，並預設執行 **9.5 小時**（可透過 `./run_train.sh --hours 10` 調整時數）。
 - 支援隨時按 `Ctrl+C` 安全中斷：收到中斷訊號後會自動載入最佳驗證分數的權重 (`checkpoints/best.pt`)，轉出 `KyonLM.mlpackage` 與 `KyonLM.mlmodelc`，並自動部署至：
-  - `/Users/kevin/development/gg/Source/Resources/Model/`
+  - `./Source/Resources/Model/`
   - `~/Library/Application Support/gg/Models/`
 - 若有額外自備的台灣繁體中文語料（`.txt`），可直接放入 `corpus/raw/` 資料夾後執行 `./run_train.sh --rebuild-data`。

@@ -315,8 +315,8 @@ def export_coreml_model(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train KyonLM Character-Level Causal Language Model")
-    parser.add_argument("--gg-root", type=str, default="/Users/kevin/development/gg")
-    parser.add_argument("--trainer-root", type=str, default="/Users/kevin/development/gg_trainer")
+    parser.add_argument("--gg-root", type=str, default=".")
+    parser.add_argument("--trainer-root", type=str, default="../gg_trainer")
     parser.add_argument("--hours", type=float, default=9.5, help="Target training duration in hours")
     parser.add_argument("--max-epochs", type=int, default=200, help="Maximum epochs")
     parser.add_argument("--batch-size", type=int, default=16, help="Micro-batch size (pairs of pos+neg)")

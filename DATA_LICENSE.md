@@ -19,6 +19,6 @@
 
 ## 2. 隱私與去識別化聲明
 
-本專案在建立訓練語料時，已透過嚴格的正則過濾腳本（參見 [`Trainer/prepare_corpus.py`](file:///Users/kevin/development/gg/Trainer/prepare_corpus.py)）進行資料清洗：
+本專案在建立訓練語料時，已透過嚴格的正則過濾腳本（參見 [`Trainer/prepare_corpus.py`](Trainer/prepare_corpus.py)）進行資料清洗：
 - 完全剔除任何包含電子郵件、電話號碼、身分證字號、私人地址與真實個人機敏資訊之語料。
 - 絕無任何私人鍵擊記錄或使用者個人隱私數據參與模型訓練。

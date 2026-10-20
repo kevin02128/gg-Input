@@ -713,13 +713,13 @@ def main() -> None:
     parser.add_argument(
         "--gg-root",
         type=str,
-        default="/Users/kevin/development/gg",
+        default=".",
         help="Path to gg repository root",
     )
     parser.add_argument(
         "--trainer-root",
         type=str,
-        default="/Users/kevin/development/gg_trainer",
+        default="../gg_trainer",
         help="Path to gg_trainer root",
     )
     parser.add_argument(

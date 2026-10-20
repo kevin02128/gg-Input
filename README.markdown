@@ -39,11 +39,11 @@ cd gg-Input
 ./package_dmg.command
 ```
 
-若欲自行重新訓練或微調 KyonLM 神經語言模型，請參閱 [`Trainer/README.md`](file:///Users/kevin/development/gg/Trainer/README.md)。
+若欲自行重新訓練或微調 KyonLM 神經語言模型，請參閱 [`Trainer/README.md`](Trainer/README.md)。
 
 ## 隱私與安全承諾
 
-本輸入法不具備任何外連網路權限或追蹤機制，所有打字組字與神經網路運算均於您的 Mac 本機端閉環完成。詳見 [`SECURITY.md`](file:///Users/kevin/development/gg/SECURITY.md)。
+本輸入法不具備任何外連網路權限或追蹤機制，所有打字組字與神經網路運算均於您的 Mac 本機端閉環完成。詳見 [`SECURITY.md`](SECURITY.md)。
 
 ## 軟體授權與致謝
 

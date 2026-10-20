@@ -9,7 +9,7 @@
 set -euo pipefail
 
 TRAINER_DIR="$(cd "$(dirname "$0")" && pwd)"
-GG_DIR="/Users/kevin/development/gg"
+GG_DIR="$(cd "$TRAINER_DIR/.." && pwd)"
 
 cd "$TRAINER_DIR"
 

@@ -142,13 +142,13 @@ def main() -> None:
     parser.add_argument(
         "--lexicon",
         type=str,
-        default="/Users/kevin/development/gg/Source/Data/data.txt",
+        default="./Source/Data/data.txt",
         help="Path to gg data.txt",
     )
     parser.add_argument(
         "--output",
         type=str,
-        default="/Users/kevin/development/gg_trainer/data/vocab.txt",
+        default="../gg_trainer/data/vocab.txt",
         help="Output vocab.txt path",
     )
     parser.add_argument(

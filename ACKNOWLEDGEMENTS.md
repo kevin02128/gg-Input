@@ -9,3 +9,4 @@
 - **[OpenCC](https://github.com/BYVoid/OpenCC)** by Carbo Kuo (BYVoid), licensed under the Apache License 2.0.
 - **[SQLite.swift](https://github.com/stephencelis/SQLite.swift)** by Stephen Celis, licensed under the MIT License.
 - **注音字型破音字標記資料**：衍生自 [注音IVS字型規格](https://github.com/ButTaiwan/bpmfvs) 專案之[國字讀音整理檔](https://github.com/ButTaiwan/bpmfvs/tree/master/phonetic)，作者為 But Ko，採 Apache License 2.0 發布。
+- **詞庫基礎資料**：McBopomofo 詞庫最初簡化自 [libtabe](https://github.com/chinese-opendesktop/libtabe) 之 `tsi.src`，採 BSD 授權，並經修改。
