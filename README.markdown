@@ -2,6 +2,12 @@
 
 由 **WTF Team** 開發之新一代智慧型台灣繁體中文輸入法，衍生自開放原始碼專案 [McBopomofo (小麥注音)](https://github.com/openvanilla/McBopomofo)，內建專為 Apple Silicon 打造之 **KyonLM 神經語言模型**（由 Apple Neural Engine 硬體加速）與中英混打引擎。
 
+## 關於本專案
+
+本專案是一位大學生的學習與練習作品，在 AI 程式助理（agent）的輔導與協助下，邊做邊學輸入法、Swift / Objective-C++ / C++ 與神經語言模型的開發。專案以開源的 McBopomofo 為基礎進行衍生開發，程式品質與穩定性仍在持續學習與改進中。
+
+歡迎透過 Issue 或 Pull Request 提出建議與指教，也請多包涵。
+
 ## 核心特色
 
 - **KyonLM 神經語言模型（ANE 加速）**：10 層因果 Transformer 架構（約 55.5M 參數），即時審查 N-Best 整句語意並融合雙向語意規則，自動校正同音異字（如：`在/再`、`的/得/地`、`帶/戴`、`做/作`、`反映/反應`），單次推論延遲僅約 19ms，且 100% 本地離線執行。
