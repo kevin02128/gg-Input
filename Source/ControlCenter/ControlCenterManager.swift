@@ -92,6 +92,7 @@ public class ControlCenterManager: ObservableObject {
     @Published public var neuralLastSummary: String = "尚未觸發神經推論"
     @Published public var neuralModelSizeString: String = "整句 N-Best 審查架構"
     @Published public var neuralHardwareEngine: String = "Apple Neural Engine (ANE)"
+    @Published public var hasValidModel: Bool = false
 
     // MARK: - Constants & Paths
 
@@ -158,13 +159,43 @@ public class ControlCenterManager: ObservableObject {
 
     // MARK: - Status Checking (Non-blocking Background Execution)
 
+    /// 偵測本機是否存在有效的 KyonLM 權重（檔案大小需大於 1MB，避免空殼占位檔被誤判）。
+    nonisolated private static func detectValidModel(installedApp: URL, controlCenterResources: URL?) -> Bool {
+        let fm = FileManager.default
+        var candidates: [URL] = [
+            fm.homeDirectoryForCurrentUser
+                .appendingPathComponent("Library/Application Support/gg/Models/KyonLM.mlmodelc/weights/weight.bin"),
+            installedApp
+                .appendingPathComponent("Contents/Resources/KyonLM.mlmodelc/weights/weight.bin"),
+        ]
+        if let res = controlCenterResources {
+            candidates.append(res.appendingPathComponent("gg.app/Contents/Resources/KyonLM.mlmodelc/weights/weight.bin"))
+        }
+        for url in candidates {
+            if let attrs = try? fm.attributesOfItem(atPath: url.path),
+               let size = attrs[.size] as? Int64, size > 1_000_000 {
+                return true
+            }
+        }
+        return false
+    }
+
+    public func openModelsFolder() {
+        let dir = userSupportDir.appendingPathComponent("Models")
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        NSWorkspace.shared.open(dir)
+    }
+
     public func refreshStatus() {
         let appURL = targetAppURL
         let suite = suiteName
+        let ccResources = Bundle.main.resourceURL
 
         Task.detached(priority: .utility) {
             let fileManager = FileManager.default
             let appExists = fileManager.fileExists(atPath: appURL.path)
+            let modelOK = Self.detectValidModel(installedApp: appURL, controlCenterResources: ccResources)
+            await MainActor.run { self.hasValidModel = modelOK }
 
             if !appExists {
                 await MainActor.run {

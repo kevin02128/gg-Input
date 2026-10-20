@@ -158,12 +158,20 @@ public struct ControlCenterView: View {
                     // 2. 開關模型區塊
                     GroupBox(label: Text("Kyon 智慧選字模型").font(.system(size: 13, weight: .bold))) {
                         VStack(alignment: .leading, spacing: 12) {
-                            Toggle(isOn: $manager.wtfContextCorrection) {
+                            Toggle(isOn: manager.hasValidModel ? $manager.wtfContextCorrection : .constant(false)) {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text("啟用 Kyon")
                                         .font(.system(size: 14, weight: .semibold))
 
                                 }
+                            }
+                            .disabled(!manager.hasValidModel)
+
+                            if !manager.hasValidModel {
+                                Button("開啟模型放置目錄") {
+                                    manager.openModelsFolder()
+                                }
+                                .font(.system(size: 12))
                             }
 
                             Divider()
@@ -173,7 +181,7 @@ public struct ControlCenterView: View {
                                     Text("引擎狀態：")
                                         .font(.system(size: 12))
                                         .foregroundColor(.secondary)
-                                    Text(manager.wtfContextCorrection ? "啟用中" : "已停用")
+                                    Text(!manager.hasValidModel ? "未安裝模型" : (manager.wtfContextCorrection ? "啟用中" : "已停用"))
                                         .font(.system(size: 12, weight: .medium))
                                 }
                                 GridRow {
