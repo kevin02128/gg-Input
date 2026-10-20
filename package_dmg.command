@@ -6,22 +6,21 @@ cd "$PROJECT_DIR"
 
 echo "正在編譯 Release 正式發行版本..."
 xcodebuild -project gg.xcodeproj -scheme gg -configuration Release -destination "platform=macOS,arch=arm64" build -quiet
-xcodebuild -project gg.xcodeproj -scheme ggControlCenter -configuration Release -destination "platform=macOS,arch=arm64" build -quiet
 
-SRC_CONTROLCENTER=$(find ~/Library/Developer/Xcode/DerivedData/gg-*/Build/Products/Release/"gg 控制台.app" -maxdepth 0 2>/dev/null | head -n 1)
+# 找到 Release 編譯出的輸入法模組
+RELEASE_GG=$(find ~/Library/Developer/Xcode/DerivedData/gg-*/Build/Products/Release -maxdepth 1 \( -name "gg.app" -o -name "McBopomofo.app" \) 2>/dev/null | head -n 1)
 
-if [ ! -d "$SRC_CONTROLCENTER" ]; then
-    echo "[錯誤] 找不到 Release 編譯產物。"
-    exit 1
-fi
+# 建置一體化 gg 控制台
+"$PROJECT_DIR/build_control_center.sh"
 
-# 1. 複製到專案資料夾
 DEST_LOCAL_APP="$PROJECT_DIR/gg 控制台.app"
-rm -rf "$DEST_LOCAL_APP"
-cp -R "$SRC_CONTROLCENTER" "$DEST_LOCAL_APP"
-if [ -f "$PROJECT_DIR/Source/ControlCenter/AppIcon.icns" ]; then
-    cp "$PROJECT_DIR/Source/ControlCenter/AppIcon.icns" "$DEST_LOCAL_APP/Contents/Resources/AppIcon.icns"
+
+# 確保控制台內嵌的是剛才編譯好的 Release 1.0.0 版本（包含 107MB KyonLM 模型）
+if [ -d "$RELEASE_GG" ]; then
+    rm -rf "$DEST_LOCAL_APP/Contents/Resources/gg.app"
+    cp -R "$RELEASE_GG" "$DEST_LOCAL_APP/Contents/Resources/gg.app"
 fi
+
 xattr -cr "$DEST_LOCAL_APP"
 
 # 3. 製作客戶端發布用的 DMG 磁碟映像檔
