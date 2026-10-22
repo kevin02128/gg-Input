@@ -32,6 +32,40 @@ public class WTFMixedInputManager {
         ]
     }
 
+    // MARK: - 數字與大千注音鍵盤分類
+    public static let toneDigits: Set<Character> = ["3", "4", "6", "7"]
+    public static let nonToneDigits: Set<Character> = ["1", "2", "5", "8", "9", "0"]
+    public static let bopomofoInitialDigits: Set<Character> = ["1", "2", "5"]
+    public static let bopomofoFinalDigits: Set<Character> = ["8", "9", "0"]
+
+    // MARK: - 常見科技短字與縮寫對應表 (Acronyms & Short Tokens)
+    public static let knownSpecAcronyms: [String: String] = [
+        "4k": "4K", "8k": "8K", "3d": "3D", "5g": "5G", "4g": "4G",
+        "3c": "3C", "2b": "2B", "1a": "1A", "m1": "M1", "m2": "M2",
+        "m3": "M3", "m4": "M4", "a4": "A4", "b5": "B5", "ps5": "PS5",
+        "b2b": "B2B", "b2c": "B2C", "p2p": "P2P", "ai": "AI",
+        "ui": "UI", "ux": "UX", "pm": "PM", "api": "API",
+        "sdk": "SDK", "app": "App"
+    ]
+
+    public static func resolveCommittedEnglish(_ text: String) -> String {
+        let lower = text.lowercased()
+        if let mapped = knownSpecAcronyms[lower] {
+            return mapped
+        }
+        return text
+    }
+
+    public static func isShortTokenOrAcronym(_ text: String) -> Bool {
+        let lower = text.lowercased()
+        if knownSpecAcronyms[lower] != nil {
+            return true
+        }
+        let hasLetter = text.contains(where: { ($0 >= "a" && $0 <= "z") || ($0 >= "A" && $0 <= "Z") })
+        let hasDigit = text.contains(where: { $0 >= "0" && $0 <= "9" })
+        return hasLetter && hasDigit
+    }
+
     // MARK: - 屬性
     public let isEnabled: Bool = true
     public let panguSpacingEnabled: Bool = true
@@ -260,7 +294,66 @@ public class WTFMixedInputManager {
             }
         }
         let canonicalBpmf = initCharStr + medCharStr + finCharStr + toneCharStr
+        // 聲調符號不能單獨存在作為音節，必須伴隨聲母、介音或韻母
+        if !toneCharStr.isEmpty && initCharStr.isEmpty && medCharStr.isEmpty && finCharStr.isEmpty {
+            return (false, canonicalBpmf)
+        }
         return (true, canonicalBpmf)
+    }
+
+    // MARK: - 英數混打相衝偵測 (Dual-Track Alphanumeric Collision Detection)
+    public func checkAlphanumericCollision(buffer: String, nextChar: Character) -> Bool {
+        if isPureEnglishMode {
+            return false
+        }
+        guard !buffer.isEmpty else {
+            return false
+        }
+
+        let lowerNext = Character(String(nextChar).lowercased())
+        let isNextLetter = (lowerNext >= "a" && lowerNext <= "z")
+        let isNextDigit = (nextChar >= "0" && nextChar <= "9")
+
+        // Rule A: 聲調起首短字 (Isolated Tone Prefix Collision)
+        // 若目前 buffer 為單獨聲調數字 (3, 4, 6, 7)，下一個鍵按字母 (a-z)
+        // 注音語法絕不可能以聲調開頭後接字母 -> 判定為相衝 (如 4k, 3d, 3c)
+        if buffer.count == 1, let firstChar = buffer.first, Self.toneDigits.contains(firstChar), isNextLetter {
+            return true
+        }
+
+        // Rule B: 注音數字起首相衝 (Digit-Bopomofo Collision)
+        // 若目前 buffer 開頭為非聲調數字 (1, 2, 5, 8, 9, 0)，下一個鍵為字母：
+        // 1. 聲母數字 (5=ㄓ, 1=ㄅ, 2=ㄉ) 後接聲母字母 (如 5+g = ㄓ+ㄕ 雙聲母相衝，如 5g)
+        // 2. 韻母數字 (8=ㄚ, 9=ㄞ, 0=ㄢ) 後接韻母字母 (如 8+k = ㄚ+ㄜ 雙韻母相衝，如 8k)
+        // 3. 任何無法組成單一合法注音之組合
+        if buffer.count == 1, let firstChar = buffer.first, Self.nonToneDigits.contains(firstChar), isNextLetter {
+            let combined = buffer + String(lowerNext)
+            if !validateBopomofo(input: combined).isValid {
+                return true
+            }
+        }
+
+        // Rule C: 字母接非聲調數字相衝 (Letter Followed by Non-Tone Digit)
+        // 若目前 buffer 含有字母，下一個鍵按非聲調數字 (1, 2, 5, 8, 9, 0)：
+        // 數字 1(ㄅ), 2(ㄉ), 5(ㄓ) 為聲母，絕不可能接在韻母後面 (如 m(ㄩ)+1(ㄅ) 變 M1)
+        // 數字 8(ㄚ), 9(ㄞ), 0(ㄢ) 為韻母，若無法與前面字母組合成合法注音音節，判定相衝
+        // (注意：若下一個鍵為 3, 4, 6, 7 聲調數字，且前面字母可拼出合法注音，如 m+4=玉，則此函數回傳 false，維持中文！)
+        if isNextDigit {
+            if Self.nonToneDigits.contains(nextChar) {
+                let combined = buffer + String(nextChar)
+                if !validateBopomofo(input: combined).isValid {
+                    return true
+                }
+            } else if Self.toneDigits.contains(nextChar) {
+                // 如果是聲調數字，但前面字母根本無法拼成合法注音 (例如 ps + 5)，也判定相衝
+                let combined = buffer + String(nextChar)
+                if !validateBopomofo(input: combined).isValid {
+                    return true
+                }
+            }
+        }
+
+        return false
     }
 
     // MARK: - 多音節連續注音檢測
@@ -312,6 +405,14 @@ public class WTFMixedInputManager {
     public func predictEnglish(prefix: String) -> String? {
         guard !prefix.isEmpty else { return nil }
         let lower = prefix.lowercased()
+        if let exactAcronym = Self.knownSpecAcronyms[lower] {
+            return exactAcronym
+        }
+        for (k, v) in Self.knownSpecAcronyms {
+            if k.hasPrefix(lower) && k != lower {
+                return v
+            }
+        }
         guard let firstChar = lower.first else { return nil }
         let indices = wordsByFirstChar[firstChar] ?? []
         for idx in indices {
@@ -360,6 +461,7 @@ public class WTFMixedInputManager {
     // MARK: - 浮動提示文字
     public var tooltipDisplay: String? {
         if !currentBuffer.isEmpty {
+            let display = predictedWord ?? Self.resolveCommittedEnglish(currentBuffer)
             if let prediction = predictedWord {
                 if isPureEnglishMode {
                     return "英: \(prediction)  [Tab 補全]  [Enter 送出]"
@@ -367,7 +469,7 @@ public class WTFMixedInputManager {
                     return "英: \(prediction) [Tab] | 中: 聲調"
                 }
             }
-            return isPureEnglishMode ? "英: \(currentBuffer)  [Enter 送出]" : nil
+            return isPureEnglishMode ? "英: \(display)  [Enter 送出]" : nil
         }
         if let suggestion = associatedSuggestion {
             return "聯想: \(suggestion)  [Tab 補全]"

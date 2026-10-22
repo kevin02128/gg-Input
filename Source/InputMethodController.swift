@@ -1219,8 +1219,9 @@ extension McBopomofoInputMethodController {
                     hideTooltip()
                 } else {
                     let buf = WTFMixedInputManager.shared.currentBuffer
+                    let displayBuf = WTFMixedInputManager.resolveCommittedEnglish(buf)
                     (client as? IMKTextInput)?.setMarkedText(
-                        buf, selectionRange: NSRange(location: buf.count, length: 0),
+                        displayBuf, selectionRange: NSRange(location: displayBuf.count, length: 0),
                         replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
                     if let tip = WTFMixedInputManager.shared.tooltipDisplay {
                         showTooltipForMixedInput(tip, client: client)
@@ -1243,9 +1244,11 @@ extension McBopomofoInputMethodController {
                 return true
             }
 
-            // Space: 送出英文字 + 空白
+            // Space: 送出英文字
             if keyCode == kSpace {
-                let word = WTFMixedInputManager.shared.currentBuffer + " "
+                let buf = WTFMixedInputManager.shared.currentBuffer
+                let resolved = WTFMixedInputManager.resolveCommittedEnglish(buf)
+                let word = WTFMixedInputManager.isShortTokenOrAcronym(buf) ? resolved : (resolved + " ")
                 commit(text: word, isEnglish: true, client: client)
                 WTFMixedInputManager.shared.clear()
                 keyHandler.clear()
@@ -1259,7 +1262,8 @@ extension McBopomofoInputMethodController {
 
             // Return / Enter: 送出英文字 (無空格)
             if keyCode == kReturn || keyCode == kEnterNumPad {
-                let word = WTFMixedInputManager.shared.currentBuffer
+                let buf = WTFMixedInputManager.shared.currentBuffer
+                let word = WTFMixedInputManager.resolveCommittedEnglish(buf)
                 commit(text: word, isEnglish: true, client: client)
                 WTFMixedInputManager.shared.clear()
                 keyHandler.clear()
@@ -1273,7 +1277,9 @@ extension McBopomofoInputMethodController {
 
             // Tab: 接受英文預測詞補全並送出
             if keyCode == kTab {
-                let targetWord = WTFMixedInputManager.shared.predictedWord ?? WTFMixedInputManager.shared.currentBuffer
+                let buf = WTFMixedInputManager.shared.currentBuffer
+                let resolved = WTFMixedInputManager.resolveCommittedEnglish(buf)
+                let targetWord = WTFMixedInputManager.shared.predictedWord ?? resolved
                 commit(text: targetWord, isEnglish: true, client: client)
                 WTFMixedInputManager.shared.clear()
                 keyHandler.clear()
@@ -1285,12 +1291,13 @@ extension McBopomofoInputMethodController {
                 return true
             }
 
-            // 在純英文模式下的字母輸入
-            if let chars = event.characters, let first = chars.first, first.isASCII, !first.isWhitespace {
+            // 在純英文模式下的字母與數字輸入 (ASCII Alphanumeric)
+            if let chars = event.characters, let first = chars.first, WTFMixedInputManager.isASCIIAlphanumeric(first) {
                 WTFMixedInputManager.shared.appendKey(first)
                 let buf = WTFMixedInputManager.shared.currentBuffer
+                let displayBuf = WTFMixedInputManager.resolveCommittedEnglish(buf)
                 (client as? IMKTextInput)?.setMarkedText(
-                    buf, selectionRange: NSRange(location: buf.count, length: 0),
+                    displayBuf, selectionRange: NSRange(location: displayBuf.count, length: 0),
                     replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
                 if let tip = WTFMixedInputManager.shared.tooltipDisplay {
                     showTooltipForMixedInput(tip, client: client)
@@ -1305,7 +1312,10 @@ extension McBopomofoInputMethodController {
         // 2. 雙軌狀態 (尚未鎖定純英文)
         // Tab 鍵：送出整句（若有英文預測詞則補全英文後送出；若有中文聯想字則一鍵補全中文）
         if keyCode == kTab && !isCandidateWindowVisible {
-            if let word = WTFMixedInputManager.shared.predictedWord, !word.isEmpty {
+            let current = WTFMixedInputManager.shared.currentBuffer
+            let resolved = WTFMixedInputManager.resolveCommittedEnglish(current)
+            let predicted = WTFMixedInputManager.shared.predictedWord ?? (WTFMixedInputManager.knownSpecAcronyms[current.lowercased()] != nil ? resolved : nil)
+            if let word = predicted, !word.isEmpty {
                 // 如果前面有未確定的中文，先強制送出中文！
                 keyHandler.handleForceCommit { [weak self] commitState in
                     self?.handle(state: commitState, client: client)
@@ -1378,22 +1388,36 @@ extension McBopomofoInputMethodController {
             return nil
         }
 
-        // 字母輸入判斷
+        // 字母與數字輸入判斷 (ASCII Alphanumeric)
         if let chars = event.characters, let first = chars.first {
-            // 只有 ASCII 英文字母 (a-z, A-Z) 參與雙軌預測
-            if (first >= "a" && first <= "z") || (first >= "A" && first <= "Z") {
-                let testBuffer = WTFMixedInputManager.shared.currentBuffer + String(first)
+            if WTFMixedInputManager.isASCIIAlphanumeric(first) {
+                let current = WTFMixedInputManager.shared.currentBuffer
+                let testBuffer = current + String(first)
+                let isExplicitUpper = first.isUppercase
+
+                // 檢查是否為合法中文聲調完成 (如 m+4=玉, 1u+4=必, su+3=你)
+                if !current.isEmpty && WTFMixedInputManager.toneDigits.contains(first) {
+                    let (isValidToneBpmf, _) = WTFMixedInputManager.shared.validateBopomofo(input: testBuffer)
+                    if isValidToneBpmf {
+                        // 使用者按聲調鍵宣告要中文！清空英文緩衝區，放行給 KeyHandler 組字
+                        WTFMixedInputManager.shared.clear()
+                        hideTooltip()
+                        return nil
+                    }
+                }
+
+                // 檢查英數混打相衝 (Rule A, Rule B, Rule C)
+                let isCollision = WTFMixedInputManager.shared.checkAlphanumericCollision(buffer: current, nextChar: first)
+
+                // 檢查注音合法性
                 let isValidBpmf = WTFMixedInputManager.shared.validateBopomofo(input: testBuffer).isValid
                 let isMultiBpmf = WTFMixedInputManager.shared.validateMultiSyllableBopomofo(input: testBuffer)
                 let prediction = WTFMixedInputManager.shared.predictEnglish(prefix: testBuffer)
-
-                let isExplicitUpper = first.isUppercase
                 let isInvalidBpmf = !isValidBpmf && !isMultiBpmf && (prediction != nil || testBuffer.count >= 2)
 
-                if isExplicitUpper || isInvalidBpmf {
-                    // 非法注音音節或大寫字母：切入純英文模式！
-                    // 【關鍵修正】：必須先將 isPureEnglishMode 設為 true，並把完整英文字串 (testBuffer) 存好！
-                    // 這樣隨後呼叫 handleForceCommit 觸發 handle(state: Committing) 時，才不會因 !isPureEnglishMode 誤清空英文緩衝區！
+                if isExplicitUpper || isCollision || isInvalidBpmf {
+                    // 非法注音音節、英數相衝或大寫字母：切入純英文模式！
+                    let resolved = WTFMixedInputManager.resolveCommittedEnglish(testBuffer)
                     WTFMixedInputManager.shared.isPureEnglishMode = true
                     WTFMixedInputManager.shared.currentBuffer = testBuffer
                     WTFMixedInputManager.shared.predictedWord = prediction
@@ -1417,9 +1441,9 @@ extension McBopomofoInputMethodController {
                         WTFMixedInputManager.shared.lastCommitWasEnglishWord = false
                     }
 
-                    let buf = WTFMixedInputManager.shared.currentBuffer
+                    let displayBuf = resolved
                     (client as? IMKTextInput)?.setMarkedText(
-                        buf, selectionRange: NSRange(location: buf.count, length: 0),
+                        displayBuf, selectionRange: NSRange(location: displayBuf.count, length: 0),
                         replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
                     if let tip = WTFMixedInputManager.shared.tooltipDisplay {
                         showTooltipForMixedInput(tip, client: client)
@@ -1429,7 +1453,7 @@ extension McBopomofoInputMethodController {
                     return true
                 }
             } else {
-                // 輸入非字母鍵（數字、標點、符號等）：必定屬於中文注音流程，清空英文緩衝區！
+                // 輸入非字母且非數字鍵（標點、符號等）：必定屬於中文注音流程，清空英文緩衝區！
                 if !WTFMixedInputManager.shared.currentBuffer.isEmpty {
                     WTFMixedInputManager.shared.clear()
                     hideTooltip()
@@ -1469,15 +1493,18 @@ extension McBopomofoInputMethodController {
         }
 
         if let chars = event.characters, let first = chars.first {
-            // 聲調鍵 (3, 4, 6, 7) 代表注音完成
-            if first == "3" || first == "4" || first == "6" || first == "7" {
+            // 如果剛才這按鍵是聲調鍵，且剛好完成了中文音節組字，則清空英文緩衝區
+            // （注意：若緩衝區原本為空，單獨聲調 3,4,6,7 不算完成中文，需記錄到緩衝區防後續接字母）
+            let hadValidChinesePrefix = !WTFMixedInputManager.shared.currentBuffer.isEmpty
+                && WTFMixedInputManager.shared.validateBopomofo(input: WTFMixedInputManager.shared.currentBuffer).isValid
+            if (first == "3" || first == "4" || first == "6" || first == "7") && hadValidChinesePrefix {
                 WTFMixedInputManager.shared.clear()
                 hideTooltip()
                 return
             }
 
-            // 只有英文字母才累加進緩衝區
-            if (first >= "a" && first <= "z") || (first >= "A" && first <= "Z") {
+            // 英文字母與數字 (0-9) 均累加進緩衝區
+            if WTFMixedInputManager.isASCIIAlphanumeric(first) {
                 WTFMixedInputManager.shared.appendKey(first)
                 if let tip = WTFMixedInputManager.shared.tooltipDisplay {
                     showTooltipForMixedInput(tip, client: client)

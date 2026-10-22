@@ -575,6 +575,10 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
     // see if it's valid BPMF reading
     bool isValidKey = _bpmfReadingBuffer->isValidKey((char)charCode);
     if (!skipBpmfHandling && isValidKey) {
+        // Phase 3 Guard: 若緩衝區僅有孤立聲調，禁止與後續聲母/韻母倒裝組合，強制清空孤立聲調
+        if (_bpmfReadingBuffer->hasToneMarkerOnly()) {
+            _bpmfReadingBuffer->clear();
+        }
         _bpmfReadingBuffer->combineKey((char)charCode);
         keyConsumedByReading = YES;
 

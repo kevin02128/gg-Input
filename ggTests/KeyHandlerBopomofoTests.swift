@@ -22,6 +22,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 
 import CandidateUI
+import InputMethodKit
 import XCTest
 
 @testable import gg
@@ -3438,6 +3439,236 @@ extension KeyHandlerBopomofoTests {
                 XCTFail("State is not Inputting for Control+;: \(state)")
             }
         }
+    }
+
+    // MARK: - Dual-Track & Alphanumeric Short Tokens Tests (13 Verification Test Cases)
+    func testAlphanumericShortTokens() {
+        // Direct Phase 3 C++ Engine Guard: 4 + k must never invert into ㄜˋ (惡)
+        do {
+            handler.clear()
+            var state: InputState = InputState.Empty()
+            let key4 = KeyHandlerInput(inputText: "4", keyCode: 21, charCode: charCode("4"), flags: [], isVerticalMode: false)
+            _ = handler.handle(input: key4, state: state) { newState in state = newState } errorCallback: {}
+
+            let keyK = KeyHandlerInput(inputText: "k", keyCode: 40, charCode: charCode("k"), flags: [], isVerticalMode: false)
+            _ = handler.handle(input: keyK, state: state) { newState in state = newState } errorCallback: {}
+
+            let space = KeyHandlerInput(inputText: " ", keyCode: 49, charCode: 32, flags: [], isVerticalMode: false)
+            _ = handler.handle(input: space, state: state) { newState in state = newState } errorCallback: {}
+
+            if let committing = state as? InputState.Committing {
+                XCTAssertNotEqual(committing.poppedText, "惡", "4 + k in KeyHandler must never invert into 惡")
+            }
+        }
+
+        // Direct Phase 1 Engine Rules Tests
+        do {
+            let manager = WTFMixedInputManager.shared
+            manager.clear()
+
+            // Isolated tone rejection
+            XCTAssertFalse(manager.validateBopomofo(input: "4").isValid, "Isolated tone 4 must not be valid Bopomofo")
+            XCTAssertFalse(manager.validateBopomofo(input: "3").isValid, "Isolated tone 3 must not be valid Bopomofo")
+
+            // Rule A: Isolated tone prefix collision
+            XCTAssertTrue(manager.checkAlphanumericCollision(buffer: "4", nextChar: "k"), "Rule A: 4k collision")
+            XCTAssertTrue(manager.checkAlphanumericCollision(buffer: "3", nextChar: "d"), "Rule A: 3d collision")
+            XCTAssertTrue(manager.checkAlphanumericCollision(buffer: "3", nextChar: "c"), "Rule A: 3c collision")
+
+            // Rule B: Digit-Bopomofo collision
+            XCTAssertTrue(manager.checkAlphanumericCollision(buffer: "5", nextChar: "g"), "Rule B: 5g collision (ㄓ+ㄕ)")
+            XCTAssertTrue(manager.checkAlphanumericCollision(buffer: "8", nextChar: "k"), "Rule B: 8k collision (ㄚ+ㄜ)")
+
+            // Rule C: Letter followed by non-tone digit collision
+            XCTAssertTrue(manager.checkAlphanumericCollision(buffer: "m", nextChar: "1"), "Rule C: m1 collision (ㄩ+ㄅ)")
+            XCTAssertTrue(manager.checkAlphanumericCollision(buffer: "b", nextChar: "2"), "Rule C: b2 collision (ㄖ+ㄉ)")
+
+            // Chinese preservation: Letter followed by valid tone digit must NOT collide
+            XCTAssertFalse(manager.checkAlphanumericCollision(buffer: "m", nextChar: "4"), "m + 4 forms valid Chinese 玉")
+            XCTAssertFalse(manager.checkAlphanumericCollision(buffer: "1u", nextChar: "4"), "1u + 4 forms valid Chinese 必")
+            XCTAssertFalse(manager.checkAlphanumericCollision(buffer: "su", nextChar: "3"), "su + 3 forms valid Chinese 你")
+
+            // Acronym resolution
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("4k"), "4K")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("3d"), "3D")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("3c"), "3C")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("5g"), "5G")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("8k"), "8K")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("m1"), "M1")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("m4"), "M4")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("ps5"), "PS5")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("b2b"), "B2B")
+            XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("ai"), "AI")
+        }
+
+        // End-to-End Pipeline Verification with Mock Client
+        class ShortTokenMockClient: NSObject, IMKTextInput {
+            var insertedText: String = ""
+            var markedText: String = ""
+
+            func insertText(_ string: Any?, replacementRange: NSRange) {
+                if let s = string as? String {
+                    insertedText += s
+                } else if let attr = string as? NSAttributedString {
+                    insertedText += attr.string
+                }
+            }
+
+            func setMarkedText(_ string: Any?, selectionRange: NSRange, replacementRange: NSRange) {
+                if let s = string as? String {
+                    markedText = s
+                } else if let attr = string as? NSAttributedString {
+                    markedText = attr.string
+                }
+            }
+
+            func selectedRange() -> NSRange { NSRange(location: 0, length: 0) }
+            func markedRange() -> NSRange { NSRange(location: 0, length: markedText.count) }
+            func attributedSubstring(from range: NSRange) -> NSAttributedString? { nil }
+            func length() -> Int { insertedText.count }
+            func characterIndex(for point: NSPoint, tracking mappingMode: IMKLocationToOffsetMappingMode, inMarkedRange: UnsafeMutablePointer<ObjCBool>?) -> Int { 0 }
+            func attributes(forCharacterIndex index: Int, lineHeightRectangle lineRect: UnsafeMutablePointer<NSRect>?) -> [AnyHashable: Any]? { [:] }
+            func validAttributesForMarkedText() -> [Any]? { [] }
+            func overrideKeyboard(withKeyboardNamed keyboardUniqueName: String?) {}
+            func selectMode(_ modeIdentifier: String?) {}
+            func supportsUnicode() -> Bool { true }
+            func bundleIdentifier() -> String? { "test.bundle" }
+            func windowLevel() -> CGWindowLevel { 0 }
+            func supportsProperty(_ property: TSMDocumentPropertyTag) -> Bool { false }
+            func uniqueClientIdentifierString() -> String? { "mock-id" }
+            func string(from range: NSRange, actualRange: NSRangePointer?) -> String? { nil }
+            func firstRect(forCharacterRange aRange: NSRange, actualRange: NSRangePointer?) -> NSRect { NSRect.zero }
+        }
+
+        func keyCodeForChar(_ ch: Character) -> UInt16 {
+            switch ch {
+            case "a", "A": return 0
+            case "s", "S": return 1
+            case "d", "D": return 2
+            case "f", "F": return 3
+            case "h", "H": return 4
+            case "g", "G": return 5
+            case "z", "Z": return 6
+            case "x", "X": return 7
+            case "c", "C": return 8
+            case "v", "V": return 9
+            case "b", "B": return 11
+            case "q", "Q": return 12
+            case "w", "W": return 13
+            case "e", "E": return 14
+            case "r", "R": return 15
+            case "y", "Y": return 16
+            case "t", "T": return 17
+            case "1": return 18
+            case "2": return 19
+            case "3": return 20
+            case "4": return 21
+            case "6": return 22
+            case "5": return 23
+            case "9": return 25
+            case "7": return 26
+            case "8": return 28
+            case "0": return 29
+            case "o", "O": return 31
+            case "u", "U": return 32
+            case "i", "I": return 34
+            case "p", "P": return 35
+            case "l", "L": return 37
+            case "j", "J": return 38
+            case "k", "K": return 40
+            case "m", "M": return 46
+            case " ": return 49
+            case "\t": return 48
+            case "\r", "\n": return 36
+            default: return 0
+            }
+        }
+
+        func makeEvent(_ str: String, flags: NSEvent.ModifierFlags = []) -> NSEvent {
+            let ch = str.first ?? " "
+            let code = (str == "\t") ? UInt16(48) : (str == " " ? UInt16(49) : keyCodeForChar(ch))
+            return NSEvent.keyEvent(
+                with: .keyDown,
+                location: .zero,
+                modifierFlags: flags,
+                timestamp: ProcessInfo.processInfo.systemUptime,
+                windowNumber: 0,
+                context: nil,
+                characters: str,
+                charactersIgnoringModifiers: str.lowercased(),
+                isARepeat: false,
+                keyCode: code
+            )!
+        }
+
+        func simulatePipeline(keys: [(String, NSEvent.ModifierFlags)]) -> String {
+            WTFMixedInputManager.shared.clear()
+            WTFMixedInputManager.shared.resetCommittedContext()
+            let client = ShortTokenMockClient()
+            let controller = McBopomofoInputMethodController(server: nil, delegate: nil, client: nil)!
+            controller.activateServer(client)
+
+            for (key, flags) in keys {
+                let event = makeEvent(key, flags: flags)
+                _ = controller.handle(event, client: client)
+            }
+            return client.insertedText.trimmingCharacters(in: .whitespaces)
+        }
+
+        // 1. 4 -> k -> Space => 4K (prohibit Chinese 惡)
+        let res1 = simulatePipeline(keys: [("4", []), ("k", []), (" ", [])])
+        XCTAssertEqual(res1, "4K", "Case 1: 4 -> k -> Space must yield 4K and prohibit 惡")
+
+        // 2. 3 -> d -> Space => 3D (prohibit Chinese 渴 / 可)
+        let res2 = simulatePipeline(keys: [("3", []), ("d", []), (" ", [])])
+        XCTAssertEqual(res2, "3D", "Case 2: 3 -> d -> Space must yield 3D and prohibit 渴/可")
+
+        // 3. 3 -> c -> Space => 3C (prohibit Chinese 好 / 虎)
+        let res3 = simulatePipeline(keys: [("3", []), ("c", []), (" ", [])])
+        XCTAssertEqual(res3, "3C", "Case 3: 3 -> c -> Space must yield 3C and prohibit 好/虎")
+
+        // 4. 5 -> g -> Space => 5G (prohibit g(ㄕ) overwriting 5(ㄓ))
+        let res4 = simulatePipeline(keys: [("5", []), ("g", []), (" ", [])])
+        XCTAssertEqual(res4, "5G", "Case 4: 5 -> g -> Space must yield 5G")
+
+        // 5. 8 -> k -> Space => 8K (prohibit k(ㄜ) overwriting 8(ㄚ))
+        let res5 = simulatePipeline(keys: [("8", []), ("k", []), (" ", [])])
+        XCTAssertEqual(res5, "8K", "Case 5: 8 -> k -> Space must yield 8K")
+
+        // 6. m -> 1 -> Space => M1 (prohibit Mㄅ)
+        let res6 = simulatePipeline(keys: [("m", []), ("1", []), (" ", [])])
+        XCTAssertEqual(res6, "M1", "Case 6: m -> 1 -> Space must yield M1")
+
+        // 7. Shift+M -> 4 -> Space => M4
+        let res7 = simulatePipeline(keys: [("M", .shift), ("4", []), (" ", [])])
+        XCTAssertEqual(res7, "M4", "Case 7: Shift+M -> 4 -> Space must yield M4")
+
+        // 8. p -> s -> 5 -> Space => PS5 / ps5
+        let res8 = simulatePipeline(keys: [("p", []), ("s", []), ("5", []), (" ", [])])
+        XCTAssertTrue(res8 == "PS5" || res8 == "ps5", "Case 8: p -> s -> 5 -> Space must yield PS5 or ps5, got: \(res8)")
+
+        // 9. b -> 2 -> b -> Space => B2B / b2b
+        let res9 = simulatePipeline(keys: [("b", []), ("2", []), ("b", []), (" ", [])])
+        XCTAssertTrue(res9 == "B2B" || res9 == "b2b", "Case 9: b -> 2 -> b -> Space must yield B2B or b2b, got: \(res9)")
+
+        // 10. a -> i -> Tab => AI
+        let res10 = simulatePipeline(keys: [("a", []), ("i", []), ("\t", [])])
+        XCTAssertEqual(res10, "AI", "Case 10: a -> i -> Tab must yield AI")
+
+        // 11. m -> 4 -> Space => Chinese 玉 (or homophone)
+        let res11 = simulatePipeline(keys: [("m", []), ("4", []), (" ", [])])
+        XCTAssertNotEqual(res11, "M4", "Case 11: m -> 4 -> Space must NOT be M4")
+        XCTAssertFalse(res11.isEmpty, "Case 11: m -> 4 -> Space must yield Chinese character")
+        XCTAssertTrue(WTFMixedInputManager.isCJK(res11.first ?? " "), "Case 11: m -> 4 -> Space must output Chinese, got: \(res11)")
+
+        // 12. 1 -> u -> 4 -> Space => Chinese 必 (or homophone)
+        let res12 = simulatePipeline(keys: [("1", []), ("u", []), ("4", []), (" ", [])])
+        XCTAssertFalse(res12.isEmpty, "Case 12: 1 -> u -> 4 -> Space must yield Chinese character")
+        XCTAssertTrue(WTFMixedInputManager.isCJK(res12.first ?? " "), "Case 12: 1 -> u -> 4 -> Space must output Chinese, got: \(res12)")
+
+        // 13. s -> u -> 3 -> Space => Chinese 你
+        let res13 = simulatePipeline(keys: [("s", []), ("u", []), ("3", []), (" ", [])])
+        XCTAssertEqual(res13, "你", "Case 13: s -> u -> 3 -> Space must yield Chinese 你, got: \(res13)")
     }
 }
 
