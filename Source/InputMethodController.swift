@@ -1175,6 +1175,13 @@ extension McBopomofoInputMethodController {
             case 47: literalChar = isShift ? ">" : "."
             case 27: literalChar = isShift ? "_" : "-"
             case 24: literalChar = isShift ? "+" : "="
+            case 42: literalChar = isShift ? "|" : "\\" 
+            case 44: literalChar = isShift ? "?" : "/"
+            case 33: literalChar = isShift ? "{" : "["
+            case 30: literalChar = isShift ? "}" : "]"
+            case 41: literalChar = isShift ? ":" : ";"
+            case 39: literalChar = isShift ? "\"" : "'"
+            case 50: literalChar = isShift ? "~" : "`"
             default: break
             }
 

@@ -3314,5 +3314,130 @@ extension KeyHandlerBopomofoTests {
             XCTFail("State is not Inputting: \(state)")
         }
     }
+
+    func testNewKeyboardLogicPunctuation() {
+        // 1. Direct backslash (\) should output Chinese dunhao (、)
+        do {
+            handler.clear()
+            var state: InputState = InputState.Empty()
+            let input = KeyHandlerInput(
+                inputText: "\\", keyCode: 42, charCode: charCode("\\"), flags: [],
+                isVerticalMode: false)
+            let handled = handler.handle(input: input, state: state) { newState in
+                state = newState
+            } errorCallback: {}
+            XCTAssertTrue(handled)
+            if let inputting = state as? InputState.Inputting {
+                XCTAssertEqual(inputting.composingBuffer, "、")
+            } else {
+                XCTFail("State is not Inputting for \\: \(state)")
+            }
+        }
+
+        // 2. Direct single quote (') should output Chinese dunhao (、)
+        do {
+            handler.clear()
+            var state: InputState = InputState.Empty()
+            let input = KeyHandlerInput(
+                inputText: "'", keyCode: 39, charCode: charCode("'"), flags: [],
+                isVerticalMode: false)
+            let handled = handler.handle(input: input, state: state) { newState in
+                state = newState
+            } errorCallback: {}
+            XCTAssertTrue(handled)
+            if let inputting = state as? InputState.Inputting {
+                XCTAssertEqual(inputting.composingBuffer, "、")
+            } else {
+                XCTFail("State is not Inputting for ': \(state)")
+            }
+        }
+
+        // 3. Direct equal (=) should output half-width '='
+        do {
+            handler.clear()
+            var state: InputState = InputState.Empty()
+            let input = KeyHandlerInput(
+                inputText: "=", keyCode: 24, charCode: charCode("="), flags: [],
+                isVerticalMode: false)
+            let handled = handler.handle(input: input, state: state) { newState in
+                state = newState
+            } errorCallback: {}
+            XCTAssertTrue(handled)
+            if let inputting = state as? InputState.Inputting {
+                XCTAssertEqual(inputting.composingBuffer, "=")
+            } else {
+                XCTFail("State is not Inputting for =: \(state)")
+            }
+        }
+
+        // 4. Shift + ' (") should output full-width double quote '”' and contain '；' in candidates
+        do {
+            handler.clear()
+            var state: InputState = InputState.Empty()
+            let input = KeyHandlerInput(
+                inputText: "\"", keyCode: 39, charCode: charCode("\""), flags: .shift,
+                isVerticalMode: false)
+            let handled = handler.handle(input: input, state: state) { newState in
+                state = newState
+            } errorCallback: {}
+            XCTAssertTrue(handled)
+            if let inputting = state as? InputState.Inputting {
+                XCTAssertEqual(inputting.composingBuffer, "”")
+            } else {
+                XCTFail("State is not Inputting for Shift+': \(state)")
+            }
+
+            // Open candidate window using Space key (keyCode 49, charCode 32)
+            let space = KeyHandlerInput(
+                inputText: " ", keyCode: 49, charCode: 32, flags: [], isVerticalMode: false)
+            handler.handle(input: space, state: state) { newState in
+                state = newState
+            } errorCallback: {}
+            if let choosing = state as? InputState.ChoosingCandidate {
+                XCTAssertEqual(choosing.candidates.first?.value, "”")
+                XCTAssertTrue(choosing.candidates.contains(where: { $0.value == "；" }), "Candidate list must retain ；")
+            }
+        }
+
+        // 5. Shift + 2~8 should output half-width symbols (@, #, $, %, ^, &, *)
+        let shiftSymbols: [(String, String)] = [
+            ("@", "@"), ("#", "#"), ("$", "$"), ("%", "%"),
+            ("^", "^"), ("&", "&"), ("*", "*")
+        ]
+        for (sym, expected) in shiftSymbols {
+            handler.clear()
+            var state: InputState = InputState.Empty()
+            let input = KeyHandlerInput(
+                inputText: sym, keyCode: 0, charCode: charCode(sym), flags: .shift,
+                isVerticalMode: false)
+            let handled = handler.handle(input: input, state: state) { newState in
+                state = newState
+            } errorCallback: {}
+            XCTAssertTrue(handled, "Failed to handle symbol \(sym)")
+            if let inputting = state as? InputState.Inputting {
+                XCTAssertEqual(inputting.composingBuffer, expected, "Mismatch for symbol \(sym)")
+            } else {
+                XCTFail("State is not Inputting for Shift+\(sym): \(state)")
+            }
+        }
+
+        // 6. Control + ; should output full-width semicolon '；'
+        do {
+            handler.clear()
+            var state: InputState = InputState.Empty()
+            let input = KeyHandlerInput(
+                inputText: ";", keyCode: 41, charCode: charCode(";"), flags: .control,
+                isVerticalMode: false)
+            let handled = handler.handle(input: input, state: state) { newState in
+                state = newState
+            } errorCallback: {}
+            XCTAssertTrue(handled)
+            if let inputting = state as? InputState.Inputting {
+                XCTAssertEqual(inputting.composingBuffer, "；")
+            } else {
+                XCTFail("State is not Inputting for Control+;: \(state)")
+            }
+        }
+    }
 }
 
