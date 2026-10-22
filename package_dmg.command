@@ -49,9 +49,8 @@ sign_bundle_recursively "$DMG_STAGE_LITE/gg 控制台.app"
 ln -s /Applications "$DMG_STAGE_LITE/Applications"
 
 DMG_OUTPUT_LITE="$PROJECT_DIR/gg.lite.dmg"
-rm -f "$DMG_OUTPUT_LITE" "$PROJECT_DIR/gg 輸入法 (輕量版).dmg"
-hdiutil create -volname "gg 輸入法 (輕量版)" -srcfolder "$DMG_STAGE_LITE" -ov -format UDZO "$DMG_OUTPUT_LITE"
-cp "$DMG_OUTPUT_LITE" "$PROJECT_DIR/gg 輸入法 (輕量版).dmg"
+rm -f "$DMG_OUTPUT_LITE"
+hdiutil create -volname "gg-lite" -srcfolder "$DMG_STAGE_LITE" -ov -format UDZO "$DMG_OUTPUT_LITE"
 rm -rf "$DMG_STAGE_LITE"
 
 echo "正在打包【完整版】DMG（內嵌 KyonLM 107MB 神經模型，約 110MB）..."
@@ -71,9 +70,8 @@ sign_bundle_recursively "$DMG_STAGE_FULL/gg 控制台.app"
 ln -s /Applications "$DMG_STAGE_FULL/Applications"
 
 DMG_OUTPUT_FULL="$PROJECT_DIR/gg.dmg"
-rm -f "$DMG_OUTPUT_FULL" "$PROJECT_DIR/gg 輸入法 (完整版).dmg"
-hdiutil create -volname "gg 輸入法 (完整版)" -srcfolder "$DMG_STAGE_FULL" -ov -format UDZO "$DMG_OUTPUT_FULL"
-cp "$DMG_OUTPUT_FULL" "$PROJECT_DIR/gg 輸入法 (完整版).dmg"
+rm -f "$DMG_OUTPUT_FULL"
+hdiutil create -volname "gg" -srcfolder "$DMG_STAGE_FULL" -ov -format UDZO "$DMG_OUTPUT_FULL"
 rm -rf "$DMG_STAGE_FULL"
 
 echo ""
