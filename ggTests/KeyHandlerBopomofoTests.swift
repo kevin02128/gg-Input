@@ -1399,6 +1399,53 @@ class KeyHandlerBopomofoTests: XCTestCase {
         Preferences.associatedPhrasesEnabled = associatedPhrasesEnabled
     }
 
+    func testCandidateSelectionBeforeAndAfterCursor() {
+        let originalSetting = Preferences.selectPhraseAfterCursorAsCandidate
+        defer { Preferences.selectPhraseAfterCursorAsCandidate = originalSetting }
+
+        func setupNiHaoWithCursorAtMiddle() -> (InputState, KeyHandler) {
+            let h = KeyHandler()
+            h.inputMode = .bopomofo
+            var st: InputState = InputState.Empty()
+            for key in ["s", "u", "3", "c", "j", "6"] { // ㄋㄧˇ ㄏㄠˇ (你好)
+                let input = KeyHandlerInput(inputText: key, keyCode: 0, charCode: charCode(key), flags: [], isVerticalMode: false)
+                h.handle(input: input, state: st) { st = $0 } errorCallback: {}
+            }
+            let left = KeyHandlerInput(inputText: " ", keyCode: KeyCode.left.rawValue, charCode: 0, flags: [], isVerticalMode: false)
+            h.handle(input: left, state: st) { st = $0 } errorCallback: {}
+            return (st, h)
+        }
+
+        // 1. 游標前（如漢音，false）：游標在「你│好」中間時，按向下鍵應挑選游標前面的「你」
+        Preferences.selectPhraseAfterCursorAsCandidate = false
+        let (state1, h1) = setupNiHaoWithCursorAtMiddle()
+        let down = KeyHandlerInput(inputText: " ", keyCode: KeyCode.down.rawValue, charCode: 0, flags: [], isVerticalMode: false)
+        var candidateState1: InputState = state1
+        h1.handle(input: down, state: state1) { candidateState1 = $0 } errorCallback: {}
+
+        guard let choosing1 = candidateState1 as? InputState.ChoosingCandidate else {
+            XCTFail("Should be ChoosingCandidate")
+            return
+        }
+        let values1 = choosing1.candidates.map { $0.value }
+        XCTAssertTrue(values1.contains("你"), "游標前模式：應包含游標前的候選字「你」")
+        XCTAssertFalse(values1.contains("好"), "游標前模式：不應包含游標後的「好」")
+
+        // 2. 游標後（如微軟新注音，true）：游標在「你│湖」中間時，按向下鍵應挑選游標後面的「湖」
+        Preferences.selectPhraseAfterCursorAsCandidate = true
+        let (state2, h2) = setupNiHaoWithCursorAtMiddle()
+        var candidateState2: InputState = state2
+        h2.handle(input: down, state: state2) { candidateState2 = $0 } errorCallback: {}
+
+        guard let choosing2 = candidateState2 as? InputState.ChoosingCandidate else {
+            XCTFail("Should be ChoosingCandidate")
+            return
+        }
+        let values2 = choosing2.candidates.map { $0.value }
+        XCTAssertTrue(values2.contains("湖"), "游標後模式：應包含游標後的候選字「湖」")
+        XCTAssertFalse(values2.contains("你"), "游標後模式：不應包含游標前的「你」")
+    }
+
     func testCandidateWithSpace() {
         let enabled = Preferences.chooseCandidateUsingSpace
         let selectPhraseAfterCursorAsCandidate = Preferences.selectPhraseAfterCursorAsCandidate
