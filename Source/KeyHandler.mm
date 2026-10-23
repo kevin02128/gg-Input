@@ -208,30 +208,7 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
 
 - (void)syncWithPreferences
 {
-    KeyboardLayout layout = Preferences.keyboardLayout;
-    switch (layout) {
-    case KeyboardLayoutStandard:
-        _bpmfReadingBuffer->setKeyboardLayout(Formosa::Mandarin::BopomofoKeyboardLayout::StandardLayout());
-        break;
-    case KeyboardLayoutEten:
-        _bpmfReadingBuffer->setKeyboardLayout(Formosa::Mandarin::BopomofoKeyboardLayout::ETenLayout());
-        break;
-    case KeyboardLayoutHsu:
-        _bpmfReadingBuffer->setKeyboardLayout(Formosa::Mandarin::BopomofoKeyboardLayout::HsuLayout());
-        break;
-    case KeyboardLayoutEten26:
-        _bpmfReadingBuffer->setKeyboardLayout(Formosa::Mandarin::BopomofoKeyboardLayout::ETen26Layout());
-        break;
-    case KeyboardLayoutHanyuPinyin:
-        _bpmfReadingBuffer->setKeyboardLayout(Formosa::Mandarin::BopomofoKeyboardLayout::HanyuPinyinLayout());
-        break;
-    case KeyboardLayoutIBM:
-        _bpmfReadingBuffer->setKeyboardLayout(Formosa::Mandarin::BopomofoKeyboardLayout::IBMLayout());
-        break;
-    default:
-        _bpmfReadingBuffer->setKeyboardLayout(Formosa::Mandarin::BopomofoKeyboardLayout::StandardLayout());
-        Preferences.keyboardLayout = KeyboardLayoutStandard;
-    }
+    _bpmfReadingBuffer->setKeyboardLayout(Formosa::Mandarin::BopomofoKeyboardLayout::StandardLayout());
     _languageModel->setExternalConverterEnabled(Preferences.chineseConversionStyle == ChineseConversionStyleModel);
 }
 

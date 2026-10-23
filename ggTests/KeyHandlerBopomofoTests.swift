@@ -45,6 +45,7 @@ class KeyHandlerBopomofoTests: XCTestCase {
         savedSwitchInputSourceUponShiftLetterKeyComboEnabled = Preferences.switchInputSourceUponShiftLetterKeyComboEnabled
         Preferences.chineseConversionEnabled = false
         Preferences.keyboardLayout = .standard
+        Preferences.shiftEnterEnabled = true
         Preferences.switchInputSourceUponShiftLetterKeyComboEnabled = false
         LanguageModelManager.loadDataModels()
         handler = KeyHandler()
@@ -58,26 +59,7 @@ class KeyHandlerBopomofoTests: XCTestCase {
     }
 
     func testSyncWithPreferences() {
-        let savedKeyboardLayout = Preferences.keyboardLayout
         Preferences.keyboardLayout = .standard
-        handler.syncWithPreferences()
-
-        Preferences.keyboardLayout = .eten
-        handler.syncWithPreferences()
-
-        Preferences.keyboardLayout = .hsu
-        handler.syncWithPreferences()
-
-        Preferences.keyboardLayout = .eten26
-        handler.syncWithPreferences()
-
-        Preferences.keyboardLayout = .hanyuPinyin
-        handler.syncWithPreferences()
-
-        Preferences.keyboardLayout = .IBM
-        handler.syncWithPreferences()
-
-        Preferences.keyboardLayout = savedKeyboardLayout
         handler.syncWithPreferences()
     }
 

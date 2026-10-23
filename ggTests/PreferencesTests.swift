@@ -64,15 +64,11 @@ final class PreferencesTests {
     @Test("Test keyboard layout setting")
     func testKeyboardLayout() {
         #expect(Preferences.keyboardLayout == .standard)
-        Preferences.keyboardLayout = .eten
-        #expect(Preferences.keyboardLayout == .eten)
     }
 
     @Test("Test keyboard layout name conversion")
     func testKeyboardLayoutName() {
         #expect(Preferences.keyboardLayoutName == "Standard")
-        Preferences.keyboardLayout = .eten
-        #expect(Preferences.keyboardLayoutName == "ETen")
     }
 
     @Test("Test basis keyboard layout preference key")

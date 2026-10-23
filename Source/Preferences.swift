@@ -175,27 +175,9 @@ struct CandidateListTextSize {
 
 @objc enum KeyboardLayout: Int {
     case standard = 0
-    case eten = 1
-    case hsu = 2
-    case eten26 = 3
-    case hanyuPinyin = 4
-    case IBM = 5
 
     var name: String {
-        return switch self {
-        case .standard:
-            "Standard"
-        case .eten:
-            "ETen"
-        case .hsu:
-            "Hsu"
-        case .eten26:
-            "ETen26"
-        case .hanyuPinyin:
-            "HanyuPinyin"
-        case .IBM:
-            "IBM"
-        }
+        return "Standard"
     }
 }
 
@@ -288,11 +270,13 @@ class Preferences: NSObject {
         Preferences.wtfContextCorrectionEnabled = Preferences.wtfContextCorrectionEnabled
     }
 
-    @EnumUserDefault(key: kKeyboardLayoutPreferenceKey, defaultValue: KeyboardLayout.standard)
-    @objc static var keyboardLayout: KeyboardLayout
+    @objc static var keyboardLayout: KeyboardLayout {
+        get { .standard }
+        set { }
+    }
 
     @objc static var keyboardLayoutName: String {
-        keyboardLayout.name
+        "Standard"
     }
 
     @UserDefault(key: kBasisKeyboardLayoutPreferenceKey, defaultValue: "com.apple.keylayout.US")

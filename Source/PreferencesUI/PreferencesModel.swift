@@ -37,11 +37,7 @@ final class PreferencesViewModel: NSObject, ObservableObject {
     @Published private(set) var basisKeyboardLayoutOptions: [KeyboardLayoutOption] = []
 
     var keyboardLayout: KeyboardLayout {
-        get { Preferences.keyboardLayout }
-        set {
-            objectWillChange.send()
-            Preferences.keyboardLayout = newValue
-        }
+        Preferences.keyboardLayout
     }
 
     var basisKeyboardLayout: String {

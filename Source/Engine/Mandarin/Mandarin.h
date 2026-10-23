@@ -179,11 +179,6 @@ typedef std::map<BPMF::Component, char> BopomofoComponentToKeyMap;
 class BopomofoKeyboardLayout {
  public:
   static const BopomofoKeyboardLayout* StandardLayout();
-  static const BopomofoKeyboardLayout* ETenLayout();
-  static const BopomofoKeyboardLayout* HsuLayout();
-  static const BopomofoKeyboardLayout* ETen26Layout();
-  static const BopomofoKeyboardLayout* IBMLayout();
-  static const BopomofoKeyboardLayout* HanyuPinyinLayout();
 
   BopomofoKeyboardLayout(const BopomofoKeyToComponentMap& ktcm,
                          const std::string& name)
@@ -322,19 +317,6 @@ class BopomofoKeyboardLayout {
       }
     }
 
-    // heuristics for Hsu keyboard layout
-    if (this == HsuLayout()) {
-      // fix the left out L to ERR when it has sound, and GI, GUE -> JI, JUE
-      if (syllable.vowelComponent() == BPMF::ENG && !syllable.hasConsonant() &&
-          !syllable.hasMiddleVowel()) {
-        syllable += BPMF(BPMF::ERR);
-      } else if (syllable.consonantComponent() == BPMF::G &&
-                 (syllable.middleVowelComponent() == BPMF::I ||
-                  syllable.middleVowelComponent() == BPMF::UE)) {
-        syllable += BPMF(BPMF::J);
-      }
-    }
-
     return syllable;
   }
 
@@ -377,57 +359,20 @@ class BopomofoKeyboardLayout {
 class BopomofoReadingBuffer {
  public:
   explicit BopomofoReadingBuffer(const BopomofoKeyboardLayout* layout)
-      : layout_(layout), pinyin_mode_(false) {
-    if (layout == BopomofoKeyboardLayout::HanyuPinyinLayout()) {
-      pinyin_mode_ = true;
-      pinyin_sequence_ = "";
-    }
-  }
+      : layout_(layout) {}
 
   void setKeyboardLayout(const BopomofoKeyboardLayout* layout) {
     layout_ = layout;
-    pinyin_mode_ = layout == BopomofoKeyboardLayout::HanyuPinyinLayout();
-
-    if (pinyin_mode_) {
-      pinyin_sequence_ = "";
-    }
   }
 
   const BopomofoKeyboardLayout* keyboardLayout() const { return layout_; }
 
   bool isValidKey(char k) const {
-    if (!pinyin_mode_) {
-      return layout_ ? (layout_->keyToComponents(k)).size() > 0 : false;
-    }
-
-    char lk = tolower(k);
-    if (lk >= 'a' && lk <= 'z') {
-      // if a tone marker is already in place
-      if (pinyin_sequence_.length()) {
-        char lastc = pinyin_sequence_[pinyin_sequence_.length() - 1];
-        if (lastc >= '2' && lastc <= '5') {
-          return false;
-        }
-        return true;
-      }
-      return true;
-    }
-
-    if (pinyin_sequence_.length() && (lk >= '2' && lk <= '5')) {
-      return true;
-    }
-
-    return false;
+    return layout_ ? (layout_->keyToComponents(k)).size() > 0 : false;
   }
 
   bool combineKey(char k) {
     if (!isValidKey(k)) return false;
-
-    if (pinyin_mode_) {
-      pinyin_sequence_ += std::string(1, tolower(k));
-      syllable_ = BPMF::FromHanyuPinyin(pinyin_sequence_);
-      return true;
-    }
 
     std::string sequence =
         layout_->keySequenceFromSyllable(syllable_) + std::string(1, k);
@@ -436,22 +381,11 @@ class BopomofoReadingBuffer {
   }
 
   void clear() {
-    pinyin_sequence_.clear();
     syllable_.clear();
   }
 
   void backspace() {
     if (!layout_) return;
-
-    if (pinyin_mode_) {
-      if (pinyin_sequence_.length()) {
-        pinyin_sequence_ =
-            pinyin_sequence_.substr(0, pinyin_sequence_.length() - 1);
-      }
-
-      syllable_ = BPMF::FromHanyuPinyin(pinyin_sequence_);
-      return;
-    }
 
     std::string sequence = layout_->keySequenceFromSyllable(syllable_);
     if (sequence.length()) {
@@ -463,10 +397,6 @@ class BopomofoReadingBuffer {
   bool isEmpty() const { return syllable_.isEmpty(); }
 
   const std::string composedString() const {
-    if (pinyin_mode_) {
-      return pinyin_sequence_;
-    }
-
     return syllable_.composedString();
   }
 
@@ -488,9 +418,6 @@ class BopomofoReadingBuffer {
  protected:
   const BopomofoKeyboardLayout* layout_;
   BPMF syllable_;
-
-  bool pinyin_mode_;
-  std::string pinyin_sequence_;
 };
 }  // namespace Mandarin
 }  // namespace Formosa

@@ -403,16 +403,6 @@ private struct BasicPreferencesView: View {
 
     var body: some View {
         FormBody {
-            PreferenceRow(localized("Bopomofo Keyboard Layout:")) {
-                Picker("", selection: $preferences.keyboardLayout) {
-                    ForEach(KeyboardLayout.allCasesForPreferences, id: \.rawValue) { layout in
-                        Text(localized(layout.name)).tag(layout)
-                    }
-                }
-                .labelsHidden()
-                .fixedSize()
-            }
-
             PreferenceRow(localized("Alphanumeric Keyboard Layout:")) {
                 Picker("", selection: $preferences.basisKeyboardLayout) {
                     ForEach(preferences.basisKeyboardLayoutOptions) { layout in
@@ -497,11 +487,6 @@ private struct BasicPreferencesView: View {
                 .labelsHidden()
                 .pickerStyle(RadioGroupPickerStyle())
                 .fixedSize()
-            }
-
-            PreferenceRow(localized("Shift + Enter Key:")) {
-                Toggle(
-                    localized("Trigger associated phrases"), isOn: $preferences.shiftEnterEnabled)
             }
 
             PreferenceRow(localized("ESC Key:")) {
@@ -806,12 +791,6 @@ private struct ComboBoxTextField: NSViewRepresentable {
             }
             text = comboBox.stringValue
         }
-    }
-}
-
-extension KeyboardLayout {
-    fileprivate static var allCasesForPreferences: [KeyboardLayout] {
-        [.standard, .eten, .hsu, .eten26, .hanyuPinyin, .IBM]
     }
 }
 
