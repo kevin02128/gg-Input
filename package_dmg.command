@@ -66,6 +66,12 @@ if [ -d "$PROJECT_DIR/Source/Resources/Model/KyonLM.mlmodelc" ]; then
     cp "$PROJECT_DIR/Source/Resources/Model/vocab.txt" "$DMG_STAGE_FULL/gg 控制台.app/Contents/Resources/gg.app/Contents/Resources/"
 fi
 
+if [ ! -s "$PROJECT_DIR/Source/Resources/Model/KyonLM.mlmodelc/weights/weight.bin" ]; then
+    echo "[錯誤] 找不到完整 KyonLM 權重，無法建立完整版與獨立模型包。" >&2
+    exit 1
+fi
+tar -czf "$PROJECT_DIR/KyonLM.mlmodelc.tar.gz" -C "$PROJECT_DIR/Source/Resources/Model" KyonLM.mlmodelc
+
 sign_bundle_recursively "$DMG_STAGE_FULL/gg 控制台.app"
 ln -s /Applications "$DMG_STAGE_FULL/Applications"
 

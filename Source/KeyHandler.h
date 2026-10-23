@@ -131,6 +131,8 @@ extern InputMode InputModePlainBopomofo;
 - (NSArray<WTFNodeInfo *> *)currentViterbiNodes;
 - (NSArray<WTFNBestHypothesis *> *)currentNBestHypotheses:(NSInteger)k;
 - (NSString *)currentBpmfReading;
+- (BOOL)hasUnconfirmedReading;
+- (BOOL)isValidReadingKey:(char)charCode;
 
 @property (strong, nonatomic) InputMode inputMode;
 @property (weak, nonatomic) id<KeyHandlerDelegate> delegate;

@@ -25,12 +25,26 @@ if [ -f "$WEIGHT_FILE" ] && [ $(stat -f%z "$WEIGHT_FILE" 2>/dev/null || echo 0) 
 fi
 
 echo "[資訊] 本機尚未偵測到完整的 KyonLM.mlmodelc 權重，嘗試從 GitHub Releases 下載..."
-TMP_TAR="/tmp/KyonLM.mlmodelc.tar.gz"
+TMP_TAR="$(mktemp "${TMPDIR:-/tmp}/KyonLM.mlmodelc.XXXXXX.tar.gz")"
+trap 'rm -f "$TMP_TAR"' EXIT
 
 if curl -fL --connect-timeout 10 --max-time 180 "$RELEASE_ASSET_URL" -o "$TMP_TAR" 2>/dev/null; then
-    echo "[資訊] 下載成功，正在解壓縮至 $MODEL_DIR..."
+    echo "[資訊] 下載成功，正在驗證模型封存檔..."
+    if ! tar -tzf "$TMP_TAR" >/dev/null; then
+        echo "[錯誤] 模型封存檔無法讀取。" >&2
+        exit 1
+    fi
+    if tar -tzf "$TMP_TAR" | awk 'BEGIN { bad=0 } /^\// || /(^|\/)\.\.($|\/)/ { bad=1 } END { exit bad }'; then
+        echo "[資訊] 封存檔路徑檢查通過，正在解壓縮..."
+    else
+        echo "[錯誤] 模型封存檔含有不安全路徑。" >&2
+        exit 1
+    fi
     tar -xzf "$TMP_TAR" -C "$MODEL_DIR"
-    rm -f "$TMP_TAR"
+    if [ ! -s "$WEIGHT_FILE" ]; then
+        echo "[錯誤] 解壓後缺少模型權重或檔案為空。" >&2
+        exit 1
+    fi
     echo "[完成] KyonLM.mlmodelc 已安裝完成！"
     exit 0
 else

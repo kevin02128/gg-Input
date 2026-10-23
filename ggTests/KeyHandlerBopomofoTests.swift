@@ -3577,6 +3577,10 @@ extension KeyHandlerBopomofoTests {
             case "j", "J": return 38
             case "k", "K": return 40
             case ";": return 41
+            case ",": return 43
+            case ".": return 47
+            case "/": return 44
+            case "-": return 27
             case "m", "M": return 46
             case " ": return 49
             case "\t": return 48
@@ -3850,6 +3854,20 @@ extension KeyHandlerBopomofoTests {
         let resS7_2 = simulatePipeline(keys: s7Keys2)
         XCTAssertTrue(resS7_2 == "打出來的字很奇怪" || resS7_2 == "打出來的自很奇怪", "S7_2 must yield 打出來的字很奇怪 (or 自) without spaces, got: \(resS7_2)")
         XCTAssertFalse(resS7_2.contains(" "), "S7_2 must not contain spaces")
+
+        // Symbol finals must remain in the active reading and complete normally.
+        let symbolCases: [[(String, NSEvent.ModifierFlags)]] = [
+            [("1", []), (";", []), ("3", []), ("\n", [])],
+            [("1", []), (";", []), ("4", []), ("\n", [])],
+            [("1", []), ("/", []), ("3", []), ("\n", [])],
+            [("q", []), ("u", []), (",", []), ("3", []), ("\n", [])],
+            [("e", []), ("/", []), ("4", []), ("\n", [])]
+        ]
+        for keys in symbolCases {
+            let output = simulatePipeline(keys: keys)
+            XCTAssertTrue(output.contains(where: { WTFMixedInputManager.isCJK($0) }), "Symbol-final reading should produce Chinese: \(keys) => \(output)")
+            XCTAssertFalse(output.contains(where: { $0.isWhitespace }), "Symbol-final reading must not introduce spaces: \(output)")
+        }
     }
 }
 

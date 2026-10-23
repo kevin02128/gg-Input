@@ -2802,6 +2802,16 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
     return @(_bpmfReadingBuffer->composedString().c_str());
 }
 
+- (BOOL)hasUnconfirmedReading
+{
+    return !_bpmfReadingBuffer->isEmpty();
+}
+
+- (BOOL)isValidReadingKey:(char)charCode
+{
+    return _bpmfReadingBuffer->isValidKey(charCode);
+}
+
 - (InputStateChoosingCandidate *)_buildCandidateStateFromInputtingState:(InputStateInputting *)inputting useVerticalMode:(BOOL)useVerticalMode
 {
     auto candidates = _grid->candidatesAt(self.actualCandidateCursorIndex);

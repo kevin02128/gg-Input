@@ -1400,17 +1400,21 @@ extension McBopomofoInputMethodController {
             }
         }
 
-        // Backspace 鍵：同步縮減英文緩衝區，但絕不攔截，交由注音引擎/macOS原生處理刪除！
+        // Backspace：純英文組字由雙軌緩衝處理；其餘交給 KeyHandler，避免雙邊各刪一次。
         if keyCode == kDelete {
-            if !WTFMixedInputManager.shared.currentBuffer.isEmpty {
+            if WTFMixedInputManager.shared.isPureEnglishMode {
                 WTFMixedInputManager.shared.removeLastKey()
                 if WTFMixedInputManager.shared.currentBuffer.isEmpty {
+                    WTFMixedInputManager.shared.clear()
+                    (client as? IMKTextInput)?.setMarkedText(
+                        "", selectionRange: NSRange(location: 0, length: 0),
+                        replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
                     hideTooltip()
                 } else if let tip = WTFMixedInputManager.shared.tooltipDisplay {
                     showTooltipForMixedInput(tip, client: client)
                 }
+                return true
             }
-            // 返回 nil，確保 KeyHandler 或 macOS 收到 Delete 鍵，刪除完全順暢無阻！
             return nil
         }
 
@@ -1479,7 +1483,14 @@ extension McBopomofoInputMethodController {
                     return true
                 }
             } else {
-                // 輸入非字母且非數字鍵（標點、符號等）：必定屬於中文注音流程，清空英文緩衝區！
+                // 符號是否為注音鍵依 KeyHandler 當前鍵盤佈局判斷；Shift 等修飾鍵不走讀音分流。
+                let disqualifyingModifiers: NSEvent.ModifierFlags = [.shift, .control, .option, .command, .capsLock]
+                let hasDisqualifyingModifiers = !event.modifierFlags.intersection(disqualifyingModifiers).isEmpty
+                let hasReading = keyHandler.hasUnconfirmedReading()
+                let isLayoutReadingKey = first.isASCII && keyHandler.isValidReadingKey(Int8(bitPattern: first.asciiValue ?? 0))
+                if hasReading && isLayoutReadingKey && !hasDisqualifyingModifiers {
+                    return nil
+                }
                 if !WTFMixedInputManager.shared.currentBuffer.isEmpty {
                     WTFMixedInputManager.shared.clear()
                     hideTooltip()
@@ -1541,8 +1552,13 @@ extension McBopomofoInputMethodController {
                 return
             }
 
-            // 英文字母與數字 (0-9) 均累加進緩衝區
-            if WTFMixedInputManager.isASCIIAlphanumeric(first) {
+            // 英文字母與數字 (0-9) 均累加進緩衝區；合法的符號韻母（; / , . -）若為延續注音讀音亦累加進緩衝區
+            let disqualifyingModifiers: NSEvent.ModifierFlags = [.shift, .control, .option, .command, .capsLock]
+            let hasDisqualifyingModifiers = !event.modifierFlags.intersection(disqualifyingModifiers).isEmpty
+            let isLayoutReadingKey = first.isASCII && keyHandler.isValidReadingKey(Int8(bitPattern: first.asciiValue ?? 0))
+            let isReadingFinalKey = isLayoutReadingKey && keyHandler.hasUnconfirmedReading() && !hasDisqualifyingModifiers
+
+            if WTFMixedInputManager.isASCIIAlphanumeric(first) || isReadingFinalKey {
                 WTFMixedInputManager.shared.appendKey(first)
                 if let tip = WTFMixedInputManager.shared.tooltipDisplay {
                     showTooltipForMixedInput(tip, client: client)
