@@ -196,7 +196,6 @@ public class WTFMixedInputManager {
     public let panguSpacingEnabled: Bool = true
     public var lastCommittedChar: Character? = nil
     public var lastCommitWasEnglishWord: Bool = false
-    public var associatedSuggestion: String? = nil // 中文 Tab 聯想字
     
     public var currentBuffer: String = ""
     public var predictedWord: String? = nil
@@ -606,7 +605,6 @@ public class WTFMixedInputManager {
         currentBuffer = ""
         predictedWord = nil
         isPureEnglishMode = false
-        associatedSuggestion = nil
     }
 
     // MARK: - 浮動提示文字
@@ -621,9 +619,6 @@ public class WTFMixedInputManager {
                 }
             }
             return isPureEnglishMode ? "英: \(display)  [Enter 送出]" : nil
-        }
-        if let suggestion = associatedSuggestion {
-            return "聯想: \(suggestion)  [Tab 補全]"
         }
         return nil
     }

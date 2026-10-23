@@ -91,10 +91,6 @@ class McBopomofoInputMethodController: IMKInputController {
             action: #selector(toggleHalfWidthPunctuation(_:)), keyEquivalent: "h")
         halfWidthPunctuationItem.keyEquivalentModifierMask = [.command, .control]
         halfWidthPunctuationItem.state = Preferences.halfWidthPunctuationEnabled.state
-        let associatedPhrasesItem = menu.addItem(
-            withTitle: NSLocalizedString("Associated Phrases", comment: ""),
-            action: #selector(toggleAssociatedPhrasesEnabled(_:)), keyEquivalent: "")
-        associatedPhrasesItem.state = Preferences.associatedPhrasesEnabled.state
 
         let inputMode = keyHandler.inputMode
 
@@ -364,10 +360,6 @@ class McBopomofoInputMethodController: IMKInputController {
         }
     }
 
-    @objc func toggleAssociatedPhrasesEnabled(_ sender: Any?) {
-        _ = Preferences.toggleAssociatedPhrasesEnabled()
-    }
-
     @objc func toggleBopomofoFontAnnotationSupport(_ sender: Any?) {
         let enabled = Preferences.toggleBopomofoFontAnnotationSupportEnabled()
         NotifierController.notify(
@@ -547,20 +539,6 @@ extension McBopomofoInputMethodController {
 
         (client as? IMKTextInput)?.insertText(
             buffer, replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
-
-        // 中文送出後，若開啟聯想字且非英文模式，觸發下一字聯想 (對齊開發書第 7 章)
-        if !isEnglish && Preferences.associatedPhrasesEnabled && WTFMixedInputManager.shared.currentBuffer.isEmpty {
-            if let lastChar = buffer.last, lastChar >= "\u{4E00}" && lastChar <= "\u{9FA5}" {
-                if let nextWord = keyHandler.findTopAssociatedPhraseSuffix(forPrefix: String(lastChar)) {
-                    WTFMixedInputManager.shared.associatedSuggestion = nextWord
-                    showTooltipForMixedInput("聯想: \(nextWord)  [Tab 補全]", client: client)
-                } else {
-                    WTFMixedInputManager.shared.associatedSuggestion = nil
-                }
-            } else {
-                WTFMixedInputManager.shared.associatedSuggestion = nil
-            }
-        }
     }
 
     private func handle(state: InputState.Deactivated, previous: InputState, client: Any?) {
@@ -1150,14 +1128,6 @@ extension McBopomofoInputMethodController {
         let kDelete: UInt16 = 51
         let kEscape: UInt16 = 53
 
-        // 若有未處理的中文聯想字，只要按的不是 Tab，立刻清除並關閉提示 (對齊開發書第 7 章)
-        if keyCode != kTab && WTFMixedInputManager.shared.associatedSuggestion != nil {
-            WTFMixedInputManager.shared.associatedSuggestion = nil
-            if WTFMixedInputManager.shared.currentBuffer.isEmpty {
-                hideTooltip()
-            }
-        }
-
         // Option 鍵字面輸出 (對齊開發書第 9.7 節：按住 Option + 數字/標點直接輸出字面字元，免切換英文)
         if event.modifierFlags.contains(.option) && !event.modifierFlags.contains(.command) && !event.modifierFlags.contains(.control) {
             var literalChar: String? = nil
@@ -1358,12 +1328,6 @@ extension McBopomofoInputMethodController {
                 (client as? IMKTextInput)?.setMarkedText(
                     "", selectionRange: NSRange(location: 0, length: 0),
                     replacementRange: NSRange(location: NSNotFound, length: NSNotFound))
-                hideTooltip()
-                return true
-            } else if let suggestion = WTFMixedInputManager.shared.associatedSuggestion, !suggestion.isEmpty {
-                // 中文聯想字：Tab 一鍵補全接續字！ (對齊開發書第 7 章)
-                commit(text: suggestion, isEnglish: false, client: client)
-                WTFMixedInputManager.shared.associatedSuggestion = nil
                 hideTooltip()
                 return true
             }

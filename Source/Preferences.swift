@@ -268,7 +268,8 @@ class Preferences: NSObject {
         Preferences.big5InputEnabled = Preferences.big5InputEnabled
         Preferences.chineseConversionStyle = Preferences.chineseConversionStyle
         Preferences.phraseReplacementEnabled = Preferences.phraseReplacementEnabled
-        Preferences.associatedPhrasesEnabled = Preferences.associatedPhrasesEnabled
+        UserDefaults.standard.set(false, forKey: kAssociatedPhrasesEnabledKey)
+        Preferences.associatedPhrasesEnabled = false
         Preferences.letterBehavior = Preferences.letterBehavior
         Preferences.switchInputSourceUponShiftLetterKeyComboInputSourceID = Preferences.switchInputSourceUponShiftLetterKeyComboInputSourceID
         Preferences.switchInputSourceUponShiftLetterKeyComboEnabled = Preferences.switchInputSourceUponShiftLetterKeyComboEnabled
