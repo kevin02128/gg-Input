@@ -7,10 +7,10 @@
 ## 🚨 最高執行鐵律 (Strict Execution Policy - MUST FOLLOW)
 
 1. **禁止未經允許修改或執行 (Plan-First Gate)**：
-   - 當使用者提出新需求、Bug 修復、按鍵調整或架構詢問時，**絕對禁止**直接修改任何程式碼或資料檔，也**絕對禁止**未經授權直接執行 `./dev_reload.sh`、`./package_dmg.command`、`git commit` 或 `git push`。
+   - 當使用者提出新需求、Bug 修復、按鍵調整或架構詢問時，**絕對禁止**直接修改任何程式碼或資料檔，也**絕對禁止**未經授權直接執行 `./dev_reload.sh`、`./build_pkg.command`、`git commit` 或 `git push`。
 2. **強制兩階段工作流 (Two-Phase Workflow)**：
    - **第一階段（唯讀掃描與提案）**：僅允許讀取檔案與搜尋程式碼。找出問題根因（Root Cause）後，必須使用**繁體中文**向使用者輸出結構化的【技術修改計畫書】（包含：根因分析、預計修改檔案、邊界條件防呆、預計新增的單元測試）。最後必須停下來詢問：「請確認以上計畫是否無誤，確認後我再開始實作。」
-   - **第二階段（授權後實作）**：只有在收到使用者明確回覆「好」、「可以」、「開始執行」等同意字眼後，才允許修改檔案、執行 `xcodebuild test`、`./dev_reload.sh` 與 `./package_dmg.command`。
+   - **第二階段（授權後實作）**：只有在收到使用者明確回覆「好」、「可以」、「開始執行」等同意字眼後，才允許修改檔案、執行 `xcodebuild test`、`./dev_reload.sh` 與 `./build_pkg.command`。
 
 ---
 
@@ -81,8 +81,8 @@ xcodebuild test -project gg.xcodeproj -scheme gg -destination 'platform=macOS' -
 # 2. 本機即時編譯與熱重載輸入法
 ./dev_reload.sh
 
-# 3. 重新打包簽署正式版 (gg.dmg) 與輕量版 (gg.lite.dmg)
-./package_dmg.command
+# 3. 重新編譯並打包官方標準安裝套件 (gg.pkg)
+./build_pkg.command
 
 # 4. 單獨重新生成字典檔（若有修改 Source/Data/ 下的檔案）
 cd Source/Data
