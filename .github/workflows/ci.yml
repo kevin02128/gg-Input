@@ -27,9 +27,14 @@ jobs:
             (cd "$dir" && git submodule update --init --recursive)
           done
 
+      - name: Pre-build Data target
+        run: |
+          (cd Source/Data && make build)
+
       - name: Build gg Input Method
         run: |
-          xcodebuild build -project gg.xcodeproj -scheme gg -configuration Debug -destination "platform=macOS,arch=arm64"
+          xcodebuild build -project gg.xcodeproj -scheme gg -configuration Debug -destination "platform=macOS,arch=arm64" || \
+          (echo "Retrying build due to transient Xcode scheduler inconsistency..." && xcodebuild build -project gg.xcodeproj -scheme gg -configuration Debug -destination "platform=macOS,arch=arm64")
 
       - name: Run Unit Tests
         run: |

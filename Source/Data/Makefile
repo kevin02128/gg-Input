@@ -1,8 +1,12 @@
 PYTHON ?= python3
 
-.PHONY: sort clean format typecheck analyze
+.PHONY: sort clean format typecheck analyze build test
 
 all: data.txt data-plain-bpmf.txt associated-phrases-v2.txt
+
+build: all
+
+test: all
 
 install: all
 
