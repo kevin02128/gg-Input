@@ -132,6 +132,7 @@ extern InputMode InputModePlainBopomofo;
 - (NSArray<WTFNBestHypothesis *> *)currentNBestHypotheses:(NSInteger)k;
 - (NSString *)currentBpmfReading;
 - (BOOL)hasUnconfirmedReading;
+- (void)clearUnconfirmedReading;
 - (BOOL)isValidReadingKey:(char)charCode;
 
 @property (strong, nonatomic) InputMode inputMode;

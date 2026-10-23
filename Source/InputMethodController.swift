@@ -1312,23 +1312,11 @@ extension McBopomofoInputMethodController {
             return nil
         }
 
-        // 大前提：中文整句組字保護傘 (Composing Session Guard)
-        // 若底層中文組字區已有至少一個完成了聲調的中文字 (如「這」、「打」)，
-        // 代表使用者正處於「連續中文整句輸入狀態」，後續按鍵一律 100% 交由底層 KeyHandler.mm 處理，
-        // 嚴禁在此時中途啟動 Rule A/B/C 相衝攔截，避免打斷整句輸入！
+        // 中文組字區狀態檢查
         let hasActiveComposedChinese: Bool = {
             guard let notEmpty = state as? InputState.NotEmpty else { return false }
             return notEmpty.composingBuffer.contains(where: { WTFMixedInputManager.isCJK($0) })
         }()
-
-        if hasActiveComposedChinese {
-            // 在多字連續中文輸入時，清空雙軌預測暫存，完全放行給 KeyHandler
-            if !WTFMixedInputManager.shared.currentBuffer.isEmpty {
-                WTFMixedInputManager.shared.clear()
-                hideTooltip()
-            }
-            return nil
-        }
 
         // 2. 雙軌狀態 (尚未鎖定純英文)
         // Space 鍵：非純英文模式下，Space 代表中文第一聲或選字確認！
@@ -1346,6 +1334,7 @@ extension McBopomofoInputMethodController {
             let predicted = WTFMixedInputManager.shared.predictedWord ?? (WTFMixedInputManager.knownSpecAcronyms[current.lowercased()] != nil ? resolved : nil)
             if let word = predicted, !word.isEmpty {
                 // 如果前面有未確定的中文，先強制送出中文！
+                keyHandler.clearUnconfirmedReading()
                 keyHandler.handleForceCommit { [weak self] commitState in
                     self?.handle(state: commitState, client: client)
                 }
@@ -1455,7 +1444,10 @@ extension McBopomofoInputMethodController {
                     WTFMixedInputManager.shared.currentBuffer = testBuffer
                     WTFMixedInputManager.shared.predictedWord = prediction
 
-                    // 強制送出前面尚未確定/排隊中的中文詞彙 (例如「今天」)
+                    // 順序細節：先清除底層未完成的注音符號 (Reading Buffer 中的 ㄏㄣ)
+                    keyHandler.clearUnconfirmedReading()
+
+                    // 再強制送出前面尚未確定/已成形的中文字詞 (如「這台」)
                     keyHandler.handleForceCommit { [weak self] commitState in
                         self?.handle(state: commitState, client: client)
                     }
@@ -1546,10 +1538,11 @@ extension McBopomofoInputMethodController {
                 }
             }
 
-            // 若目前組字區中已有完成的中文字 (例如「這」、「打」)，使用者正在整句中文輸入，
-            // 雙軌英文緩衝區保持清空，不累加任何鍵，完全交給 KeyHandler
+            // 若目前組字區中已有完成的中文字，且當前已無未完成的注音讀音 (例如剛按完聲調或空白完成了一個中文字)
+            // 則清空雙軌緩衝區，為下一個字或下一個英文單字做好準備
             if let notEmpty = self.state as? InputState.NotEmpty,
-               notEmpty.composingBuffer.contains(where: { WTFMixedInputManager.isCJK($0) }) {
+               notEmpty.composingBuffer.contains(where: { WTFMixedInputManager.isCJK($0) }),
+               !keyHandler.hasUnconfirmedReading() {
                 WTFMixedInputManager.shared.clear()
                 hideTooltip()
                 return

@@ -2838,6 +2838,11 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
     return !_bpmfReadingBuffer->isEmpty();
 }
 
+- (void)clearUnconfirmedReading
+{
+    _bpmfReadingBuffer->clear();
+}
+
 - (BOOL)isValidReadingKey:(char)charCode
 {
     return _bpmfReadingBuffer->isValidKey(charCode);

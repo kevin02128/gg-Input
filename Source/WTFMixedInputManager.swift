@@ -40,6 +40,125 @@ public class WTFMixedInputManager {
     public static let bopomofoInitialDigits: Set<Character> = ["1", "2", "5"]
     public static let bopomofoFinalDigits: Set<Character> = ["8", "9", "0"]
 
+    // MARK: - 舌尖元音音節 (ㄓ, ㄔ, ㄕ, ㄖ, ㄗ, ㄘ, ㄙ)
+    public static let apicalInitials: Set<Character> = ["5", "t", "g", "b", "y", "h", "n"]
+
+    // MARK: - 全漢語 429 個真實無聲調音節白名單 (Daqian Valid Syllables)
+    public static let validBopomofoKeys: Set<String> = Set([
+        ",", "-", ".", "/", "0", "1", "1/", "10",
+        "18", "19", "1;", "1i", "1j", "1l", "1o", "1p",
+        "1u", "1u,", "1u/", "1u0", "1u;", "1ul", "1up", "2",
+        "2.", "2/", "20", "28", "29", "2;", "2j", "2j/",
+        "2j0", "2ji", "2jo", "2jp", "2k", "2l", "2o", "2u",
+        "2u,", "2u.", "2u/", "2u0", "2u8", "2ul", "5", "5.",
+        "5/", "50", "58", "59", "5;", "5j", "5j/", "5j0",
+        "5j8", "5j9", "5j;", "5ji", "5jo", "5jp", "5k", "5l",
+        "5o", "5p", "8", "9", ";", "a", "a.", "a/",
+        "a0", "a8", "a9", "a;", "ai", "aj", "ak", "al",
+        "ao", "ap", "au", "au,", "au.", "au/", "au0", "aul",
+        "aup", "b", "b.", "b/", "b0", "b;", "bj", "bj/",
+        "bj0", "bji", "bjo", "bjp", "bk", "bl", "bp", "c",
+        "c.", "c/", "c0", "c8", "c9", "c;", "cj", "cj/",
+        "cj0", "cj8", "cj9", "cj;", "cji", "cjo", "cjp", "ck",
+        "cl", "co", "cp", "d", "d.", "d/", "d0", "d8",
+        "d9", "d;", "dj", "dj/", "dj0", "dj8", "dj9", "dj;",
+        "dji", "djo", "djp", "dk", "dl", "dp", "e", "e.",
+        "e/", "e0", "e8", "e9", "e;", "ej", "ej/", "ej0",
+        "ej8", "ej9", "ej;", "eji", "ejo", "ejp", "ek", "el",
+        "eo", "ep", "f", "fm", "fm,", "fm/", "fm0", "fmp",
+        "fu", "fu,", "fu.", "fu/", "fu0", "fu8", "fu;", "ful",
+        "fup", "g", "g.", "g/", "g0", "g8", "g9", "g;",
+        "gj", "gj0", "gj8", "gj9", "gj;", "gji", "gjo", "gjp",
+        "gk", "gl", "go", "gp", "h", "h.", "h/", "h0",
+        "h8", "h9", "h;", "hj", "hj/", "hj0", "hji", "hjo",
+        "hjp", "hk", "hl", "hp", "i", "j", "j/", "j0",
+        "j8", "j9", "j;", "ji", "jo", "jp", "k", "l",
+        "m", "m,", "m/", "m0", "mp", "n", "n.", "n/",
+        "n0", "n8", "n9", "n;", "nj", "nj/", "nj0", "nji",
+        "njo", "njp", "nk", "nl", "no", "np", "o", "p",
+        "q", "q.", "q/", "q0", "q8", "q9", "q;", "qi",
+        "qj", "ql", "qo", "qp", "qu", "qu,", "qu/", "qu0",
+        "qu8", "qul", "qup", "r", "rm", "rm,", "rm/", "rm0",
+        "rmp", "ru", "ru,", "ru.", "ru/", "ru0", "ru8", "ru;",
+        "rul", "rup", "s", "s.", "s/", "s0", "s8", "s9",
+        "s;", "sj", "sj/", "sj0", "sji", "sjp", "sk", "sl",
+        "sm", "sm,", "so", "sp", "su", "su,", "su.", "su/",
+        "su0", "su;", "sul", "sup", "t", "t.", "t/", "t0",
+        "t8", "t9", "t;", "tj", "tj/", "tj0", "tj8", "tj9",
+        "tj;", "tji", "tjo", "tjp", "tk", "tl", "tp", "u",
+        "u,", "u.", "u/", "u0", "u8", "u9", "u;", "ui",
+        "uk", "ul", "up", "v", "vm", "vm,", "vm/", "vm0",
+        "vmp", "vu", "vu,", "vu.", "vu/", "vu0", "vu8", "vu;",
+        "vul", "vup", "w", "w.", "w/", "w0", "w8", "w9",
+        "w;", "wj", "wj/", "wj0", "wji", "wjo", "wjp", "wk",
+        "wl", "wu", "wu,", "wu/", "wu0", "wul", "x", "x.",
+        "x/", "x0", "x8", "x9", "x;", "xj", "xj/", "xj0",
+        "xji", "xjp", "xk", "xl", "xm", "xm,", "xm0", "xo",
+        "xu", "xu,", "xu.", "xu/", "xu0", "xu8", "xu;", "xul",
+        "xup", "y", "y.", "y/", "y0", "y8", "y9", "y;",
+        "yj", "yj/", "yj0", "yji", "yjo", "yjp", "yk", "yl",
+        "yo", "yp", "z", "z.", "z/", "z0", "z8", "z;",
+        "zi", "zj", "zo", "zp", "zul"
+    ])
+
+    // MARK: - 全漢語 430 個合法鍵盤輸入前綴白名單 (Daqian Valid Prefixes)
+    public static let validBopomofoPrefixes: Set<String> = Set([
+        ",", "-", ".", "/", "0", "1", "1/", "10",
+        "18", "19", "1;", "1i", "1j", "1l", "1o", "1p",
+        "1u", "1u,", "1u/", "1u0", "1u;", "1ul", "1up", "2",
+        "2.", "2/", "20", "28", "29", "2;", "2j", "2j/",
+        "2j0", "2ji", "2jo", "2jp", "2k", "2l", "2o", "2u",
+        "2u,", "2u.", "2u/", "2u0", "2u8", "2ul", "5", "5.",
+        "5/", "50", "58", "59", "5;", "5j", "5j/", "5j0",
+        "5j8", "5j9", "5j;", "5ji", "5jo", "5jp", "5k", "5l",
+        "5o", "5p", "8", "9", ";", "a", "a.", "a/",
+        "a0", "a8", "a9", "a;", "ai", "aj", "ak", "al",
+        "ao", "ap", "au", "au,", "au.", "au/", "au0", "aul",
+        "aup", "b", "b.", "b/", "b0", "b;", "bj", "bj/",
+        "bj0", "bji", "bjo", "bjp", "bk", "bl", "bp", "c",
+        "c.", "c/", "c0", "c8", "c9", "c;", "cj", "cj/",
+        "cj0", "cj8", "cj9", "cj;", "cji", "cjo", "cjp", "ck",
+        "cl", "co", "cp", "d", "d.", "d/", "d0", "d8",
+        "d9", "d;", "dj", "dj/", "dj0", "dj8", "dj9", "dj;",
+        "dji", "djo", "djp", "dk", "dl", "dp", "e", "e.",
+        "e/", "e0", "e8", "e9", "e;", "ej", "ej/", "ej0",
+        "ej8", "ej9", "ej;", "eji", "ejo", "ejp", "ek", "el",
+        "eo", "ep", "f", "fm", "fm,", "fm/", "fm0", "fmp",
+        "fu", "fu,", "fu.", "fu/", "fu0", "fu8", "fu;", "ful",
+        "fup", "g", "g.", "g/", "g0", "g8", "g9", "g;",
+        "gj", "gj0", "gj8", "gj9", "gj;", "gji", "gjo", "gjp",
+        "gk", "gl", "go", "gp", "h", "h.", "h/", "h0",
+        "h8", "h9", "h;", "hj", "hj/", "hj0", "hji", "hjo",
+        "hjp", "hk", "hl", "hp", "i", "j", "j/", "j0",
+        "j8", "j9", "j;", "ji", "jo", "jp", "k", "l",
+        "m", "m,", "m/", "m0", "mp", "n", "n.", "n/",
+        "n0", "n8", "n9", "n;", "nj", "nj/", "nj0", "nji",
+        "njo", "njp", "nk", "nl", "no", "np", "o", "p",
+        "q", "q.", "q/", "q0", "q8", "q9", "q;", "qi",
+        "qj", "ql", "qo", "qp", "qu", "qu,", "qu/", "qu0",
+        "qu8", "qul", "qup", "r", "rm", "rm,", "rm/", "rm0",
+        "rmp", "ru", "ru,", "ru.", "ru/", "ru0", "ru8", "ru;",
+        "rul", "rup", "s", "s.", "s/", "s0", "s8", "s9",
+        "s;", "sj", "sj/", "sj0", "sji", "sjp", "sk", "sl",
+        "sm", "sm,", "so", "sp", "su", "su,", "su.", "su/",
+        "su0", "su;", "sul", "sup", "t", "t.", "t/", "t0",
+        "t8", "t9", "t;", "tj", "tj/", "tj0", "tj8", "tj9",
+        "tj;", "tji", "tjo", "tjp", "tk", "tl", "tp", "u",
+        "u,", "u.", "u/", "u0", "u8", "u9", "u;", "ui",
+        "uk", "ul", "up", "v", "vm", "vm,", "vm/", "vm0",
+        "vmp", "vu", "vu,", "vu.", "vu/", "vu0", "vu8", "vu;",
+        "vul", "vup", "w", "w.", "w/", "w0", "w8", "w9",
+        "w;", "wj", "wj/", "wj0", "wji", "wjo", "wjp", "wk",
+        "wl", "wu", "wu,", "wu/", "wu0", "wul", "x", "x.",
+        "x/", "x0", "x8", "x9", "x;", "xj", "xj/", "xj0",
+        "xji", "xjp", "xk", "xl", "xm", "xm,", "xm0", "xo",
+        "xu", "xu,", "xu.", "xu/", "xu0", "xu8", "xu;", "xul",
+        "xup", "y", "y.", "y/", "y0", "y8", "y9", "y;",
+        "yj", "yj/", "yj0", "yji", "yjo", "yjp", "yk", "yl",
+        "yo", "yp", "z", "z.", "z/", "z0", "z8", "z;",
+        "zi", "zj", "zo", "zp", "zu", "zul"
+    ])
+
     // MARK: - 常見科技短字與縮寫對應表 (Acronyms & Short Tokens)
     public static let knownSpecAcronyms: [String: String] = [
         "4k": "4K", "8k": "8K", "3d": "3D", "5g": "5G", "4g": "4G",
@@ -47,7 +166,11 @@ public class WTFMixedInputManager {
         "m3": "M3", "m4": "M4", "a4": "A4", "b5": "B5", "ps5": "PS5",
         "b2b": "B2B", "b2c": "B2C", "p2p": "P2P", "ai": "AI",
         "ui": "UI", "ux": "UX", "pm": "PM", "api": "API",
-        "sdk": "SDK", "app": "App"
+        "sdk": "SDK", "app": "App",
+        "cpu": "CPU", "gpu": "GPU", "tpu": "TPU", "npu": "NPU",
+        "ssd": "SSD", "ram": "RAM", "rom": "ROM", "xml": "XML",
+        "gui": "GUI", "vim": "Vim", "npm": "npm", "rpm": "RPM",
+        "bmp": "BMP"
     ]
 
     public static func resolveCommittedEnglish(_ text: String) -> String {
@@ -255,7 +378,7 @@ public class WTFMixedInputManager {
         self.wordsByFirstChar = byFirst
     }
 
-    // MARK: - 注音合法性檢測 (單一音節智慧容錯狀態機)
+    // MARK: - 注音合法性檢測 (單一音節智慧容錯狀態機與 429 真實音節白名單)
     public func validateBopomofo(input: String) -> (isValid: Bool, bopomofoStr: String) {
         if input.isEmpty {
             return (true, "")
@@ -269,7 +392,9 @@ public class WTFMixedInputManager {
         var finCharStr = ""
         var toneCharStr = ""
 
-        for char in input.lowercased() {
+        let lower = input.lowercased()
+
+        for char in lower {
             if !toneCharStr.isEmpty {
                 return (false, initCharStr + medCharStr + finCharStr + toneCharStr)
             }
@@ -280,7 +405,8 @@ public class WTFMixedInputManager {
                 }
                 initCharStr = initChar
             } else if let medChar = Daqian.medials[char] {
-                if !medCharStr.isEmpty {
+                // 漢語音韻結構律：介音絕不可接在韻母後面 (修復 cpu, gpu, tpu, npu, rom, vim 等)
+                if !medCharStr.isEmpty || !finCharStr.isEmpty {
                     return (false, initCharStr + medCharStr + finCharStr + toneCharStr)
                 }
                 medCharStr = medChar
@@ -300,6 +426,19 @@ public class WTFMixedInputManager {
         if !toneCharStr.isEmpty && initCharStr.isEmpty && medCharStr.isEmpty && finCharStr.isEmpty {
             return (false, canonicalBpmf)
         }
+
+        // 對照全漢語真實 429 個音節白名單檢驗 (包含大千數字韻母 8,9,0 與符號韻母 ,.;/-)
+        if !toneCharStr.isEmpty {
+            let toneless = String(lower.dropLast())
+            if !Self.validBopomofoKeys.contains(toneless) {
+                return (false, canonicalBpmf)
+            }
+        } else {
+            if !Self.validBopomofoPrefixes.contains(lower) {
+                return (false, canonicalBpmf)
+            }
+        }
+
         return (true, canonicalBpmf)
     }
 
@@ -396,13 +535,16 @@ public class WTFMixedInputManager {
                 }
                 let lastChar = chars[nextIndex - 1]
                 let hasTone = (Daqian.tones[lastChar] != nil && lastChar != " ")
-                let nextChar = chars[nextIndex]
-                let nextIsInitial = (Daqian.initials[nextChar] != nil)
-                let lastHasVowel = (Daqian.finals[lastChar] != nil || Daqian.medials[lastChar] != nil)
+                let isCompleteSyllable = Self.validBopomofoKeys.contains(slice) || (hasTone && Self.validBopomofoKeys.contains(String(slice.dropLast())))
+                if isCompleteSyllable {
+                    let nextChar = chars[nextIndex]
+                    let nextIsInitial = (Daqian.initials[nextChar] != nil)
+                    let lastHasVowel = (Daqian.finals[lastChar] != nil || Daqian.medials[lastChar] != nil || hasTone || (Self.apicalInitials.contains(lastChar) && slice.count == 1))
 
-                if hasTone || (nextIsInitial && lastHasVowel) {
-                    if canSegmentAsBopomofo(chars: chars, startIndex: nextIndex) {
-                        return true
+                    if hasTone || (nextIsInitial && lastHasVowel) {
+                        if canSegmentAsBopomofo(chars: chars, startIndex: nextIndex) {
+                            return true
+                        }
                     }
                 }
             }

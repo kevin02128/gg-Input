@@ -3869,5 +3869,67 @@ extension KeyHandlerBopomofoTests {
             XCTAssertFalse(output.contains(where: { $0.isWhitespace }), "Symbol-final reading must not introduce spaces: \(output)")
         }
     }
+
+    func testTechAcronymsAndMixedInputPhonotactics() {
+        let mgr = WTFMixedInputManager.shared
+
+        // 1. Tech & Hardware words must NOT be valid single Bopomofo syllables
+        let nonBpmfTechWords = [
+            "cpu", "gpu", "tpu", "npu", "ssd",
+            "xml", "gui", "tmp", "bmp", "dup", "cup",
+            "rom", "vim", "npm", "rpm"
+        ]
+        for word in nonBpmfTechWords {
+            let res = mgr.validateBopomofo(input: word)
+            XCTAssertFalse(res.isValid, "Word '\(word)' must NOT be valid Bopomofo (got valid: \(res.bopomofoStr))")
+        }
+
+        // 2. Hardware acronyms resolution to uppercase
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("cpu"), "CPU")
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("gpu"), "GPU")
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("tpu"), "TPU")
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("npu"), "NPU")
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("ssd"), "SSD")
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("xml"), "XML")
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("gui"), "GUI")
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("rom"), "ROM")
+        XCTAssertEqual(WTFMixedInputManager.resolveCommittedEnglish("ram"), "RAM")
+
+        // 3. Valid Bopomofo containing digit finals (8, 9, 0) and symbol finals (, . ; / -) must pass
+        let validBpmfCases = [
+            ("1;", "ㄅㄤ"),
+            ("e/", "ㄍㄥ"),
+            ("qu,", "ㄆㄧㄝ"),
+            ("1u;", "ㄅㄧㄤ"),
+            ("w8", "ㄊㄚ"),
+            ("d0", "ㄎㄢ"),
+            ("ej9", "ㄍㄨㄞ"),
+            ("qu,3", "ㄆㄧㄝˇ"),
+            ("e/4", "ㄍㄥˋ"),
+            ("1u;3", "ㄅㄧㄤˇ")
+        ]
+        for (input, expectedBpmf) in validBpmfCases {
+            let res = mgr.validateBopomofo(input: input)
+            XCTAssertTrue(res.isValid, "Input '\(input)' must be valid Bopomofo")
+            XCTAssertEqual(res.bopomofoStr, expectedBpmf, "Input '\(input)' must produce '\(expectedBpmf)'")
+        }
+
+        // 4. Test KeyHandler clearUnconfirmedReading
+        let handler = KeyHandler()
+        let charInput = KeyHandlerInput(
+            inputText: "c",
+            keyCode: 8,
+            charCode: 99,
+            flags: [],
+            isVerticalMode: false
+        )
+        _ = handler.handle(input: charInput, state: InputState.Empty(), stateCallback: { _ in }, errorCallback: {})
+        XCTAssertTrue(handler.hasUnconfirmedReading(), "Handler must have unconfirmed reading after 'c'")
+        XCTAssertEqual(handler.currentBpmfReading(), "ㄏ")
+
+        handler.clearUnconfirmedReading()
+        XCTAssertFalse(handler.hasUnconfirmedReading(), "Handler must have no unconfirmed reading after clearUnconfirmedReading()")
+        XCTAssertEqual(handler.currentBpmfReading(), "")
+    }
 }
 
