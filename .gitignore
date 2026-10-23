@@ -18,6 +18,7 @@ xcuserdata
 *.app
 *.tar.gz
 *.zip
+*.pdf
 
 # Large Core ML / PyTorch Weights (>100MB GitHub limit; managed via scripts/setup_model.sh & Releases)
 Source/Resources/Model/KyonLM.mlpackage/

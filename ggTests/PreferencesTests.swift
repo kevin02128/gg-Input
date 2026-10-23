@@ -133,6 +133,14 @@ final class PreferencesTests {
         #expect(Preferences.useHorizontalCandidateList == true)
     }
 
+    @Test("Test grid candidate list toggle")
+    func testUseGridCandidateList() {
+        #expect(Preferences.useGridCandidateList == true)
+        Preferences.useGridCandidateList = false
+        #expect(Preferences.useGridCandidateList == false)
+        Preferences.useGridCandidateList = true
+    }
+
     @Test("Test space key candidate selection")
     func testChooseCandidateUsingSpace() {
         #expect(Preferences.chooseCandidateUsingSpace == false)

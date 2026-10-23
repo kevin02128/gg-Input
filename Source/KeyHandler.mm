@@ -1966,6 +1966,12 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
             if (!updated) {
                 errorCallback();
             }
+        } else if ([gCurrentCandidateController respondsToSelector:@selector(highlightCandidateLeft)] &&
+                   [gCurrentCandidateController isKindOfClass:NSClassFromString(@"VTGridCandidateController")]) {
+            BOOL updated = [(id)gCurrentCandidateController highlightCandidateLeft];
+            if (!updated) {
+                errorCallback();
+            }
         } else {
             BOOL updated = [gCurrentCandidateController showPreviousPage];
             if (!updated) {
@@ -2004,6 +2010,12 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
             if (!updated) {
                 errorCallback();
             }
+        } else if ([gCurrentCandidateController respondsToSelector:@selector(highlightCandidateRight)] &&
+                   [gCurrentCandidateController isKindOfClass:NSClassFromString(@"VTGridCandidateController")]) {
+            BOOL updated = [(id)gCurrentCandidateController highlightCandidateRight];
+            if (!updated) {
+                errorCallback();
+            }
         } else {
             BOOL updated = [gCurrentCandidateController showNextPage];
             if (!updated) {
@@ -2027,6 +2039,12 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
             if (!updated) {
                 errorCallback();
             }
+        } else if ([gCurrentCandidateController respondsToSelector:@selector(highlightCandidateUp)] &&
+                   [gCurrentCandidateController isKindOfClass:NSClassFromString(@"VTGridCandidateController")]) {
+            BOOL updated = [(id)gCurrentCandidateController highlightCandidateUp];
+            if (!updated) {
+                errorCallback();
+            }
         } else {
             BOOL updated = [gCurrentCandidateController highlightPreviousCandidate];
             if (!updated) {
@@ -2039,6 +2057,12 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
     if (input.isDown) {
         if ([gCurrentCandidateController isKindOfClass:[VTHorizontalCandidateController class]]) {
             BOOL updated = [gCurrentCandidateController showNextPage];
+            if (!updated) {
+                errorCallback();
+            }
+        } else if ([gCurrentCandidateController respondsToSelector:@selector(highlightCandidateDown)] &&
+                   [gCurrentCandidateController isKindOfClass:NSClassFromString(@"VTGridCandidateController")]) {
+            BOOL updated = [(id)gCurrentCandidateController highlightCandidateDown];
             if (!updated) {
                 errorCallback();
             }

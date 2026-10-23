@@ -35,6 +35,7 @@ private let kCandidateListTextSizeKey = "CandidateListTextSize"
 private let kSelectPhraseAfterCursorAsCandidateKey = "SelectPhraseAfterCursorAsCandidate"
 private let kMoveCursorAfterSelectingCandidateKey = "MoveCursorAfterSelectingCandidate"
 private let kUseHorizontalCandidateListPreferenceKey = "UseHorizontalCandidateList"
+private let kUseGridCandidateListPreferenceKey = "UseGridCandidateList"
 private let kChooseCandidateUsingSpaceKey = "ChooseCandidateUsingSpaceKey"
 private let kChineseConversionEnabledKey = "ChineseConversionEnabled"
 private let kHalfWidthPunctuationEnabledKey = "HalfWidthPunctuationEnable"
@@ -227,6 +228,7 @@ class Preferences: NSObject {
             kCandidateListTextSizeKey,
             kSelectPhraseAfterCursorAsCandidateKey,
             kUseHorizontalCandidateListPreferenceKey,
+            kUseGridCandidateListPreferenceKey,
             kChooseCandidateUsingSpaceKey,
             kChineseConversionEnabledKey,
             kHalfWidthPunctuationEnabledKey,
@@ -259,6 +261,7 @@ class Preferences: NSObject {
         Preferences.moveCursorAfterSelectingCandidate =
             Preferences.moveCursorAfterSelectingCandidate
         Preferences.useHorizontalCandidateList = Preferences.useHorizontalCandidateList
+        Preferences.useGridCandidateList = Preferences.useGridCandidateList
         Preferences.chineseConversionEnabled = Preferences.chineseConversionEnabled
         Preferences.halfWidthPunctuationEnabled = Preferences.halfWidthPunctuationEnabled
         Preferences.selectCandidateWithNumericKeypad = Preferences.selectCandidateWithNumericKeypad
@@ -309,6 +312,9 @@ class Preferences: NSObject {
 
     @UserDefault(key: kMoveCursorAfterSelectingCandidateKey, defaultValue: false)
     @objc static var moveCursorAfterSelectingCandidate: Bool
+
+    @UserDefault(key: kUseGridCandidateListPreferenceKey, defaultValue: true)
+    @objc static var useGridCandidateList: Bool
 
     @UserDefault(key: kUseHorizontalCandidateListPreferenceKey, defaultValue: false)
     @objc static var useHorizontalCandidateList: Bool
@@ -654,7 +660,7 @@ extension Preferences {
             "  - Move Cursor After Selecting Candidate: \(Preferences.moveCursorAfterSelectingCandidate ? "Enabled" : "Disabled")"
         )
         lines.append(
-            "  - Candidate Window: \(Preferences.useHorizontalCandidateList ? "Horizontal" : "Vertical")"
+            "  - Candidate Window: \(Preferences.useGridCandidateList ? "Matrix Grid" : (Preferences.useHorizontalCandidateList ? "Horizontal" : "Vertical"))"
         )
         lines.append(
             "  - Chinese Conversion: \(Preferences.chineseConversionEnabled ? "Enabled" : "Disabled")"

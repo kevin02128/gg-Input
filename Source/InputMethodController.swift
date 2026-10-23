@@ -44,6 +44,7 @@ internal var gCurrentCandidateController: CandidateController?
 extension CandidateController {
     static let horizontal = HorizontalCandidateController()
     static let vertical = VerticalCandidateController()
+    static let grid = GridCandidateController()
 }
 
 @objc(McBopomofoInputMethodController)
@@ -962,10 +963,12 @@ extension McBopomofoInputMethodController {
 
         if useVerticalMode {
             gCurrentCandidateController = .vertical
+        } else if Preferences.useGridCandidateList {
+            gCurrentCandidateController = .grid
         } else if Preferences.useHorizontalCandidateList {
             gCurrentCandidateController = .horizontal
         } else {
-            gCurrentCandidateController = .vertical
+            gCurrentCandidateController = .grid
         }
 
         gCurrentCandidateController?.tooltip =

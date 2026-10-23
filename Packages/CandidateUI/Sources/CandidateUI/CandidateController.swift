@@ -122,6 +122,22 @@ public class CandidateController: NSWindowController {
         false
     }
 
+    @objc open func highlightCandidateRight() -> Bool {
+        highlightNextCandidate()
+    }
+
+    @objc open func highlightCandidateLeft() -> Bool {
+        highlightPreviousCandidate()
+    }
+
+    @objc open func highlightCandidateDown() -> Bool {
+        highlightNextCandidate()
+    }
+
+    @objc open func highlightCandidateUp() -> Bool {
+        highlightPreviousCandidate()
+    }
+
     @objc public func candidateIndexAtKeyLabelIndex(_: UInt) -> UInt {
         UInt.max
     }

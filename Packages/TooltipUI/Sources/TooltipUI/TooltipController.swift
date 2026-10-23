@@ -23,10 +23,9 @@
 
 import Cocoa
 
-/// The window controller for showing tooltops.
+/// The window controller for showing tooltips.
 public class TooltipController: NSWindowController {
-    private let backgroundColor = NSColor(
-        calibratedHue: 0.16, saturation: 0.22, brightness: 0.97, alpha: 1.0)
+    private var visualEffectView: NSVisualEffectView
     private var messageTextField: NSTextField
     private var tooltip: String = "" {
         didSet {
@@ -37,22 +36,30 @@ public class TooltipController: NSWindowController {
 
     /// Creates a new instance.
     public init() {
-        let contentRect = NSRect(x: 128.0, y: 128.0, width: 300.0, height: 20.0)
+        let contentRect = NSRect(x: 128.0, y: 128.0, width: 300.0, height: 26.0)
         let styleMask: NSWindow.StyleMask = [.borderless, .nonactivatingPanel]
         let panel = NSPanel(
             contentRect: contentRect, styleMask: styleMask, backing: .buffered, defer: false)
         panel.level = NSWindow.Level(Int(kCGPopUpMenuWindowLevel) + 1)
         panel.hasShadow = true
+        panel.backgroundColor = .clear
+        panel.isOpaque = false
+
+        visualEffectView = NSVisualEffectView(frame: NSRect(x: 0, y: 0, width: 300.0, height: 26.0))
+        visualEffectView.blendingMode = .behindWindow
+        visualEffectView.material = .popover
+        visualEffectView.state = .active
+        visualEffectView.maskImage = .mask(withCornerRadius: 8.0)
+        panel.contentView = visualEffectView
 
         messageTextField = NSTextField()
         messageTextField.isEditable = false
         messageTextField.isSelectable = false
         messageTextField.isBezeled = false
-        messageTextField.textColor = .black
-        messageTextField.drawsBackground = true
-        messageTextField.backgroundColor = backgroundColor
-        messageTextField.font = .systemFont(ofSize: NSFont.systemFontSize(for: .small))
-        panel.contentView?.addSubview(messageTextField)
+        messageTextField.textColor = .labelColor
+        messageTextField.drawsBackground = false
+        messageTextField.font = .systemFont(ofSize: 13, weight: .medium)
+        visualEffectView.addSubview(messageTextField)
 
         super.init(window: panel)
     }
@@ -81,7 +88,7 @@ public class TooltipController: NSWindowController {
 
     /// Set the location of the tooltip window.
     ///
-    /// - Parameter windowTopLeftPoint: The givin origin.
+    /// - Parameter windowTopLeftPoint: The given origin.
     private func set(windowLocation windowTopLeftPoint: NSPoint) {
 
         var adjustedPoint = windowTopLeftPoint
@@ -126,11 +133,39 @@ public class TooltipController: NSWindowController {
 
     private func adjustSize() {
         let attrString = messageTextField.attributedStringValue
-        var rect = attrString.boundingRect(
-            with: NSSize(width: 1600.0, height: 1600.0), options: .usesLineFragmentOrigin)
-        rect.size.width += 10
-        messageTextField.frame = rect
-        window?.setFrame(rect, display: true)
+        let textPaddingH: CGFloat = 16.0
+        let textPaddingV: CGFloat = 8.0
+        var textSize = attrString.boundingRect(
+            with: NSSize(width: 1600.0, height: 1600.0), options: .usesLineFragmentOrigin).size
+        textSize.width = ceil(textSize.width)
+        textSize.height = ceil(textSize.height)
+
+        let totalWidth = textSize.width + textPaddingH
+        let totalHeight = max(26.0, textSize.height + textPaddingV)
+
+        let windowRect = NSRect(x: 0, y: 0, width: totalWidth, height: totalHeight)
+        visualEffectView.frame = windowRect
+        visualEffectView.maskImage = .mask(withCornerRadius: min(totalHeight / 2.0, 8.0))
+        messageTextField.frame = NSRect(
+            x: textPaddingH / 2.0,
+            y: (totalHeight - textSize.height) / 2.0,
+            width: textSize.width,
+            height: textSize.height
+        )
+        window?.setFrame(windowRect, display: true)
     }
 
+}
+
+private extension NSImage {
+    static func mask(withCornerRadius radius: CGFloat) -> NSImage {
+        let image = NSImage(size: NSSize(width: radius * 2, height: radius * 2), flipped: false) {
+            NSColor.black.set()
+            NSBezierPath(roundedRect: $0, xRadius: radius, yRadius: radius).fill()
+            return true
+        }
+        image.capInsets = NSEdgeInsets(top: radius, left: radius, bottom: radius, right: radius)
+        image.resizingMode = .stretch
+        return image
+    }
 }
