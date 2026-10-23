@@ -286,7 +286,7 @@ final class PreferencesViewModel: NSObject, ObservableObject {
             object: UserDefaults.standard,
             queue: .main
         ) { [weak self] _ in
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
                 self?.objectWillChange.send()
             }
         }
