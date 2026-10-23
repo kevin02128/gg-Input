@@ -3576,6 +3576,7 @@ extension KeyHandlerBopomofoTests {
             case "l", "L": return 37
             case "j", "J": return 38
             case "k", "K": return 40
+            case ";": return 41
             case "m", "M": return 46
             case " ": return 49
             case "\t": return 48
@@ -3612,7 +3613,8 @@ extension KeyHandlerBopomofoTests {
                 let event = makeEvent(key, flags: flags)
                 _ = controller.handle(event, client: client)
             }
-            return client.insertedText.trimmingCharacters(in: .whitespaces)
+            let text = client.insertedText.isEmpty ? client.markedText : client.insertedText
+            return text.trimmingCharacters(in: .whitespaces)
         }
 
         // 1. 4 -> k -> Space => 4K (prohibit Chinese 惡)
@@ -3669,6 +3671,185 @@ extension KeyHandlerBopomofoTests {
         // 13. s -> u -> 3 -> Space => Chinese 你
         let res13 = simulatePipeline(keys: [("s", []), ("u", []), ("3", []), (" ", [])])
         XCTAssertEqual(res13, "你", "Case 13: s -> u -> 3 -> Space must yield Chinese 你, got: \(res13)")
+    }
+
+    // MARK: - Continuous Chinese Sentences & Final Digits Regression Tests (S1 ~ S7)
+    func testContinuousChineseSentencesAndFinalDigits() {
+        class ShortTokenMockClient: NSObject, IMKTextInput {
+            var insertedText: String = ""
+            var markedText: String = ""
+
+            func insertText(_ string: Any?, replacementRange: NSRange) {
+                if let s = string as? String {
+                    insertedText += s
+                } else if let attr = string as? NSAttributedString {
+                    insertedText += attr.string
+                }
+            }
+
+            func setMarkedText(_ string: Any?, selectionRange: NSRange, replacementRange: NSRange) {
+                if let s = string as? String {
+                    markedText = s
+                } else if let attr = string as? NSAttributedString {
+                    markedText = attr.string
+                }
+            }
+
+            func selectedRange() -> NSRange { NSRange(location: 0, length: 0) }
+            func markedRange() -> NSRange { NSRange(location: 0, length: markedText.count) }
+            func attributedSubstring(from range: NSRange) -> NSAttributedString? { nil }
+            func length() -> Int { insertedText.count }
+            func characterIndex(for point: NSPoint, tracking mappingMode: IMKLocationToOffsetMappingMode, inMarkedRange: UnsafeMutablePointer<ObjCBool>?) -> Int { 0 }
+            func attributes(forCharacterIndex index: Int, lineHeightRectangle lineRect: UnsafeMutablePointer<NSRect>?) -> [AnyHashable: Any]? { [:] }
+            func validAttributesForMarkedText() -> [Any]? { [] }
+            func overrideKeyboard(withKeyboardNamed keyboardUniqueName: String?) {}
+            func selectMode(_ modeIdentifier: String?) {}
+            func supportsUnicode() -> Bool { true }
+            func bundleIdentifier() -> String? { "test.bundle" }
+            func windowLevel() -> CGWindowLevel { 0 }
+            func supportsProperty(_ property: TSMDocumentPropertyTag) -> Bool { false }
+            func uniqueClientIdentifierString() -> String? { "mock-id" }
+            func string(from range: NSRange, actualRange: NSRangePointer?) -> String? { nil }
+            func firstRect(forCharacterRange aRange: NSRange, actualRange: NSRangePointer?) -> NSRect { NSRect.zero }
+        }
+
+        func keyCodeForChar(_ ch: Character) -> UInt16 {
+            switch ch {
+            case "a", "A": return 0
+            case "s", "S": return 1
+            case "d", "D": return 2
+            case "f", "F": return 3
+            case "h", "H": return 4
+            case "g", "G": return 5
+            case "z", "Z": return 6
+            case "x", "X": return 7
+            case "c", "C": return 8
+            case "v", "V": return 9
+            case "b", "B": return 11
+            case "q", "Q": return 12
+            case "w", "W": return 13
+            case "e", "E": return 14
+            case "r", "R": return 15
+            case "y", "Y": return 16
+            case "t", "T": return 17
+            case "1": return 18
+            case "2": return 19
+            case "3": return 20
+            case "4": return 21
+            case "6": return 22
+            case "5": return 23
+            case "9": return 25
+            case "7": return 26
+            case "8": return 28
+            case "0": return 29
+            case "o", "O": return 31
+            case "u", "U": return 32
+            case "i", "I": return 34
+            case "p", "P": return 35
+            case "l", "L": return 37
+            case "j", "J": return 38
+            case "k", "K": return 40
+            case ";": return 41
+            case "m", "M": return 46
+            case " ": return 49
+            case "\t": return 48
+            case "\r", "\n": return 36
+            default: return 0
+            }
+        }
+
+        func makeEvent(_ str: String, flags: NSEvent.ModifierFlags = []) -> NSEvent {
+            let ch = str.first ?? " "
+            let code = (str == "\t") ? UInt16(48) : (str == " " ? UInt16(49) : keyCodeForChar(ch))
+            return NSEvent.keyEvent(
+                with: .keyDown,
+                location: .zero,
+                modifierFlags: flags,
+                timestamp: ProcessInfo.processInfo.systemUptime,
+                windowNumber: 0,
+                context: nil,
+                characters: str,
+                charactersIgnoringModifiers: str.lowercased(),
+                isARepeat: false,
+                keyCode: code
+            )!
+        }
+
+        func simulatePipeline(keys: [(String, NSEvent.ModifierFlags)]) -> String {
+            WTFMixedInputManager.shared.clear()
+            WTFMixedInputManager.shared.resetCommittedContext()
+            let client = ShortTokenMockClient()
+            let controller = McBopomofoInputMethodController(server: nil, delegate: nil, client: nil)!
+            controller.activateServer(client)
+
+            for (key, flags) in keys {
+                let event = makeEvent(key, flags: flags)
+                _ = controller.handle(event, client: client)
+            }
+            let text = client.insertedText.isEmpty ? client.markedText : client.insertedText
+            return text.trimmingCharacters(in: .whitespaces)
+        }
+
+        // S1: 含 8(ㄚ) 韻母單字: w -> 8 -> Space => 「他」（或同音字）
+        let resS1 = simulatePipeline(keys: [("w", []), ("8", []), (" ", [])])
+        XCTAssertTrue(WTFMixedInputManager.isCJK(resS1.first ?? " "), "S1 must yield Chinese 他, got: \(resS1)")
+        XCTAssertFalse(resS1.contains("w8"), "S1 must not yield w8")
+        XCTAssertFalse(resS1.contains(" "), "S1 must not contain spaces")
+
+        // S2: 含 9(ㄞ) 韻母單字: e -> j -> 9 -> 4 -> Enter => 「怪」
+        let resS2 = simulatePipeline(keys: [("e", []), ("j", []), ("9", []), ("4", []), ("\n", [])])
+        XCTAssertEqual(resS2, "怪", "S2 must yield 怪, got: \(resS2)")
+        XCTAssertFalse(resS2.contains(" "), "S2 must not contain spaces")
+
+        // S3: 含 0(ㄢ) 韻母單字: d -> 0 -> 4 -> Enter => 「看」
+        let resS3 = simulatePipeline(keys: [("d", []), ("0", []), ("4", []), ("\n", [])])
+        XCTAssertEqual(resS3, "看", "S3 must yield 看, got: \(resS3)")
+        XCTAssertFalse(resS3.contains(" "), "S3 must not contain spaces")
+
+        // S4: 雙字連打（前字 4 聲 ＋ 後字字母起首）: 5k4 (這) -> u;4 (樣) -> Enter => 「這樣」
+        let resS4 = simulatePipeline(keys: [("5", []), ("k", []), ("4", []), ("u", []), (";", []), ("4", []), ("\n", [])])
+        XCTAssertEqual(resS4, "這樣", "S4 must yield 這樣, got: \(resS4)")
+        XCTAssertFalse(resS4.contains(" "), "S4 must not contain spaces")
+        XCTAssertFalse(resS4.contains("4u"), "S4 must not trigger Rule A 4u collision")
+
+        // S5: 雙字連打（後字含 9 韻母）: fu6 (奇) -> ej94 (怪) -> Enter => 「奇怪」
+        let resS5 = simulatePipeline(keys: [("f", []), ("u", []), ("6", []), ("e", []), ("j", []), ("9", []), ("4", []), ("\n", [])])
+        XCTAssertEqual(resS5, "奇怪", "S5 must yield 奇怪, got: \(resS5)")
+        XCTAssertFalse(resS5.contains(" "), "S5 must not contain spaces")
+
+        // S6: 雙字連打（後字為數字聲母 2 起首）: cl3 (好) -> 283 (打) -> Enter => 「好打」
+        let resS6 = simulatePipeline(keys: [("c", []), ("l", []), ("3", []), ("2", []), ("8", []), ("3", []), ("\n", [])])
+        XCTAssertEqual(resS6, "好打", "S6 must yield 好打, got: \(resS6)")
+        XCTAssertFalse(resS6.contains(" "), "S6 must not contain spaces")
+
+        // S7: 使用者實測崩潰完整長句還原
+        // 句 1: 這樣對嗎 (5k4 u;4 2jo4 a87 Enter)
+        let s7Keys1: [(String, NSEvent.ModifierFlags)] = [
+            ("5", []), ("k", []), ("4", []),
+            ("u", []), (";", []), ("4", []),
+            ("2", []), ("j", []), ("o", []), ("4", []),
+            ("a", []), ("8", []), ("7", []),
+            ("\n", [])
+        ]
+        let resS7_1 = simulatePipeline(keys: s7Keys1)
+        XCTAssertEqual(resS7_1, "這樣對嗎", "S7_1 must yield 這樣對嗎 without spaces, got: \(resS7_1)")
+        XCTAssertFalse(resS7_1.contains(" "), "S7_1 must not contain spaces")
+
+        // 句 2: 打出來的字很奇怪 (283 tjSpace x96 2k7 y4 cp3 fu6 ej94 Enter)
+        let s7Keys2: [(String, NSEvent.ModifierFlags)] = [
+            ("2", []), ("8", []), ("3", []),
+            ("t", []), ("j", []), (" ", []),
+            ("x", []), ("9", []), ("6", []),
+            ("2", []), ("k", []), ("7", []),
+            ("y", []), ("4", []),
+            ("c", []), ("p", []), ("3", []),
+            ("f", []), ("u", []), ("6", []),
+            ("e", []), ("j", []), ("9", []), ("4", []),
+            ("\n", [])
+        ]
+        let resS7_2 = simulatePipeline(keys: s7Keys2)
+        XCTAssertTrue(resS7_2 == "打出來的字很奇怪" || resS7_2 == "打出來的自很奇怪", "S7_2 must yield 打出來的字很奇怪 (or 自) without spaces, got: \(resS7_2)")
+        XCTAssertFalse(resS7_2.contains(" "), "S7_2 must not contain spaces")
     }
 }
 

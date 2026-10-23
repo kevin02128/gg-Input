@@ -1309,7 +1309,33 @@ extension McBopomofoInputMethodController {
             return nil
         }
 
+        // 大前提：中文整句組字保護傘 (Composing Session Guard)
+        // 若底層中文組字區已有至少一個完成了聲調的中文字 (如「這」、「打」)，
+        // 代表使用者正處於「連續中文整句輸入狀態」，後續按鍵一律 100% 交由底層 KeyHandler.mm 處理，
+        // 嚴禁在此時中途啟動 Rule A/B/C 相衝攔截，避免打斷整句輸入！
+        let hasActiveComposedChinese: Bool = {
+            guard let notEmpty = state as? InputState.NotEmpty else { return false }
+            return notEmpty.composingBuffer.contains(where: { WTFMixedInputManager.isCJK($0) })
+        }()
+
+        if hasActiveComposedChinese {
+            // 在多字連續中文輸入時，清空雙軌預測暫存，完全放行給 KeyHandler
+            if !WTFMixedInputManager.shared.currentBuffer.isEmpty {
+                WTFMixedInputManager.shared.clear()
+                hideTooltip()
+            }
+            return nil
+        }
+
         // 2. 雙軌狀態 (尚未鎖定純英文)
+        // Space 鍵：非純英文模式下，Space 代表中文第一聲或選字確認！
+        // 立即清空雙軌英文緩衝區，原封不動放行給 KeyHandler.mm，嚴禁插入半形空格！
+        if keyCode == kSpace {
+            WTFMixedInputManager.shared.clear()
+            hideTooltip()
+            return nil
+        }
+
         // Tab 鍵：送出整句（若有英文預測詞則補全英文後送出；若有中文聯想字則一鍵補全中文）
         if keyCode == kTab && !isCandidateWindowVisible {
             let current = WTFMixedInputManager.shared.currentBuffer
@@ -1493,11 +1519,23 @@ extension McBopomofoInputMethodController {
         }
 
         if let chars = event.characters, let first = chars.first {
-            // 如果剛才這按鍵是聲調鍵，且剛好完成了中文音節組字，則清空英文緩衝區
-            // （注意：若緩衝區原本為空，單獨聲調 3,4,6,7 不算完成中文，需記錄到緩衝區防後續接字母）
-            let hadValidChinesePrefix = !WTFMixedInputManager.shared.currentBuffer.isEmpty
-                && WTFMixedInputManager.shared.validateBopomofo(input: WTFMixedInputManager.shared.currentBuffer).isValid
-            if (first == "3" || first == "4" || first == "6" || first == "7") && hadValidChinesePrefix {
+            // 聲調鍵 (3, 4, 6, 7)：
+            // 1. 若目前組字區中已有完成的中文字，或者緩衝區原本已有中文前綴完成組字，一律清空，絕不追加！
+            // 2. 只有在「組字區為空」且「雙軌緩衝區為空」的純孤立狀態下按下 3, 4, 6, 7，才記錄為孤立聲調 (以防 4K、3D、3C)
+            if first == "3" || first == "4" || first == "6" || first == "7" {
+                let hasComposedChinese = (self.state as? InputState.NotEmpty)?.composingBuffer.contains(where: { WTFMixedInputManager.isCJK($0) }) ?? false
+                let hadPrefix = !WTFMixedInputManager.shared.currentBuffer.isEmpty
+                if hasComposedChinese || hadPrefix {
+                    WTFMixedInputManager.shared.clear()
+                    hideTooltip()
+                    return
+                }
+            }
+
+            // 若目前組字區中已有完成的中文字 (例如「這」、「打」)，使用者正在整句中文輸入，
+            // 雙軌英文緩衝區保持清空，不累加任何鍵，完全交給 KeyHandler
+            if let notEmpty = self.state as? InputState.NotEmpty,
+               notEmpty.composingBuffer.contains(where: { WTFMixedInputManager.isCJK($0) }) {
                 WTFMixedInputManager.shared.clear()
                 hideTooltip()
                 return

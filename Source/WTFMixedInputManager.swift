@@ -34,6 +34,8 @@ public class WTFMixedInputManager {
 
     // MARK: - 數字與大千注音鍵盤分類
     public static let toneDigits: Set<Character> = ["3", "4", "6", "7"]
+    public static let initialDigits: Set<Character> = ["1", "2", "5"] // 聲母：ㄅ、ㄉ、ㄓ
+    public static let finalDigits: Set<Character> = ["8", "9", "0"]   // 韻母：ㄚ、ㄞ、ㄢ
     public static let nonToneDigits: Set<Character> = ["1", "2", "5", "8", "9", "0"]
     public static let bopomofoInitialDigits: Set<Character> = ["1", "2", "5"]
     public static let bopomofoFinalDigits: Set<Character> = ["8", "9", "0"]
@@ -314,38 +316,45 @@ public class WTFMixedInputManager {
         let isNextLetter = (lowerNext >= "a" && lowerNext <= "z")
         let isNextDigit = (nextChar >= "0" && nextChar <= "9")
 
-        // Rule A: 聲調起首短字 (Isolated Tone Prefix Collision)
-        // 若目前 buffer 為單獨聲調數字 (3, 4, 6, 7)，下一個鍵按字母 (a-z)
-        // 注音語法絕不可能以聲調開頭後接字母 -> 判定為相衝 (如 4k, 3d, 3c)
+        // Rule A: 孤立聲調起首防護 (4K, 3D, 3C)
+        // 唯有當 buffer 長度為 1，且為孤立聲調 (3, 4, 6, 7)，下一鍵為字母 (a-z) 時觸發
         if buffer.count == 1, let firstChar = buffer.first, Self.toneDigits.contains(firstChar), isNextLetter {
             return true
         }
 
-        // Rule B: 注音數字起首相衝 (Digit-Bopomofo Collision)
-        // 若目前 buffer 開頭為非聲調數字 (1, 2, 5, 8, 9, 0)，下一個鍵為字母：
-        // 1. 聲母數字 (5=ㄓ, 1=ㄅ, 2=ㄉ) 後接聲母字母 (如 5+g = ㄓ+ㄕ 雙聲母相衝，如 5g)
-        // 2. 韻母數字 (8=ㄚ, 9=ㄞ, 0=ㄢ) 後接韻母字母 (如 8+k = ㄚ+ㄜ 雙韻母相衝，如 8k)
-        // 3. 任何無法組成單一合法注音之組合
-        if buffer.count == 1, let firstChar = buffer.first, Self.nonToneDigits.contains(firstChar), isNextLetter {
+        // Rule B: 注音數字起首相衝 (5G, 8K, 1A, 2B)
+        // 當 buffer 長度為 1，且為注音數字 (1, 2, 5, 8, 9, 0)，下一鍵為字母時：
+        // 檢查兩者是否能構成合法的注音音節前綴 (例如 1u=ㄅㄧ, 28=ㄉㄚ 合法；5g=ㄓㄕ, 8k=ㄚㄜ 不合法)
+        if buffer.count == 1, let firstChar = buffer.first, (Self.initialDigits.contains(firstChar) || Self.finalDigits.contains(firstChar)), isNextLetter {
             let combined = buffer + String(lowerNext)
             if !validateBopomofo(input: combined).isValid {
                 return true
             }
+            return false
         }
 
-        // Rule C: 字母接非聲調數字相衝 (Letter Followed by Non-Tone Digit)
-        // 若目前 buffer 含有字母，下一個鍵按非聲調數字 (1, 2, 5, 8, 9, 0)：
-        // 數字 1(ㄅ), 2(ㄉ), 5(ㄓ) 為聲母，絕不可能接在韻母後面 (如 m(ㄩ)+1(ㄅ) 變 M1)
-        // 數字 8(ㄚ), 9(ㄞ), 0(ㄢ) 為韻母，若無法與前面字母組合成合法注音音節，判定相衝
-        // (注意：若下一個鍵為 3, 4, 6, 7 聲調數字，且前面字母可拼出合法注音，如 m+4=玉，則此函數回傳 false，維持中文！)
+        // Rule C: 字母後接數字的精準語法檢查 (修復 M1，同時徹底保護 8, 9, 0 韻母字)
         if isNextDigit {
-            if Self.nonToneDigits.contains(nextChar) {
+            // C1. 下一鍵為聲母數字 1(ㄅ), 2(ㄉ), 5(ㄓ)
+            // 在單音節中，聲母只能在最開頭，絕不可能接在英文字母後面 (如 m1, b2)
+            if Self.initialDigits.contains(nextChar) {
                 let combined = buffer + String(nextChar)
                 if !validateBopomofo(input: combined).isValid {
                     return true
                 }
-            } else if Self.toneDigits.contains(nextChar) {
-                // 如果是聲調數字，但前面字母根本無法拼成合法注音 (例如 ps + 5)，也判定相衝
+            }
+            // C2. 下一鍵為韻母數字 8(ㄚ), 9(ㄞ), 0(ㄢ)
+            // 8, 9, 0 是韻母！若能與前面的聲母/介音組成合法注音 (如 w8=他, ej9=怪, d0=看, ru8=家)，100% 合法，返回 false！
+            // 只有當雙韻母相撞或注音不合法時 (如 ai8, m8)，才判定相衝
+            else if Self.finalDigits.contains(nextChar) {
+                let combined = buffer + String(nextChar)
+                if !validateBopomofo(input: combined).isValid {
+                    return true
+                }
+            }
+            // C3. 下一鍵為聲調數字 3, 4, 6, 7
+            // 若與前面字母無法拼成合法注音 (例如 ps5)，判定相衝
+            else if Self.toneDigits.contains(nextChar) {
                 let combined = buffer + String(nextChar)
                 if !validateBopomofo(input: combined).isValid {
                     return true
