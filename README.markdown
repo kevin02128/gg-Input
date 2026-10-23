@@ -1,38 +1,36 @@
 # gg 輸入法 (gg Input Method)
 
-由 **WTF Team** 開發之新一代智慧型台灣繁體中文輸入法，衍生自開放原始碼專案 [McBopomofo (小麥注音)](https://github.com/openvanilla/McBopomofo)，內建專為 Apple Silicon 打造之 **KyonLM 神經語言模型**（由 Apple Neural Engine 硬體加速）與中英混打引擎。
+衍生自開放原始碼專案 [McBopomofo (小麥注音)](https://github.com/openvanilla/McBopomofo)，內建專為 Apple Silicon 打造之 **KyonLM 神經語言模型**（由 Apple Neural Engine 硬體加速）與中英混打引擎。
 
 ## 關於本專案
 
-本專案是一位大學生的學習與練習作品，在 AI 程式助理（agent）的輔導與協助下，邊做邊學輸入法、Swift / Objective-C++ / C++ 與神經語言模型的開發。專案以開源的 McBopomofo 為基礎進行衍生開發，程式品質與穩定性仍在持續學習與改進中。
-
-歡迎透過 Issue 或 Pull Request 提出建議與指教，也請多包涵。
+本專案是一位大學生的學習作品，自用為目的。
+在 AI 程式助理（agent）的輔導與協助下。專案以開源的 McBopomofo 為基礎進行開發。
 
 ## 核心特色
 
-- **KyonLM 神經語言模型（ANE 加速）**：10 層因果 Transformer 架構（約 55.5M 參數），即時審查 N-Best 整句語意並融合雙向語意規則，且 100% 本地離線執行。
+- **KyonLM 神經語言模型（ANE 加速）**：10 層因果 Transformer 架構（約 55.5M 參數），本地離線執行。
 - **智慧中英混打雙軌預測**：免切換英數模式，敲擊英文字母自動預測英文單字，支援 `Tab` 一鍵補全。
 - **盤古之白**：中文與英文、數字交界自動補齊半形空格，排版乾淨美觀。
-- **一體化 gg 控制台**：集中管理安裝、覆蓋更新、KyonLM 模型狀態、即時延遲監控與完全解除安裝。
 
 ## 系統需求
 
-- **硬體**：搭載 Apple Silicon (M1 / M2 / M3 / M4) 之 Mac
+- **硬體**：搭載 Apple Silicon 之 Mac
 - **作業系統**：macOS 13.0 (Ventura) 或更高版本
-- **開發工具**（自行編譯）：Xcode 15.3 / 16.0+、Python 3.9+
+- **開發工具**（自行編譯）：Xcode 16.0+、Python 3.9+
 
 ## 一般使用者安裝方式
 
 1. 前往 [Releases](https://github.com/kevin02128/gg-Input/releases) 下載安裝映像檔：
-   - **`gg.dmg`**（推薦）：完整版，內建 KyonLM 神經語言模型，開箱即用。
+   - **`gg.dmg`**（推薦）：完整版，內建 KyonLM 神經語言模型。
    - **`gg.lite.dmg`**：輕量版，極簡純詞庫，不含神經模型。
-2. 雙擊開啟下載的 DMG 檔案，將 **`gg 控制台.app`** 拖曳至 **`Applications`（應用程式）** 資料夾。
+2. 開啟 DMG 檔案，將 **`gg 控制台.app`** 拖曳至 **`Applications`（應用程式）** 資料夾。
 3. 開啟「gg 控制台.app」，點擊「同意並安裝 gg 輸入法」。
 4. 前往 macOS「系統設定 > 鍵盤 > 文字輸入 > 輸入來源（編輯）」點擊 `+`，在繁體中文清單中新增並啟用 **gg** 即可開始打字。
 
 ### 首次開啟若被 macOS 阻擋（Gatekeeper 處理指引）
 
-由於本專案為個人開源作品，未加入付費 Apple Developer Program 商業開發者證書進行官方伺服器公證（Notarization），macOS 首次開啟由瀏覽器下載的 App 時會啟動安全防護機制：
+由於未加入 Apple Developer Program 商業開發者證書進行官方伺服器公證（Notarization），macOS 首次開啟由瀏覽器下載的 App 時會啟動安全防護機制：
 
 * **情況一：提示「無法驗證開發者」**
   - 前往 macOS **「系統設定」>「隱私權與安全性」**。
@@ -50,18 +48,6 @@
   *(若安裝後輸入法本體亦遇隔離阻擋，可對輸入法執行：`xattr -cr "$HOME/Library/Input Methods/gg.app"`)*
 
 ## 開發者建置指南
-
-```bash
-# 1. 複製專案
-git clone https://github.com/kevin02128/gg-Input.git
-cd gg-Input
-
-# 2. 初始化 KyonLM 模型目錄
-./scripts/setup_model.sh
-
-# 3. 產出 DMG 安裝包
-./package_dmg.command
-```
 
 若欲自行重新訓練或微調 KyonLM 神經語言模型，請參閱 [`Trainer/README.md`](Trainer/README.md)。
 
