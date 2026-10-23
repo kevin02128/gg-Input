@@ -14,6 +14,42 @@
 
 ---
 
+## ⚡ Token 節省與高效率工作規範 (Token Efficiency & Speed Rules)
+
+為了將上下文視窗 (Context Window) 與 Token 消耗降至最低，並最大化執行速度，請嚴格遵守以下 5 項操作限制：
+
+### 1. 嚴禁讀取大型字典與二進位產物 (Large File Blacklist)
+- **絕對禁止**對 `Source/Data/` 下的大型資料檔執行完整讀取 (`view_file` / `cat`)，包含但不限於：
+  - `Source/Data/data.txt`
+  - `Source/Data/data-plain-bpmf.txt`
+  - `Source/Data/BPMFMappings.txt`
+  - `Source/Data/phrase.occ`
+  - `Source/Data/associated-phrases-v2.txt`
+  - 任何 `.mlmodelc`、`build/`、`DerivedData/` 或 `.dmg` 檔案。
+- **替代方案**：若需查詢或驗證特定字詞映射，**只能使用精確搜尋指令**（如 `grep -n "關鍵字" Source/Data/BPMFPunctuations.txt | head -n 20`），嚴禁將超過 50 行的字典內容載入對話中。
+
+### 2. 精準局部讀檔與局部修改 (Targeted Read & Surgical Edit)
+- **先搜後讀**：處理超過 200 行的程式碼檔案（如 `InputMethodController.swift`、`KeyHandler.mm`、`WTFMixedInputManager.swift`）時，**禁止一次讀取整個檔案**。必須先用 `grep` 找出目標函數或關鍵字的行號，再僅讀取該行號前後 40～60 行的區間。
+- **局部替換**：修改程式碼時，優先使用局部區塊替換工具（Diff / Replace），**禁止重寫或輸出整個檔案的完整內容**。
+
+### 3. 靜默化編譯與單一測試執行 (Quiet Build & Focused Testing)
+- `xcodebuild` 預設會吐出數千行編譯訊息，嚴重浪費 Token。執行建置或測試時：
+  - **必須加上 `-quiet` 參數**，或僅擷取錯誤與測試結果摘要（例如：`xcodebuild test -project gg.xcodeproj -scheme gg -destination 'platform=macOS' -quiet`）。
+  - 在開發與除錯階段，**優先只跑當前修改相關的單一測試函數**（使用 `-only-testing:ggTests/KeyHandlerBopomofoTests/測試函數名稱`），全部改完最後才跑一次全套測試。
+
+### 4. 大千注音鍵位速查表（內建記憶，免查原始碼）
+請直接使用以下大千（Standard）鍵位映射進行邏輯推演，**無須為了確認鍵位而去翻閱 `Mandarin.cpp` 原始碼**：
+- **聲母 (Initials)**：`1`(ㄅ) `q`(ㄆ) `a`(ㄇ) `z`(ㄈ) `2`(ㄉ) `w`(ㄊ) `s`(ㄋ) `x`(ㄌ) `e`(ㄍ) `d`(ㄎ) `c`(ㄏ) `r`(ㄐ) `f`(ㄑ) `v`(ㄒ) `5`(ㄓ) `t`(ㄔ) `g`(ㄕ) `b`(ㄖ) `y`(ㄗ) `h`(ㄘ) `n`(ㄙ)
+- **介音 (Medials)**：`u`(ㄧ) `j`(ㄨ) `m`(ㄩ)
+- **韻母 (Finals)**：`8`(ㄚ) `i`(ㄛ) `k`(ㄜ) `,`(ㄝ) `9`(ㄞ) `o`(ㄟ) `l`(ㄠ) `.`(ㄡ) `0`(ㄢ) `p`(ㄣ) `;`(ㄤ) `/`(ㄥ) `-`(ㄦ)
+- **聲調 (Tones)**：`Space`(一聲) `6`(二聲 ˊ) `3`(三聲 ˇ) `4`(四聲 ˋ) `7`(輕聲 ˙)
+
+### 5. 極簡白話溝通格式 (Concise Communication)
+- **禁止重複貼出原始碼**：除非使用者要求，否則在報告中**不要大段貼出剛寫好的程式碼**（只需列出修改了哪個檔案、哪個函數、核心邏輯是什麼）。
+- **白話且精煉**：向使用者提出【修改計畫書】或【完成報告】時，請用最直覺的白話文與簡短條列呈現，控制在 300～500 字以內，省略所有客套話與冗長的背景鋪陳。
+
+---
+
 ## Project Overview
 
 `gg` 輸入法是基於 McBopomofo（小麥注音）深度改造的 macOS 繁體中文大千注音與中英雙軌智慧輸入法。
@@ -40,7 +76,7 @@
 
 ```bash
 # 1. 執行完整單元測試（修改程式碼後必跑）
-xcodebuild test -project gg.xcodeproj -scheme gg -destination 'platform=macOS'
+xcodebuild test -project gg.xcodeproj -scheme gg -destination 'platform=macOS' -quiet
 
 # 2. 本機即時編譯與熱重載輸入法
 ./dev_reload.sh

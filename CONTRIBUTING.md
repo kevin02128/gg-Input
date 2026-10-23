@@ -6,7 +6,7 @@
 
 - **硬體**：搭載 Apple Silicon (M1 / M2 / M3 / M4) 之 Mac
 - **作業系統**：macOS 14.0 或更新版本（Runtime 支援 macOS 13.0+）
-- **開發工具**：Xcode 15.3 或更新版本、Python 3.9+
+- **開發工具**：Xcode 16.0 或更新版本（支援 Swift Testing 框架）、Python 3.9+
 
 ## 2. 快速建置與熱重載工作流
 
