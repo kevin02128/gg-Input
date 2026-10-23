@@ -164,9 +164,10 @@ final class PreferencesTests {
 
     @Test("Test ESC key clearing input buffer")
     func testEscToCleanInputBuffer() {
+        #expect(Preferences.escToCleanInputBuffer == true)
+        Preferences.escToCleanInputBuffer = false
         #expect(Preferences.escToCleanInputBuffer == false)
         Preferences.escToCleanInputBuffer = true
-        #expect(Preferences.escToCleanInputBuffer == true)
     }
 
     @Test("Test candidate text font name setting")

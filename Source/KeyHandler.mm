@@ -805,10 +805,6 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
             stateCallback(empty);
             return YES;
         }
-        if (Preferences.shiftEnterEnabled && [_inputMode isEqualToString:InputModeBopomofo] && input.isShiftHold &&
-            [state isKindOfClass:[InputStateInputting class]]) {
-            return [self handleAssociatedPhraseWithState:(InputStateInputting *)state useVerticalMode:input.useVerticalMode stateCallback:stateCallback errorCallback:errorCallback autoTriggered:NO maxCandidateCount:0];
-        }
         return [self _handleEnterWithState:state stateCallback:stateCallback errorCallback:errorCallback];
     }
 

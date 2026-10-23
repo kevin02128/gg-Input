@@ -479,30 +479,6 @@ private struct BasicPreferencesView: View {
             Divider()
                 .padding(.vertical, 5)
 
-            PreferenceRow(localized("Shift + Letter Keys:")) {
-                Picker("", selection: $preferences.letterBehavior) {
-                    Text(localized("Input uppercase letters directly")).tag(0)
-                    Text(localized("Input lowercased letters to buffer")).tag(1)
-                }
-                .labelsHidden()
-                .pickerStyle(RadioGroupPickerStyle())
-                .fixedSize()
-            }
-
-            PreferenceRow(localized("ESC Key:")) {
-                Toggle(
-                    localized("ESC key clears entire input buffer"),
-                    isOn: $preferences.escToCleanInputBuffer)
-            }
-
-            Divider()
-                .padding(.vertical, 5)
-
-            PreferenceRow {
-                Toggle(
-                    localized("Beep upon input error"), isOn: $preferences.beepUponInputError)
-            }
-
             PreferenceRow {
                 Toggle(
                     localized("Check for updates automatically"),

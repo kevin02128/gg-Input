@@ -252,18 +252,23 @@ class Preferences: NSObject {
         Preferences.phraseReplacementEnabled = Preferences.phraseReplacementEnabled
         UserDefaults.standard.set(false, forKey: kAssociatedPhrasesEnabledKey)
         Preferences.associatedPhrasesEnabled = false
-        Preferences.letterBehavior = Preferences.letterBehavior
+        UserDefaults.standard.set(0, forKey: kLetterBehaviorKey)
+        Preferences.letterBehavior = 0
         Preferences.switchInputSourceUponShiftLetterKeyComboInputSourceID = Preferences.switchInputSourceUponShiftLetterKeyComboInputSourceID
         Preferences.switchInputSourceUponShiftLetterKeyComboEnabled = Preferences.switchInputSourceUponShiftLetterKeyComboEnabled
         Preferences.controlEnterOutput = Preferences.controlEnterOutput
         Preferences.switchInputSourceUponCommandKeyPressEnabled = Preferences.switchInputSourceUponCommandKeyPressEnabled
         Preferences.switchInputSourceUponCommandKeyPressInputSourceID = Preferences.switchInputSourceUponCommandKeyPressInputSourceID
-        Preferences.shiftEnterEnabled = Preferences.shiftEnterEnabled
+        UserDefaults.standard.set(false, forKey: kShiftEnterEnabledKey)
+        Preferences.shiftEnterEnabled = false
         Preferences.repeatedPunctuationToSelectCandidateEnabled =
             Preferences.repeatedPunctuationToSelectCandidateEnabled
         Preferences.addPhraseHookEnabled = Preferences.addPhraseHookEnabled
         Preferences.addPhraseHookPath = Preferences.addPhraseHookPath
-        Preferences.beepUponInputError = Preferences.beepUponInputError
+        UserDefaults.standard.set(true, forKey: kBeepUponInputErrorKey)
+        Preferences.beepUponInputError = true
+        UserDefaults.standard.set(true, forKey: kEscToCleanInputBufferKey)
+        Preferences.escToCleanInputBuffer = true
         Preferences.enableUserPhrasesInPlainBopomofo = Preferences.enableUserPhrasesInPlainBopomofo
         Preferences.allowMovingCursorWhenChoosingCandidates =
             Preferences.allowMovingCursorWhenChoosingCandidates
@@ -323,7 +328,7 @@ class Preferences: NSObject {
         return halfWidthPunctuationEnabled
     }
 
-    @UserDefault(key: kEscToCleanInputBufferKey, defaultValue: false)
+    @UserDefault(key: kEscToCleanInputBufferKey, defaultValue: true)
     @objc static var escToCleanInputBuffer: Bool
 
     @UserDefault(key: kKeepReadingUponCompositionError, defaultValue: false)
@@ -456,7 +461,7 @@ extension Preferences {
         return associatedPhrasesEnabled
     }
 
-    @UserDefault(key: kShiftEnterEnabledKey, defaultValue: true)
+    @UserDefault(key: kShiftEnterEnabledKey, defaultValue: false)
     @objc static var shiftEnterEnabled: Bool
 
     @UserDefault(key: kRepeatedPunctuationToSelectCandidateEnabledKey, defaultValue: false)
