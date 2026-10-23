@@ -262,7 +262,9 @@ public class VerticalCandidateController: CandidateController {
         tableView.allowsMultipleSelection = false
         tableView.allowsEmptySelection = false
         tableView.backgroundColor = .clear
-        tableView.style = .fullWidth
+        if #available(macOS 11.0, *) {
+            tableView.style = .fullWidth
+        }
         candidateTextPadding = kCandidateTextPaddingWithMandatedTableViewPadding
         candidateTextLeftMargin = kCandidateTextLeftMarginWithMandatedTableViewPadding
 
