@@ -217,7 +217,11 @@ private class HorizontalCandidateView: NSView {
                 )
                 let capsuleRect = itemRect.insetBy(dx: 2.0, dy: 2.0)
                 let path = NSBezierPath(roundedRect: capsuleRect, xRadius: 6.0, yRadius: 6.0)
-                NSColor.controlAccentColor.setFill()
+                if #available(macOS 10.14, *) {
+                    NSColor.controlAccentColor.setFill()
+                } else {
+                    NSColor.selectedControlColor.setFill()
+                }
                 path.fill()
                 activeKeyLabelAttrDict[.foregroundColor] = NSColor.white.withAlphaComponent(0.85)
                 activeCandidateAttr[.foregroundColor] = NSColor.white

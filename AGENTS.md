@@ -1,215 +1,55 @@
 # AGENTS.md
 
-This file provides guidance to AI coding assistants when working with code in this repository.
+本文件為 AI 編程助手（如 Antigravity / Copilot）在 `gg` 輸入法專案中工作的最高指導原則。
+
+---
+
+## 🚨 最高執行鐵律 (Strict Execution Policy - MUST FOLLOW)
+
+1. **禁止未經允許修改或執行 (Plan-First Gate)**：
+   - 當使用者提出新需求、Bug 修復、按鍵調整或架構詢問時，**絕對禁止**直接修改任何程式碼或資料檔，也**絕對禁止**未經授權直接執行 `./dev_reload.sh`、`./package_dmg.command`、`git commit` 或 `git push`。
+2. **強制兩階段工作流 (Two-Phase Workflow)**：
+   - **第一階段（唯讀掃描與提案）**：僅允許讀取檔案與搜尋程式碼。找出問題根因（Root Cause）後，必須使用**繁體中文**向使用者輸出結構化的【技術修改計畫書】（包含：根因分析、預計修改檔案、邊界條件防呆、預計新增的單元測試）。最後必須停下來詢問：「請確認以上計畫是否無誤，確認後我再開始實作。」
+   - **第二階段（授權後實作）**：只有在收到使用者明確回覆「好」、「可以」、「開始執行」等同意字眼後，才允許修改檔案、執行 `xcodebuild test`、`./dev_reload.sh` 與 `./package_dmg.command`。
+
+---
 
 ## Project Overview
 
-McBopomofo (小麥注音輸入法) is a Traditional Chinese input method engine for macOS that enables users to input Traditional Chinese characters using the Bopomofo phonetic system (注音符號). The app also supports two Taiwanese Braille formats, Unicode and ASCII. The project is built with Swift (UI/state management), Objective-C++ (bridge layer), and C++ (core engine), using macOS Input Method Kit (IMK) framework.
+`gg` 輸入法是基於 McBopomofo（小麥注音）深度改造的 macOS 繁體中文大千注音與中英雙軌智慧輸入法。
+除支援傳統注音外，核心特色包含：
+1. **中英雙軌並行預測 (`WTFMixedInputManager`)**：同時考量英文與注音合法性，支援 `Tab` 補全英文、聲調鍵觸發中文、注音語法相衝時自動鎖定純英文模式，以及科技英數短字（如 `4K`, `3D`, `5G`, `8K`, `M1`, `B2B`）直出。
+2. **直覺化按鍵與標點邏輯**：按住 `Option ⌥` 強制 100% 輸出美式半形數字與符號（阻斷 macOS 原生冷門歐文符號如 `÷`, `æ`）。
+3. **KyonLM 模型與輕量版雙軌打包**：支援完整版 (`gg.dmg`) 與純詞典輕量版 (`gg.lite.dmg`)。
 
-## System Requirements
+專案採用三層架構：Swift (UI / 雙軌狀態管理)、Objective-C++ (橋接層)、C++ (核心注音與語言模型引擎)，基於 macOS Input Method Kit (IMK) 框架。
 
-**Runtime:** macOS 13.0 (Ventura) or later
+---
 
-**Development:**
-- macOS 14.7 or later
-- Xcode 15.3 or later
-- Python 3.9 (for dictionary data generation)
-
-## Building and Running
+## Building, Reloading, and Packaging
 
 ### Xcode Project Structure
 
-The project contains these main **targets**:
-- `McBopomofo`: Main input method bundle
-- `McBopomofoInstaller`: Installer app (recommended for development)
-- `Data`: Dictionary data generation
-- `McBopomofoTests`: Swift test suite
+主要 **targets**：
+- `gg`: 主輸入法 bundle
+- `ggInstaller`: 安裝程式
+- `Data`: 字典資料編譯目標 (`Source/Data/Makefile`)
+- `ggTests`: Swift 單元測試套件（包含雙軌、英數短字與連續長句迴歸測試）
 
-**Build configurations:** Debug, Release (default when building from command line)
-
-**Available schemes:** McBopomofo, McBopomofoInstaller, Data, plus individual schemes for local packages (BopomofoBraille, CandidateUI, ChineseNumbers, FSEventStreamHelper, InputSourceHelper, NotifierUI, NSStringUtils, OpenCCBridge, SystemCharacterInfo, TooltipUI)
-
-### Primary Development Workflow
-
-1. Open `McBopomofo.xcodeproj` in Xcode
-2. Select the **"McBopomofoInstaller"** target
-3. Build (⌘+B) and run to install McBopomofo
-4. The installer automatically kills and restarts the input method process
-
-**Important:** macOS limits how many times an input method process can be killed in a single login session. If installation stops working after multiple installs, log out and log back in.
-
-### Command-Line Build
+### 常用開發與部署指令（需經使用者授權後執行）
 
 ```bash
-# Build the installer
-xcodebuild -project McBopomofo.xcodeproj -target McBopomofoInstaller -configuration Debug build
+# 1. 執行完整單元測試（修改程式碼後必跑）
+xcodebuild test -project gg.xcodeproj -scheme gg -destination 'platform=macOS'
 
-# Build the main input method
-xcodebuild -project McBopomofo.xcodeproj -target McBopomofo -configuration Debug build
+# 2. 本機即時編譯與熱重載輸入法
+./dev_reload.sh
 
-# Build dictionary data only
-xcodebuild -project McBopomofo.xcodeproj -target Data -configuration Debug build
-```
+# 3. 重新打包簽署正式版 (gg.dmg) 與輕量版 (gg.lite.dmg)
+./package_dmg.command
 
-### Running Tests
-
-#### Swift Tests
-- Target: `McBopomofoTests` in Xcode
-- Framework: XCTest with Swift `Testing` module
-- Run in Xcode with ⌘+U or test navigator
-
-#### C++ Engine Tests
-```bash
-cd Source/Engine
-mkdir build && cd build
-cmake -DENABLE_TEST=ON ..
-make
-ctest
-# Or run directly: ./McBopomofoLMLibTest
-```
-
-The C++ tests use Google Test framework and are defined in `Source/Engine/CMakeLists.txt`.
-
-### Dictionary Data Generation
-
-Dictionary data must be regenerated when modifying phrase mappings or frequency data:
-
-```bash
+# 4. 單獨重新生成字典檔（若有修改 Source/Data/ 下的檔案）
 cd Source/Data
-make all           # Generate data.txt, data-plain-bpmf.txt, associated-phrases-v2.txt
-make sort          # Sort all data files using C locale
-make check         # Validate data integrity
-make tidy          # Clean up formatting
-```
-
-**Critical:** Both `BPMFMappings.txt` and `phrase.occ` must be sorted with C locale:
-```bash
-LC_ALL=C sort -o BPMFMappings.txt BPMFMappings.txt
-LC_ALL=C sort -o phrase.occ phrase.occ
-```
-
-**For detailed dictionary data documentation**, see `Source/Data/AGENTS.md` which covers file formats, editing workflows, Python tools, and troubleshooting.
-
-## GitHub Copilot Configuration
-
-GitHub Copilot uses `.github/copilot-instructions.md` for its custom instructions. That file references this AGENTS.md for comprehensive context but includes essential guidelines inline since Copilot cannot automatically load AGENTS.md.
-
-For GitHub Copilot-specific configuration, see:
-- `.github/copilot-instructions.md` - Repository-wide Copilot instructions
-- `.github/instructions/Data.instructions.md` - Path-specific instructions for Source/Data
-
-## Architecture Overview
-
-McBopomofo uses a three-layer architecture (Swift/Objective-C++/C++). For detailed architecture and algorithm documentation, see:
-- `algorithm.md`: Comprehensive technical documentation (Chinese)
-- [Wiki: 程式架構](https://github.com/openvanilla/McBopomofo/wiki/程式架構): Program architecture
-- [Wiki: Gramambular 演算法](https://github.com/openvanilla/McBopomofo/wiki/程式架構_Gramambular): Gramambular algorithm
-
-## Key Files Reference
-
-| File | Purpose |
-|------|---------|
-| `Source/InputMethodController.swift` | Main IMK entry point, coordinates candidate menus and preferences |
-| `Source/InputState.swift` | State machine base and all state implementations |
-| `Source/KeyHandler.mm` | Objective-C++ bridge between Swift events and C++ engine |
-| `Source/LanguageModelManager.mm` | Wraps C++ language model for Swift consumption |
-| `Source/Engine/McBopomofoLM.cpp` | Core language model logic and unigram processing |
-| `Source/Engine/Mandarin/Mandarin.cpp` | Bopomofo syllable processing and keyboard layouts |
-| `Source/Engine/gramambular2/` | Text segmentation algorithms (HMM-based) |
-| `Source/Data/Makefile` | Dictionary data build system |
-| `Source/Data/AGENTS.md` | Comprehensive dictionary data documentation |
-| `algorithm.md` | Detailed algorithm explanation (Chinese) |
-| `McBopomofoTests/PreferencesTests.swift` | Example Swift Testing suite patterns |
-
-## Development Guidelines
-
-### General
-
-- **Never use emoji** in code, comments, documentation, or generated content outside `Source/Data/`. Emoji are permitted only within dictionary data files in `Source/Data` where mappings include emoji.
-- **Language restriction:** Use only English or Traditional Chinese. Simplified Chinese is prohibited in all documentation, comments, and reviews.
-- **Date/time format:** When noting "last updated" or timestamps in documentation, always use full ISO 8601 datetime in UTC+8 timezone (e.g., `2025-10-12T14:30:00+08:00`). Use the `date` command to get the current system time and adjust to UTC+8 if needed
-
-### Conventional Commits
-
-- **MUST use Conventional Commits format** for all git commits and pull requests
-- Format: `type(scope): description`
-- Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
-- Examples:
-  - `feat(input): add new keyboard layout support`
-  - `fix(engine): correct syllable composition for edge case`
-  - `docs(readme): update installation instructions`
-  - `refactor(state): simplify state transition logic`
-- Keep descriptions concise and in present tense
-- See: https://www.conventionalcommits.org/
-
-### Swift & AppKit
-
-- Use `Preferences` static properties and property wrappers instead of direct `UserDefaults` access
-- Localize all UI strings with `NSLocalizedString("…", comment: "")` and update `.strings` files in `Base.lproj`, `en.lproj`, `zh-Hant.lproj`
-- Perform UI work on main thread; use existing helpers/notifications rather than ad-hoc dispatch queues
-- Interact with engine through `KeyHandler`/`LanguageModelManager` bridges, not directly
-- Keep AppKit/IMKit work in Swift classes with `private`/`fileprivate` scope
-
-### State Machine
-
-- Treat `InputState` subclasses as immutable; always create new state objects on transitions
-- Funnel all key handling through `KeyHandler` for consistent state transitions
-- Derive UI and candidate lists from state object, not scattered flags
-- Extend by adding new `InputState` subclasses with explicit transitions, not booleans
-
-### Objective-C++ Bridge
-
-- Manage C++ object lifetimes in `.mm` files with proper `init`/`dealloc`
-- Use `std::shared_ptr` when passing to C++ APIs
-- Surface engine capabilities by extending bridge classes and declaring in `McBopomofo-Bridging-Header.h`
-- Convert between `NSString` and `std::string` using `UTF8Helper`/`NSStringUtils`, not manual conversion
-- Keep bridge methods small: forward to engine, return Foundation types
-
-### C++ Engine
-
-- Follow C++17 style with `std::vector`, `std::unordered_map`, `std::optional`, `std::string_view`
-- Place code in existing namespaces: `McBopomofo`, `Formosa::Gramambular2`, `Formosa::Mandarin`
-- Reuse blob readers (`KeyValueBlobReader`, `ParselessPhraseDB`, `PhraseReplacementMap`)
-- Keep algorithms deterministic and side-effect free; logging stays in Objective-C++ layer
-
-### Testing
-
-- **Swift tests:** Use Swift `Testing` module with `@Suite`, `@Test`, `#expect` macros in `McBopomofoTests/`
-- **C++ tests:** Add to `Source/Engine/CMakeLists.txt` in `McBopomofoLMLibTest` target, use GoogleTest
-- **Mixed tests:** Use Objective-C++ (`.mm`) with bridging header for Swift-C++ interop
-- Snapshot/restore `UserDefaults` in tests (see `PreferencesTests.swift`)
-
-### Dictionary Data Modifications
-
-For dictionary data modifications, see [Wiki: 詞庫開發說明](https://github.com/openvanilla/McBopomofo/wiki/詞庫開發說明) or `Source/Data/AGENTS.md` for detailed workflows.
-
-## Things to Avoid
-
-- Don't replace AppKit windows with SwiftUI or Combine; runtime depends on NSWindow/XIB
-- Don't bypass the Objective-C++ bridge to access engine from Swift directly
-- Don't hardcode paths to user data; use preference APIs
-- Don't modify large dictionary blobs unless specifically targeting them
-- Don't add generic development practices or obvious instructions
-
-## Local Packages
-
-The `Packages/` directory contains local Swift Package dependencies:
-- `BopomofoBraille`: Taiwanese Braille conversion support for both Unicode and ASCII formats
-- `CandidateUI`: Candidate window rendering
-- `ChineseNumbers`: Chinese numeral conversion
-- `FSEventStreamHelper`: File system monitoring
-- `InputSourceHelper`: Input source management
-- `NotifierUI`: User notifications
-- `NSStringUtils`: String utility functions
-- `OpenCCBridge`: Traditional/Simplified Chinese conversion (wraps SwiftyOpenCC)
-- `SystemCharacterInfo`: Character information lookup (uses SQLite.swift)
-- `TooltipUI`: Tooltip display
-
-These are referenced directly by Xcode project, not through Package.swift.
-
-### External Package Dependencies
-
-The project also depends on these external Swift packages (resolved automatically by Xcode):
-- `swift-toolchain-sqlite` (1.0.4): Low-level SQLite bindings from Swift toolchain
-- `SQLite.swift` (0.15.4): Swift wrapper for SQLite3
-- `SwiftyOpenCC` (2.0.0-beta): Swift wrapper for OpenCC (Chinese text conversion)
+make all           # 生成 data.txt, data-plain-bpmf.txt, associated-phrases-v2.txt
+make sort          # 使用 LC_ALL=C 進行二進位排序（極重要，確保二分搜尋正確）
+make check         # 驗證字典資料完整性
