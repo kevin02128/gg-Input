@@ -24,6 +24,11 @@
 #ifndef SRC_ENGINE_MANDARIN_MANDARIN_H_
 #define SRC_ENGINE_MANDARIN_MANDARIN_H_
 
+// Undefine macro 'I' from <complex.h> if previously included via Cocoa/Darwin headers
+#ifdef I
+#undef I
+#endif
+
 #include <cstdint>
 #include <iostream>
 #include <map>
