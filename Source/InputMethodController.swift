@@ -1281,12 +1281,6 @@ extension McBopomofoInputMethodController {
             return nil
         }
 
-        // 中文組字區狀態檢查
-        let hasActiveComposedChinese: Bool = {
-            guard let notEmpty = state as? InputState.NotEmpty else { return false }
-            return notEmpty.composingBuffer.contains(where: { WTFMixedInputManager.isCJK($0) })
-        }()
-
         // 2. 雙軌狀態 (尚未鎖定純英文)
         // Space 鍵：非純英文模式下，Space 代表中文第一聲或選字確認！
         // 立即清空雙軌英文緩衝區，原封不動放行給 KeyHandler.mm，嚴禁插入半形空格！
