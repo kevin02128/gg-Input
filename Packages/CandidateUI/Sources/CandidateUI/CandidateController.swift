@@ -138,6 +138,8 @@ public class CandidateController: NSWindowController {
         highlightPreviousCandidate()
     }
 
+    @objc open func toggleExpand() {}
+
     @objc public func candidateIndexAtKeyLabelIndex(_: UInt) -> UInt {
         UInt.max
     }

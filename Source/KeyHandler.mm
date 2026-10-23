@@ -1944,6 +1944,13 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
         candidateCount = ((id<CandidateProvider>)state).candidateCount;
     }
 
+    if (input.isTab) {
+        if ([gCurrentCandidateController respondsToSelector:@selector(toggleExpand)] &&
+            [gCurrentCandidateController isKindOfClass:NSClassFromString(@"VTGridCandidateController")]) {
+            [(id)gCurrentCandidateController toggleExpand];
+            return YES;
+        }
+    }
 
     if (input.isLeft) {
         if ([state isKindOfClass:[InputStateAssociatedPhrases class]]) {
