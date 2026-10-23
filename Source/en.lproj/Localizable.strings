@@ -260,3 +260,9 @@
 "You can run a script to use git to backup your phrases. The script will run in the folder of your user phrases folder." = "You can run a script to use git to backup your phrases. The script will run in the folder of your user phrases folder.";
 
 "Quick Text Transform" = "Quick Text Transform";
+
+"Uninstall gg…" = "Uninstall gg…";
+"Uninstall gg Input Method" = "Uninstall gg Input Method";
+"Are you sure you want to uninstall gg? The system will switch to the default English input source and remove the app." = "Are you sure you want to uninstall gg? The system will switch to the default English input source and remove the app.";
+"Uninstall" = "Uninstall";
+"Delete user phrases and preferences" = "Delete user phrases and preferences";

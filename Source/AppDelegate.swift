@@ -24,149 +24,13 @@
 import Cocoa
 import FSEventStreamHelper
 import InputMethodKit
-
-private let kCheckUpdateAutomatically = "CheckUpdateAutomatically"
-private let kNextUpdateCheckDateKey = "NextUpdateCheckDate"
-private let kUpdateInfoEndpointKey = "UpdateInfoEndpoint"
-private let kUpdateInfoSiteKey = "UpdateInfoSite"
-private let kNextCheckInterval: TimeInterval = 86400.0
-private let kTimeoutInterval: TimeInterval = 60.0
-
-struct VersionUpdateReport {
-    var siteUrl: URL?
-    var currentShortVersion: String = ""
-    var currentVersion: String = ""
-    var remoteShortVersion: String = ""
-    var remoteVersion: String = ""
-    var versionDescription: String = ""
-}
-
-enum VersionUpdateApiResult {
-    case shouldUpdate(report: VersionUpdateReport)
-    case noNeedToUpdate
-    case ignored
-}
-
-enum VersionUpdateApiError: Error, LocalizedError {
-    case connectionError(message: String)
-
-    var errorDescription: String? {
-        switch self {
-        case .connectionError(let message):
-            return String(
-                format: NSLocalizedString(
-                    "There may be no internet connection or the server failed to respond.\n\nError message: %@",
-                    comment: ""), message)
-        }
-    }
-}
-
-struct VersionUpdateApi {
-    static func check(
-        forced: Bool, callback: @escaping (Result<VersionUpdateApiResult, Error>) -> Void
-    ) -> URLSessionTask? {
-        guard let infoDict = Bundle.main.infoDictionary,
-            let updateInfoURLString = infoDict[kUpdateInfoEndpointKey] as? String,
-            let updateInfoURL = URL(string: (updateInfoURLString + (forced ? "?manual=yes" : "")))
-        else {
-            return nil
-        }
-
-        let request = URLRequest(
-            url: updateInfoURL, cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: kTimeoutInterval)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    forced
-                        ? callback(
-                            .failure(
-                                VersionUpdateApiError.connectionError(
-                                    message: error.localizedDescription)))
-                        : callback(.success(.ignored))
-                }
-                return
-            }
-
-            do {
-                guard
-                    let plist = try PropertyListSerialization.propertyList(
-                        from: data ?? Data(), options: [], format: nil) as? [AnyHashable: Any],
-                    let remoteVersion = plist[kCFBundleVersionKey] as? String,
-                    let infoDict = Bundle.main.infoDictionary
-                else {
-                    DispatchQueue.main.async {
-                        forced ? callback(.success(.noNeedToUpdate)) : callback(.success(.ignored))
-                    }
-                    return
-                }
-
-                // TODO: Validate info (e.g. bundle identifier)
-                // TODO: Use HTML to display change log, need a new key like UpdateInfoChangeLogURL for this
-
-                let currentVersion = infoDict[kCFBundleVersionKey as String] as? String ?? ""
-                let result = currentVersion.compare(
-                    remoteVersion, options: .numeric, range: nil, locale: nil)
-
-                if result != .orderedAscending {
-                    DispatchQueue.main.async {
-                        forced ? callback(.success(.noNeedToUpdate)) : callback(.success(.ignored))
-                    }
-                    return
-                }
-
-                guard let siteInfoURLString = plist[kUpdateInfoSiteKey] as? String,
-                    let siteInfoURL = URL(string: siteInfoURLString)
-                else {
-                    DispatchQueue.main.async {
-                        forced ? callback(.success(.noNeedToUpdate)) : callback(.success(.ignored))
-                    }
-                    return
-                }
-
-                var report = VersionUpdateReport(siteUrl: siteInfoURL)
-                var versionDescription = ""
-                let versionDescriptions = plist["Description"] as? [AnyHashable: Any]
-                if let versionDescriptions = versionDescriptions {
-                    var locale = "en"
-                    let supportedLocales = ["en", "zh-Hant", "zh-Hans"]
-                    let preferredTags = Bundle.preferredLocalizations(from: supportedLocales)
-                    if let first = preferredTags.first {
-                        locale = first
-                    }
-                    versionDescription =
-                        versionDescriptions[locale] as? String ?? versionDescriptions["en"]
-                        as? String ?? ""
-                    if !versionDescription.isEmpty {
-                        versionDescription = "\n\n" + versionDescription
-                    }
-                }
-                report.currentShortVersion = infoDict["CFBundleShortVersionString"] as? String ?? ""
-                report.currentVersion = currentVersion
-                report.remoteShortVersion = plist["CFBundleShortVersionString"] as? String ?? ""
-                report.remoteVersion = remoteVersion
-                report.versionDescription = versionDescription
-                DispatchQueue.main.async {
-                    callback(.success(.shouldUpdate(report: report)))
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    forced ? callback(.success(.noNeedToUpdate)) : callback(.success(.ignored))
-                }
-            }
-        }
-        task.resume()
-        return task
-    }
-}
+import InputSourceHelper
 
 @objc(AppDelegate)
-class AppDelegate: NSObject, NSApplicationDelegate, NonModalAlertWindowControllerDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow?
     private var preferencesWindowController: PreferencesWindowController?
-    private var checkTask: URLSessionTask?
-    private var updateNextStepURL: URL?
     private var fsStreamHelper: FSEventStreamHelper?
     private var serviceProvider = ServiceProvider()
     private var serviceProviderHelper = ServiceProviderInputHelper()
@@ -200,11 +64,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NonModalAlertWindowControlle
             WTFNeuralReranker.shared.isEnabled = Preferences.wtfContextCorrectionEnabled
         }
 
-        if UserDefaults.standard.object(forKey: kCheckUpdateAutomatically) == nil {
-            UserDefaults.standard.set(true, forKey: kCheckUpdateAutomatically)
-            UserDefaults.standard.synchronize()
-        }
-
         if UserDefaults.standard.object(forKey: kBeepUponInputErrorKey) == nil {
             UserDefaults.standard.set(true, forKey: kBeepUponInputErrorKey)
             UserDefaults.standard.synchronize()
@@ -220,8 +79,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NonModalAlertWindowControlle
         NSApp.servicesProvider = serviceProvider
 
         enableBopomofoFontAnnotationSupportMenuItemIfRelevantFontsInstalled()
-
-        checkForUpdate()
     }
 
     @MainActor
@@ -232,94 +89,59 @@ class AppDelegate: NSObject, NSApplicationDelegate, NonModalAlertWindowControlle
         preferencesWindowController?.showAndActivate()
     }
 
-    @objc(checkForUpdate)
-    func checkForUpdate() {
-        checkForUpdate(forced: false)
-    }
+    @objc func uninstallGG() {
+        let alert = NSAlert()
+        alert.messageText = NSLocalizedString("Uninstall gg Input Method", comment: "")
+        alert.informativeText = NSLocalizedString(
+            "Are you sure you want to uninstall gg? The system will switch to the default English input source and remove the app.",
+            comment: "")
+        alert.addButton(withTitle: NSLocalizedString("Uninstall", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
 
-    @objc(checkForUpdateForced:)
-    func checkForUpdate(forced: Bool) {
-        if checkTask != nil {
-            // busy
-            return
-        }
+        let checkbox = NSButton(
+            checkboxWithTitle: NSLocalizedString("Delete user phrases and preferences", comment: ""),
+            target: nil, action: nil)
+        checkbox.state = .off
+        alert.accessoryView = checkbox
 
-        // time for update?
-        if !forced {
-            if UserDefaults.standard.bool(forKey: kCheckUpdateAutomatically) == false {
-                return
-            }
-            let now = Date()
-            let date = UserDefaults.standard.object(forKey: kNextUpdateCheckDateKey) as? Date ?? now
-            if now.compare(date) == .orderedAscending {
-                return
-            }
-        }
-
-        let nextUpdateDate = Date(timeInterval: kNextCheckInterval, since: Date())
-        UserDefaults.standard.set(nextUpdateDate, forKey: kNextUpdateCheckDateKey)
-
-        checkTask = VersionUpdateApi.check(forced: forced) { result in
-            defer {
-                self.checkTask = nil
-            }
-            switch result {
-            case .success(let apiResult):
-                switch apiResult {
-                case .shouldUpdate(let report):
-                    self.updateNextStepURL = report.siteUrl
-                    let content = String(
-                        format: NSLocalizedString(
-                            "You're currently using McBopomofo %@ (%@), a new version %@ (%@) is now available. Do you want to visit McBopomofo's website to download the version?%@",
-                            comment: ""),
-                        report.currentShortVersion,
-                        report.currentVersion,
-                        report.remoteShortVersion,
-                        report.remoteVersion,
-                        report.versionDescription)
-                    NonModalAlertWindowController.shared.show(
-                        title: NSLocalizedString("New Version Available", comment: ""),
-                        content: content,
-                        confirmButtonTitle: NSLocalizedString("Visit Website", comment: ""),
-                        cancelButtonTitle: NSLocalizedString("Not Now", comment: ""),
-                        cancelAsDefault: false, delegate: self)
-                case .noNeedToUpdate:
-                    NonModalAlertWindowController.shared.show(
-                        title: NSLocalizedString("Check for Update Completed", comment: ""),
-                        content: NSLocalizedString("McBopomofo is up to date.", comment: ""),
-                        confirmButtonTitle: NSLocalizedString("OK", comment: ""),
-                        cancelButtonTitle: nil, cancelAsDefault: false, delegate: self)
-                case .ignored:
-                    break
-                }
-            case .failure(let error):
-                switch error {
-                case VersionUpdateApiError.connectionError(let message):
-                    let title = NSLocalizedString("Update Check Failed", comment: "")
-                    let content = String(
-                        format: NSLocalizedString(
-                            "There may be no internet connection or the server failed to respond.\n\nError message: %@",
-                            comment: ""), message)
-                    let buttonTitle = NSLocalizedString("Dismiss", comment: "")
-                    NonModalAlertWindowController.shared.show(
-                        title: title, content: content, confirmButtonTitle: buttonTitle,
-                        cancelButtonTitle: nil, cancelAsDefault: false, delegate: nil)
-                default:
-                    break
-                }
-            }
+        NSApp.activate(ignoringOtherApps: true)
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            performUninstall(deleteUserData: checkbox.state == .on)
         }
     }
 
-    func nonModalAlertWindowControllerDidConfirm(_ controller: NonModalAlertWindowController) {
-        if let updateNextStepURL = updateNextStepURL {
-            NSWorkspace.shared.open(updateNextStepURL)
-        }
-        updateNextStepURL = nil
-    }
+    private func performUninstall(deleteUserData: Bool) {
+        _ = InputSourceHelper.selectInputSource(withID: "com.apple.keylayout.ABC")
+            || InputSourceHelper.selectInputSource(withID: "com.apple.keylayout.US")
 
-    func nonModalAlertWindowControllerDidCancel(_ controller: NonModalAlertWindowController) {
-        updateNextStepURL = nil
+        if let ggSource = InputSourceHelper.inputSource(for: kTISPropertyBundleID, stringValue: "com.wtf.inputmethod.gg") {
+            _ = InputSourceHelper.disable(inputSource: ggSource)
+        }
+
+        let deleteFlag = deleteUserData ? "1" : "0"
+        let script = """
+        sleep 0.5
+        killall -9 gg 2>/dev/null || true
+        pkill -9 -f gg.app 2>/dev/null || true
+        rm -rf "$HOME/Library/Input Methods/gg.app"
+        rm -rf "/Library/Input Methods/gg.app"
+        if [ "\(deleteFlag)" = "1" ]; then
+            rm -rf "$HOME/Library/Application Support/gg"
+            rm -f "$HOME/Library/Preferences/com.wtf.inputmethod.gg.plist"
+            defaults delete com.wtf.inputmethod.gg 2>/dev/null || true
+        fi
+        /System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister -u "$HOME/Library/Input Methods/gg.app" 2>/dev/null || true
+        /System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister -u "/Library/Input Methods/gg.app" 2>/dev/null || true
+        osascript -e 'display notification "gg 輸入法已成功解除安裝。" with title "解除安裝完成"' 2>/dev/null || true
+        """
+
+        let task = Process()
+        task.launchPath = "/bin/bash"
+        task.arguments = ["-c", script]
+        try? task.run()
+
+        NSApp.terminate(nil)
     }
 }
 

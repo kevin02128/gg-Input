@@ -161,11 +161,12 @@ class McBopomofoInputMethodController: IMKInputController {
             withTitle: NSLocalizedString("McBopomofo Preferences", comment: ""),
             action: #selector(showPreferences(_:)), keyEquivalent: "")
         menu.addItem(
-            withTitle: NSLocalizedString("Check for Updates…", comment: ""),
-            action: #selector(checkForUpdate(_:)), keyEquivalent: "")
-        menu.addItem(
             withTitle: NSLocalizedString("About McBopomofo…", comment: ""),
             action: #selector(showAbout(_:)), keyEquivalent: "")
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(
+            withTitle: NSLocalizedString("Uninstall gg…", comment: ""),
+            action: #selector(uninstallGG(_:)), keyEquivalent: "")
         return menu
     }
 
@@ -183,8 +184,6 @@ class McBopomofoInputMethodController: IMKInputController {
 
         keyHandler.clear()
         keyHandler.syncWithPreferences()
-
-        (NSApp.delegate as? AppDelegate)?.checkForUpdate()
     }
 
     override func deactivateServer(_ client: Any!) {
@@ -373,8 +372,8 @@ class McBopomofoInputMethodController: IMKInputController {
         LanguageModelManager.phraseReplacementEnabled = enabled
     }
 
-    @objc func checkForUpdate(_ sender: Any?) {
-        (NSApp.delegate as? AppDelegate)?.checkForUpdate(forced: true)
+    @objc func uninstallGG(_ sender: Any?) {
+        (NSApp.delegate as? AppDelegate)?.uninstallGG()
     }
 
     @objc func openUserPhrases(_ sender: Any?) {

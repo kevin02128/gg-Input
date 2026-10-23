@@ -1,4 +1,0 @@
-/* Localized versions of Info.plist keys */
-
-CFBundleName = "Install gg IME";
-NSHumanReadableCopyright = "Copyright © 2026 wtf.\nAll Rights Reserved.";

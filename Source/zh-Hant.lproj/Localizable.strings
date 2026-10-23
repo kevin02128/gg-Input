@@ -258,3 +258,9 @@
 "You can run a script to use git to backup your phrases. The script will run in the folder of your user phrases folder." = "您可以在加詞之後，透過這個 Shell Script 執行指定的工作，像是使用 git 備份詞庫。這個 script 會在你的使用者詞彙資料夾下執行。";
 
 "Quick Text Transform" = "日韓多語拼音轉換";
+
+"Uninstall gg…" = "解除安裝 gg 輸入法…";
+"Uninstall gg Input Method" = "解除安裝 gg 輸入法";
+"Are you sure you want to uninstall gg? The system will switch to the default English input source and remove the app." = "確定要解除安裝 gg 輸入法嗎？解除安裝後系統將自動切換回預設英文鍵盤，並完全移除應用程式。";
+"Uninstall" = "解除安裝";
+"Delete user phrases and preferences" = "同時刪除自訂詞庫與偏好設定";

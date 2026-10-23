@@ -298,10 +298,6 @@
 	<string>zh-Hant</string>
 	<key>TISParticipatesInTouchBar</key>
 	<false/>
-	<key>UpdateInfoEndpoint</key>
-	<string>https://mcbopomofo.openvanilla.org/updates/Info.plist</string>
-	<key>UpdateInfoSite</key>
-	<string>https://mcbopomofo.openvanilla.org/</string>
 	<key>tsInputMethodCharacterRepertoireKey</key>
 	<array>
 		<string>Hant</string>

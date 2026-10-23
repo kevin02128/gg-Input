@@ -85,7 +85,6 @@
 		D47F7DD0278C0897002F9DD7 /* NonModalAlertWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F7DCF278C0897002F9DD7 /* NonModalAlertWindowController.swift */; };
 		D47F7DD3278C1263002F9DD7 /* UserOverrideModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D47F7DD2278C1263002F9DD7 /* UserOverrideModel.cpp */; };
 		D485D3B92796A8A000657FF3 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485D3B82796A8A000657FF3 /* PreferencesTests.swift */; };
-		D485D3C02796CE3200657FF3 /* VersionUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485D3BF2796CE3200657FF3 /* VersionUpdateTests.swift */; };
 		D48F853E2EACDB6C00C2FDAB /* RomanNumbers in Frameworks */ = {isa = PBXBuildFile; productRef = D48F853D2EACDB6C00C2FDAB /* RomanNumbers */; };
 		D4A13D5A27A59F0B003BE359 /* InputMethodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A13D5927A59D5C003BE359 /* InputMethodController.swift */; };
 		D4A8E43627A9E982002F7A07 /* KeyHandlerPlainBopomofoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A8E43527A9E982002F7A07 /* KeyHandlerPlainBopomofoTests.swift */; };
@@ -240,7 +239,6 @@
 		D47F7DD2278C1263002F9DD7 /* UserOverrideModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserOverrideModel.cpp; sourceTree = "<group>"; };
 		D485D3B62796A8A000657FF3 /* ggTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ggTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D485D3B82796A8A000657FF3 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
-		D485D3BF2796CE3200657FF3 /* VersionUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateTests.swift; sourceTree = "<group>"; };
 		D48F853C2EACCDE900C2FDAB /* RomanNumbers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RomanNumbers; path = Packages/RomanNumbers; sourceTree = "<group>"; };
 		D495583A27A5C6C4006ADE1C /* LanguageModelManager+Privates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LanguageModelManager+Privates.h"; sourceTree = "<group>"; };
 		D4A13D5927A59D5C003BE359 /* InputMethodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMethodController.swift; sourceTree = "<group>"; };
@@ -323,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				6A0D4EA215FC0D2D00ABF4B3 /* gg.app */,
-				6ACA41CB15FC1D7500935EF6 /* McBopomofoInstaller.app */,
 				D485D3B62796A8A000657FF3 /* ggTests.xctest */,
 			);
 			name = Products;
@@ -335,7 +332,6 @@
 				D402D6693002779000CF3746 /* PreferencesUI */,
 				6A38BBDD15FC115800A8A51F /* Data */,
 				6A0D4F1215FC0EB100ABF4B3 /* Engine */,
-				6ACA41E715FC1D9000935EF6 /* Installer */,
 				6A0D4F4715FC0EB900ABF4B3 /* Resources */,
 				D4A13D5927A59D5C003BE359 /* InputMethodController.swift */,
 				WTF000010000000000000001 /* WTFMixedInputManager.swift */,
@@ -471,25 +467,6 @@
 			name = "Custom Phrase Templates";
 			sourceTree = "<group>";
 		};
-		6ACA41E715FC1D9000935EF6 /* Installer */ = {
-			isa = PBXGroup;
-			children = (
-				D4F0BBE0279AF8B30071253C /* AppDelegate.swift */,
-				D4F0BBDE279AF1AF0071253C /* ArchiveUtil.swift */,
-				6ACA41EA15FC1D9000935EF6 /* InfoPlist.strings */,
-				6ACA41EC15FC1D9000935EF6 /* License.rtf */,
-				6ACA41EE15FC1D9000935EF6 /* Localizable.strings */,
-				6ACA41F015FC1D9000935EF6 /* MainMenu.xib */,
-				6ACA41F215FC1D9000935EF6 /* Installer-Info.plist */,
-				6ACA41F315FC1D9000935EF6 /* Installer-Prefix.pch */,
-				6A93050C279877FF00D370DA /* McBopomofoInstaller-Bridging-Header.h */,
-				D4F0BBE2279B08900071253C /* BundleTranslocate.h */,
-				D4F0BBE3279B08900071253C /* BundleTranslocate.m */,
-				6A68C1C12EC7F2C0005284A0 /* Localizable.stringsdict */,
-			);
-			path = Installer;
-			sourceTree = "<group>";
-		};
 		D402D6693002779000CF3746 /* PreferencesUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,7 +510,6 @@
 				D47D73A327A5D43900255A50 /* KeyHandlerBopomofoTests.swift */,
 				D4A8E43527A9E982002F7A07 /* KeyHandlerPlainBopomofoTests.swift */,
 				D485D3B82796A8A000657FF3 /* PreferencesTests.swift */,
-				D485D3BF2796CE3200657FF3 /* VersionUpdateTests.swift */,
 				D449AD5E2B393C00000C5812 /* InputMacroTests.swift */,
 				D449AD602B39506D000C5812 /* ServiceProviderTests.swift */,
 				D4EE67572B39685F00F062DE /* DictionaryServiceTests.swift */,
@@ -595,27 +571,6 @@
 			productReference = 6A0D4EA215FC0D2D00ABF4B3 /* gg.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6ACA41CA15FC1D7500935EF6 /* McBopomofoInstaller */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6ACA41E415FC1D7600935EF6 /* Build configuration list for PBXNativeTarget "McBopomofoInstaller" */;
-			buildPhases = (
-				6ACA41C715FC1D7500935EF6 /* Sources */,
-				6ACA41C815FC1D7500935EF6 /* Frameworks */,
-				6ACA41C915FC1D7500935EF6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6ACA420115FC1DCC00935EF6 /* PBXTargetDependency */,
-			);
-			name = McBopomofoInstaller;
-			packageProductDependencies = (
-				D427F7B5279086F6004A2160 /* InputSourceHelper */,
-			);
-			productName = McBopomofoInstaller;
-			productReference = 6ACA41CB15FC1D7500935EF6 /* McBopomofoInstaller.app */;
-			productType = "com.apple.product-type.application";
-		};
 		D485D3B52796A8A000657FF3 /* ggTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D485D3BE2796A8A000657FF3 /* Build configuration list for PBXNativeTarget "ggTests" */;
@@ -647,9 +602,6 @@
 					6A0D4EA115FC0D2D00ABF4B3 = {
 						LastSwiftMigration = 1240;
 					};
-					6ACA41CA15FC1D7500935EF6 = {
-						LastSwiftMigration = 1320;
-					};
 					D485D3B52796A8A000657FF3 = {
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1500;
@@ -665,7 +617,7 @@
 				en,
 				"zh-Hant",
 				Base,
-			);
+				);
 			mainGroup = 6A0D4E9215FC0CFA00ABF4B3;
 			packageReferences = (
 			);
@@ -674,7 +626,6 @@
 			projectRoot = "";
 			targets = (
 				6A0D4EA115FC0D2D00ABF4B3 /* McBopomofo */,
-				6ACA41CA15FC1D7500935EF6 /* McBopomofoInstaller */,
 				6A38BC2115FC12FD00A8A51F /* Data */,
 				D485D3B52796A8A000657FF3 /* ggTests */,
 			);
@@ -804,7 +755,6 @@
 				D47D73A427A5D43900255A50 /* KeyHandlerBopomofoTests.swift in Sources */,
 				D485D3B92796A8A000657FF3 /* PreferencesTests.swift in Sources */,
 				D449AD612B39506D000C5812 /* ServiceProviderTests.swift in Sources */,
-				D485D3C02796CE3200657FF3 /* VersionUpdateTests.swift in Sources */,
 				D4EE67582B39685F00F062DE /* DictionaryServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

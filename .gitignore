@@ -16,6 +16,7 @@ xcuserdata
 # Packaging & App Bundles
 *.dmg
 *.app
+*.pkg
 *.tar.gz
 *.zip
 *.pdf

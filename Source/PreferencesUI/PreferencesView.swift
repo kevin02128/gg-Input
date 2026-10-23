@@ -475,15 +475,6 @@ private struct BasicPreferencesView: View {
                 .labelsHidden()
                 .fixedSize()
             }
-
-            Divider()
-                .padding(.vertical, 5)
-
-            PreferenceRow {
-                Toggle(
-                    localized("Check for updates automatically"),
-                    isOn: $preferences.checkForUpdatesAutomatically)
-            }
         }
     }
 }
