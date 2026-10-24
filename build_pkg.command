@@ -60,6 +60,12 @@ TARGET_APP="/Library/Input Methods/gg.app"
 if [ -d "$TARGET_APP" ]; then
     xattr -cr "$TARGET_APP"
     /System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister -f -R -trusted "$TARGET_APP" 2>/dev/null || true
+
+    # 自動以目前登入之桌面使用者啟動最新輸入法進程
+    CONSOLE_USER=$(stat -f "%Su" /dev/console 2>/dev/null || echo "")
+    if [ -n "$CONSOLE_USER" ] && [ "$CONSOLE_USER" != "root" ]; then
+        sudo -u "$CONSOLE_USER" open "$TARGET_APP" 2>/dev/null || true
+    fi
 fi
 exit 0
 EOF

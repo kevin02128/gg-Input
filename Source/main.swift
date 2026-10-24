@@ -33,12 +33,12 @@ private func install() -> Int32 {
     var maybeInputSource = InputSourceHelper.inputSource(for: bundleID)
 
     if maybeInputSource == nil {
-        NSLog("Registering input source \(bundleID) at \(bundleUrl.absoluteString)");
+        NSLog("%@", "Registering input source \(bundleID) at \(bundleUrl.absoluteString)")
         // then register
         let status = InputSourceHelper.registerInputSource(at: bundleUrl)
 
         if !status {
-            NSLog("Fatal error: Cannot register input source \(bundleID) at \(bundleUrl.absoluteString).")
+            NSLog("%@", "Fatal error: Cannot register input source \(bundleID) at \(bundleUrl.absoluteString).")
             return -1
         }
 
@@ -46,31 +46,26 @@ private func install() -> Int32 {
     }
 
     guard let inputSource = maybeInputSource else {
-        NSLog("Fatal error: Cannot find input source \(bundleID) after registration.")
+        NSLog("%@", "Fatal error: Cannot find input source \(bundleID) after registration.")
         return -1
     }
 
     if !InputSourceHelper.inputSourceEnabled(for: inputSource) {
-        NSLog("Enabling input source \(bundleID) at \(bundleUrl.absoluteString).")
-        let status = InputSourceHelper.enable(inputSource: inputSource)
-        if !status {
-            NSLog("Fatal error: Cannot enable input source \(bundleID).")
-            return -1
-        }
-        if !InputSourceHelper.inputSourceEnabled(for: inputSource) {
-            NSLog("Fatal error: Cannot enable input source \(bundleID).")
-            return -1
-        }
+        NSLog("%@", "Enabling input source \(bundleID) at \(bundleUrl.absoluteString).")
+        _ = InputSourceHelper.enable(inputSource: inputSource)
     }
 
     if CommandLine.arguments.count > 2 && CommandLine.arguments[2] == "--all" {
         let enabled = InputSourceHelper.enableAllInputMode(for: bundleID)
-        NSLog(enabled ? "All input sources enabled for \(bundleID)" : "Cannot enable all input sources for \(bundleID), but this is ignored")
+        NSLog("%@", enabled ? "All input sources enabled for \(bundleID)" : "Cannot enable all input sources for \(bundleID), but this is ignored")
     }
     return 0
 }
 
-let kConnectionName = "McBopomofo_1_Connection"
+guard let connectionName = (Bundle.main.infoDictionary?["InputMethodConnectionName"] as? String), !connectionName.isEmpty else {
+    NSLog("%@", "Fatal error: InputMethodConnectionName key not defined in Info.plist.")
+    exit(-1)
+}
 
 if CommandLine.arguments.count > 1 {
     if CommandLine.arguments[1] == "install" {
@@ -80,18 +75,18 @@ if CommandLine.arguments.count > 1 {
 }
 
 guard let mainNibName = Bundle.main.infoDictionary?["NSMainNibFile"] as? String else {
-    NSLog("Fatal error: NSMainNibFile key not defined in Info.plist.");
+    NSLog("%@", "Fatal error: NSMainNibFile key not defined in Info.plist.")
     exit(-1)
 }
 
 let loaded = Bundle.main.loadNibNamed(mainNibName, owner: NSApp, topLevelObjects: nil)
 if !loaded {
-    NSLog("Fatal error: Cannot load \(mainNibName).")
+    NSLog("%@", "Fatal error: Cannot load \(mainNibName).")
     exit(-1)
 }
 
-guard let bundleID = Bundle.main.bundleIdentifier, let server = IMKServer(name: kConnectionName, bundleIdentifier: bundleID) else {
-    NSLog("Fatal error: Cannot initialize input method server with connection \(kConnectionName).")
+guard let bundleID = Bundle.main.bundleIdentifier, let server = IMKServer(name: connectionName, bundleIdentifier: bundleID) else {
+    NSLog("%@", "Fatal error: Cannot initialize input method server with connection \(connectionName).")
     exit(-1)
 }
 
