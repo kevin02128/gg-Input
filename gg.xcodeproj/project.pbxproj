@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		KYON00020000000000000007 /* KyonLM.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = KYON00010000000000000007 /* KyonLM.mlmodelc */; };
-		WTF000020000000000000007 /* vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = WTF000010000000000000007 /* vocab.txt */; };
-		WTF000020000000000000005 /* WTFNeuralReranker.swift in Sources */ = {isa = PBXBuildFile; fileRef = WTF000010000000000000005 /* WTFNeuralReranker.swift */; };
 		WTF000020000000000000001 /* WTFMixedInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = WTF000010000000000000001 /* WTFMixedInputManager.swift */; };
 		CC0000090000000000000001 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CC0000080000000000000001 /* AppIcon.icns */; };
 		6A0D4F0815FC0DA600ABF4B3 /* gg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6A0D4EEF15FC0DA600ABF4B3 /* gg.tiff */; };
@@ -131,9 +128,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		KYON00010000000000000007 /* KyonLM.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KyonLM.mlmodelc; sourceTree = "<group>"; };
-		WTF000010000000000000007 /* vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocab.txt; sourceTree = "<group>"; };
-		WTF000010000000000000005 /* WTFNeuralReranker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFNeuralReranker.swift; sourceTree = "<group>"; };
 		WTF000010000000000000001 /* WTFMixedInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFMixedInputManager.swift; sourceTree = "<group>"; };
 		CC0000080000000000000001 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		6A0D4EA215FC0D2D00ABF4B3 /* gg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gg.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,9 +329,6 @@
 				6A0D4F4715FC0EB900ABF4B3 /* Resources */,
 				D4A13D5927A59D5C003BE359 /* InputMethodController.swift */,
 				WTF000010000000000000001 /* WTFMixedInputManager.swift */,
-				WTF000010000000000000005 /* WTFNeuralReranker.swift */,
-				KYON00010000000000000007 /* KyonLM.mlmodelc */,
-				WTF000010000000000000007 /* vocab.txt */,
 				D43737C82DF9C35100D9707C /* InputMethodController+KeyHandlerDelegate.swift */,
 				D43737CA2DF9C48200D9707C /* InputMethodController+CandidateControllerDelegate.swift */,
 				D41355D6278D7409005E5CBD /* LanguageModelManager.h */,
@@ -706,7 +697,6 @@
 				D44FB74D2792189A003C80A6 /* PhraseReplacementMap.cpp in Sources */,
 				D4A13D5A27A59F0B003BE359 /* InputMethodController.swift in Sources */,
 				WTF000020000000000000001 /* WTFMixedInputManager.swift in Sources */,
-				WTF000020000000000000005 /* WTFNeuralReranker.swift in Sources */,
 				D44FB74527915565003C80A6 /* Preferences.swift in Sources */,
 				6A660A702EAF371000D53D7B /* ByteBlockBackedDictionary.cpp in Sources */,
 				6A833E522F0A0FB30086AD0C /* VariantAnnotator.cpp in Sources */,

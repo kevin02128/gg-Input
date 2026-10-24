@@ -48,65 +48,6 @@
 InputMode InputModeBopomofo = @"com.wtf.inputmethod.gg.Bopomofo";
 InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
 
-@implementation WTFNodeInfo
-@synthesize value = _value;
-@synthesize reading = _reading;
-@synthesize spanningLength = _spanningLength;
-@synthesize isUserLocked = _isUserLocked;
-@synthesize candidateValues = _candidateValues;
-@synthesize candidateLogProbs = _candidateLogProbs;
-
-- (instancetype)initWithValue:(NSString *)value
-                      reading:(NSString *)reading
-               spanningLength:(NSInteger)spanningLength
-                 isUserLocked:(BOOL)isUserLocked
-              candidateValues:(NSArray<NSString *> *)candidateValues
-            candidateLogProbs:(NSArray<NSNumber *> *)candidateLogProbs
-{
-    self = [super init];
-    if (self) {
-        _value = [value copy];
-        _reading = [reading copy];
-        _spanningLength = spanningLength;
-        _isUserLocked = isUserLocked;
-        _candidateValues = [candidateValues copy];
-        _candidateLogProbs = [candidateLogProbs copy];
-    }
-    return self;
-}
-@end
-
-@implementation WTFNBestHypothesis
-@synthesize sentence = _sentence;
-@synthesize nodeValues = _nodeValues;
-@synthesize nodeReadings = _nodeReadings;
-@synthesize nodeSpanningLengths = _nodeSpanningLengths;
-@synthesize nodeLockedFlags = _nodeLockedFlags;
-@synthesize totalReadings = _totalReadings;
-@synthesize lexiconLogProb = _lexiconLogProb;
-
-- (instancetype)initWithSentence:(NSString *)sentence
-                      nodeValues:(NSArray<NSString *> *)nodeValues
-                    nodeReadings:(NSArray<NSString *> *)nodeReadings
-             nodeSpanningLengths:(NSArray<NSNumber *> *)nodeSpanningLengths
-                 nodeLockedFlags:(NSArray<NSNumber *> *)nodeLockedFlags
-                   totalReadings:(NSInteger)totalReadings
-                  lexiconLogProb:(double)lexiconLogProb
-{
-    self = [super init];
-    if (self) {
-        _sentence = [sentence copy];
-        _nodeValues = [nodeValues copy];
-        _nodeReadings = [nodeReadings copy];
-        _nodeSpanningLengths = [nodeSpanningLengths copy];
-        _nodeLockedFlags = [nodeLockedFlags copy];
-        _totalReadings = totalReadings;
-        _lexiconLogProb = lexiconLogProb;
-    }
-    return self;
-}
-@end
-
 @implementation KeyHandler {
     std::shared_ptr<Formosa::Gramambular2::LanguageModel> _emptySharedPtr;
 
@@ -121,19 +62,13 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
 
     Formosa::Gramambular2::ReadingGrid *_grid;
     Formosa::Gramambular2::ReadingGrid::WalkResult _latestWalk;
-    Formosa::Gramambular2::ReadingGrid::WalkResult _reviewedWalk;
-    std::vector<Formosa::Gramambular2::ReadingGrid::WalkResult> _latestNBestWalks;
-    BOOL _hasReviewedWalk;
 
     NSString *_inputMode;
     uint64_t _gridRevision;
-    NSArray<NSString *> *_reviewedNodeValues;
 }
 
 @synthesize delegate = _delegate;
 @synthesize gridRevision = _gridRevision;
-@synthesize reviewedNodeValues = _reviewedNodeValues;
-@synthesize onUserRejectedReviewedCandidate = _onUserRejectedReviewedCandidate;
 
 - (NSString *)inputMode
 {
@@ -222,39 +157,6 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
     Formosa::Gramambular2::ReadingGrid::WalkResult prevWalk = _latestWalk.copyWithFixedNodes();
 
     size_t actualCursor = self.actualCandidateCursorIndex;
-
-    // 若使用者在選字窗手動改回被審查器改過的節點，觸發負回饋記錄
-    if (_reviewedNodeValues != nil && _onUserRejectedReviewedCandidate != nil) {
-        const auto& activeWalk = _hasReviewedWalk ? _reviewedWalk : _latestWalk;
-        size_t runningSpan = 0;
-        size_t idx = 0;
-        NSMutableString *leftBuffer = [NSMutableString string];
-        for (const auto& n : activeWalk.nodes) {
-            size_t nextSpan = runningSpan + n->spanningLength();
-            if (actualCursor >= runningSpan && actualCursor < nextSpan) {
-                NSString *reviewedVal = (idx < _reviewedNodeValues.count) ? _reviewedNodeValues[idx] : @(n->value().c_str());
-                size_t origRunning = 0;
-                NSString *viterbiVal = reviewedVal;
-                for (const auto& origNode : _latestWalk.nodes) {
-                    size_t origNext = origRunning + origNode->spanningLength();
-                    if (actualCursor >= origRunning && actualCursor < origNext) {
-                        viterbiVal = @(origNode->value().c_str());
-                        break;
-                    }
-                    origRunning = origNext;
-                }
-                if (![reviewedVal isEqualToString:viterbiVal] && ![reviewedVal isEqualToString:value]) {
-                    NSString *left2 = leftBuffer.length > 2 ? [leftBuffer substringFromIndex:leftBuffer.length - 2] : [leftBuffer copy];
-                    _onUserRejectedReviewedCandidate(reading, reviewedVal, value, left2);
-                }
-                break;
-            }
-            NSString *nodeText = (idx < _reviewedNodeValues.count) ? _reviewedNodeValues[idx] : @(n->value().c_str());
-            [leftBuffer appendString:nodeText];
-            runningSpan = nextSpan;
-            idx++;
-        }
-    }
 
     Formosa::Gramambular2::ReadingGrid::Candidate candidate(reading.UTF8String, value.UTF8String);
     if (!_grid->overrideCandidate(actualCursor, candidate)) {
@@ -378,11 +280,7 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
     _bpmfReadingBuffer->clear();
     _grid->clear();
     _latestWalk = Formosa::Gramambular2::ReadingGrid::WalkResult {};
-    _reviewedWalk = Formosa::Gramambular2::ReadingGrid::WalkResult {};
-    _latestNBestWalks.clear();
-    _hasReviewedWalk = NO;
     _gridRevision += 1;
-    _reviewedNodeValues = nil;
 }
 
 - (void)handleForceCommitWithStateCallback:(void (^)(InputState *))stateCallback
@@ -2532,47 +2430,7 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
 
 #pragma mark - States Building
 
-- (void)setReviewedNodeValues:(nullable NSArray<NSString *> *)reviewedNodeValues
-{
-    _reviewedNodeValues = [reviewedNodeValues copy];
-    if (reviewedNodeValues == nil || reviewedNodeValues.count == 0) {
-        _hasReviewedWalk = NO;
-        return;
-    }
-
-    NSString *joinedTarget = [reviewedNodeValues componentsJoinedByString:@""];
-    for (const auto& w : _latestNBestWalks) {
-        if (w.nodes.size() == reviewedNodeValues.count) {
-            NSMutableString *wJoined = [NSMutableString string];
-            for (const auto& n : w.nodes) {
-                [wJoined appendString:@(n->value().c_str())];
-            }
-            if ([wJoined isEqualToString:joinedTarget]) {
-                _reviewedWalk = w;
-                _hasReviewedWalk = YES;
-                return;
-            }
-        }
-    }
-
-    if (_latestWalk.nodes.size() != reviewedNodeValues.count) {
-        for (const auto& w : _latestNBestWalks) {
-            if (w.nodes.size() == reviewedNodeValues.count) {
-                _reviewedWalk = w;
-                _hasReviewedWalk = YES;
-                return;
-            }
-        }
-    }
-    _hasReviewedWalk = NO;
-}
-
 - (InputState *)buildInputtingState
-{
-    return [self buildInputtingStateWithNodeValues:_reviewedNodeValues];
-}
-
-- (InputState *)buildInputtingStateWithNodeValues:(nullable NSArray<NSString *> *)nodeValues
 {
     // To construct an Inputting state, we need to first retrieve the entire
     // composing buffer from the current grid, then split the composed string
@@ -2596,19 +2454,8 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
     bool bopomofoAnnotationHasPUAs = false;
     bool bopomofoAnnotationHasVariants = false;
 
-    const auto& activeWalk = (_hasReviewedWalk && (nodeValues == nil || nodeValues.count == _reviewedWalk.nodes.size()))
-        ? _reviewedWalk
-        : _latestWalk;
-
-    size_t nodeIndex = 0;
-    for (const auto& node : activeWalk.nodes) {
-        std::string value;
-        if (nodeValues != nil && nodeIndex < nodeValues.count) {
-            value = [nodeValues[nodeIndex] UTF8String];
-        } else {
-            value = node->value();
-        }
-        nodeIndex++;
+    for (const auto& node : _latestWalk.nodes) {
+        std::string value = node->value();
         size_t composedValueLength = value.length();
 
         bool nodeHasBopomofoAnnotation = false;
@@ -2718,87 +2565,7 @@ InputMode InputModePlainBopomofo = @"com.wtf.inputmethod.gg.PlainBopomofo";
 - (void)_walk
 {
     _latestWalk = _grid->walk();
-    _reviewedWalk = Formosa::Gramambular2::ReadingGrid::WalkResult {};
-    _latestNBestWalks.clear();
-    _hasReviewedWalk = NO;
     _gridRevision += 1;
-    _reviewedNodeValues = nil;
-}
-
-- (NSArray<WTFNBestHypothesis *> *)currentNBestHypotheses:(NSInteger)k
-{
-    size_t maxK = (size_t)MAX(1, k);
-    _latestNBestWalks = _grid->walkNBest(maxK, 4);
-    NSMutableArray<WTFNBestHypothesis *> *result = [[NSMutableArray alloc] initWithCapacity:_latestNBestWalks.size()];
-
-    for (const auto& walk : _latestNBestWalks) {
-        NSMutableString *sentence = [[NSMutableString alloc] init];
-        NSMutableArray<NSString *> *vals = [[NSMutableArray alloc] initWithCapacity:walk.nodes.size()];
-        NSMutableArray<NSString *> *readings = [[NSMutableArray alloc] initWithCapacity:walk.nodes.size()];
-        NSMutableArray<NSNumber *> *spans = [[NSMutableArray alloc] initWithCapacity:walk.nodes.size()];
-        NSMutableArray<NSNumber *> *locked = [[NSMutableArray alloc] initWithCapacity:walk.nodes.size()];
-
-        for (const auto& node : walk.nodes) {
-            NSString *v = @(node->value().c_str());
-            NSString *r = @(node->reading().c_str());
-            BOOL isLocked = (node->overrideType() == Formosa::Gramambular2::ReadingGrid::Node::OverrideType::kOverrideValueWithHighScore);
-            [sentence appendString:v];
-            [vals addObject:v];
-            [readings addObject:r];
-            [spans addObject:@((NSInteger)node->spanningLength())];
-            [locked addObject:@(isLocked)];
-        }
-
-        WTFNBestHypothesis *hyp = [[WTFNBestHypothesis alloc] initWithSentence:sentence
-                                                                    nodeValues:vals
-                                                                  nodeReadings:readings
-                                                           nodeSpanningLengths:spans
-                                                               nodeLockedFlags:locked
-                                                                 totalReadings:(NSInteger)walk.totalReadings
-                                                                lexiconLogProb:walk.totalScore];
-        [result addObject:hyp];
-    }
-    return result;
-}
-
-- (NSArray<WTFNodeInfo *> *)currentViterbiNodes
-{
-    NSMutableArray<WTFNodeInfo *> *result = [[NSMutableArray alloc] initWithCapacity:_latestWalk.nodes.size()];
-    for (const auto& node : _latestWalk.nodes) {
-        NSString *val = @(node->value().c_str());
-        NSString *reading = @(node->reading().c_str());
-        NSInteger span = (NSInteger)node->spanningLength();
-        BOOL isLocked = (node->overrideType() == Formosa::Gramambular2::ReadingGrid::Node::OverrideType::kOverrideValueWithHighScore);
-
-        const auto& unigrams = node->unigrams();
-        NSMutableArray<NSString *> *candVals = [[NSMutableArray alloc] init];
-        NSMutableArray<NSNumber *> *candScores = [[NSMutableArray alloc] init];
-
-        // Slot 0: Viterbi's current choice
-        [candVals addObject:val];
-        [candScores addObject:@(node->currentUnigram().score())];
-
-        // Slots 1..7: Other candidates from ReadingGrid unigrams
-        for (const auto& u : unigrams) {
-            NSString *uVal = @(u.value().c_str());
-            if (![uVal isEqualToString:val]) {
-                [candVals addObject:uVal];
-                [candScores addObject:@(u.score())];
-                if (candVals.count >= 8) {
-                    break;
-                }
-            }
-        }
-
-        WTFNodeInfo *info = [[WTFNodeInfo alloc] initWithValue:val
-                                                       reading:reading
-                                                spanningLength:span
-                                                  isUserLocked:isLocked
-                                               candidateValues:candVals
-                                             candidateLogProbs:candScores];
-        [result addObject:info];
-    }
-    return result;
 }
 
 - (NSString *)currentBpmfReading

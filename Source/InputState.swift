@@ -531,14 +531,7 @@ class InputState: NSObject {
             composingBuffer: String, cursorIndex: UInt, candidates: [Candidate],
             useVerticalMode: Bool
         ) {
-            let shouldRerank = type(of: self) == ChoosingCandidate.self
-            let finalCandidates = shouldRerank ? WTFNeuralReranker.shared.rerank(
-                candidates: candidates,
-                composingBuffer: composingBuffer,
-                cursorIndex: Int(cursorIndex)
-            ) : candidates
-
-            self.candidates = finalCandidates
+            self.candidates = candidates
             self.useVerticalMode = useVerticalMode
             self.originalCursorIndex = cursorIndex
             super.init(composingBuffer: composingBuffer, cursorIndex: cursorIndex)

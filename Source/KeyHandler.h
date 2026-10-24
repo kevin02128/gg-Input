@@ -43,40 +43,6 @@ extern InputMode InputModePlainBopomofo;
 - (BOOL)keyHandlerDidRequestReloadLanguageModel:(KeyHandler *)keyHandler;
 @end
 
-@interface WTFNodeInfo : NSObject
-@property (copy, nonatomic, readonly) NSString *value;
-@property (copy, nonatomic, readonly) NSString *reading;
-@property (assign, nonatomic, readonly) NSInteger spanningLength;
-@property (assign, nonatomic, readonly) BOOL isUserLocked;
-@property (copy, nonatomic, readonly) NSArray<NSString *> *candidateValues;
-@property (copy, nonatomic, readonly) NSArray<NSNumber *> *candidateLogProbs;
-
-- (instancetype)initWithValue:(NSString *)value
-                      reading:(NSString *)reading
-               spanningLength:(NSInteger)spanningLength
-                 isUserLocked:(BOOL)isUserLocked
-              candidateValues:(NSArray<NSString *> *)candidateValues
-            candidateLogProbs:(NSArray<NSNumber *> *)candidateLogProbs;
-@end
-
-@interface WTFNBestHypothesis : NSObject
-@property (copy, nonatomic, readonly) NSString *sentence;
-@property (copy, nonatomic, readonly) NSArray<NSString *> *nodeValues;
-@property (copy, nonatomic, readonly) NSArray<NSString *> *nodeReadings;
-@property (copy, nonatomic, readonly) NSArray<NSNumber *> *nodeSpanningLengths;
-@property (copy, nonatomic, readonly) NSArray<NSNumber *> *nodeLockedFlags;
-@property (assign, nonatomic, readonly) NSInteger totalReadings;
-@property (assign, nonatomic, readonly) double lexiconLogProb;
-
-- (instancetype)initWithSentence:(NSString *)sentence
-                      nodeValues:(NSArray<NSString *> *)nodeValues
-                    nodeReadings:(NSArray<NSString *> *)nodeReadings
-             nodeSpanningLengths:(NSArray<NSNumber *> *)nodeSpanningLengths
-                 nodeLockedFlags:(NSArray<NSNumber *> *)nodeLockedFlags
-                   totalReadings:(NSInteger)totalReadings
-                  lexiconLogProb:(double)lexiconLogProb;
-@end
-
 @interface BuildAssociatedPhraseParams: NSObject
 @property (strong, nonatomic) id previousState;
 @property (assign, nonatomic) size_t prefixCursorIndex;
@@ -116,7 +82,6 @@ extern InputMode InputModePlainBopomofo;
     NS_SWIFT_NAME(handleForceCommit(stateCallback:));
 
 - (InputState *)buildInputtingState;
-- (InputState *)buildInputtingStateWithNodeValues:(nullable NSArray<NSString *> *)nodeValues;
 
 - (nullable InputState *)buildAssociatedPhrasePlainStateWithReading:(NSString *)reading
                                                               value:(NSString *)value
@@ -128,8 +93,6 @@ extern InputMode InputModePlainBopomofo;
 
 - (NSArray<NSString *> *)collectUserFileIssues;
 
-- (NSArray<WTFNodeInfo *> *)currentViterbiNodes;
-- (NSArray<WTFNBestHypothesis *> *)currentNBestHypotheses:(NSInteger)k;
 - (NSString *)currentBpmfReading;
 - (BOOL)hasUnconfirmedReading;
 - (void)clearUnconfirmedReading;
@@ -140,8 +103,6 @@ extern InputMode InputModePlainBopomofo;
 @property (assign, nonatomic, readonly) NSInteger actualCandidateCursorIndex;
 @property (assign, nonatomic, readonly) NSInteger cursorIndex;
 @property (assign, nonatomic, readonly) uint64_t gridRevision;
-@property (copy, nonatomic, nullable) NSArray<NSString *> *reviewedNodeValues;
-@property (copy, nonatomic, nullable) void (^onUserRejectedReviewedCandidate)(NSString *reading, NSString *rejectedValue, NSString *keptValue, NSString *leftContext);
 @end
 
 NS_ASSUME_NONNULL_END

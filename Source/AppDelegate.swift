@@ -51,18 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         LanguageModelManager.setupDataModelValueConverter()
         updateUserPhrases()
-        
-        CFPreferencesAppSynchronize("com.wtf.inputmethod.gg" as CFString)
-        WTFNeuralReranker.shared.isEnabled = Preferences.wtfContextCorrectionEnabled
-
-        DistributedNotificationCenter.default().addObserver(
-            forName: NSNotification.Name("com.wtf.inputmethod.gg.preferencesChanged"),
-            object: nil,
-            queue: .main
-        ) { _ in
-            CFPreferencesAppSynchronize("com.wtf.inputmethod.gg" as CFString)
-            WTFNeuralReranker.shared.isEnabled = Preferences.wtfContextCorrectionEnabled
-        }
 
         if UserDefaults.standard.object(forKey: kBeepUponInputErrorKey) == nil {
             UserDefaults.standard.set(true, forKey: kBeepUponInputErrorKey)

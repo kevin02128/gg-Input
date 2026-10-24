@@ -15,11 +15,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Prepare KyonLM model directory
-        run: |
-          chmod +x ./scripts/setup_model.sh
-          ./scripts/setup_model.sh
-
       - name: Resolve Swift Package dependencies
         run: |
           xcodebuild -resolvePackageDependencies -project gg.xcodeproj -scheme gg

@@ -15,16 +15,12 @@
    git clone https://github.com/kevin02128/gg-Input.git
    cd gg-Input
    ```
-2. 首次建置前準備模型目錄（若尚未下載 `KyonLM.mlmodelc`）：
-   ```bash
-   ./scripts/setup_model.sh
-   ```
-3. 日常開發與秒級熱更新：
+2. 日常開發與秒級熱更新：
    ```bash
    ./dev_reload.sh
    ```
    此腳本會自動編譯 Debug 版本、替換 `~/Library/Input Methods/gg.app` 並重新啟動輸入法行程。
-4. 執行單元測試：
+3. 執行單元測試：
    ```bash
    xcodebuild test -project gg.xcodeproj -scheme gg -destination "platform=macOS"
    ```

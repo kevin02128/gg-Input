@@ -57,7 +57,6 @@ class McBopomofoInputMethodController: IMKInputController {
     var currentClient: Any?
     var keyHandler: KeyHandler = KeyHandler()
     var state: InputState = InputState.Empty()
-    private var lastReviewedGridRevision: UInt64 = 0
 
     // Share the stored issues, so a set of issues is shown as notification only once.
     static var latestUserFileIssues: [String] = []
@@ -67,14 +66,6 @@ class McBopomofoInputMethodController: IMKInputController {
     override init!(server: IMKServer!, delegate: Any!, client inputClient: Any!) {
         super.init(server: server, delegate: delegate, client: inputClient)
         keyHandler.delegate = self
-        keyHandler.onUserRejectedReviewedCandidate = { reading, rejected, kept, leftContext in
-            WTFNeuralReranker.shared.recordNegativeFeedback(
-                reading: reading,
-                rejected: rejected,
-                kept: kept,
-                leftContext: leftContext
-            )
-        }
     }
 
     override func menu() -> NSMenu! {
@@ -625,25 +616,7 @@ extension McBopomofoInputMethodController {
             return
         }
 
-        var effectiveState = state
-        let currentRev = keyHandler.gridRevision
-
-        if currentRev != lastReviewedGridRevision {
-            lastReviewedGridRevision = currentRev
-            // 只有組字緩衝區至少 2 個字時才需要整句重排（單字無上下文，跳過可節省 50% 以上不必要的推論以極大降低延遲）
-            if effectiveState.composingBuffer.count >= 2,
-               Preferences.wtfContextCorrectionEnabled && WTFNeuralReranker.shared.isEnabled {
-                let hypotheses = keyHandler.currentNBestHypotheses(8)
-                if !hypotheses.isEmpty,
-                   let reviewedWords = WTFNeuralReranker.shared.reviewNBestHypotheses(hypotheses) {
-                    keyHandler.reviewedNodeValues = reviewedWords
-                    if let rebuilt = keyHandler.buildInputtingState(withNodeValues: reviewedWords) as? InputState.Inputting {
-                        effectiveState = rebuilt
-                        self.state = rebuilt
-                    }
-                }
-            }
-        }
+        let effectiveState = state
 
         // Live Pangu spacing when starting a new Chinese/Bopomofo composition right after committed English/numbers
         if (previous is InputState.Empty || previous is InputState.EmptyIgnoringPreviousState),
