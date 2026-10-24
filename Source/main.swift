@@ -55,10 +55,7 @@ private func install() -> Int32 {
         _ = InputSourceHelper.enable(inputSource: inputSource)
     }
 
-    if CommandLine.arguments.count > 2 && CommandLine.arguments[2] == "--all" {
-        let enabled = InputSourceHelper.enableAllInputMode(for: bundleID)
-        NSLog("%@", enabled ? "All input sources enabled for \(bundleID)" : "Cannot enable all input sources for \(bundleID), but this is ignored")
-    }
+    _ = InputSourceHelper.enableAllInputMode(for: bundleID)
     return 0
 }
 
