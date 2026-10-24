@@ -28,8 +28,8 @@
 
 ## 隱私與安全承諾
 
-本輸入法不具備任何外連網路權限或追蹤機制，所有打字組字均於您的 Mac 本機端閉環完成。詳見 [`SECURITY.md`](SECURITY.md)。
+本輸入法不具備任何外連網路權限或追蹤機制，所有打字組字均於您的 Mac 本機端閉環完成。詳見 [`SECURITY.md`](docs/SECURITY.md)。
 
 ## 軟體授權與致謝
 
-本專案採用 [MIT License](LICENSE) 釋出。特別感謝 OpenVanilla / McBopomofo 團隊與相關開源社群，完整第三方授權列表請參閱 [`ACKNOWLEDGEMENTS.md`](ACKNOWLEDGEMENTS.md)。
+本專案採用 [MIT License](LICENSE) 釋出。特別感謝 OpenVanilla / McBopomofo 團隊與相關開源社群，完整第三方授權列表請參閱 [`ACKNOWLEDGEMENTS.md`](docs/ACKNOWLEDGEMENTS.md)。
