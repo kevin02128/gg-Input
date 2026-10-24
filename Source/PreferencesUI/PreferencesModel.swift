@@ -166,16 +166,6 @@ final class PreferencesViewModel: NSObject, ObservableObject {
         }
     }
 
-    var checkForUpdatesAutomatically: Bool {
-        get {
-            UserDefaults.standard.object(forKey: "CheckUpdateAutomatically") as? Bool ?? true
-        }
-        set {
-            objectWillChange.send()
-            UserDefaults.standard.set(newValue, forKey: "CheckUpdateAutomatically")
-        }
-    }
-
     var useCustomUserPhraseLocation: Bool {
         get { Preferences.useCustomUserPhraseLocation }
         set {

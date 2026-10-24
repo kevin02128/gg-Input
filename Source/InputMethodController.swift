@@ -501,7 +501,7 @@ extension McBopomofoInputMethodController {
         }
     }
 
-    private func commit(text: String, isEnglish: Bool = false, skipCorrection: Bool = false, client: Any!) {
+    private func commit(text: String, isEnglish: Bool = false, client: Any!) {
 
         func convertToSimplifiedChineseIfRequired(_ text: String) -> String {
             if !Preferences.chineseConversionEnabled {
@@ -601,7 +601,7 @@ extension McBopomofoInputMethodController {
 
         let poppedText = state.poppedText
         if !poppedText.isEmpty {
-            commit(text: poppedText, skipCorrection: true, client: client)
+            commit(text: poppedText, client: client)
         }
         client.setMarkedText(
             "", selectionRange: NSMakeRange(0, 0),

@@ -23,7 +23,6 @@
 
 import Cocoa
 
-private let kKeyboardLayoutPreferenceKey = "KeyboardLayout"
 /// alphanumeric ("ASCII") input basic keyboard layout.
 private let kBasisKeyboardLayoutPreferenceKey = "BasisKeyboardLayout"
 /// alphanumeric ("ASCII") input basic keyboard layout.
@@ -202,7 +201,6 @@ class Preferences: NSObject {
             kLetterBehaviorKey,
             kSwitchInputSourceUponShiftLetterKeyComboInputSourceIDKey,
             kSwitchInputSourceUponShiftLetterKeyComboEnabledKey,
-            kKeyboardLayoutPreferenceKey,
             kBasisKeyboardLayoutPreferenceKey,
             kFunctionKeyKeyboardLayoutPreferenceKey,
             kFunctionKeyKeyboardLayoutOverrideIncludeShiftKey,
@@ -232,7 +230,6 @@ class Preferences: NSObject {
     }
 
     @objc static func populateDefaults() {
-        Preferences.keyboardLayout = Preferences.keyboardLayout
         Preferences.basisKeyboardLayout = Preferences.basisKeyboardLayout
         Preferences.functionKeyboardLayout = Preferences.functionKeyboardLayout
         Preferences.candidateKeys = Preferences.candidateKeys

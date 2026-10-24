@@ -68,7 +68,6 @@
 
 主要 **targets**：
 - `gg`: 主輸入法 bundle
-- `ggInstaller`: 安裝程式
 - `Data`: 字典資料編譯目標 (`Source/Data/Makefile`)
 - `ggTests`: Swift 單元測試套件（包含雙軌、英數短字與連續長句迴歸測試）
 

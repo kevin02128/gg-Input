@@ -37,8 +37,6 @@ public class WTFMixedInputManager {
     public static let initialDigits: Set<Character> = ["1", "2", "5"] // 聲母：ㄅ、ㄉ、ㄓ
     public static let finalDigits: Set<Character> = ["8", "9", "0"]   // 韻母：ㄚ、ㄞ、ㄢ
     public static let nonToneDigits: Set<Character> = ["1", "2", "5", "8", "9", "0"]
-    public static let bopomofoInitialDigits: Set<Character> = ["1", "2", "5"]
-    public static let bopomofoFinalDigits: Set<Character> = ["8", "9", "0"]
 
     // MARK: - 舌尖元音音節 (ㄓ, ㄔ, ㄕ, ㄖ, ㄗ, ㄘ, ㄙ)
     public static let apicalInitials: Set<Character> = ["5", "t", "g", "b", "y", "h", "n"]
