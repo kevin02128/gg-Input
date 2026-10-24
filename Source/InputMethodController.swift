@@ -77,84 +77,14 @@ class McBopomofoInputMethodController: IMKInputController {
         chineseConversionItem.keyEquivalentModifierMask = [.command, .control]
         chineseConversionItem.state = Preferences.chineseConversionEnabled.state
 
-        let halfWidthPunctuationItem = menu.addItem(
-            withTitle: NSLocalizedString("Use Half-Width Punctuations", comment: ""),
-            action: #selector(toggleHalfWidthPunctuation(_:)), keyEquivalent: "h")
-        halfWidthPunctuationItem.keyEquivalentModifierMask = [.command, .control]
-        halfWidthPunctuationItem.state = Preferences.halfWidthPunctuationEnabled.state
-
-        let inputMode = keyHandler.inputMode
-
-        // Only Bopomofo mode supports Bopomofo Font Annotation. If support is
-        // on, ensure that the user has a way to disable it. Otherwise, only
-        // show the item when it is set to show in the input menu.
-        if inputMode == .bopomofo
-            && (Preferences.showBopomofoFontAnnotationSupportItemInInputMenu
-                || Preferences.bopomofoFontAnnotationSupportEnabled)
-        {
-            let bopomofoFontAnnotationSupportItem = menu.addItem(
-                withTitle: NSLocalizedString("Bopomofo Font Annotation Support", comment: ""),
-                action: #selector(toggleBopomofoFontAnnotationSupport(_:)), keyEquivalent: "")
-            bopomofoFontAnnotationSupportItem.state =
-                Preferences.bopomofoFontAnnotationSupportEnabled.state
-        }
-
-        let optionKeyPressed = NSEvent.modifierFlags.contains(.option)
-        if inputMode == .bopomofo && optionKeyPressed {
-            let phaseReplacementItem = menu.addItem(
-                withTitle: NSLocalizedString("Use Phrase Replacement", comment: ""),
-                action: #selector(togglePhraseReplacement(_:)), keyEquivalent: "")
-            phaseReplacementItem.state = Preferences.phraseReplacementEnabled.state
-        }
-
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(
-            withTitle: NSLocalizedString("User Phrases", comment: ""), action: nil,
-            keyEquivalent: "")
-
-        if inputMode == .plainBopomofo {
-            if Preferences.enableUserPhrasesInPlainBopomofo {
-                menu.addItem(
-                    withTitle: NSLocalizedString("Edit User Phrases", comment: ""),
-                    action: #selector(openUserPhrasesPlainBopomofo(_:)), keyEquivalent: "")
-            }
-            menu.addItem(
-                withTitle: NSLocalizedString("Edit Excluded Phrases", comment: ""),
-                action: #selector(openExcludedPhrasesPlainBopomofo(_:)), keyEquivalent: "")
-        } else {
-            menu.addItem(
-                withTitle: NSLocalizedString("Edit User Phrases", comment: ""),
-                action: #selector(openUserPhrases(_:)), keyEquivalent: "")
-            menu.addItem(
-                withTitle: NSLocalizedString("Edit Excluded Phrases", comment: ""),
-                action: #selector(openExcludedPhrasesMcBopomofo(_:)), keyEquivalent: "")
-            if optionKeyPressed {
-                menu.addItem(
-                    withTitle: NSLocalizedString("Edit Phrase Replacement Table", comment: ""),
-                    action: #selector(openPhraseReplacementMcBopomofo(_:)), keyEquivalent: "")
-            }
-        }
-
-        menu.addItem(
-            withTitle: NSLocalizedString("Reload User Phrases", comment: ""),
-            action: #selector(reloadUserPhrases(_:)), keyEquivalent: "")
-
-        if !McBopomofoInputMethodController.latestUserFileIssues.isEmpty {
-            let menuItem = NSMenuItem(
-                title: NSLocalizedString("Show Issues in User Files", comment: ""),
-                action: #selector(showUserFileIssues(_:)), keyEquivalent: "")
-            menu.addItem(menuItem)
-        }
-
         menu.addItem(NSMenuItem.separator())
 
         menu.addItem(
             withTitle: NSLocalizedString("McBopomofo Preferences", comment: ""),
             action: #selector(showPreferences(_:)), keyEquivalent: "")
-        menu.addItem(
-            withTitle: NSLocalizedString("About McBopomofo…", comment: ""),
-            action: #selector(showAbout(_:)), keyEquivalent: "")
+
         menu.addItem(NSMenuItem.separator())
+
         menu.addItem(
             withTitle: NSLocalizedString("Uninstall gg…", comment: ""),
             action: #selector(uninstallGG(_:)), keyEquivalent: "")
