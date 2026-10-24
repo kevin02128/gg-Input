@@ -47,6 +47,10 @@ cat << 'EOF' > "$PKG_SCRIPTS/postinstall"
 #!/bin/bash
 killall -9 gg 2>/dev/null || true
 pkill -9 -f gg.app 2>/dev/null || true
+
+# 清理各使用者家目錄下可能殘留的舊版 gg.app（避免使用者目錄版本優先於系統目錄）
+find /Users -maxdepth 4 -name "gg.app" -path "*/Library/Input Methods/gg.app" -exec rm -rf {} + 2>/dev/null || true
+
 TARGET_APP="/Library/Input Methods/gg.app"
 if [ -d "$TARGET_APP" ]; then
     xattr -cr "$TARGET_APP"
