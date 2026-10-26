@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Resolve Swift Package dependencies
+        run: |
+          xcodebuild -resolvePackageDependencies -project gg.xcodeproj -scheme gg
+          find ~/Library/Developer/Xcode/DerivedData -name "SwiftyOpenCC" -type d | while read dir; do
+            (cd "$dir" && git submodule update --init --recursive)
+          done
+
+      - name: Pre-build Data target
+        run: |
+          (cd Source/Data && make build)
+
+      - name: Build gg Input Method
+        run: |
+          xcodebuild build -project gg.xcodeproj -scheme gg -configuration Debug -destination "platform=macOS,arch=arm64" || \
+          (echo "Retrying build due to transient Xcode scheduler inconsistency..." && xcodebuild build -project gg.xcodeproj -scheme gg -configuration Debug -destination "platform=macOS,arch=arm64")
+
+      - name: Run Unit Tests
+        run: |
+          xcodebuild test -project gg.xcodeproj -scheme gg -destination "platform=macOS,arch=arm64"

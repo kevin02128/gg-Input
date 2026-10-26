@@ -1,0 +1,33 @@
+# Xcode & Build Artifacts
+build
+.build
+**/.build
+*/build
+Packages/*/build
+Packages/*/.build
+DerivedData
+*.pbxuser
+*.mode1v3
+*.tm_build_errors
+*.xcresult
+27.1-*
+project.xcworkspace
+xcuserdata
+*.xcuserstate
+
+# Packaging & App Bundles
+*.dmg
+*.app
+*.pkg
+*.tar.gz
+*.zip
+*.pdf
+
+# OS & Editor
+.DS_Store
+.idea
+.swiftpm
+.vscode
+__pycache__
+*.pyc
+codecov_comment.md
