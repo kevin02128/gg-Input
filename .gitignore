@@ -1,0 +1,13 @@
+# Model binary weights (hosted on GitHub Releases)
+saved_model/
+*.mlpackage/
+*.mlmodelc/
+*.zip
+*.tar.gz
+
+# Python & System
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
