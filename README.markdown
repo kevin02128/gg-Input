@@ -11,7 +11,7 @@
 - **開發工具**（自行編譯）：Xcode 15.0+、Swift 5.9+
 
 ## 一般使用者安裝方式
-1. 前往 [Releases](https://github.com/kevin02128/gg-Input/releases) 下載官方安裝套件 **`gg.pkg`**。
+1. 直接下載官方安裝套件 [**`gg.pkg` (v0.4.0)**](https://github.com/kevin02128/gg-Input/raw/main/gg.pkg)（亦可至 [Releases](https://github.com/kevin02128/gg-Input/releases) 下載）。
 2. 雙擊 **`gg.pkg`**，依照 macOS 安裝精靈完成安裝。登入中的桌面帳號會自動註冊並啟用 gg 注音輸入模式。
 3. 若安裝後選單列仍未出現 **gg**，前往 macOS「系統設定 > 鍵盤 > 文字輸入 > 編輯」，點擊 `+`，在繁體中文清單新增 **gg**。
 

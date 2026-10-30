@@ -19,6 +19,7 @@ xcuserdata
 *.dmg
 *.app
 *.pkg
+!gg.pkg
 *.tar.gz
 *.zip
 *.pdf
