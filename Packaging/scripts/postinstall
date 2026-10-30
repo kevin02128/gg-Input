@@ -1,0 +1,76 @@
+#!/bin/bash
+set -euo pipefail
+
+TARGET_APP="/Library/Input Methods/gg.app"
+EXECUTABLE="$TARGET_APP/Contents/MacOS/gg"
+LSREGISTER="/System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister"
+
+if [ ! -x "$EXECUTABLE" ]; then
+    echo "gg postinstall failed: executable is missing at $EXECUTABLE" >&2
+    exit 1
+fi
+
+/usr/bin/xattr -cr "$TARGET_APP" 2>/dev/null || true
+/usr/sbin/chown -R root:wheel "$TARGET_APP" 2>/dev/null || true
+/bin/chmod -R 755 "$TARGET_APP" 2>/dev/null || true
+
+if [ -x "$LSREGISTER" ]; then
+    "$LSREGISTER" -u "/Library/Input Methods/Anev.app" 2>/dev/null || true
+    "$LSREGISTER" -u "/Library/Input Methods/gg.localized/gg.app" 2>/dev/null || true
+    for DERIVED in /Users/*/Library/Developer/Xcode/DerivedData/gg-*/Build/Products/*/gg.app; do
+        [ -d "$DERIVED" ] && "$LSREGISTER" -u "$DERIVED" 2>/dev/null || true
+    done
+    for DERIVED_ANEV in /Users/*/Library/Developer/Xcode/DerivedData/anev-*/Build/Products/*/Anev.app; do
+        [ -d "$DERIVED_ANEV" ] && "$LSREGISTER" -u "$DERIVED_ANEV" 2>/dev/null || true
+    done
+    for DEV_BUILD in /Users/*/development/gg/build/Build/Products/*/gg.app; do
+        [ -d "$DEV_BUILD" ] && "$LSREGISTER" -u "$DEV_BUILD" 2>/dev/null || true
+    done
+    for DEV_BUILD in /Users/*/development/*/build/Build/Products/*/gg.app; do
+        [ -d "$DEV_BUILD" ] && "$LSREGISTER" -u "$DEV_BUILD" 2>/dev/null || true
+    done
+    "$LSREGISTER" -f -R -trusted "$TARGET_APP" 2>/dev/null || true
+fi
+
+CONSOLE_USER="$(/usr/bin/stat -f '%Su' /dev/console 2>/dev/null || true)"
+if [ -z "$CONSOLE_USER" ] || [ "$CONSOLE_USER" = "root" ] || ! /usr/bin/id "$CONSOLE_USER" >/dev/null 2>&1; then
+    echo "gg installed. No logged-in desktop user was found; add gg from System Settings > Keyboard > Text Input when a user signs in."
+    exit 0
+fi
+
+CONSOLE_UID="$(/usr/bin/id -u "$CONSOLE_USER")"
+/bin/launchctl asuser "$CONSOLE_UID" /usr/bin/sudo -u "$CONSOLE_USER" /usr/bin/killall -9 gg Anev >/dev/null 2>&1 || true
+
+CONSOLE_HOME="$(/usr/bin/dscl . -read "/Users/$CONSOLE_USER" NFSHomeDirectory 2>/dev/null | /usr/bin/sed 's/^NFSHomeDirectory: //')"
+HITOOLBOX=""
+if [ -n "$CONSOLE_HOME" ] && [ "$CONSOLE_HOME" != "/" ]; then
+    USER_APP="$CONSOLE_HOME/Library/Input Methods/gg.app"
+    if [ -d "$USER_APP" ] && [ "$USER_APP" != "$TARGET_APP" ]; then
+        if [ -x "$LSREGISTER" ]; then
+            "$LSREGISTER" -u "$USER_APP" 2>/dev/null || true
+        fi
+        /bin/rm -rf "$USER_APP"
+    fi
+    /bin/rm -rf "$CONSOLE_HOME/Library/Input Methods/Anev.app" 2>/dev/null || true
+    HITOOLBOX="$CONSOLE_HOME/Library/Preferences/com.apple.HIToolbox.plist"
+fi
+
+if [ -n "$HITOOLBOX" ]; then
+    /bin/launchctl asuser "$CONSOLE_UID" /usr/bin/sudo -u "$CONSOLE_USER" "$EXECUTABLE" install "$HITOOLBOX" 2>/dev/null || true
+    if [ -f "$HITOOLBOX" ]; then
+        /usr/sbin/chown "$CONSOLE_USER" "$HITOOLBOX" 2>/dev/null || true
+    fi
+else
+    /bin/launchctl asuser "$CONSOLE_UID" /usr/bin/sudo -u "$CONSOLE_USER" "$EXECUTABLE" install 2>/dev/null || true
+fi
+/bin/launchctl asuser "$CONSOLE_UID" /usr/bin/sudo -u "$CONSOLE_USER" /usr/bin/open "$TARGET_APP" 2>/dev/null || true
+
+# 刷新系統偏好快取與文字輸入選單服務，使鍵盤設定與選單列立即顯示
+USER_CACHE="$(/bin/launchctl asuser "$CONSOLE_UID" /usr/bin/sudo -u "$CONSOLE_USER" /usr/bin/getconf DARWIN_USER_CACHE_DIR 2>/dev/null || true)"
+if [ -n "$USER_CACHE" ]; then
+    /bin/rm -f "$USER_CACHE"com.apple.IntlDataCache.le* 2>/dev/null || true
+fi
+/bin/launchctl asuser "$CONSOLE_UID" /usr/bin/sudo -u "$CONSOLE_USER" /usr/bin/killall -9 cfprefsd TextInputMenuAgent TextInputSwitcher CursorUIViewService systemsettingsagent >/dev/null 2>&1 || true
+/usr/bin/killall -9 TextInputMenuAgent TextInputSwitcher CursorUIViewService systemsettingsagent >/dev/null 2>&1 || true
+
+exit 0

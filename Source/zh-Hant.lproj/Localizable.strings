@@ -1,0 +1,281 @@
+/* No comment provided by engineer. */
+"About McBopomofo…" = "關於 gg…";
+
+/* No comment provided by engineer. */
+"McBopomofo Preferences" = "gg 偏好設定";
+
+/* No comment provided by engineer. */
+"Check for Updates…" = "檢查是否有新版…";
+
+/* No comment provided by engineer. */
+"Update Check Failed" = "無法檢查新版";
+
+/* No comment provided by engineer. */
+"There may be no internet connection or the server failed to respond.\n\nError message: %@" = "網路連線失敗，或是伺服器沒有回應。\n\n錯誤說明：%@";
+
+/* No comment provided by engineer. */
+"OK" = "好";
+
+/* No comment provided by engineer. */
+"Dismiss" = "關閉本視窗";
+
+/* No comment provided by engineer. */
+"New Version Available" = "有新版可下載";
+
+/* No comment provided by engineer. */
+"Not Now" = "以後再說";
+
+/* No comment provided by engineer. */
+"Visit Website" = "前往網站";
+
+/* No comment provided by engineer. */
+"You're currently using McBopomofo %@ (%@), a new version %@ (%@) is now available. Do you want to visit McBopomofo's website to download the version?%@" = "目前使用的 gg 輸入法版本是 %1$@ (%2$@)，網路上有更新版本 %3$@ (%4$@) 可供下載。是否要前往網站下載新版來安裝？%5$@";
+
+"Convert to Simplified Chinese" = "輸出簡體中文";
+
+"User Phrases" = "使用者詞彙";
+
+"User Phrases:" = "使用者詞彙：";
+
+"Edit User Phrases" = "編輯使用者詞彙";
+
+"Reload User Phrases" = "重新載入使用者詞彙";
+
+"Reloaded successfully" = "已重新載入";
+
+"Failed to Create the User Phrase File" = "無法建立使用者詞彙檔案";
+
+"Please check the permission of the path at \"%@\"." = "請檢查以下路徑的寫入權限 \"%@\"。";
+
+"Edit Excluded Phrases" = "編輯要排除的詞彙";
+
+"Use Half-Width Punctuations" = "使用半形標點符號";
+
+"Marking \"%@\": add a custom phrase by selecting two or more characters." = "您目前選擇了「%@」。請選擇兩個字以上，才能加入使用者詞彙。";
+
+"Marking \"%@\". Press Enter to add it as a new phrase." = "您目前選擇了「%@」。按下 Enter 就可以加入到使用者詞彙中。";
+
+"The phrase being marked \"%@\" is longer than the allowed %d characters." = "您目前選擇了「%@」。自訂詞彙不能超過 %d 個字元。";
+
+"Chinese Conversion On" = "已經切換到簡體中文模式";
+
+"Chinese Conversion Off" = "已經切換到繁體中文模式";
+
+"Edit Phrase Replacement Table" = "編輯詞彙替換表格";
+
+"Use Phrase Replacement" = "使用詞彙替換";
+
+"Candidates keys cannot be empty." = "選字鍵不可為空。";
+
+"Candidate keys can only contain Latin characters and numbers." = "選字鍵只可包含英數與半形標點。";
+
+"Candidate keys cannot contain space." = "選字鍵不可包含空白。";
+
+"There should not be duplicated keys." = "選字鍵中不可包含重複的字元。";
+
+"Candidate keys cannot be shorter than 4 characters." = "選字按鍵數量不可小於 4。";
+
+"Candidate keys cannot be longer than 15 characters." = "選字按鍵數量不可大於 15。";
+
+"Phrase replacement mode is on. Not recommended to add user phrases." = "詞彙轉換已開啟，不建議在此模式下加詞。";
+
+"Model-based Chinese conversion is on. Not recommended to add user phrases." = "您已開啟將語言模型轉為簡體中文，不建議在此模式下加詞。";
+
+"Half-Width Punctuation On" = "已經切換到半形標點模式";
+
+"Half-Width Punctuation Off" = "已經切回到全形標點模式";
+
+"Associated Phrases" = "聯想詞";
+
+"Certain Unicode symbols or characters not supported as user phrases." = "您輸入了特殊符號，我們還無法支援在這種狀況下手動加詞。";
+
+"Cursor is between \"%@\" and \"%@\"." = "游標正在「%@」與「%@」之間";
+
+"The phrase being marked \"%@\" already exists." = "您目前選擇了「%@」，這個詞彙已經存在了";
+
+"Basic" = "基本";
+
+"Advanced" = "進階";
+
+"Check for Update Completed" = "版本檢查完成";
+
+"McBopomofo is up to date." = "您的 gg 不需要更新。";
+
+"Look up \"%1$@\" in %2$@" = "在%2$@查詢「%1$@」";
+
+"Dictionary app" = "字典App";
+
+"Speak \"%@\"…" = "朗讀「%@」…";
+
+"%@ has been copied." = "已成功複製 %@";
+
+"Look up %@" = "查找 %@";
+
+"Date and Time" = "日期與時間";
+
+"Big5 Code" = "Big5 內碼輸入";
+
+"Speak" = "朗讀";
+
+"Character Information" = "字元資訊";
+
+"Numbers" = "數字輸入";
+
+"Boost" = "增加權重";
+
+"Cancel" = "取消";
+
+"Exclude" = "排除";
+
+"Do you want to boost the score of the phrase \"%@\"?" = "您想要提升 \"%@\" 這個詞彙的權重嗎？";
+
+"Do you want to exclude the phrase \"%@\"?" = "您想要從詞庫中排除 \"%@\" 這個詞彙嗎？";
+
+"Roman Numbers (Alphabets)" = "羅馬數字 (字母)";
+
+"Roman Numbers (Full-Width Upper Case)" = "羅馬數字 (大寫全形)";
+
+"Roman Numbers (Full-Width Lower Case)" = "羅馬數字 (小寫全形)";
+
+"Show Issues in User Files" = "列出自訂詞庫中的問題";
+
+"Issues were found in the following user phrase files:" = "以下是用戶自訂詞庫檔案中發現的問題：";
+
+"Check McBopomofo menu for user file issues" = "自訂詞庫有誤，請從 gg 選單點選「列出自訂詞庫中的問題」";
+
+"User phrase file" = "使用者自訂詞彙檔";
+
+"Excluded phrase file" = "排除詞彙檔";
+
+"Phrase replacement file" = "詞彙替換表格檔";
+
+"line %lu: " = "第 %lu 行：";
+
+"Only one column was found." = "一行應該有兩欄文字，這行只有一欄。";
+
+"Illegal NULL character was found." = "這一行包含了不合規則的 NULL 字元 (0x00)。";
+
+/* Input menu item title. */
+"Bopomofo Font Annotation Support" = "注音字型破音字標記模式";
+
+/* Used in the notification during mode toggle. */
+"Bopomofo Font Annotation Support On" = "已開啟注音字型破音字標記模式";
+
+/* Used in the notification during mode toggle. */
+"Bopomofo Font Annotation Support Off" = "已關閉注音字型破音字標記模式";
+
+/* Used in the tooltip when the mode is on. */
+"Bopomofo annotation support on" = "注音字型破音字標記模式開啟";
+
+/* Used in the tooltip when the mode is on. */
+"Bopomofo annotation: variant selectors and PUA blocks in text" = "注音字型模式：組字區含有破音字選擇字元及個別注音標記";
+
+/* Used in the tooltip when the mode is on. */
+"Bopomofo annotation: variant selectors in text" = "注音字型模式：組字區含有破音字選擇字元";
+
+/* Used in the tooltip when the mode is on. */
+"Bopomofo annotation: PUA blocks in text" = "注音字型模式：組字區含有個別注音標記";
+
+/* Used when the user attempts to mark a phrase when the annotation mode is on. */
+"Cannot add new phrases when Bopomofo annotation is on" = "注音字型破音字標記模式開啟時，不能增加新詞";
+
+"Add Variant Annotation (Need BPMF IVS Font Support)" = "加上破音字標記 (需要使用注音字體)";
+
+"Unicode Name" = "Unicode 名稱";
+"Phonetic" = "注音";
+"Pinyin" = "拼音";
+"Canjie" = "倉頡字根";
+"Canjie Keys" = "倉頡按鍵";
+"Japanese" = "日文";
+"Japanese Kun" = "日文訓讀";
+"Japanese On" = "日文音讀";
+"Korean" = "韓文";
+
+/* Preferences window strings migrated from preferences.xib. */
+"Bopomofo Preferences" = "注音偏好設定";
+"Bopomofo Keyboard Layout:" = "注音鍵盤配置：";
+"Alphanumeric Keyboard Layout:" = "英數字鍵盤配置：";
+"Selection Keys:" = "選字鍵：";
+"Standard" = "標準";
+"ETen" = "倚天";
+"Hsu" = "許氏鍵盤";
+"ETen26" = "倚天26鍵";
+"HanyuPinyin" = "漢語拼音";
+"Hanyu Pinyin" = "漢語拼音";
+"IBM" = "IBM";
+"Space key chooses candidate" = "使用空白鍵選字";
+"ESC key clears entire input buffer" = "按下 ESC 會清除整個輸入緩衝區";
+"Show Candidate Phrase:" = "選字時，候選詞起點在：";
+"Before the cursor (like Hanin)" = "游標前面（像漢音輸入法）";
+"After the cursor (like MS IME)" = "游標後面（像微軟新注音）";
+"Candidate List Style:" = "候選詞呈現方式：";
+"Vertical" = "垂直列表";
+"Horizontal" = "水平列表";
+"Candidate Text Size:" = "選字窗文字大小：";
+"Move cursor after selection" = "選字之後自動移動游標位置";
+"Shift + Letter Keys:" = "Shift + 字母鍵：";
+"Input uppercase letters directly" = "直接輸入大寫字母";
+"Input lowercased letters to buffer" = "在輸入緩衝區中輸入小寫字母";
+"ESC Key:" = "ESC 鍵：";
+"Beep upon input error" = "輸入錯誤時發出警示聲";
+"Trigger associated phrases" = "使用聯想詞功能";
+"Shift + Enter Key:" = "Shift + Enter 鍵：";
+"When Selecting Candidates:" = "選字時可以移動游標：";
+"Disabled" = "不使用";
+"Moving cursor is not allowed" = "不使用";
+"JK keys move the cursor" = "使用 JK 按鍵移動游標";
+"HL keys move the cursor" = "使用 HL 按鍵移動游標";
+"Check for updates automatically" = "定期檢查是否有新版";
+"Chinese Conversion Style:" = "中文簡繁轉換模式：";
+"Convert output" = "轉換輸出結果";
+"Convert models" = "轉換詞庫";
+"Ctrl + Enter Key:" = "Ctrl + Enter 按鍵：";
+"Ctrl + ` Key:" = "Ctrl + ` 按鍵：";
+"Ctrl + `  Key:" = "Ctrl + ` 按鍵：";
+"Input Big 5 Code" = "使用 Ctrl + ` 輸入 Big5 內碼";
+"Punctuation Symbols:" = "標點符號：";
+"Repeated key to next candidate" = "連續輸入標點切換候選字";
+"When enabled, if you type \"Shift+,\" repeatedly with the standard layout, it will produce symbols like < and 《." = "啟用這個選項後，在標準鍵盤配置下，可以用連續按下「Shift+,」後，從輸入逗號（，），變成輸入書名號（〈、《）等。";
+"When enabled, if you type \"Shift+,\" repeatedly with the standard layout, it will produce symbols like 〈 and 《." = "啟用這個選項後，在標準鍵盤配置下，可以用連續按下「Shift+,」後，從輸入逗號（，），變成輸入書名號（〈、《）等。";
+"Bopomofo Font Annotation Support:" = "注音字型破音字標記：";
+"Show toggle in input menu" = "在輸入法選單內顯示切換選項";
+"Off" = "關閉";
+"Bopomofo Reading" = "注音符號";
+"Bopomofo Readings" = "注音符號";
+"HTML Ruby Text" = "HTML旁注標記";
+"HTML Ruby" = "HTML旁注標記";
+"Taiwanese Braille (Unicode)" = "台灣點字 (Unicode)";
+"Taiwanese Braille (ASCII)" = "台灣點字 (ASCII)";
+"Taiwanese Braille Unicode" = "台灣點字 (Unicode)";
+"Taiwanese Braille ASCII" = "台灣點字 (ASCII)";
+"Create System Report" = "產生系統資訊報告";
+"You can create a system report and attach it when filing an issue, so the developers can help you better." = "當您在回報問題的時候，可以用這個按鈕，產生一份系統資訊，方便開發團隊了解您的問題。";
+"User Phrase Location:" = "使用者詞彙位置：";
+"Default" = "標準";
+"Custom" = "自訂";
+"Choose folder" = "選擇資料夾";
+"Open folder" = "開啟資料夾";
+"You can specify the folder to store user phrases to the folder of Google Drive, DropBox and so on so you can backup the phrases." = "您可以將使用者詞彙放在 Google Drive 或是 DropBox 等服務的目錄下，自動備份或同步詞庫。";
+"After Adding a New Phrase:" = "在手動加入使用者詞彙之後:";
+"Run a shell script" = "執行特定的 Shell Script";
+"Path:" = "路徑：";
+"You can run a script to use git to backup your phrases. The script will run in the folder of your user phrases folder." = "您可以在加詞之後，透過這個 Shell Script 執行指定的工作，像是使用 git 備份詞庫。這個 script 會在你的使用者詞彙資料夾下執行。";
+
+"Quick Text Transform" = "日韓多語拼音轉換";
+
+"Uninstall gg…" = "解除安裝 gg 輸入法…";
+"Uninstall gg Input Method" = "解除安裝 gg 輸入法";
+"Unable to Prepare gg for Uninstall" = "無法準備解除安裝 gg";
+"gg could not switch to an English keyboard or disable its input source. Nothing was removed. Try again after selecting another input source." = "gg 無法切換到英文鍵盤或停用輸入來源，因此未移除任何檔案。請先改選其他輸入來源後再試一次。";
+"Unable to Uninstall gg" = "無法解除安裝 gg";
+"The administrator action was cancelled or failed. gg was not fully removed." = "管理員作業已取消或失敗，gg 尚未完整移除。";
+"Are you sure you want to uninstall gg? The system will switch to the default English input source and remove the app." = "確定要解除安裝 gg 輸入法嗎？解除安裝後系統將自動切換回預設英文鍵盤，並完全移除應用程式。";
+"Uninstall" = "解除安裝";
+"Delete user phrases and preferences" = "同時刪除自訂詞庫與偏好設定";
+"AI Correction Mode:" = "AI 同音糾錯模式：";
+"AI Active Auto-Correction Mode" = "主動智能糾錯模式";
+"AI Conservative Candidate Rank Mode" = "保守提示模式（僅重排候選字）";
+"Turn Off AI Correction" = "關閉 AI 糾錯";
+"AI Active Auto-Correction On" = "已切換為主動智能糾錯模式";
+"AI Conservative Candidate Rank On" = "已切換為保守提示模式";
+"AI Correction Off" = "已關閉 AI 糾錯";

@@ -1,0 +1,71 @@
+# Third-Party Notices and Attributions (NOTICE)
+
+gg Input Method 自 **v0.3**（原內部規劃標號 v3.0）起整體遵循 **MIT License** 授權條款發行（完整授權條款請見 `LICENSE`）。
+
+---
+
+## 1. 歷史版本授權過渡聲明 (Historical Licensing Notice)
+
+v0.3 之前的所有提交（含 `legacy-coreml-experiment` 標籤，歷史紀錄曾暫標為 v3.0）依當時的 LICENSE（GNU General Public License v3.0, GPL-3.0）散佈；自 v0.3 起的程式碼採 MIT License 發行。
+
+在 v0.3 之前的實驗性歷史提交中，曾包含基於中央研究院資訊科學研究所詞庫小組（CKIP Lab, Academia Sinica）所釋出之 `ckiplab/bert-base-chinese`（GPL-3.0）微調之 CoreML 模型。該神經網路模型及其 XPC 通訊代碼已於 v0.3 正式徹底卸載，不再包含於主分支及後續發布版本中。
+
+---
+
+## 2. 逐檔第三方資料與字典來源歸屬 (File-by-File Attributions)
+
+本專案所包含之字典檔與統計語料均具有明確之開放授權，特此逐檔列明原始著作權與授權條款：
+
+### A. 語料統計表：`Source/Data/character-ngrams.txt`
+- **來源**：
+  1. 中華民國政府資料開放平臺（data.gov.tw）各機關公開公報與司法院公開裁判書
+  2. 國家教育研究院（National Academy for Educational Research, NAER）「臺灣華語文語料庫（COCT）」
+- **授權條款**：《政府資料開放授權條款－第 1 版》（Open Government Data License, version 1.0, OGDL-Taiwan-1.0）
+- **聲明**：本檔案僅由上述授權語料計算並聚合字元二元（Bigram）與三元（Trigram）之條件機率統計分數，不含任何原始語料句子或個人識別資料。
+
+### B. 基礎注音辭典：`Source/Data/data.txt` 與注音詞表
+- **包含檔案**：
+  - `Source/Data/data.txt`
+  - `Source/Data/data-plain-bpmf.txt`
+  - `Source/Data/associated-phrases-v2.txt`
+  - `Source/Data/bpmfvs-variants.txt`
+  - `Source/Data/bpmfvs-pua.txt`
+- **著作權人**：Copyright (c) 2011-2026 Mengjuei Hsieh et al. (The McBopomofo Authors)
+- **來源**：https://github.com/openvanilla/McBopomofo
+- **授權條款**：MIT License
+
+```text
+MIT License
+
+Copyright (c) 2011-2026 Mengjuei Hsieh et al. (The McBopomofo Authors)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+### C. 繁簡轉換引擎：`OpenCC` / `SwiftyOpenCC`
+- **著作權人**：
+  - OpenCC: Copyright (c) 2010-2020 Carbo Kuo (BYVoid) and contributors (Apache License 2.0)
+  - SwiftyOpenCC: Copyright (c) 2018-2022 ddddxxx (MIT License)
+- **來源**：https://github.com/BYVoid/OpenCC / https://github.com/ddddxxx/SwiftyOpenCC
+- **授權條款**：Apache License 2.0 / MIT License
+
+### D. SQLite 綁定庫：`SQLite.swift`
+- **著作權人**：Copyright (c) 2014-2024 Stephen Celis (stephencelis)
+- **來源**：https://github.com/stephencelis/SQLite.swift
+- **授權條款**：MIT License

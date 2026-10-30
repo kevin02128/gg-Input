@@ -1,0 +1,279 @@
+/* No comment provided by engineer. */
+"About McBopomofo…" = "About gg…";
+
+/* No comment provided by engineer. */
+"McBopomofo Preferences" = "gg Preferences";
+
+/* No comment provided by engineer. */
+"Check for Updates…" = "Check for Updates…";
+
+/* No comment provided by engineer. */
+"Update Check Failed" = "Update Check Failed";
+
+/* No comment provided by engineer. */
+"There may be no internet connection or the server failed to respond.\n\nError message: %@" = "There may be no internet connection or the server failed to respond.\n\nError message: %@";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Dismiss" = "Dismiss";
+
+/* No comment provided by engineer. */
+"New Version Available" = "New Version Available";
+
+/* No comment provided by engineer. */
+"Not Now" = "Not Now";
+
+/* No comment provided by engineer. */
+"Visit Website" = "Visit Website";
+
+/* No comment provided by engineer. */
+"You're currently using McBopomofo %@ (%@), a new version %@ (%@) is now available. Do you want to visit McBopomofo's website to download the version?%@" = "You're currently using gg IME %@ (%@), a new version %@ (%@) is now available. Do you want to visit gg IME's website to download the version?%@";
+
+"Convert to Simplified Chinese" = "Convert to Simplified Chinese";
+
+"User Phrases" = "User Phrases";
+
+"Edit User Phrases" = "Edit User Phrases";
+
+"Reload User Phrases" = "Reload User Phrases";
+
+"Failed to Create the User Phrase File" = "Failed to Create the User Phrase File";
+
+"Please check the permission of the path at \"%@\"." = "Please check the permission of the path at \"%@\".";
+
+"Edit Excluded Phrases" = "Edit Excluded Phrases";
+
+"Use Half-Width Punctuations" = "Use Half-Width Punctuations";
+
+"Marking \"%@\": add a custom phrase by selecting two or more characters." = "Marking \"%@\": add a custom phrase by selecting two or more characters.";
+
+"Marking \"%@\". Press Enter to add it as a new phrase." = "Marking \"%@\". Press Enter to add it as a new phrase.";
+
+"The phrase being marked \"%@\" is longer than the allowed %d characters." = "The phrase being marked \"%@\" is longer than the allowed %d characters.";
+
+"Chinese Conversion On" = "Chinese Conversion On";
+
+"Chinese Conversion Off" = "Chinese Conversion Off";
+
+"Edit Phrase Replacement Table" = "Edit Phrase Replacement Table";
+
+"Use Phrase Replacement" = "Use Phrase Replacement";
+
+"Candidates keys cannot be empty." = "Candidates keys cannot be empty.";
+
+"Candidate keys can only contain Latin characters and numbers." = "Candidate keys can only contain Latin characters and numbers.";
+
+"Candidate keys cannot contain space." = "Candidate keys cannot contain space.";
+
+"There should not be duplicated keys." = "There should not be duplicated keys.";
+
+"Candidate keys cannot be shorter than 4 characters." = "Candidate keys cannot be shorter than 4 characters.";
+
+"Candidate keys cannot be longer than 15 characters." = "Candidate keys cannot be longer than 15 characters.";
+
+"Phrase replacement mode is on. Not recommended to add user phrases." = "Phrase replacement mode is on. Not recommended to add user phrases.";
+
+"Model-based Chinese conversion is on. Not recommended to add user phrases." = "Model-based Chinese conversion is on. Not recommended to add user phrases.";
+
+"Half-Width Punctuation On" = "Half-Width Punctuation On";
+
+"Half-Width Punctuation Off" = "Half-Width Punctuation Off";
+
+"Associated Phrases" = "Associated Phrases";
+
+"Certain Unicode symbols or characters not supported as user phrases." = "Certain Unicode symbols or characters not supported as user phrases.";
+
+"Cursor is between \"%@\" and \"%@\"." = "Cursor is between \"%@\" and \"%@\".";
+
+"The phrase being marked \"%@\" already exists." = "The phrase being marked \"%@\" already exists.";
+
+"Basic" = "Basic";
+
+"Advanced" = "Advanced";
+
+"Check for Update Completed" = "Check for Update Completed";
+
+"McBopomofo is up to date." = "gg is up to date.";
+
+"Look up \"%1$@\" in %2$@" = "Look up \"%1$@\" in %2$@";
+
+"Dictionary app" = "Dictionary app";
+
+"Speak \"%@\"…" = "Speak \"%@\"…";
+
+"Wiktionary" = "Wiktionary";
+
+"%@ has been copied." = "%@ has been copied.";
+
+"Look up %@" = "Look up %@";
+
+"Date and Time" = "Date and Time";
+
+"Big5 Code" = "Big5 Code";
+
+"Speak" = "Speak";
+
+"Character Information" = "Character Information";
+
+"Numbers" = "Numbers";
+
+"Boost" = "Boost";
+
+"Cancel" = "Cancel";
+
+"Exclude" = "Exclude";
+
+"Do you want to boost the score of the phrase \"%@\"?" = "Do you want to boost the score of the phrase \"%@\"?";
+
+"Do you want to exclude the phrase \"%@\"?" = "Do you want to exclude the phrase \"%@\"?";
+
+"Roman Numbers (Alphabets)" = "Roman Numbers (Alphabets)";
+
+"Roman Numbers (Full-Width Upper Case)" = "Roman Numbers (Full-Width Upper Case)";
+
+"Roman Numbers (Full-Width Lower Case)" = "Roman Numbers (Full-Width Lower Case)";
+
+"Show Issues in User Files" = "Show Issues in User Files";
+
+"Issues were found in the following user phrase files:" = "Issues were found in the following user phrase files:";
+
+"Check McBopomofo menu for user file issues" = "Check gg menu for user file issues";
+
+"User phrase file" = "User phrase file";
+
+"Excluded phrase file" = "Excluded phrase file";
+
+"Phrase replacement file" = "Phrase replacement file";
+
+"line %lu: " = "line %lu: ";
+
+"Only one column was found." = "Only one column was found.";
+
+"Illegal NULL character was found." = "Illegal NULL character was found.";
+
+/* Input menu item title. */
+"Bopomofo Font Annotation Support" = "Bopomofo Font Annotation Support";
+
+/* Used in the notification during mode toggle. */
+"Bopomofo Font Annotation Support On" = "Bopomofo Font Annotation Support On";
+
+/* Used in the notification during mode toggle. */
+"Bopomofo Font Annotation Support Off" = "Bopomofo Font Annotation Support Off";
+
+/* Used in the tooltip when the mode is on. */
+"Bopomofo annotation support on" = "Bopomofo annotation support on";
+
+/* Used in the tooltip when the mode is on. */
+"Bopomofo annotation: variant selectors and PUA blocks in text" = "Bopomofo annotation: variant selectors and PUA blocks in text";
+
+/* Used in the tooltip when the mode is on. */
+"Bopomofo annotation: variant selectors in text" = "Bopomofo annotation: variant selectors in text";
+
+/* Used in the tooltip when the mode is on. */
+"Bopomofo annotation: PUA blocks in text" = "Bopomofo annotation: PUA blocks in text";
+
+/* Used when the user attempts to mark a phrase when the annotation mode is on. */
+"Cannot add new phrases when Bopomofo annotation is on" = "Cannot add new phrases when Bopomofo annotation is on";
+
+"Add Variant Annotation (Need BPMF IVS Font Support)" = "Add Variant Annotation (Need BPMF IVS Font Support)";
+
+"Unicode Name" = "Unicode Name";
+"Phonetic" = "Phonetic";
+"Pinyin" = "Pinyin";
+"Canjie" = "Canjie";
+"Canjie Keys" = "Canjie Keys";
+"Japanese" = "Japanese";
+"Japanese Kun" = "Japanese Kun";
+"Japanese On" = "Japanese On";
+"Korean" = "Korean";
+
+/* Preferences window strings migrated from preferences.xib. */
+"Bopomofo Preferences" = "Bopomofo Preferences";
+"Bopomofo Keyboard Layout:" = "Bopomofo Keyboard Layout:";
+"Alphanumeric Keyboard Layout:" = "Alphanumeric Keyboard Layout:";
+"Selection Keys:" = "Selection Keys:";
+"Standard" = "Standard";
+"ETen" = "ETen";
+"Hsu" = "Hsu";
+"ETen26" = "ETen26";
+"HanyuPinyin" = "HanyuPinyin";
+"Hanyu Pinyin" = "Hanyu Pinyin";
+"IBM" = "IBM";
+"Space key chooses candidate" = "Space key chooses candidate";
+"ESC key clears entire input buffer" = "ESC key clears entire input buffer";
+"Show Candidate Phrase:" = "Show Candidate Phrase:";
+"Before the cursor (like Hanin)" = "Before the cursor (like Hanin)";
+"After the cursor (like MS IME)" = "After the cursor (like MS IME)";
+"Candidate List Style:" = "Candidate List Style:";
+"Vertical" = "Vertical";
+"Horizontal" = "Horizontal";
+"Candidate Text Size:" = "Candidate Text Size:";
+"Move cursor after selection" = "Move cursor after selection";
+"Shift + Letter Keys:" = "Shift + Letter Keys:";
+"Input uppercase letters directly" = "Input uppercase letters directly";
+"Input lowercased letters to buffer" = "Input lowercased letters to buffer";
+"ESC Key:" = "ESC Key:";
+"Beep upon input error" = "Beep upon input error";
+"Trigger associated phrases" = "Trigger associated phrases";
+"Shift + Enter Key:" = "Shift + Enter Key:";
+"When Selecting Candidates:" = "When Selecting Candidates:";
+"Disabled" = "Disabled";
+"Moving cursor is not allowed" = "Moving cursor is not allowed";
+"JK keys move the cursor" = "JK keys move the cursor";
+"HL keys move the cursor" = "HL keys move the cursor";
+"Check for updates automatically" = "Check for updates automatically";
+"Chinese Conversion Style:" = "Chinese Conversion Style:";
+"Convert output" = "Convert output";
+"Convert models" = "Convert models";
+"Ctrl + Enter Key:" = "Ctrl + Enter Key:";
+"Ctrl + ` Key:" = "Ctrl + ` Key:";
+"Ctrl + `  Key:" = "Ctrl + `  Key:";
+"Input Big 5 Code" = "Input Big 5 Code";
+"Punctuation Symbols:" = "Punctuation Symbols:";
+"Repeated key to next candidate" = "Repeated key to next candidate";
+"When enabled, if you type \"Shift+,\" repeatedly with the standard layout, it will produce symbols like < and 《." = "When enabled, if you type \"Shift+,\" repeatedly with the standard layout, it will produce symbols like < and 《.";
+"When enabled, if you type \"Shift+,\" repeatedly with the standard layout, it will produce symbols like 〈 and 《." = "When enabled, if you type \"Shift+,\" repeatedly with the standard layout, it will produce symbols like 〈 and 《.";
+"Bopomofo Font Annotation Support:" = "Bopomofo Font Annotation Support:";
+"Show toggle in input menu" = "Show toggle in input menu";
+"Off" = "Off";
+"Bopomofo Reading" = "Bopomofo Reading";
+"Bopomofo Readings" = "Bopomofo Readings";
+"HTML Ruby Text" = "HTML Ruby Text";
+"HTML Ruby" = "HTML Ruby";
+"Taiwanese Braille (Unicode)" = "Taiwanese Braille (Unicode)";
+"Taiwanese Braille (ASCII)" = "Taiwanese Braille (ASCII)";
+"Taiwanese Braille Unicode" = "Taiwanese Braille Unicode";
+"Taiwanese Braille ASCII" = "Taiwanese Braille ASCII";
+"Create System Report" = "Create System Report";
+"You can create a system report and attach it when filing an issue, so the developers can help you better." = "You can create a system report and attach it when filing an issue, so the developers can help you better.";
+"User Phrase Location:" = "User Phrase Location:";
+"Default" = "Default";
+"Custom" = "Custom";
+"Choose folder" = "Choose folder";
+"Open folder" = "Open folder";
+"You can specify the folder to store user phrases to the folder of Google Drive, DropBox and so on so you can backup the phrases." = "You can specify the folder to store user phrases to the folder of Google Drive, DropBox and so on so you can backup the phrases.";
+"After Adding a New Phrase:" = "After Adding a New Phrase:";
+"Run a shell script" = "Run a shell script";
+"Path:" = "Path:";
+"You can run a script to use git to backup your phrases. The script will run in the folder of your user phrases folder." = "You can run a script to use git to backup your phrases. The script will run in the folder of your user phrases folder.";
+
+"Quick Text Transform" = "Quick Text Transform";
+
+"Uninstall gg…" = "Uninstall gg…";
+"Uninstall gg Input Method" = "Uninstall gg Input Method";
+"Unable to Prepare gg for Uninstall" = "Unable to Prepare gg for Uninstall";
+"gg could not switch to an English keyboard or disable its input source. Nothing was removed. Try again after selecting another input source." = "gg could not switch to an English keyboard or disable its input source. Nothing was removed. Try again after selecting another input source.";
+"Unable to Uninstall gg" = "Unable to Uninstall gg";
+"The administrator action was cancelled or failed. gg was not fully removed." = "The administrator action was cancelled or failed. gg was not fully removed.";
+"Are you sure you want to uninstall gg? The system will switch to the default English input source and remove the app." = "Are you sure you want to uninstall gg? The system will switch to the default English input source and remove the app.";
+"Uninstall" = "Uninstall";
+"Delete user phrases and preferences" = "Delete user phrases and preferences";
+"AI Correction Mode:" = "AI Correction Mode:";
+"AI Active Auto-Correction Mode" = "AI Active Auto-Correction Mode";
+"AI Conservative Candidate Rank Mode" = "AI Conservative Candidate Rank Mode";
+"Turn Off AI Correction" = "Turn Off AI Correction";
+"AI Active Auto-Correction On" = "AI Active Auto-Correction On";
+"AI Conservative Candidate Rank On" = "AI Conservative Candidate Rank On";
+"AI Correction Off" = "AI Correction Off";

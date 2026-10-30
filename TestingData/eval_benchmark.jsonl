@@ -1,0 +1,500 @@
+{"id": 1, "split": "dev", "category": "homophone_ambiguity", "target": "帶一把雨傘", "readings": ["ㄉㄞˋ", "ㄧ", "ㄅㄚˇ", "ㄩˇ", "ㄙㄢˇ"]}
+{"id": 2, "split": "test", "category": "homophone_ambiguity", "target": "下雨天要穿雨衣", "readings": ["ㄒㄧㄚˋ", "ㄩˇ", "ㄊㄧㄢ", "ㄧㄠˋ", "ㄔㄨㄢ", "ㄩˇ", "ㄧ"]}
+{"id": 3, "split": "dev", "category": "homophone_ambiguity", "target": "救救我", "readings": ["ㄐㄧㄡˋ", "ㄐㄧㄡˋ", "ㄨㄛˇ"]}
+{"id": 4, "split": "test", "category": "homophone_ambiguity", "target": "借我看一下", "readings": ["ㄐㄧㄝˋ", "ㄨㄛˇ", "ㄎㄢˋ", "ㄧ", "ㄒㄧㄚˋ"]}
+{"id": 5, "split": "dev", "category": "homophone_ambiguity", "target": "借我筆記看一下", "readings": ["ㄐㄧㄝˋ", "ㄨㄛˇ", "ㄅㄧˇ", "ㄐㄧˋ", "ㄎㄢˋ", "ㄧˊ", "ㄒㄧㄚˋ"]}
+{"id": 6, "split": "test", "category": "homophone_ambiguity", "target": "出門記得帶一把雨傘", "readings": ["ㄔㄨ", "ㄇㄣˊ", "ㄐㄧˋ", "ㄉㄜˊ", "ㄉㄞˋ", "ㄧ", "ㄅㄚˇ", "ㄩˇ", "ㄙㄢˇ"]}
+{"id": 7, "split": "dev", "category": "homophone_ambiguity", "target": "外面下大雨要穿雨衣", "readings": ["ㄨㄞˋ", "ㄇㄧㄢˋ", "ㄒㄧㄚˋ", "ㄉㄚˋ", "ㄩˇ", "ㄧㄠˋ", "ㄔㄨㄢ", "ㄩˇ", "ㄧ"]}
+{"id": 8, "split": "test", "category": "homophone_ambiguity", "target": "下雨天出門要穿雨衣", "readings": ["ㄒㄧㄚˋ", "ㄩˇ", "ㄊㄧㄢ", "ㄔㄨ", "ㄇㄣˊ", "ㄧㄠˋ", "ㄔㄨㄢ", "ㄩˇ", "ㄧ"]}
+{"id": 9, "split": "dev", "category": "homophone_ambiguity", "target": "等一下借我看一下", "readings": ["ㄉㄥˇ", "ㄧ", "ㄒㄧㄚˋ", "ㄐㄧㄝˋ", "ㄨㄛˇ", "ㄎㄢˋ", "ㄧ", "ㄒㄧㄚˋ"]}
+{"id": 10, "split": "test", "category": "homophone_ambiguity", "target": "救救我好不好", "readings": ["ㄐㄧㄡˋ", "ㄐㄧㄡˋ", "ㄨㄛˇ", "ㄏㄠˇ", "ㄅㄨˋ", "ㄏㄠˇ"]}
+{"id": 11, "split": "dev", "category": "homophone_ambiguity", "target": "他再次強調這件事情的重要性", "readings": ["ㄊㄚ", "ㄗㄞˋ", "ㄘˋ", "ㄑㄧㄤˊ", "ㄉㄧㄠˋ", "ㄓㄜˋ", "ㄐㄧㄢˋ", "ㄕˋ", "ㄑㄧㄥˊ", "ㄉㄜ˙", "ㄓㄨㄥˋ", "ㄧㄠˋ", "ㄒㄧㄥˋ"]}
+{"id": 12, "split": "test", "category": "homophone_ambiguity", "target": "這件事我應該昨天就跟你說的", "readings": ["ㄓㄜˋ", "ㄐㄧㄢˋ", "ㄕˋ", "ㄨㄛˇ", "ㄧㄥ", "ㄍㄞ", "ㄗㄨㄛˊ", "ㄊㄧㄢ", "ㄐㄧㄡˋ", "ㄍㄣ", "ㄋㄧˇ", "ㄕㄨㄛ", "ㄉㄜ˙"]}
+{"id": 13, "split": "dev", "category": "homophone_ambiguity", "target": "出門記得幫我帶一把雨傘", "readings": ["ㄔㄨ", "ㄇㄣˊ", "ㄐㄧˋ", "ㄉㄜˊ", "ㄅㄤ", "ㄨㄛˇ", "ㄉㄞˋ", "ㄧ", "ㄅㄚˇ", "ㄩˇ", "ㄙㄢˇ"]}
+{"id": 14, "split": "test", "category": "homophone_ambiguity", "target": "外面下大雨我要穿雨衣出門", "readings": ["ㄨㄞˋ", "ㄇㄧㄢˋ", "ㄒㄧㄚˋ", "ㄉㄚˋ", "ㄩˇ", "ㄨㄛˇ", "ㄧㄠˋ", "ㄔㄨㄢ", "ㄩˇ", "ㄧ", "ㄔㄨ", "ㄇㄣˊ"]}
+{"id": 15, "split": "dev", "category": "homophone_ambiguity", "target": "請問你現在要吃飯了嗎", "readings": ["ㄑㄧㄥˇ", "ㄨㄣˋ", "ㄋㄧˇ", "ㄒㄧㄢˋ", "ㄗㄞˋ", "ㄧㄠˋ", "ㄔ", "ㄈㄢˋ", "ㄌㄜ˙", "ㄇㄚ"]}
+{"id": 16, "split": "test", "category": "homophone_ambiguity", "target": "請不要一直拿書本敲桌子", "readings": ["ㄑㄧㄥˇ", "ㄅㄨˊ", "ㄧㄠˋ", "ㄧ", "ㄓˊ", "ㄋㄚˊ", "ㄕㄨ", "ㄅㄣˇ", "ㄑㄧㄠ", "ㄓㄨㄛ", "ㄗ˙"]}
+{"id": 17, "split": "dev", "category": "homophone_ambiguity", "target": "我已經把款項匯到你的帳戶了", "readings": ["ㄨㄛˇ", "ㄧˇ", "ㄐㄧㄥ", "ㄅㄚˇ", "ㄎㄨㄢˇ", "ㄒㄧㄤˋ", "ㄏㄨㄟˋ", "ㄉㄠˋ", "ㄋㄧˇ", "ㄉㄜ˙", "ㄓㄤˋ", "ㄏㄨˋ", "ㄌㄜ˙"]}
+{"id": 18, "split": "test", "category": "homophone_ambiguity", "target": "最近物價上漲導致通貨膨脹很嚴重", "readings": ["ㄗㄨㄟˋ", "ㄐㄧㄣˋ", "ㄨˋ", "ㄐㄧㄚˋ", "ㄕㄤˋ", "ㄓㄤˇ", "ㄉㄠˇ", "ㄓˋ", "ㄊㄨㄥ", "ㄏㄨㄛˋ", "ㄆㄥˊ", "ㄓㄤˋ", "ㄏㄣˇ", "ㄧㄢˊ", "ㄓㄨㄥˋ"]}
+{"id": 19, "split": "dev", "category": "homophone_ambiguity", "target": "我們必須先度過這次的財務難關", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄅㄧˋ", "ㄒㄩ", "ㄒㄧㄢ", "ㄉㄨˋ", "ㄍㄨㄛˋ", "ㄓㄜˋ", "ㄘˋ", "ㄉㄜ˙", "ㄘㄞˊ", "ㄨˋ", "ㄋㄢˊ", "ㄍㄨㄢ"]}
+{"id": 20, "split": "test", "category": "homophone_ambiguity", "target": "他總是喜歡小題大作讓人很困擾", "readings": ["ㄊㄚ", "ㄗㄨㄥˇ", "ㄕˋ", "ㄒㄧˇ", "ㄏㄨㄢ", "ㄒㄧㄠˇ", "ㄊㄧˊ", "ㄉㄚˋ", "ㄗㄨㄛˋ", "ㄖㄤˋ", "ㄖㄣˊ", "ㄏㄣˇ", "ㄎㄨㄣˋ", "ㄖㄠˇ"]}
+{"id": 21, "split": "dev", "category": "homophone_ambiguity", "target": "這張中獎發票可以拿去超商兌獎嗎", "readings": ["ㄓㄜˋ", "ㄓㄤ", "ㄓㄨㄥˋ", "ㄐㄧㄤˇ", "ㄈㄚ", "ㄆㄧㄠˋ", "ㄎㄜˇ", "ㄧˇ", "ㄋㄚˊ", "ㄑㄩˋ", "ㄔㄠ", "ㄕㄤ", "ㄉㄨㄟˋ", "ㄐㄧㄤˇ", "ㄇㄚ"]}
+{"id": 22, "split": "test", "category": "homophone_ambiguity", "target": "這家餐廳的座位必須提早預訂", "readings": ["ㄓㄜˋ", "ㄐㄧㄚ", "ㄘㄢ", "ㄊㄧㄥ", "ㄉㄜ˙", "ㄗㄨㄛˋ", "ㄨㄟˋ", "ㄅㄧˋ", "ㄒㄩ", "ㄊㄧˊ", "ㄗㄠˇ", "ㄩˋ", "ㄉㄧㄥˋ"]}
+{"id": 23, "split": "dev", "category": "homophone_ambiguity", "target": "進入考場前請先出示身分證件以資證明", "readings": ["ㄐㄧㄣˋ", "ㄖㄨˋ", "ㄎㄠˇ", "ㄔㄤˇ", "ㄑㄧㄢˊ", "ㄑㄧㄥˇ", "ㄒㄧㄢ", "ㄔㄨ", "ㄕˋ", "ㄕㄣ", "ㄈㄣ", "ㄓㄥˋ", "ㄐㄧㄢˋ", "ㄧˇ", "ㄗ", "ㄓㄥˋ", "ㄇㄧㄥˊ"]}
+{"id": 24, "split": "test", "category": "homophone_ambiguity", "target": "這部電影的劇情真的非常感人", "readings": ["ㄓㄜˋ", "ㄅㄨˋ", "ㄉㄧㄢˋ", "ㄧㄥˇ", "ㄉㄜ˙", "ㄐㄩˋ", "ㄑㄧㄥˊ", "ㄓㄣ", "ㄉㄜ˙", "ㄈㄟ", "ㄔㄤˊ", "ㄍㄢˇ", "ㄖㄣˊ"]}
+{"id": 25, "split": "dev", "category": "homophone_ambiguity", "target": "你寫的這篇報告還需要再修改一下", "readings": ["ㄋㄧˇ", "ㄒㄧㄝˇ", "ㄉㄜ˙", "ㄓㄜˋ", "ㄆㄧㄢ", "ㄅㄠˋ", "ㄍㄠˋ", "ㄏㄞˊ", "ㄒㄩ", "ㄧㄠˋ", "ㄗㄞˋ", "ㄒㄧㄡ", "ㄍㄞˇ", "ㄧ", "ㄒㄧㄚˋ"]}
+{"id": 26, "split": "test", "category": "homophone_ambiguity", "target": "我們先在這裡稍作休息再繼續出發", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄒㄧㄢ", "ㄗㄞˋ", "ㄓㄜˋ", "ㄌㄧˇ", "ㄕㄠ", "ㄗㄨㄛˋ", "ㄒㄧㄡ", "ㄒㄧˊ", "ㄗㄞˋ", "ㄐㄧˋ", "ㄒㄩˋ", "ㄔㄨ", "ㄈㄚ"]}
+{"id": 27, "split": "dev", "category": "homophone_ambiguity", "target": "請大家務必遵守交通號誌規則", "readings": ["ㄑㄧㄥˇ", "ㄉㄚˋ", "ㄐㄧㄚ", "ㄨˋ", "ㄅㄧˋ", "ㄗㄨㄣ", "ㄕㄡˇ", "ㄐㄧㄠ", "ㄊㄨㄥ", "ㄏㄠˋ", "ㄓˋ", "ㄍㄨㄟ", "ㄗㄜˊ"]}
+{"id": 28, "split": "test", "category": "homophone_ambiguity", "target": "老師交待的回家作業一定要準時交", "readings": ["ㄌㄠˇ", "ㄕ", "ㄐㄧㄠ", "ㄉㄞˋ", "ㄉㄜ˙", "ㄏㄨㄟˊ", "ㄐㄧㄚ", "ㄗㄨㄛˋ", "ㄧㄝˋ", "ㄧˊ", "ㄉㄧㄥˋ", "ㄧㄠˋ", "ㄓㄨㄣˇ", "ㄕˊ", "ㄐㄧㄠ"]}
+{"id": 29, "split": "dev", "category": "homophone_ambiguity", "target": "這場演講的內容發人深省值得回味", "readings": ["ㄓㄜˋ", "ㄔㄤˇ", "ㄧㄢˇ", "ㄐㄧㄤˇ", "ㄉㄜ˙", "ㄋㄟˋ", "ㄖㄨㄥˊ", "ㄈㄚ", "ㄖㄣˊ", "ㄕㄣ", "ㄒㄧㄥˇ", "ㄓˊ", "ㄉㄜˊ", "ㄏㄨㄟˊ", "ㄨㄟˋ"]}
+{"id": 30, "split": "test", "category": "homophone_ambiguity", "target": "清明節我們全家人會一起去掃墓祭祀", "readings": ["ㄑㄧㄥ", "ㄇㄧㄥˊ", "ㄐㄧㄝˊ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄑㄩㄢˊ", "ㄐㄧㄚ", "ㄖㄣˊ", "ㄏㄨㄟˋ", "ㄧ", "ㄑㄧˇ", "ㄑㄩˋ", "ㄙㄠˇ", "ㄇㄨˋ", "ㄐㄧˋ", "ㄙˋ"]}
+{"id": 31, "split": "dev", "category": "homophone_ambiguity", "target": "這張百貨公司的折價券已經過期了", "readings": ["ㄓㄜˋ", "ㄓㄤ", "ㄅㄞˇ", "ㄏㄨㄛˋ", "ㄍㄨㄥ", "ㄙ", "ㄉㄜ˙", "ㄓㄜˊ", "ㄐㄧㄚˋ", "ㄑㄩㄢˋ", "ㄧˇ", "ㄐㄧㄥ", "ㄍㄨㄛˋ", "ㄑㄧˊ", "ㄌㄜ˙"]}
+{"id": 32, "split": "test", "category": "homophone_ambiguity", "target": "我實在無法分辨這兩張照片的真假", "readings": ["ㄨㄛˇ", "ㄕˊ", "ㄗㄞˋ", "ㄨˊ", "ㄈㄚˇ", "ㄈㄣ", "ㄅㄧㄢˋ", "ㄓㄜˋ", "ㄌㄧㄤˇ", "ㄓㄤ", "ㄓㄠˋ", "ㄆㄧㄢˋ", "ㄉㄜ˙", "ㄓㄣ", "ㄐㄧㄚˇ"]}
+{"id": 33, "split": "dev", "category": "homophone_ambiguity", "target": "他今天早上看起來精神不太好", "readings": ["ㄊㄚ", "ㄐㄧㄣ", "ㄊㄧㄢ", "ㄗㄠˇ", "ㄕㄤˋ", "ㄎㄢˋ", "ㄑㄧˇ", "ㄌㄞˊ", "ㄐㄧㄥ", "ㄕㄣˊ", "ㄅㄨˊ", "ㄊㄞˋ", "ㄏㄠˇ"]}
+{"id": 34, "split": "test", "category": "homophone_ambiguity", "target": "這件事情千真萬確絕對不是假消息", "readings": ["ㄓㄜˋ", "ㄐㄧㄢˋ", "ㄕˋ", "ㄑㄧㄥˊ", "ㄑㄧㄢ", "ㄓㄣ", "ㄨㄢˋ", "ㄑㄩㄝˋ", "ㄐㄩㄝˊ", "ㄉㄨㄟˋ", "ㄅㄨˊ", "ㄕˋ", "ㄐㄧㄚˇ", "ㄒㄧㄠ", "ㄒㄧˊ"]}
+{"id": 35, "split": "dev", "category": "homophone_ambiguity", "target": "請幫我把這份文件列印三份出來", "readings": ["ㄑㄧㄥˇ", "ㄅㄤ", "ㄨㄛˇ", "ㄅㄚˇ", "ㄓㄜˋ", "ㄈㄣˋ", "ㄨㄣˊ", "ㄐㄧㄢˋ", "ㄌㄧㄝˋ", "ㄧㄣˋ", "ㄙㄢ", "ㄈㄣˋ", "ㄔㄨ", "ㄌㄞˊ"]}
+{"id": 36, "split": "test", "category": "homophone_ambiguity", "target": "我們週末決定去宜蘭泡溫泉放鬆一下", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄓㄡ", "ㄇㄛˋ", "ㄐㄩㄝˊ", "ㄉㄧㄥˋ", "ㄑㄩˋ", "ㄧˊ", "ㄌㄢˊ", "ㄆㄠˋ", "ㄨㄣ", "ㄑㄩㄢˊ", "ㄈㄤˋ", "ㄙㄨㄥ", "ㄧ", "ㄒㄧㄚˋ"]}
+{"id": 37, "split": "dev", "category": "homophone_ambiguity", "target": "這道菜的味道太鹹了需要加點水", "readings": ["ㄓㄜˋ", "ㄉㄠˋ", "ㄘㄞˋ", "ㄉㄜ˙", "ㄨㄟˋ", "ㄉㄠˋ", "ㄊㄞˋ", "ㄒㄧㄢˊ", "ㄌㄜ˙", "ㄒㄩ", "ㄧㄠˋ", "ㄐㄧㄚ", "ㄉㄧㄢˇ", "ㄕㄨㄟˇ"]}
+{"id": 38, "split": "test", "category": "homophone_ambiguity", "target": "他在這家公司已經工作滿三年了", "readings": ["ㄊㄚ", "ㄗㄞˋ", "ㄓㄜˋ", "ㄐㄧㄚ", "ㄍㄨㄥ", "ㄙ", "ㄧˇ", "ㄐㄧㄥ", "ㄍㄨㄥ", "ㄗㄨㄛˋ", "ㄇㄢˇ", "ㄙㄢ", "ㄋㄧㄢˊ", "ㄌㄜ˙"]}
+{"id": 39, "split": "dev", "category": "homophone_ambiguity", "target": "房間的電燈突然一直閃爍不停", "readings": ["ㄈㄤˊ", "ㄐㄧㄢ", "ㄉㄜ˙", "ㄉㄧㄢˋ", "ㄉㄥ", "ㄊㄨˊ", "ㄖㄢˊ", "ㄧ", "ㄓˊ", "ㄕㄢˇ", "ㄕㄨㄛˋ", "ㄅㄨˋ", "ㄊㄧㄥˊ"]}
+{"id": 40, "split": "test", "category": "homophone_ambiguity", "target": "請把桌上的垃圾順手丟進垃圾桶裡", "readings": ["ㄑㄧㄥˇ", "ㄅㄚˇ", "ㄓㄨㄛ", "ㄕㄤˋ", "ㄉㄜ˙", "ㄌㄜˋ", "ㄙㄜˋ", "ㄕㄨㄣˋ", "ㄕㄡˇ", "ㄉㄧㄡ", "ㄐㄧㄣˋ", "ㄌㄜˋ", "ㄙㄜˋ", "ㄊㄨㄥˇ", "ㄌㄧˇ"]}
+{"id": 41, "split": "dev", "category": "homophone_ambiguity", "target": "這家銀行提供的貸款利率非常優惠", "readings": ["ㄓㄜˋ", "ㄐㄧㄚ", "ㄧㄣˊ", "ㄏㄤˊ", "ㄊㄧˊ", "ㄍㄨㄥ", "ㄉㄜ˙", "ㄉㄞˋ", "ㄎㄨㄢˇ", "ㄌㄧˋ", "ㄌㄩˋ", "ㄈㄟ", "ㄔㄤˊ", "ㄧㄡ", "ㄏㄨㄟˋ"]}
+{"id": 42, "split": "test", "category": "homophone_ambiguity", "target": "今天外面的風勢真的非常強勁", "readings": ["ㄐㄧㄣ", "ㄊㄧㄢ", "ㄨㄞˋ", "ㄇㄧㄢˋ", "ㄉㄜ˙", "ㄈㄥ", "ㄕˋ", "ㄓㄣ", "ㄉㄜ˙", "ㄈㄟ", "ㄔㄤˊ", "ㄑㄧㄤˊ", "ㄐㄧㄣˋ"]}
+{"id": 43, "split": "dev", "category": "homophone_ambiguity", "target": "我昨天晚上做了一個非常可怕的噩夢", "readings": ["ㄨㄛˇ", "ㄗㄨㄛˊ", "ㄊㄧㄢ", "ㄨㄢˇ", "ㄕㄤˋ", "ㄗㄨㄛˋ", "ㄌㄜ˙", "ㄧ", "ㄍㄜ˙", "ㄈㄟ", "ㄔㄤˊ", "ㄎㄜˇ", "ㄆㄚˋ", "ㄉㄜ˙", "ㄜˋ", "ㄇㄥˋ"]}
+{"id": 44, "split": "test", "category": "homophone_ambiguity", "target": "這場比賽的勝負還很難說", "readings": ["ㄓㄜˋ", "ㄔㄤˇ", "ㄅㄧˇ", "ㄙㄞˋ", "ㄉㄜ˙", "ㄕㄥˋ", "ㄈㄨˋ", "ㄏㄞˊ", "ㄏㄣˇ", "ㄋㄢˊ", "ㄕㄨㄛ"]}
+{"id": 45, "split": "dev", "category": "homophone_ambiguity", "target": "我們需要跟客戶簽訂正式的合約", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄒㄩ", "ㄧㄠˋ", "ㄍㄣ", "ㄎㄜˋ", "ㄏㄨˋ", "ㄑㄧㄢ", "ㄉㄧㄥˋ", "ㄓㄥˋ", "ㄕˋ", "ㄉㄜ˙", "ㄏㄜˊ", "ㄩㄝ"]}
+{"id": 46, "split": "test", "category": "homophone_ambiguity", "target": "他因為運動過度導致小腿抽筋", "readings": ["ㄊㄚ", "ㄧㄣ", "ㄨㄟˋ", "ㄩㄣˋ", "ㄉㄨㄥˋ", "ㄍㄨㄛˋ", "ㄉㄨˋ", "ㄉㄠˇ", "ㄓˋ", "ㄒㄧㄠˇ", "ㄊㄨㄟˇ", "ㄔㄡ", "ㄐㄧㄣ"]}
+{"id": 47, "split": "dev", "category": "homophone_ambiguity", "target": "這個問題的答案其實非常明顯", "readings": ["ㄓㄜˋ", "ㄍㄜ˙", "ㄨㄣˋ", "ㄊㄧˊ", "ㄉㄜ˙", "ㄉㄚˊ", "ㄢˋ", "ㄑㄧˊ", "ㄕˊ", "ㄈㄟ", "ㄔㄤˊ", "ㄇㄧㄥˊ", "ㄒㄧㄢˇ"]}
+{"id": 48, "split": "test", "category": "homophone_ambiguity", "target": "出門前請再三確認瓦斯有沒有關好", "readings": ["ㄔㄨ", "ㄇㄣˊ", "ㄑㄧㄢˊ", "ㄑㄧㄥˇ", "ㄗㄞˋ", "ㄙㄢ", "ㄑㄩㄝˋ", "ㄖㄣˋ", "ㄨㄚˇ", "ㄙ", "ㄧㄡˇ", "ㄇㄟˊ", "ㄧㄡˇ", "ㄍㄨㄢ", "ㄏㄠˇ"]}
+{"id": 49, "split": "dev", "category": "homophone_ambiguity", "target": "這台冷氣機的運轉聲音有點太大了", "readings": ["ㄓㄜˋ", "ㄊㄞˊ", "ㄌㄥˇ", "ㄑㄧˋ", "ㄐㄧ", "ㄉㄜ˙", "ㄩㄣˋ", "ㄓㄨㄢˇ", "ㄕㄥ", "ㄧㄣ", "ㄧㄡˇ", "ㄉㄧㄢˇ", "ㄊㄞˋ", "ㄉㄚˋ", "ㄌㄜ˙"]}
+{"id": 50, "split": "test", "category": "homophone_ambiguity", "target": "警方已經封鎖了事故現場進行調查", "readings": ["ㄐㄧㄥˇ", "ㄈㄤ", "ㄧˇ", "ㄐㄧㄥ", "ㄈㄥ", "ㄙㄨㄛˇ", "ㄌㄧㄠˇ", "ㄕˋ", "ㄍㄨˋ", "ㄒㄧㄢˋ", "ㄔㄤˇ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄉㄧㄠˋ", "ㄔㄚˊ"]}
+{"id": 51, "split": "dev", "category": "homophone_ambiguity", "target": "這份工作對我來說真的太困難了", "readings": ["ㄓㄜˋ", "ㄈㄣˋ", "ㄍㄨㄥ", "ㄗㄨㄛˋ", "ㄉㄨㄟˋ", "ㄨㄛˇ", "ㄌㄞˊ", "ㄕㄨㄛ", "ㄓㄣ", "ㄉㄜ˙", "ㄊㄞˋ", "ㄎㄨㄣˋ", "ㄋㄢˊ", "ㄌㄜ˙"]}
+{"id": 52, "split": "test", "category": "homophone_ambiguity", "target": "我今天早上不小心睡過頭遲到了", "readings": ["ㄨㄛˇ", "ㄐㄧㄣ", "ㄊㄧㄢ", "ㄗㄠˇ", "ㄕㄤˋ", "ㄅㄨˋ", "ㄒㄧㄠˇ", "ㄒㄧㄣ", "ㄕㄨㄟˋ", "ㄍㄨㄛˋ", "ㄊㄡˊ", "ㄔˊ", "ㄉㄠˋ", "ㄌㄜ˙"]}
+{"id": 53, "split": "dev", "category": "homophone_ambiguity", "target": "他的演講內容非常精彩獲得滿堂彩", "readings": ["ㄊㄚ", "ㄉㄜ˙", "ㄧㄢˇ", "ㄐㄧㄤˇ", "ㄋㄟˋ", "ㄖㄨㄥˊ", "ㄈㄟ", "ㄔㄤˊ", "ㄐㄧㄥ", "ㄘㄞˇ", "ㄏㄨㄛˋ", "ㄉㄜˊ", "ㄇㄢˇ", "ㄊㄤˊ", "ㄘㄞˇ"]}
+{"id": 54, "split": "test", "category": "homophone_ambiguity", "target": "請問這附近哪裡有便利商店可以買水", "readings": ["ㄑㄧㄥˇ", "ㄨㄣˋ", "ㄓㄜˋ", "ㄈㄨˋ", "ㄐㄧㄣˋ", "ㄋㄚˇ", "ㄌㄧˇ", "ㄧㄡˇ", "ㄅㄧㄢˋ", "ㄌㄧˋ", "ㄕㄤ", "ㄉㄧㄢˋ", "ㄎㄜˇ", "ㄧˇ", "ㄇㄞˇ", "ㄕㄨㄟˇ"]}
+{"id": 55, "split": "dev", "category": "homophone_ambiguity", "target": "我把手機忘在計程車上面了怎麼辦", "readings": ["ㄨㄛˇ", "ㄅㄚˇ", "ㄕㄡˇ", "ㄐㄧ", "ㄨㄤˋ", "ㄗㄞˋ", "ㄐㄧˋ", "ㄔㄥˊ", "ㄔㄜ", "ㄕㄤˋ", "ㄇㄧㄢˋ", "ㄌㄜ˙", "ㄗㄜˇ", "ㄇㄛ˙", "ㄅㄢˋ"]}
+{"id": 56, "split": "test", "category": "homophone_ambiguity", "target": "這件事情我們還需要進一步討論", "readings": ["ㄓㄜˋ", "ㄐㄧㄢˋ", "ㄕˋ", "ㄑㄧㄥˊ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄏㄞˊ", "ㄒㄩ", "ㄧㄠˋ", "ㄐㄧㄣˋ", "ㄧˊ", "ㄅㄨˋ", "ㄊㄠˇ", "ㄌㄨㄣˋ"]}
+{"id": 57, "split": "dev", "category": "homophone_ambiguity", "target": "這顆蘋果吃起來味道非常香甜", "readings": ["ㄓㄜˋ", "ㄎㄜ", "ㄆㄧㄥˊ", "ㄍㄨㄛˇ", "ㄔ", "ㄑㄧˇ", "ㄌㄞˊ", "ㄨㄟˋ", "ㄉㄠˋ", "ㄈㄟ", "ㄔㄤˊ", "ㄒㄧㄤ", "ㄊㄧㄢˊ"]}
+{"id": 58, "split": "test", "category": "homophone_ambiguity", "target": "因為系統當機所以所有資料都消失了", "readings": ["ㄧㄣ", "ㄨㄟˋ", "ㄒㄧˋ", "ㄊㄨㄥˇ", "ㄉㄤˋ", "ㄐㄧ", "ㄙㄨㄛˇ", "ㄧˇ", "ㄙㄨㄛˇ", "ㄧㄡˇ", "ㄗ", "ㄌㄧㄠˋ", "ㄉㄡ", "ㄒㄧㄠ", "ㄕ", "ㄌㄜ˙"]}
+{"id": 59, "split": "dev", "category": "homophone_ambiguity", "target": "我們下禮拜要舉行期末考試請大家準備", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄒㄧㄚˋ", "ㄌㄧˇ", "ㄅㄞˋ", "ㄧㄠˋ", "ㄐㄩˇ", "ㄒㄧㄥˊ", "ㄑㄧˊ", "ㄇㄛˋ", "ㄎㄠˇ", "ㄕˋ", "ㄑㄧㄥˇ", "ㄉㄚˋ", "ㄐㄧㄚ", "ㄓㄨㄣˇ", "ㄅㄟˋ"]}
+{"id": 60, "split": "test", "category": "homophone_ambiguity", "target": "這條馬路在尖峰時間總是塞車得很嚴重", "readings": ["ㄓㄜˋ", "ㄊㄧㄠˊ", "ㄇㄚˇ", "ㄌㄨˋ", "ㄗㄞˋ", "ㄐㄧㄢ", "ㄈㄥ", "ㄕˊ", "ㄐㄧㄢ", "ㄗㄨㄥˇ", "ㄕˋ", "ㄙㄞ", "ㄔㄜ", "ㄉㄜ˙", "ㄏㄣˇ", "ㄧㄢˊ", "ㄓㄨㄥˋ"]}
+{"id": 61, "split": "dev", "category": "homophone_ambiguity", "target": "請幫我把這箱東西搬到三樓的辦公室", "readings": ["ㄑㄧㄥˇ", "ㄅㄤ", "ㄨㄛˇ", "ㄅㄚˇ", "ㄓㄜˋ", "ㄒㄧㄤ", "ㄉㄨㄥ", "ㄒㄧ", "ㄅㄢ", "ㄉㄠˋ", "ㄙㄢ", "ㄌㄡˊ", "ㄉㄜ˙", "ㄅㄢˋ", "ㄍㄨㄥ", "ㄕˋ"]}
+{"id": 62, "split": "test", "category": "homophone_ambiguity", "target": "這個週末如果天氣好的話我們去露營吧", "readings": ["ㄓㄜˋ", "ㄍㄜ˙", "ㄓㄡ", "ㄇㄛˋ", "ㄖㄨˊ", "ㄍㄨㄛˇ", "ㄊㄧㄢ", "ㄑㄧˋ", "ㄏㄠˇ", "ㄉㄜ˙", "ㄏㄨㄚˋ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄑㄩˋ", "ㄌㄨˋ", "ㄧㄥˊ", "ㄅㄚ"]}
+{"id": 63, "split": "dev", "category": "homophone_ambiguity", "target": "他對這次的比賽結果感到非常失望", "readings": ["ㄊㄚ", "ㄉㄨㄟˋ", "ㄓㄜˋ", "ㄘˋ", "ㄉㄜ˙", "ㄅㄧˇ", "ㄙㄞˋ", "ㄐㄧㄝˊ", "ㄍㄨㄛˇ", "ㄍㄢˇ", "ㄉㄠˋ", "ㄈㄟ", "ㄔㄤˊ", "ㄕ", "ㄨㄤˋ"]}
+{"id": 64, "split": "test", "category": "homophone_ambiguity", "target": "請記得在明天中午之前把報名表交上來", "readings": ["ㄑㄧㄥˇ", "ㄐㄧˋ", "ㄉㄜˊ", "ㄗㄞˋ", "ㄇㄧㄥˊ", "ㄊㄧㄢ", "ㄓㄨㄥ", "ㄨˇ", "ㄓ", "ㄑㄧㄢˊ", "ㄅㄚˇ", "ㄅㄠˋ", "ㄇㄧㄥˊ", "ㄅㄧㄠˇ", "ㄐㄧㄠ", "ㄕㄤˋ", "ㄌㄞˊ"]}
+{"id": 65, "split": "dev", "category": "homophone_ambiguity", "target": "這家店的排骨便當真的非常好吃", "readings": ["ㄓㄜˋ", "ㄐㄧㄚ", "ㄉㄧㄢˋ", "ㄉㄜ˙", "ㄆㄞˊ", "ㄍㄨˇ", "ㄅㄧㄢˋ", "ㄉㄤ", "ㄓㄣ", "ㄉㄜ˙", "ㄈㄟ", "ㄔㄤˊ", "ㄏㄠˇ", "ㄔ"]}
+{"id": 66, "split": "test", "category": "homophone_ambiguity", "target": "我們必須在有限的時間內完成這個專案", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄅㄧˋ", "ㄒㄩ", "ㄗㄞˋ", "ㄧㄡˇ", "ㄒㄧㄢˋ", "ㄉㄜ˙", "ㄕˊ", "ㄐㄧㄢ", "ㄋㄟˋ", "ㄨㄢˊ", "ㄔㄥˊ", "ㄓㄜˋ", "ㄍㄜ˙", "ㄓㄨㄢ", "ㄢˋ"]}
+{"id": 67, "split": "dev", "category": "homophone_ambiguity", "target": "這本書裡面介紹了很多實用的生活知識", "readings": ["ㄓㄜˋ", "ㄅㄣˇ", "ㄕㄨ", "ㄌㄧˇ", "ㄇㄧㄢˋ", "ㄐㄧㄝˋ", "ㄕㄠˋ", "ㄌㄜ˙", "ㄏㄣˇ", "ㄉㄨㄛ", "ㄕˊ", "ㄩㄥˋ", "ㄉㄜ˙", "ㄕㄥ", "ㄏㄨㄛˊ", "ㄓ", "ㄕˋ"]}
+{"id": 68, "split": "test", "category": "homophone_ambiguity", "target": "因為下雨的關係所以今天的球賽取消了", "readings": ["ㄧㄣ", "ㄨㄟˋ", "ㄒㄧㄚˋ", "ㄩˇ", "ㄉㄜ˙", "ㄍㄨㄢ", "ㄒㄧˋ", "ㄙㄨㄛˇ", "ㄧˇ", "ㄐㄧㄣ", "ㄊㄧㄢ", "ㄉㄜ˙", "ㄑㄧㄡˊ", "ㄙㄞˋ", "ㄑㄩˇ", "ㄒㄧㄠ", "ㄌㄜ˙"]}
+{"id": 69, "split": "dev", "category": "homophone_ambiguity", "target": "他的新家裝潢風格看起來非常簡約時尚", "readings": ["ㄊㄚ", "ㄉㄜ˙", "ㄒㄧㄣ", "ㄐㄧㄚ", "ㄓㄨㄤ", "ㄏㄨㄤˊ", "ㄈㄥ", "ㄍㄜˊ", "ㄎㄢˋ", "ㄑㄧˇ", "ㄌㄞˊ", "ㄈㄟ", "ㄔㄤˊ", "ㄐㄧㄢˇ", "ㄩㄝ", "ㄕˊ", "ㄕㄤˋ"]}
+{"id": 70, "split": "test", "category": "homophone_ambiguity", "target": "使用完公共空間後請隨手把燈關掉", "readings": ["ㄕˇ", "ㄩㄥˋ", "ㄨㄢˊ", "ㄍㄨㄥ", "ㄍㄨㄥˋ", "ㄎㄨㄥ", "ㄐㄧㄢ", "ㄏㄡˋ", "ㄑㄧㄥˇ", "ㄙㄨㄟˊ", "ㄕㄡˇ", "ㄅㄚˇ", "ㄉㄥ", "ㄍㄨㄢ", "ㄉㄧㄠˋ"]}
+{"id": 71, "split": "dev", "category": "homophone_ambiguity", "target": "我們約在臺北", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄩㄝ", "ㄗㄞˋ", "ㄊㄞˊ", "ㄅㄟˇ"]}
+{"id": 72, "split": "test", "category": "homophone_ambiguity", "target": "你應該知道地點吧", "readings": ["ㄋㄧˇ", "ㄧㄥ", "ㄍㄞ", "ㄓ", "ㄉㄠˋ", "ㄉㄧˋ", "ㄉㄧㄢˇ", "ㄅㄚ"]}
+{"id": 73, "split": "dev", "category": "homophone_ambiguity", "target": "時間太長", "readings": ["ㄕˊ", "ㄐㄧㄢ", "ㄊㄞˋ", "ㄔㄤˊ"]}
+{"id": 74, "split": "test", "category": "homophone_ambiguity", "target": "請工程師盡快修復", "readings": ["ㄑㄧㄥˇ", "ㄍㄨㄥ", "ㄔㄥˊ", "ㄕ", "ㄐㄧㄣˋ", "ㄎㄨㄞˋ", "ㄒㄧㄡ", "ㄈㄨˋ"]}
+{"id": 75, "split": "dev", "category": "homophone_ambiguity", "target": "昨天突然無法開機", "readings": ["ㄗㄨㄛˊ", "ㄊㄧㄢ", "ㄊㄨˊ", "ㄖㄢˊ", "ㄨˊ", "ㄈㄚˇ", "ㄎㄞ", "ㄐㄧ"]}
+{"id": 76, "split": "test", "category": "homophone_ambiguity", "target": "只好送去", "readings": ["ㄓˇ", "ㄏㄠˇ", "ㄙㄨㄥˋ", "ㄑㄩˋ"]}
+{"id": 77, "split": "dev", "category": "homophone_ambiguity", "target": "請把這個", "readings": ["ㄑㄧㄥˇ", "ㄅㄚˇ", "ㄓㄜˋ", "ㄍㄜ˙"]}
+{"id": 78, "split": "test", "category": "homophone_ambiguity", "target": "重新啟動", "readings": ["ㄔㄨㄥˊ", "ㄒㄧㄣ", "ㄑㄧˇ", "ㄉㄨㄥˋ"]}
+{"id": 79, "split": "dev", "category": "homophone_ambiguity", "target": "看能不能解決記憶體洩漏的問題", "readings": ["ㄎㄢˋ", "ㄋㄥˊ", "ㄅㄨˋ", "ㄋㄥˊ", "ㄐㄧㄝˇ", "ㄐㄩㄝˊ", "ㄐㄧˋ", "ㄧˋ", "ㄊㄧˇ", "ㄒㄧㄝˋ", "ㄌㄡˋ", "ㄉㄜ˙", "ㄨㄣˋ", "ㄊㄧˊ"]}
+{"id": 80, "split": "test", "category": "homophone_ambiguity", "target": "簡報的字體太小了", "readings": ["ㄐㄧㄢˇ", "ㄅㄠˋ", "ㄉㄜ˙", "ㄗˋ", "ㄊㄧˇ", "ㄊㄞˋ", "ㄒㄧㄠˇ", "ㄌㄜ˙"]}
+{"id": 81, "split": "dev", "category": "homophone_ambiguity", "target": "請在明天", "readings": ["ㄑㄧㄥˇ", "ㄗㄞˋ", "ㄇㄧㄥˊ", "ㄊㄧㄢ"]}
+{"id": 82, "split": "test", "category": "homophone_ambiguity", "target": "會議前調整完畢", "readings": ["ㄏㄨㄟˋ", "ㄧˋ", "ㄑㄧㄢˊ", "ㄊㄧㄠˊ", "ㄓㄥˇ", "ㄨㄢˊ", "ㄅㄧˋ"]}
+{"id": 83, "split": "dev", "category": "homophone_ambiguity", "target": "上面發了一個", "readings": ["ㄕㄤˋ", "ㄇㄧㄢˋ", "ㄈㄚ", "ㄌㄜ˙", "ㄧ", "ㄍㄜ˙"]}
+{"id": 84, "split": "test", "category": "homophone_ambiguity", "target": "有空幫我", "readings": ["ㄧㄡˇ", "ㄎㄨㄥˋ", "ㄅㄤ", "ㄨㄛˇ"]}
+{"id": 85, "split": "dev", "category": "homophone_ambiguity", "target": "一下謝謝", "readings": ["ㄧ", "ㄒㄧㄚˋ", "ㄒㄧㄝˋ", "ㄒㄧㄝˋ"]}
+{"id": 86, "split": "test", "category": "homophone_ambiguity", "target": "的電池續航力比上一代好很多", "readings": ["ㄉㄜ˙", "ㄉㄧㄢˋ", "ㄔˊ", "ㄒㄩˋ", "ㄏㄤˊ", "ㄌㄧˋ", "ㄅㄧˇ", "ㄕㄤˋ", "ㄧ", "ㄉㄞˋ", "ㄏㄠˇ", "ㄏㄣˇ", "ㄉㄨㄛ"]}
+{"id": 87, "split": "dev", "category": "homophone_ambiguity", "target": "非常值得購買", "readings": ["ㄈㄟ", "ㄔㄤˊ", "ㄓˊ", "ㄉㄜˊ", "ㄍㄡˋ", "ㄇㄞˇ"]}
+{"id": 88, "split": "test", "category": "homophone_ambiguity", "target": "如果你對", "readings": ["ㄖㄨˊ", "ㄍㄨㄛˇ", "ㄋㄧˇ", "ㄉㄨㄟˋ"]}
+{"id": 89, "split": "dev", "category": "homophone_ambiguity", "target": "的語法不熟", "readings": ["ㄉㄜ˙", "ㄩˇ", "ㄈㄚˇ", "ㄅㄨˋ", "ㄕㄡˊ"]}
+{"id": 90, "split": "test", "category": "homophone_ambiguity", "target": "可以先看官方的", "readings": ["ㄎㄜˇ", "ㄧˇ", "ㄒㄧㄢ", "ㄎㄢˋ", "ㄍㄨㄢ", "ㄈㄤ", "ㄉㄜ˙"]}
+{"id": 91, "split": "dev", "category": "homophone_ambiguity", "target": "群組通知大家", "readings": ["ㄑㄩㄣˊ", "ㄗㄨˇ", "ㄊㄨㄥ", "ㄓ", "ㄉㄚˋ", "ㄐㄧㄚ"]}
+{"id": 92, "split": "test", "category": "homophone_ambiguity", "target": "明天早上", "readings": ["ㄇㄧㄥˊ", "ㄊㄧㄢ", "ㄗㄠˇ", "ㄕㄤˋ"]}
+{"id": 93, "split": "dev", "category": "homophone_ambiguity", "target": "點準時在竹南火車站集合出發", "readings": ["ㄉㄧㄢˇ", "ㄓㄨㄣˇ", "ㄕˊ", "ㄗㄞˋ", "ㄓㄨˊ", "ㄋㄢˊ", "ㄏㄨㄛˇ", "ㄔㄜ", "ㄓㄢˋ", "ㄐㄧˊ", "ㄏㄜˊ", "ㄔㄨ", "ㄈㄚ"]}
+{"id": 94, "split": "test", "category": "homophone_ambiguity", "target": "跑起來超慢", "readings": ["ㄆㄠˇ", "ㄑㄧˇ", "ㄌㄞˊ", "ㄔㄠ", "ㄇㄢˋ"]}
+{"id": 95, "split": "dev", "category": "homophone_ambiguity", "target": "你是不是忘記加上", "readings": ["ㄋㄧˇ", "ㄕˋ", "ㄅㄨˊ", "ㄕˋ", "ㄨㄤˋ", "ㄐㄧˋ", "ㄐㄧㄚ", "ㄕㄤˋ"]}
+{"id": 96, "split": "test", "category": "homophone_ambiguity", "target": "他再次傳訊息問我這個", "readings": ["ㄊㄚ", "ㄗㄞˋ", "ㄘˋ", "ㄔㄨㄢˊ", "ㄒㄩㄣˋ", "ㄒㄧˊ", "ㄨㄣˋ", "ㄨㄛˇ", "ㄓㄜˋ", "ㄍㄜ˙"]}
+{"id": 97, "split": "dev", "category": "homophone_ambiguity", "target": "到底什麼時候才會修好", "readings": ["ㄉㄠˋ", "ㄉㄧˇ", "ㄕㄜˊ", "ㄇㄛ˙", "ㄕˊ", "ㄏㄡˋ", "ㄘㄞˊ", "ㄏㄨㄟˋ", "ㄒㄧㄡ", "ㄏㄠˇ"]}
+{"id": 98, "split": "test", "category": "homophone_ambiguity", "target": "請先確認你的", "readings": ["ㄑㄧㄥˇ", "ㄒㄧㄢ", "ㄑㄩㄝˋ", "ㄖㄣˋ", "ㄋㄧˇ", "ㄉㄜ˙"]}
+{"id": 99, "split": "dev", "category": "homophone_ambiguity", "target": "連線是否正常", "readings": ["ㄌㄧㄢˊ", "ㄒㄧㄢˋ", "ㄕˋ", "ㄈㄡˇ", "ㄓㄥˋ", "ㄔㄤˊ"]}
+{"id": 100, "split": "test", "category": "homophone_ambiguity", "target": "再重新整理網頁試試看", "readings": ["ㄗㄞˋ", "ㄔㄨㄥˊ", "ㄒㄧㄣ", "ㄓㄥˇ", "ㄌㄧˇ", "ㄨㄤˇ", "ㄧㄝˋ", "ㄕˋ", "ㄕˋ", "ㄎㄢˋ"]}
+{"id": 101, "split": "dev", "category": "colloquial", "target": "幫我看一下", "readings": ["ㄅㄤ", "ㄨㄛˇ", "ㄎㄢˋ", "ㄧ", "ㄒㄧㄚˋ"]}
+{"id": 102, "split": "test", "category": "colloquial", "target": "等一下再走", "readings": ["ㄉㄥˇ", "ㄧ", "ㄒㄧㄚˋ", "ㄗㄞˋ", "ㄗㄡˇ"]}
+{"id": 103, "split": "dev", "category": "colloquial", "target": "今天天氣真好", "readings": ["ㄐㄧㄣ", "ㄊㄧㄢ", "ㄊㄧㄢ", "ㄑㄧˋ", "ㄓㄣ", "ㄏㄠˇ"]}
+{"id": 104, "split": "test", "category": "colloquial", "target": "我們去散步吧", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄑㄩˋ", "ㄙㄢˋ", "ㄅㄨˋ", "ㄅㄚ"]}
+{"id": 105, "split": "dev", "category": "colloquial", "target": "你在幹嘛呢", "readings": ["ㄋㄧˇ", "ㄗㄞˋ", "ㄍㄢˋ", "ㄇㄚˊ", "ㄋㄜ"]}
+{"id": 106, "split": "test", "category": "colloquial", "target": "怎麼還沒回家", "readings": ["ㄗㄜˇ", "ㄇㄛ˙", "ㄏㄞˊ", "ㄇㄟˊ", "ㄏㄨㄟˊ", "ㄐㄧㄚ"]}
+{"id": 107, "split": "dev", "category": "colloquial", "target": "這件事交給我處理", "readings": ["ㄓㄜˋ", "ㄐㄧㄢˋ", "ㄕˋ", "ㄐㄧㄠ", "ㄍㄟˇ", "ㄨㄛˇ", "ㄔㄨˇ", "ㄌㄧˇ"]}
+{"id": 108, "split": "test", "category": "colloquial", "target": "沒問題包在我身上", "readings": ["ㄇㄟˊ", "ㄨㄣˋ", "ㄊㄧˊ", "ㄅㄠ", "ㄗㄞˋ", "ㄨㄛˇ", "ㄕㄣ", "ㄕㄤˋ"]}
+{"id": 109, "split": "dev", "category": "colloquial", "target": "明天一起吃午餐", "readings": ["ㄇㄧㄥˊ", "ㄊㄧㄢ", "ㄧ", "ㄑㄧˇ", "ㄔ", "ㄨˇ", "ㄘㄢ"]}
+{"id": 110, "split": "test", "category": "colloquial", "target": "大家辛苦了", "readings": ["ㄉㄚˋ", "ㄐㄧㄚ", "ㄒㄧㄣ", "ㄎㄨˇ", "ㄌㄜ˙"]}
+{"id": 111, "split": "dev", "category": "colloquial", "target": "祝你生日快樂", "readings": ["ㄓㄨˋ", "ㄋㄧˇ", "ㄕㄥ", "ㄖˋ", "ㄎㄨㄞˋ", "ㄌㄜˋ"]}
+{"id": 112, "split": "test", "category": "colloquial", "target": "週末有空出去玩嗎", "readings": ["ㄓㄡ", "ㄇㄛˋ", "ㄧㄡˇ", "ㄎㄨㄥˋ", "ㄔㄨ", "ㄑㄩˋ", "ㄨㄢˊ", "ㄇㄚ"]}
+{"id": 113, "split": "dev", "category": "colloquial", "target": "我想喝一杯咖啡", "readings": ["ㄨㄛˇ", "ㄒㄧㄤˇ", "ㄏㄜ", "ㄧ", "ㄅㄟ", "ㄎㄚ", "ㄈㄟ"]}
+{"id": 114, "split": "test", "category": "colloquial", "target": "下午要不要喝飲料", "readings": ["ㄒㄧㄚˋ", "ㄨˇ", "ㄧㄠˋ", "ㄅㄨˊ", "ㄧㄠˋ", "ㄏㄜ", "ㄧㄣˇ", "ㄌㄧㄠˋ"]}
+{"id": 115, "split": "dev", "category": "colloquial", "target": "這家餐廳很好吃", "readings": ["ㄓㄜˋ", "ㄐㄧㄚ", "ㄘㄢ", "ㄊㄧㄥ", "ㄏㄣˇ", "ㄏㄠˇ", "ㄔ"]}
+{"id": 116, "split": "test", "category": "colloquial", "target": "下班後一起去運動", "readings": ["ㄒㄧㄚˋ", "ㄅㄢ", "ㄏㄡˋ", "ㄧ", "ㄑㄧˇ", "ㄑㄩˋ", "ㄩㄣˋ", "ㄉㄨㄥˋ"]}
+{"id": 117, "split": "dev", "category": "colloquial", "target": "可以幫我拿一下外套嗎", "readings": ["ㄎㄜˇ", "ㄧˇ", "ㄅㄤ", "ㄨㄛˇ", "ㄋㄚˊ", "ㄧ", "ㄒㄧㄚˋ", "ㄨㄞˋ", "ㄊㄠˋ", "ㄇㄚ"]}
+{"id": 118, "split": "test", "category": "colloquial", "target": "我們等一下在門口集合", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄉㄥˇ", "ㄧ", "ㄒㄧㄚˋ", "ㄗㄞˋ", "ㄇㄣˊ", "ㄎㄡˇ", "ㄐㄧˊ", "ㄏㄜˊ"]}
+{"id": 119, "split": "dev", "category": "colloquial", "target": "你現在在哪裡", "readings": ["ㄋㄧˇ", "ㄒㄧㄢˋ", "ㄗㄞˋ", "ㄗㄞˋ", "ㄋㄚˇ", "ㄌㄧˇ"]}
+{"id": 120, "split": "test", "category": "colloquial", "target": "好不好我們就這樣決定", "readings": ["ㄏㄠˇ", "ㄅㄨˋ", "ㄏㄠˇ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄐㄧㄡˋ", "ㄓㄜˋ", "ㄧㄤˋ", "ㄐㄩㄝˊ", "ㄉㄧㄥˋ"]}
+{"id": 121, "split": "dev", "category": "colloquial", "target": "我想買新的手機", "readings": ["ㄨㄛˇ", "ㄒㄧㄤˇ", "ㄇㄞˇ", "ㄒㄧㄣ", "ㄉㄜ˙", "ㄕㄡˇ", "ㄐㄧ"]}
+{"id": 122, "split": "test", "category": "colloquial", "target": "電影幾點開始播放", "readings": ["ㄉㄧㄢˋ", "ㄧㄥˇ", "ㄐㄧˇ", "ㄉㄧㄢˇ", "ㄎㄞ", "ㄕˇ", "ㄅㄛˋ", "ㄈㄤˋ"]}
+{"id": 123, "split": "dev", "category": "colloquial", "target": "捷運站就在前面不遠處", "readings": ["ㄐㄧㄝˊ", "ㄩㄣˋ", "ㄓㄢˋ", "ㄐㄧㄡˋ", "ㄗㄞˋ", "ㄑㄧㄢˊ", "ㄇㄧㄢˋ", "ㄅㄨˊ", "ㄩㄢˇ", "ㄔㄨˋ"]}
+{"id": 124, "split": "test", "category": "colloquial", "target": "今天晚上吃火鍋", "readings": ["ㄐㄧㄣ", "ㄊㄧㄢ", "ㄨㄢˇ", "ㄕㄤˋ", "ㄔ", "ㄏㄨㄛˇ", "ㄍㄨㄛ"]}
+{"id": 125, "split": "dev", "category": "colloquial", "target": "出門記得關燈和關門", "readings": ["ㄔㄨ", "ㄇㄣˊ", "ㄐㄧˋ", "ㄉㄜˊ", "ㄍㄨㄢ", "ㄉㄥ", "ㄏㄢˋ", "ㄍㄨㄢ", "ㄇㄣˊ"]}
+{"id": 126, "split": "test", "category": "colloquial", "target": "路上小心開車注意安全", "readings": ["ㄌㄨˋ", "ㄕㄤˋ", "ㄒㄧㄠˇ", "ㄒㄧㄣ", "ㄎㄞ", "ㄔㄜ", "ㄓㄨˋ", "ㄧˋ", "ㄢ", "ㄑㄩㄢˊ"]}
+{"id": 127, "split": "dev", "category": "colloquial", "target": "早點休息不要熬夜", "readings": ["ㄗㄠˇ", "ㄉㄧㄢˇ", "ㄒㄧㄡ", "ㄒㄧˊ", "ㄅㄨˊ", "ㄧㄠˋ", "ㄠˊ", "ㄧㄝˋ"]}
+{"id": 128, "split": "test", "category": "colloquial", "target": "這個問題有點複雜", "readings": ["ㄓㄜˋ", "ㄍㄜ˙", "ㄨㄣˋ", "ㄊㄧˊ", "ㄧㄡˇ", "ㄉㄧㄢˇ", "ㄈㄨˋ", "ㄗㄚˊ"]}
+{"id": 129, "split": "dev", "category": "colloquial", "target": "請稍等我一下馬上好", "readings": ["ㄑㄧㄥˇ", "ㄕㄠ", "ㄉㄥˇ", "ㄨㄛˇ", "ㄧ", "ㄒㄧㄚˋ", "ㄇㄚˇ", "ㄕㄤˋ", "ㄏㄠˇ"]}
+{"id": 130, "split": "test", "category": "colloquial", "target": "借我用一下剪刀", "readings": ["ㄐㄧㄝˋ", "ㄨㄛˇ", "ㄩㄥˋ", "ㄧ", "ㄒㄧㄚˋ", "ㄐㄧㄢˇ", "ㄉㄠ"]}
+{"id": 131, "split": "dev", "category": "colloquial", "target": "這本書借我帶回家看", "readings": ["ㄓㄜˋ", "ㄅㄣˇ", "ㄕㄨ", "ㄐㄧㄝˋ", "ㄨㄛˇ", "ㄉㄞˋ", "ㄏㄨㄟˊ", "ㄐㄧㄚ", "ㄎㄢˋ"]}
+{"id": 132, "split": "test", "category": "colloquial", "target": "下雨天記得隨身帶雨傘", "readings": ["ㄒㄧㄚˋ", "ㄩˇ", "ㄊㄧㄢ", "ㄐㄧˋ", "ㄉㄜˊ", "ㄙㄨㄟˊ", "ㄕㄣ", "ㄉㄞˋ", "ㄩˇ", "ㄙㄢˇ"]}
+{"id": 133, "split": "dev", "category": "colloquial", "target": "天氣轉涼出門多穿一件衣服", "readings": ["ㄊㄧㄢ", "ㄑㄧˋ", "ㄓㄨㄢˇ", "ㄌㄧㄤˊ", "ㄔㄨ", "ㄇㄣˊ", "ㄉㄨㄛ", "ㄔㄨㄢ", "ㄧ", "ㄐㄧㄢˋ", "ㄧ", "ㄈㄨˊ"]}
+{"id": 134, "split": "test", "category": "colloquial", "target": "我昨天晚上睡得很好", "readings": ["ㄨㄛˇ", "ㄗㄨㄛˊ", "ㄊㄧㄢ", "ㄨㄢˇ", "ㄕㄤˋ", "ㄕㄨㄟˋ", "ㄉㄜ˙", "ㄏㄣˇ", "ㄏㄠˇ"]}
+{"id": 135, "split": "dev", "category": "colloquial", "target": "你聽我把話說完", "readings": ["ㄋㄧˇ", "ㄊㄧㄥ", "ㄨㄛˇ", "ㄅㄚˇ", "ㄏㄨㄚˋ", "ㄕㄨㄛ", "ㄨㄢˊ"]}
+{"id": 136, "split": "test", "category": "colloquial", "target": "不要騙我實話實說", "readings": ["ㄅㄨˊ", "ㄧㄠˋ", "ㄆㄧㄢˋ", "ㄨㄛˇ", "ㄕˊ", "ㄏㄨㄚˋ", "ㄕˊ", "ㄕㄨㄛ"]}
+{"id": 137, "split": "dev", "category": "colloquial", "target": "幫我拍一張照片好嗎", "readings": ["ㄅㄤ", "ㄨㄛˇ", "ㄆㄞ", "ㄧ", "ㄓㄤ", "ㄓㄠˋ", "ㄆㄧㄢˋ", "ㄏㄠˇ", "ㄇㄚ˙"]}
+{"id": 138, "split": "test", "category": "colloquial", "target": "他走得太快我跟不上", "readings": ["ㄊㄚ", "ㄗㄡˇ", "ㄉㄜˊ", "ㄊㄞˋ", "ㄎㄨㄞˋ", "ㄨㄛˇ", "ㄍㄣ", "ㄅㄨˊ", "ㄕㄤˋ"]}
+{"id": 139, "split": "dev", "category": "colloquial", "target": "外面風好大快進來", "readings": ["ㄨㄞˋ", "ㄇㄧㄢˋ", "ㄈㄥ", "ㄏㄠˇ", "ㄉㄚˋ", "ㄎㄨㄞˋ", "ㄐㄧㄣˋ", "ㄌㄞˊ"]}
+{"id": 140, "split": "test", "category": "colloquial", "target": "等一下在咖啡廳碰面", "readings": ["ㄉㄥˇ", "ㄧ", "ㄒㄧㄚˋ", "ㄗㄞˋ", "ㄎㄚ", "ㄈㄟ", "ㄊㄧㄥ", "ㄆㄥˋ", "ㄇㄧㄢˋ"]}
+{"id": 141, "split": "dev", "category": "colloquial", "target": "我們明天早上九點出發", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄇㄧㄥˊ", "ㄊㄧㄢ", "ㄗㄠˇ", "ㄕㄤˋ", "ㄐㄧㄡˇ", "ㄉㄧㄢˇ", "ㄔㄨ", "ㄈㄚ"]}
+{"id": 142, "split": "test", "category": "colloquial", "target": "這份資料幫我印兩份", "readings": ["ㄓㄜˋ", "ㄈㄣˋ", "ㄗ", "ㄌㄧㄠˋ", "ㄅㄤ", "ㄨㄛˇ", "ㄧㄣˋ", "ㄌㄧㄤˇ", "ㄈㄣˋ"]}
+{"id": 143, "split": "dev", "category": "colloquial", "target": "今天的工作終於完成了", "readings": ["ㄐㄧㄣ", "ㄊㄧㄢ", "ㄉㄜ˙", "ㄍㄨㄥ", "ㄗㄨㄛˋ", "ㄓㄨㄥ", "ㄩˊ", "ㄨㄢˊ", "ㄔㄥˊ", "ㄌㄜ˙"]}
+{"id": 144, "split": "test", "category": "colloquial", "target": "我肚子好餓想吃宵夜", "readings": ["ㄨㄛˇ", "ㄉㄨˋ", "ㄗ˙", "ㄏㄠˇ", "ㄜˋ", "ㄒㄧㄤˇ", "ㄔ", "ㄒㄧㄠ", "ㄧㄝˋ"]}
+{"id": 145, "split": "dev", "category": "colloquial", "target": "請問這附近有便利商店嗎", "readings": ["ㄑㄧㄥˇ", "ㄨㄣˋ", "ㄓㄜˋ", "ㄈㄨˋ", "ㄐㄧㄣˋ", "ㄧㄡˇ", "ㄅㄧㄢˋ", "ㄌㄧˋ", "ㄕㄤ", "ㄉㄧㄢˋ", "ㄇㄚ"]}
+{"id": 146, "split": "test", "category": "colloquial", "target": "公車大概還要等多久", "readings": ["ㄍㄨㄥ", "ㄔㄜ", "ㄉㄚˋ", "ㄍㄞˋ", "ㄏㄞˊ", "ㄧㄠˋ", "ㄉㄥˇ", "ㄉㄨㄛ", "ㄐㄧㄡˇ"]}
+{"id": 147, "split": "dev", "category": "colloquial", "target": "這件衣服穿起來很適合你", "readings": ["ㄓㄜˋ", "ㄐㄧㄢˋ", "ㄧ", "ㄈㄨˊ", "ㄔㄨㄢ", "ㄑㄧˇ", "ㄌㄞˊ", "ㄏㄣˇ", "ㄕˋ", "ㄏㄜˊ", "ㄋㄧˇ"]}
+{"id": 148, "split": "test", "category": "colloquial", "target": "週末我們去看展覽吧", "readings": ["ㄓㄡ", "ㄇㄛˋ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄑㄩˋ", "ㄎㄢˋ", "ㄓㄢˇ", "ㄌㄢˇ", "ㄅㄚ"]}
+{"id": 149, "split": "dev", "category": "colloquial", "target": "這件事大家都很清楚", "readings": ["ㄓㄜˋ", "ㄐㄧㄢˋ", "ㄕˋ", "ㄉㄚˋ", "ㄐㄧㄚ", "ㄉㄡ", "ㄏㄣˇ", "ㄑㄧㄥ", "ㄔㄨˇ"]}
+{"id": 150, "split": "test", "category": "colloquial", "target": "可以幫我看一下這行程式碼嗎", "readings": ["ㄎㄜˇ", "ㄧˇ", "ㄅㄤ", "ㄨㄛˇ", "ㄎㄢˋ", "ㄧ", "ㄒㄧㄚˋ", "ㄓㄜˋ", "ㄒㄧㄥˊ", "ㄔㄥˊ", "ㄕˋ", "ㄇㄚˇ", "ㄇㄚ"]}
+{"id": 151, "split": "dev", "category": "colloquial", "target": "我剛剛寄了一封信給你", "readings": ["ㄨㄛˇ", "ㄍㄤ", "ㄍㄤ", "ㄐㄧˋ", "ㄌㄜ˙", "ㄧ", "ㄈㄥ", "ㄒㄧㄣˋ", "ㄍㄟˇ", "ㄋㄧˇ"]}
+{"id": 152, "split": "test", "category": "colloquial", "target": "收到請回覆一下謝謝", "readings": ["ㄕㄡ", "ㄉㄠˋ", "ㄑㄧㄥˇ", "ㄏㄨㄟˊ", "ㄈㄨˋ", "ㄧ", "ㄒㄧㄚˋ", "ㄒㄧㄝˋ", "ㄒㄧㄝˋ"]}
+{"id": 153, "split": "dev", "category": "colloquial", "target": "這週末我們去爬山好不好", "readings": ["ㄓㄜˋ", "ㄓㄡ", "ㄇㄛˋ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄑㄩˋ", "ㄆㄚˊ", "ㄕㄢ", "ㄏㄠˇ", "ㄅㄨˋ", "ㄏㄠˇ"]}
+{"id": 154, "split": "test", "category": "colloquial", "target": "下班後記得去超市買牛奶", "readings": ["ㄒㄧㄚˋ", "ㄅㄢ", "ㄏㄡˋ", "ㄐㄧˋ", "ㄉㄜˊ", "ㄑㄩˋ", "ㄔㄠ", "ㄕˋ", "ㄇㄞˇ", "ㄋㄧㄡˊ", "ㄋㄞˇ"]}
+{"id": 155, "split": "dev", "category": "colloquial", "target": "今天路上車子很多有點塞車", "readings": ["ㄐㄧㄣ", "ㄊㄧㄢ", "ㄌㄨˋ", "ㄕㄤˋ", "ㄔㄜ", "ㄗ˙", "ㄏㄣˇ", "ㄉㄨㄛ", "ㄧㄡˇ", "ㄉㄧㄢˇ", "ㄙㄞ", "ㄔㄜ"]}
+{"id": 156, "split": "test", "category": "colloquial", "target": "現在幾點了我們是不是該出發了", "readings": ["ㄒㄧㄢˋ", "ㄗㄞˋ", "ㄐㄧˇ", "ㄉㄧㄢˇ", "ㄌㄜ˙", "ㄨㄛˇ", "ㄇㄣˊ", "ㄕˋ", "ㄅㄨˊ", "ㄕˋ", "ㄍㄞ", "ㄔㄨ", "ㄈㄚ", "ㄌㄜ˙"]}
+{"id": 157, "split": "dev", "category": "colloquial", "target": "借我筆記參考一下好嗎", "readings": ["ㄐㄧㄝˋ", "ㄨㄛˇ", "ㄅㄧˇ", "ㄐㄧˋ", "ㄘㄢ", "ㄎㄠˇ", "ㄧ", "ㄒㄧㄚˋ", "ㄏㄠˇ", "ㄇㄚ˙"]}
+{"id": 158, "split": "test", "category": "colloquial", "target": "你最近工作過得怎麼樣", "readings": ["ㄋㄧˇ", "ㄗㄨㄟˋ", "ㄐㄧㄣˋ", "ㄍㄨㄥ", "ㄗㄨㄛˋ", "ㄍㄨㄛˋ", "ㄉㄜ˙", "ㄗㄜˇ", "ㄇㄛ˙", "ㄧㄤˋ"]}
+{"id": 159, "split": "dev", "category": "colloquial", "target": "放假大家想去哪裡放鬆", "readings": ["ㄈㄤˋ", "ㄐㄧㄚˋ", "ㄉㄚˋ", "ㄐㄧㄚ", "ㄒㄧㄤˇ", "ㄑㄩˋ", "ㄋㄚˇ", "ㄌㄧˇ", "ㄈㄤˋ", "ㄙㄨㄥ"]}
+{"id": 160, "split": "test", "category": "colloquial", "target": "這道菜的味道真不錯", "readings": ["ㄓㄜˋ", "ㄉㄠˋ", "ㄘㄞˋ", "ㄉㄜ˙", "ㄨㄟˋ", "ㄉㄠˋ", "ㄓㄣ", "ㄅㄨˊ", "ㄘㄨㄛˋ"]}
+{"id": 161, "split": "dev", "category": "colloquial", "target": "幫我開一下客廳的電燈", "readings": ["ㄅㄤ", "ㄨㄛˇ", "ㄎㄞ", "ㄧ", "ㄒㄧㄚˋ", "ㄎㄜˋ", "ㄊㄧㄥ", "ㄉㄜ˙", "ㄉㄧㄢˋ", "ㄉㄥ"]}
+{"id": 162, "split": "test", "category": "colloquial", "target": "外面開始下起毛毛雨了", "readings": ["ㄨㄞˋ", "ㄇㄧㄢˋ", "ㄎㄞ", "ㄕˇ", "ㄒㄧㄚˋ", "ㄑㄧˇ", "ㄇㄠˊ", "ㄇㄠˊ", "ㄩˇ", "ㄌㄜ˙"]}
+{"id": 163, "split": "dev", "category": "colloquial", "target": "天氣預報說明天會降溫", "readings": ["ㄊㄧㄢ", "ㄑㄧˋ", "ㄩˋ", "ㄅㄠˋ", "ㄕㄨㄛ", "ㄇㄧㄥˊ", "ㄊㄧㄢ", "ㄏㄨㄟˋ", "ㄐㄧㄤˋ", "ㄨㄣ"]}
+{"id": 164, "split": "test", "category": "colloquial", "target": "下週一早上要開例行會議", "readings": ["ㄒㄧㄚˋ", "ㄓㄡ", "ㄧ", "ㄗㄠˇ", "ㄕㄤˋ", "ㄧㄠˋ", "ㄎㄞ", "ㄌㄧˋ", "ㄏㄤˊ", "ㄏㄨㄟˋ", "ㄧˋ"]}
+{"id": 165, "split": "dev", "category": "colloquial", "target": "這個週末天氣好像很不錯", "readings": ["ㄓㄜˋ", "ㄍㄜ˙", "ㄓㄡ", "ㄇㄛˋ", "ㄊㄧㄢ", "ㄑㄧˋ", "ㄏㄠˇ", "ㄒㄧㄤˋ", "ㄏㄣˇ", "ㄅㄨˊ", "ㄘㄨㄛˋ"]}
+{"id": 166, "split": "test", "category": "colloquial", "target": "我們買一些水果回家吃吧", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄇㄞˇ", "ㄧ", "ㄒㄧㄝ", "ㄕㄨㄟˇ", "ㄍㄨㄛˇ", "ㄏㄨㄟˊ", "ㄐㄧㄚ", "ㄔ", "ㄅㄚ"]}
+{"id": 167, "split": "dev", "category": "colloquial", "target": "你看這張風景照片很漂亮", "readings": ["ㄋㄧˇ", "ㄎㄢˋ", "ㄓㄜˋ", "ㄓㄤ", "ㄈㄥ", "ㄐㄧㄥˇ", "ㄓㄠˋ", "ㄆㄧㄢˋ", "ㄏㄣˇ", "ㄆㄧㄠˋ", "ㄌㄧㄤˋ"]}
+{"id": 168, "split": "test", "category": "colloquial", "target": "記得帶鑰匙千萬別忘了", "readings": ["ㄐㄧˋ", "ㄉㄜˊ", "ㄉㄞˋ", "ㄧㄠˋ", "ㄕˇ", "ㄑㄧㄢ", "ㄨㄢˋ", "ㄅㄧㄝˊ", "ㄨㄤˋ", "ㄌㄜ˙"]}
+{"id": 169, "split": "dev", "category": "colloquial", "target": "我們待會兒電話聯絡", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄉㄞ", "ㄏㄨㄟˇ", "ㄦ", "ㄉㄧㄢˋ", "ㄏㄨㄚˋ", "ㄌㄧㄢˊ", "ㄌㄨㄛˋ"]}
+{"id": 170, "split": "test", "category": "colloquial", "target": "幫我看一下這個字怎麼唸", "readings": ["ㄅㄤ", "ㄨㄛˇ", "ㄎㄢˋ", "ㄧ", "ㄒㄧㄚˋ", "ㄓㄜˋ", "ㄍㄜˋ", "ㄗˋ", "ㄗㄜˇ", "ㄇㄛ˙", "ㄋㄧㄢˋ"]}
+{"id": 171, "split": "dev", "category": "colloquial", "target": "這杯珍珠奶茶不會太甜剛剛好", "readings": ["ㄓㄜˋ", "ㄅㄟ", "ㄓㄣ", "ㄓㄨ", "ㄋㄞˇ", "ㄔㄚˊ", "ㄅㄨˊ", "ㄏㄨㄟˋ", "ㄊㄞˋ", "ㄊㄧㄢˊ", "ㄍㄤ", "ㄍㄤ", "ㄏㄠˇ"]}
+{"id": 172, "split": "test", "category": "colloquial", "target": "你有看到我的眼鏡在哪裡嗎", "readings": ["ㄋㄧˇ", "ㄧㄡˇ", "ㄎㄢˋ", "ㄉㄠˋ", "ㄨㄛˇ", "ㄉㄜ˙", "ㄧㄢˇ", "ㄐㄧㄥˋ", "ㄗㄞˋ", "ㄋㄚˇ", "ㄌㄧˇ", "ㄇㄚ"]}
+{"id": 173, "split": "dev", "category": "colloquial", "target": "放在桌上的水記得喝掉", "readings": ["ㄈㄤˋ", "ㄗㄞˋ", "ㄓㄨㄛ", "ㄕㄤˋ", "ㄉㄜ˙", "ㄕㄨㄟˇ", "ㄐㄧˋ", "ㄉㄜˊ", "ㄏㄜ", "ㄉㄧㄠˋ"]}
+{"id": 174, "split": "test", "category": "colloquial", "target": "大家一起加油把專案做好", "readings": ["ㄉㄚˋ", "ㄐㄧㄚ", "ㄧ", "ㄑㄧˇ", "ㄐㄧㄚ", "ㄧㄡˊ", "ㄅㄚˇ", "ㄓㄨㄢ", "ㄢˋ", "ㄗㄨㄛˋ", "ㄏㄠˇ"]}
+{"id": 175, "split": "dev", "category": "colloquial", "target": "這款輸入法打字非常順暢", "readings": ["ㄓㄜˋ", "ㄎㄨㄢˇ", "ㄕㄨ", "ㄖㄨˋ", "ㄈㄚˇ", "ㄉㄚˇ", "ㄗˋ", "ㄈㄟ", "ㄔㄤˊ", "ㄕㄨㄣˋ", "ㄔㄤˋ"]}
+{"id": 176, "split": "test", "category": "colloquial", "target": "希望大家都能用得很開心", "readings": ["ㄒㄧ", "ㄨㄤˋ", "ㄉㄚˋ", "ㄐㄧㄚ", "ㄉㄡ", "ㄋㄥˊ", "ㄩㄥˋ", "ㄉㄜ˙", "ㄏㄣˇ", "ㄎㄞ", "ㄒㄧㄣ"]}
+{"id": 177, "split": "dev", "category": "colloquial", "target": "寫程式最重要的是邏輯清楚", "readings": ["ㄒㄧㄝˇ", "ㄔㄥˊ", "ㄕˋ", "ㄗㄨㄟˋ", "ㄓㄨㄥˋ", "ㄧㄠˋ", "ㄉㄜ˙", "ㄕˋ", "ㄌㄨㄛˊ", "ㄐㄧˊ", "ㄑㄧㄥ", "ㄔㄨˇ"]}
+{"id": 178, "split": "test", "category": "colloquial", "target": "按鍵反應速度要越快越好", "readings": ["ㄢˋ", "ㄐㄧㄢˋ", "ㄈㄢˇ", "ㄧㄥˋ", "ㄙㄨˋ", "ㄉㄨˋ", "ㄧㄠˋ", "ㄩㄝˋ", "ㄎㄨㄞˋ", "ㄩㄝˋ", "ㄏㄠˇ"]}
+{"id": 179, "split": "dev", "category": "colloquial", "target": "組字候選字要精準不跳字", "readings": ["ㄗㄨˇ", "ㄗˋ", "ㄏㄡˋ", "ㄒㄩㄢˇ", "ㄗˋ", "ㄧㄠˋ", "ㄐㄧㄥ", "ㄓㄨㄣˇ", "ㄅㄨˊ", "ㄊㄧㄠˋ", "ㄗˋ"]}
+{"id": 180, "split": "test", "category": "colloquial", "target": "借我看一下這份合約內容", "readings": ["ㄐㄧㄝˋ", "ㄨㄛˇ", "ㄎㄢˋ", "ㄧ", "ㄒㄧㄚˋ", "ㄓㄜˋ", "ㄈㄣˋ", "ㄏㄜˊ", "ㄩㄝ", "ㄋㄟˋ", "ㄖㄨㄥˊ"]}
+{"id": 181, "split": "dev", "category": "colloquial", "target": "幫我拿一本記事本過來", "readings": ["ㄅㄤ", "ㄨㄛˇ", "ㄋㄚˊ", "ㄧ", "ㄅㄣˇ", "ㄐㄧˋ", "ㄕˋ", "ㄅㄣˇ", "ㄍㄨㄛˋ", "ㄌㄞˊ"]}
+{"id": 182, "split": "test", "category": "colloquial", "target": "我們等一下在捷運出口集合", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄉㄥˇ", "ㄧ", "ㄒㄧㄚˋ", "ㄗㄞˋ", "ㄐㄧㄝˊ", "ㄩㄣˋ", "ㄔㄨ", "ㄎㄡˇ", "ㄐㄧˊ", "ㄏㄜˊ"]}
+{"id": 183, "split": "dev", "category": "colloquial", "target": "今天晚上的聚餐不要遲到", "readings": ["ㄐㄧㄣ", "ㄊㄧㄢ", "ㄨㄢˇ", "ㄕㄤˋ", "ㄉㄜ˙", "ㄐㄩˋ", "ㄘㄢ", "ㄅㄨˊ", "ㄧㄠˋ", "ㄔˊ", "ㄉㄠˋ"]}
+{"id": 184, "split": "test", "category": "colloquial", "target": "這家咖啡店的環境很安靜", "readings": ["ㄓㄜˋ", "ㄐㄧㄚ", "ㄎㄚ", "ㄈㄟ", "ㄉㄧㄢˋ", "ㄉㄜ˙", "ㄏㄨㄢˊ", "ㄐㄧㄥˋ", "ㄏㄣˇ", "ㄢ", "ㄐㄧㄥˋ"]}
+{"id": 185, "split": "dev", "category": "colloquial", "target": "可以借我一支筆寫字嗎", "readings": ["ㄎㄜˇ", "ㄧˇ", "ㄐㄧㄝˋ", "ㄨㄛˇ", "ㄧ", "ㄓ", "ㄅㄧˇ", "ㄒㄧㄝˇ", "ㄗˋ", "ㄇㄚ"]}
+{"id": 186, "split": "test", "category": "colloquial", "target": "下雨天記得要穿防水的鞋子", "readings": ["ㄒㄧㄚˋ", "ㄩˇ", "ㄊㄧㄢ", "ㄐㄧˋ", "ㄉㄜˊ", "ㄧㄠˋ", "ㄔㄨㄢ", "ㄈㄤˊ", "ㄕㄨㄟˇ", "ㄉㄜ˙", "ㄒㄧㄝˊ", "ㄗ˙"]}
+{"id": 187, "split": "dev", "category": "colloquial", "target": "明天放假可以好好睡個飽", "readings": ["ㄇㄧㄥˊ", "ㄊㄧㄢ", "ㄈㄤˋ", "ㄐㄧㄚˋ", "ㄎㄜˇ", "ㄧˇ", "ㄏㄠˇ", "ㄏㄠˇ", "ㄕㄨㄟˋ", "ㄍㄜˋ", "ㄅㄠˇ"]}
+{"id": 188, "split": "test", "category": "colloquial", "target": "出發前再檢查一次行李", "readings": ["ㄔㄨ", "ㄈㄚ", "ㄑㄧㄢˊ", "ㄗㄞˋ", "ㄐㄧㄢˇ", "ㄔㄚˊ", "ㄧ", "ㄘˋ", "ㄒㄧㄥˊ", "ㄌㄧˇ"]}
+{"id": 189, "split": "dev", "category": "colloquial", "target": "有任何問題隨時跟我說", "readings": ["ㄧㄡˇ", "ㄖㄣˋ", "ㄏㄜˊ", "ㄨㄣˋ", "ㄊㄧˊ", "ㄙㄨㄟˊ", "ㄕˊ", "ㄍㄣ", "ㄨㄛˇ", "ㄕㄨㄛ"]}
+{"id": 190, "split": "test", "category": "colloquial", "target": "幫我想想看有什麼好方法", "readings": ["ㄅㄤ", "ㄨㄛˇ", "ㄒㄧㄤˇ", "ㄒㄧㄤˇ", "ㄎㄢˋ", "ㄧㄡˇ", "ㄕㄜˊ", "ㄇㄛ˙", "ㄏㄠˇ", "ㄈㄤ", "ㄈㄚˇ"]}
+{"id": 191, "split": "dev", "category": "colloquial", "target": "這件事你覺得怎麼樣比較好", "readings": ["ㄓㄜˋ", "ㄐㄧㄢˋ", "ㄕˋ", "ㄋㄧˇ", "ㄐㄩㄝˊ", "ㄉㄜˊ", "ㄗㄜˇ", "ㄇㄛ˙", "ㄧㄤˋ", "ㄅㄧˇ", "ㄐㄧㄠˋ", "ㄏㄠˇ"]}
+{"id": 192, "split": "test", "category": "colloquial", "target": "我們一步一步慢慢解決問題", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄧ", "ㄅㄨˋ", "ㄧ", "ㄅㄨˋ", "ㄇㄢˋ", "ㄇㄢˋ", "ㄐㄧㄝˇ", "ㄐㄩㄝˊ", "ㄨㄣˋ", "ㄊㄧˊ"]}
+{"id": 193, "split": "dev", "category": "colloquial", "target": "今天學到了很多實用的技巧", "readings": ["ㄐㄧㄣ", "ㄊㄧㄢ", "ㄒㄩㄝˊ", "ㄉㄠˋ", "ㄌㄜ˙", "ㄏㄣˇ", "ㄉㄨㄛ", "ㄕˊ", "ㄩㄥˋ", "ㄉㄜ˙", "ㄐㄧˋ", "ㄑㄧㄠˇ"]}
+{"id": 194, "split": "test", "category": "colloquial", "target": "謝謝你的熱心幫忙與協助", "readings": ["ㄒㄧㄝˋ", "ㄒㄧㄝˋ", "ㄋㄧˇ", "ㄉㄜ˙", "ㄖㄜˋ", "ㄒㄧㄣ", "ㄅㄤ", "ㄇㄤˊ", "ㄩˇ", "ㄒㄧㄝˊ", "ㄓㄨˋ"]}
+{"id": 195, "split": "dev", "category": "colloquial", "target": "許多獨居老人在疫情期間無法外出", "readings": ["ㄒㄩˇ", "ㄉㄨㄛ", "ㄉㄨˊ", "ㄐㄩ", "ㄌㄠˇ", "ㄖㄣˊ", "ㄗㄞˋ", "ㄧˋ", "ㄑㄧㄥˊ", "ㄑㄧˊ", "ㄐㄧㄢ", "ㄨˊ", "ㄈㄚˇ", "ㄨㄞˋ", "ㄔㄨ"]}
+{"id": 196, "split": "test", "category": "colloquial", "target": "也沒有人到府關懷", "readings": ["ㄧㄝˇ", "ㄇㄟˊ", "ㄧㄡˇ", "ㄖㄣˊ", "ㄉㄠˋ", "ㄈㄨˇ", "ㄍㄨㄢ", "ㄏㄨㄞˊ"]}
+{"id": 197, "split": "dev", "category": "colloquial", "target": "有市議員關心后里馬場歷史", "readings": ["ㄧㄡˇ", "ㄕˋ", "ㄧˋ", "ㄩㄢˊ", "ㄍㄨㄢ", "ㄒㄧㄣ", "ㄏㄡˋ", "ㄌㄧˇ", "ㄇㄚˇ", "ㄔㄤˇ", "ㄌㄧˋ", "ㄕˇ"]}
+{"id": 198, "split": "test", "category": "colloquial", "target": "核地方機關是否確有落實辦理之責", "readings": ["ㄏㄜˊ", "ㄉㄧˋ", "ㄈㄤ", "ㄐㄧ", "ㄍㄨㄢ", "ㄕˋ", "ㄈㄡˇ", "ㄑㄩㄝˋ", "ㄧㄡˇ", "ㄌㄨㄛˋ", "ㄕˊ", "ㄅㄢˋ", "ㄌㄧˇ", "ㄓ", "ㄗㄜˊ"]}
+{"id": 199, "split": "dev", "category": "colloquial", "target": "當他們在高中瞭解到自己的選擇時", "readings": ["ㄉㄤ", "ㄊㄚ", "ㄇㄣˊ", "ㄗㄞˋ", "ㄍㄠ", "ㄓㄨㄥ", "ㄌㄧㄠˇ", "ㄐㄧㄝˇ", "ㄉㄠˋ", "ㄗˋ", "ㄐㄧˇ", "ㄉㄜ˙", "ㄒㄩㄢˇ", "ㄗㄜˊ", "ㄕˊ"]}
+{"id": 200, "split": "test", "category": "colloquial", "target": "記得一直到國中我家裡都沒電", "readings": ["ㄐㄧˋ", "ㄉㄜˊ", "ㄧ", "ㄓˊ", "ㄉㄠˋ", "ㄍㄨㄛˊ", "ㄓㄨㄥ", "ㄨㄛˇ", "ㄐㄧㄚ", "ㄌㄧˇ", "ㄉㄡ", "ㄇㄟˊ", "ㄉㄧㄢˋ"]}
+{"id": 201, "split": "dev", "category": "colloquial", "target": "只有煤油燈", "readings": ["ㄓˇ", "ㄧㄡˇ", "ㄇㄟˊ", "ㄧㄡˊ", "ㄉㄥ"]}
+{"id": 202, "split": "test", "category": "colloquial", "target": "所以我們做事都要非常有效率", "readings": ["ㄙㄨㄛˇ", "ㄧˇ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄗㄨㄛˋ", "ㄕˋ", "ㄉㄡ", "ㄧㄠˋ", "ㄈㄟ", "ㄔㄤˊ", "ㄧㄡˇ", "ㄒㄧㄠˋ", "ㄌㄩˋ"]}
+{"id": 203, "split": "dev", "category": "colloquial", "target": "太陽下山以前功課最好就要做完", "readings": ["ㄊㄞˋ", "ㄧㄤˊ", "ㄒㄧㄚˋ", "ㄕㄢ", "ㄧˇ", "ㄑㄧㄢˊ", "ㄍㄨㄥ", "ㄎㄜˋ", "ㄗㄨㄟˋ", "ㄏㄠˇ", "ㄐㄧㄡˋ", "ㄧㄠˋ", "ㄗㄨㄛˋ", "ㄨㄢˊ"]}
+{"id": 204, "split": "test", "category": "colloquial", "target": "我覺得這樣很好", "readings": ["ㄨㄛˇ", "ㄐㄩㄝˊ", "ㄉㄜˊ", "ㄓㄜˋ", "ㄧㄤˋ", "ㄏㄣˇ", "ㄏㄠˇ"]}
+{"id": 205, "split": "dev", "category": "colloquial", "target": "訓練在有限的時間把事情做完", "readings": ["ㄒㄩㄣˋ", "ㄌㄧㄢˋ", "ㄗㄞˋ", "ㄧㄡˇ", "ㄒㄧㄢˋ", "ㄉㄜ˙", "ㄕˊ", "ㄐㄧㄢ", "ㄅㄚˇ", "ㄕˋ", "ㄑㄧㄥˊ", "ㄗㄨㄛˋ", "ㄨㄢˊ"]}
+{"id": 206, "split": "test", "category": "colloquial", "target": "這種時間觀也是當代社會所需要的", "readings": ["ㄓㄜˋ", "ㄓㄨㄥˇ", "ㄕˊ", "ㄐㄧㄢ", "ㄍㄨㄢ", "ㄧㄝˇ", "ㄕˋ", "ㄉㄤ", "ㄉㄞˋ", "ㄕㄜˋ", "ㄏㄨㄟˋ", "ㄙㄨㄛˇ", "ㄒㄩ", "ㄧㄠˋ", "ㄉㄧˋ"]}
+{"id": 207, "split": "dev", "category": "colloquial", "target": "出席人員有周定山", "readings": ["ㄔㄨ", "ㄒㄧˊ", "ㄖㄣˊ", "ㄩㄢˊ", "ㄧㄡˇ", "ㄓㄡ", "ㄉㄧㄥˋ", "ㄕㄢ"]}
+{"id": 208, "split": "test", "category": "colloquial", "target": "我禮拜三跟他約富邦大樓", "readings": ["ㄨㄛˇ", "ㄌㄧˇ", "ㄅㄞˋ", "ㄙㄢ", "ㄍㄣ", "ㄊㄚ", "ㄩㄝ", "ㄈㄨˋ", "ㄅㄤ", "ㄉㄚˋ", "ㄌㄡˊ"]}
+{"id": 209, "split": "dev", "category": "colloquial", "target": "做出違憲解釋", "readings": ["ㄗㄨㄛˋ", "ㄔㄨ", "ㄨㄟˊ", "ㄒㄧㄢˋ", "ㄐㄧㄝˇ", "ㄕˋ"]}
+{"id": 210, "split": "test", "category": "colloquial", "target": "我們有幸在世界各國政府機關", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄧㄡˇ", "ㄒㄧㄥˋ", "ㄗㄞˋ", "ㄕˋ", "ㄐㄧㄝˋ", "ㄍㄜˋ", "ㄍㄨㄛˊ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄐㄧ", "ㄍㄨㄢ"]}
+{"id": 211, "split": "dev", "category": "colloquial", "target": "都有許多朋友肯定我們的抗疫成果", "readings": ["ㄉㄡ", "ㄧㄡˇ", "ㄒㄩˇ", "ㄉㄨㄛ", "ㄆㄥˊ", "ㄧㄡˇ", "ㄎㄣˇ", "ㄉㄧㄥˋ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄉㄜ˙", "ㄎㄤˋ", "ㄧˋ", "ㄔㄥˊ", "ㄍㄨㄛˇ"]}
+{"id": 212, "split": "test", "category": "colloquial", "target": "看見臺灣能對世界做出貢獻", "readings": ["ㄎㄢˋ", "ㄐㄧㄢˋ", "ㄊㄞˊ", "ㄨㄢ", "ㄋㄥˊ", "ㄉㄨㄟˋ", "ㄕˋ", "ㄐㄧㄝˋ", "ㄗㄨㄛˋ", "ㄔㄨ", "ㄍㄨㄥˋ", "ㄒㄧㄢˋ"]}
+{"id": 213, "split": "dev", "category": "colloquial", "target": "我在一九八四年回臺灣時", "readings": ["ㄨㄛˇ", "ㄗㄞˋ", "ㄧ", "ㄐㄧㄡˇ", "ㄅㄚ", "ㄙˋ", "ㄋㄧㄢˊ", "ㄏㄨㄟˊ", "ㄊㄞˊ", "ㄨㄢ", "ㄕˊ"]}
+{"id": 214, "split": "test", "category": "colloquial", "target": "這種把死亡拉到世俗人間來衡量", "readings": ["ㄓㄜˋ", "ㄓㄨㄥˇ", "ㄅㄚˇ", "ㄙˇ", "ㄨㄤˊ", "ㄌㄚ", "ㄉㄠˋ", "ㄕˋ", "ㄙㄨˊ", "ㄖㄣˊ", "ㄐㄧㄢ", "ㄌㄞˊ", "ㄏㄥˊ", "ㄌㄧㄤˊ"]}
+{"id": 215, "split": "dev", "category": "colloquial", "target": "而不論他人權益的現象", "readings": ["ㄦˊ", "ㄅㄨˊ", "ㄌㄨㄣˋ", "ㄊㄚ", "ㄖㄣˊ", "ㄑㄩㄢˊ", "ㄧˋ", "ㄉㄜ˙", "ㄒㄧㄢˋ", "ㄒㄧㄤˋ"]}
+{"id": 216, "split": "test", "category": "colloquial", "target": "顯示我們並未真正尊重死亡", "readings": ["ㄒㄧㄢˇ", "ㄕˋ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄅㄧㄥˋ", "ㄨㄟˋ", "ㄓㄣ", "ㄓㄥˋ", "ㄗㄨㄣ", "ㄓㄨㄥˋ", "ㄙˇ", "ㄨㄤˊ"]}
+{"id": 217, "split": "dev", "category": "colloquial", "target": "不過由於在溫哥華的地點選得好", "readings": ["ㄅㄨˊ", "ㄍㄨㄛˋ", "ㄧㄡˊ", "ㄩˊ", "ㄗㄞˋ", "ㄨㄣ", "ㄍㄜ", "ㄏㄨㄚˊ", "ㄉㄜ˙", "ㄉㄧˋ", "ㄉㄧㄢˇ", "ㄒㄩㄢˇ", "ㄉㄜˊ", "ㄏㄠˇ"]}
+{"id": 218, "split": "test", "category": "colloquial", "target": "現在光土地就漲了二", "readings": ["ㄒㄧㄢˋ", "ㄗㄞˋ", "ㄍㄨㄤ", "ㄊㄨˇ", "ㄉㄧˋ", "ㄐㄧㄡˋ", "ㄓㄤˇ", "ㄌㄜ˙", "ㄦˋ"]}
+{"id": 219, "split": "dev", "category": "colloquial", "target": "亦須確認及保護我方所擁有的重心", "readings": ["ㄧˋ", "ㄒㄩ", "ㄑㄩㄝˋ", "ㄖㄣˋ", "ㄐㄧˊ", "ㄅㄠˇ", "ㄏㄨˋ", "ㄨㄛˇ", "ㄈㄤ", "ㄙㄨㄛˇ", "ㄩㄥˇ", "ㄧㄡˇ", "ㄉㄜ˙", "ㄓㄨㄥˋ", "ㄒㄧㄣ"]}
+{"id": 220, "split": "test", "category": "colloquial", "target": "需要講索本族語的工作人員", "readings": ["ㄒㄩ", "ㄧㄠˋ", "ㄐㄧㄤˇ", "ㄙㄨㄛˇ", "ㄅㄣˇ", "ㄗㄨˊ", "ㄩˇ", "ㄉㄜ˙", "ㄍㄨㄥ", "ㄗㄨㄛˋ", "ㄖㄣˊ", "ㄩㄢˊ"]}
+{"id": 221, "split": "dev", "category": "colloquial", "target": "所以在索本族定居點招聘時", "readings": ["ㄙㄨㄛˇ", "ㄧˇ", "ㄗㄞˋ", "ㄙㄨㄛˇ", "ㄅㄣˇ", "ㄗㄨˊ", "ㄉㄧㄥˋ", "ㄐㄩ", "ㄉㄧㄢˇ", "ㄓㄠ", "ㄆㄧㄣˋ", "ㄕˊ"]}
+{"id": 222, "split": "test", "category": "colloquial", "target": "還會跑到馬尼拉去治療", "readings": ["ㄏㄞˊ", "ㄏㄨㄟˋ", "ㄆㄠˇ", "ㄉㄠˋ", "ㄇㄚˇ", "ㄋㄧˊ", "ㄌㄚ", "ㄑㄩˋ", "ㄓˋ", "ㄌㄧㄠˊ"]}
+{"id": 223, "split": "dev", "category": "colloquial", "target": "讓役男在服役期間能透過認識情緒", "readings": ["ㄖㄤˋ", "ㄧˋ", "ㄋㄢˊ", "ㄗㄞˋ", "ㄈㄨˊ", "ㄧˋ", "ㄑㄧˊ", "ㄐㄧㄢ", "ㄋㄥˊ", "ㄊㄡˋ", "ㄍㄨㄛˋ", "ㄖㄣˋ", "ㄕˋ", "ㄑㄧㄥˊ", "ㄒㄩˋ"]}
+{"id": 224, "split": "test", "category": "colloquial", "target": "促使人際關係的良好互動", "readings": ["ㄘㄨˋ", "ㄕˇ", "ㄖㄣˊ", "ㄐㄧˋ", "ㄍㄨㄢ", "ㄒㄧˋ", "ㄉㄜ˙", "ㄌㄧㄤˊ", "ㄏㄠˇ", "ㄏㄨˋ", "ㄉㄨㄥˋ"]}
+{"id": 225, "split": "dev", "category": "colloquial", "target": "之前他主要投入室內靜物畫", "readings": ["ㄓ", "ㄑㄧㄢˊ", "ㄊㄚ", "ㄓㄨˇ", "ㄧㄠˋ", "ㄊㄡˊ", "ㄖㄨˋ", "ㄕˋ", "ㄋㄟˋ", "ㄐㄧㄥˋ", "ㄨˋ", "ㄏㄨㄚˋ"]}
+{"id": 226, "split": "test", "category": "colloquial", "target": "而對我來說", "readings": ["ㄦˊ", "ㄉㄨㄟˋ", "ㄨㄛˇ", "ㄌㄞˊ", "ㄕㄨㄛ"]}
+{"id": 227, "split": "dev", "category": "colloquial", "target": "他也怕自己被", "readings": ["ㄊㄚ", "ㄧㄝˇ", "ㄆㄚˋ", "ㄗˋ", "ㄐㄧˇ", "ㄅㄟˋ"]}
+{"id": 228, "split": "test", "category": "colloquial", "target": "不僅有助於學術成就", "readings": ["ㄅㄨˋ", "ㄐㄧㄣˇ", "ㄧㄡˇ", "ㄓㄨˋ", "ㄩˊ", "ㄒㄩㄝˊ", "ㄕㄨˋ", "ㄔㄥˊ", "ㄐㄧㄡˋ"]}
+{"id": 229, "split": "dev", "category": "colloquial", "target": "事情發生後再做補救", "readings": ["ㄕˋ", "ㄑㄧㄥˊ", "ㄈㄚ", "ㄕㄥ", "ㄏㄡˋ", "ㄗㄞˋ", "ㄗㄨㄛˋ", "ㄅㄨˇ", "ㄐㄧㄡˋ"]}
+{"id": 230, "split": "test", "category": "colloquial", "target": "使自己有更高的智慧創造獨有的風格", "readings": ["ㄕˇ", "ㄗˋ", "ㄐㄧˇ", "ㄧㄡˇ", "ㄍㄥˋ", "ㄍㄠ", "ㄉㄜ˙", "ㄓˋ", "ㄏㄨㄟˋ", "ㄔㄨㄤˋ", "ㄗㄠˋ", "ㄉㄨˊ", "ㄧㄡˇ", "ㄉㄜ˙", "ㄈㄥ", "ㄍㄜˊ"]}
+{"id": 231, "split": "dev", "category": "colloquial", "target": "當選之後更要謙虛", "readings": ["ㄉㄤ", "ㄒㄩㄢˇ", "ㄓ", "ㄏㄡˋ", "ㄍㄥˋ", "ㄧㄠˋ", "ㄑㄧㄢ", "ㄒㄩ"]}
+{"id": 232, "split": "test", "category": "colloquial", "target": "做同學的表率", "readings": ["ㄗㄨㄛˋ", "ㄊㄨㄥˊ", "ㄒㄩㄝˊ", "ㄉㄜ˙", "ㄅㄧㄠˇ", "ㄕㄨㄞˋ"]}
+{"id": 233, "split": "dev", "category": "colloquial", "target": "在家是孝順的孩子", "readings": ["ㄗㄞˋ", "ㄐㄧㄚ", "ㄕˋ", "ㄒㄧㄠˋ", "ㄕㄨㄣˋ", "ㄉㄜ˙", "ㄏㄞˊ", "ㄗ˙"]}
+{"id": 234, "split": "test", "category": "colloquial", "target": "在校則是認真讀書的好學生", "readings": ["ㄗㄞˋ", "ㄒㄧㄠˋ", "ㄗㄜˊ", "ㄕˋ", "ㄖㄣˋ", "ㄓㄣ", "ㄉㄨˊ", "ㄕㄨ", "ㄉㄜ˙", "ㄏㄠˋ", "ㄒㄩㄝˊ", "ㄕㄥ"]}
+{"id": 235, "split": "dev", "category": "colloquial", "target": "鳴冤萬古有誰知", "readings": ["ㄇㄧㄥˊ", "ㄩㄢ", "ㄨㄢˋ", "ㄍㄨˇ", "ㄧㄡˇ", "ㄕㄟˊ", "ㄓ"]}
+{"id": 236, "split": "test", "category": "colloquial", "target": "管理上將會有很大的困擾而導致民怨", "readings": ["ㄍㄨㄢˇ", "ㄌㄧˇ", "ㄕㄤˋ", "ㄐㄧㄤˋ", "ㄏㄨㄟˋ", "ㄧㄡˇ", "ㄏㄣˇ", "ㄉㄚˋ", "ㄉㄜ˙", "ㄎㄨㄣˋ", "ㄖㄠˇ", "ㄦˊ", "ㄉㄠˇ", "ㄓˋ", "ㄇㄧㄣˊ", "ㄩㄢˋ"]}
+{"id": 237, "split": "dev", "category": "colloquial", "target": "均在場為曾宇謙加油打氣", "readings": ["ㄐㄩㄣ", "ㄗㄞˋ", "ㄔㄤˇ", "ㄨㄟˊ", "ㄘㄥˊ", "ㄩˇ", "ㄑㄧㄢ", "ㄐㄧㄚ", "ㄧㄡˊ", "ㄉㄚˇ", "ㄑㄧˋ"]}
+{"id": 238, "split": "test", "category": "colloquial", "target": "主要的原因是", "readings": ["ㄓㄨˇ", "ㄧㄠˋ", "ㄉㄜ˙", "ㄩㄢˊ", "ㄧㄣ", "ㄕˋ"]}
+{"id": 239, "split": "dev", "category": "colloquial", "target": "我們有很多各族群的歌", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄧㄡˇ", "ㄏㄣˇ", "ㄉㄨㄛ", "ㄍㄜˋ", "ㄗㄨˊ", "ㄑㄩㄣˊ", "ㄉㄜ˙", "ㄍㄜ"]}
+{"id": 240, "split": "test", "category": "colloquial", "target": "其他的族人都不知道", "readings": ["ㄑㄧˊ", "ㄊㄚ", "ㄉㄜ˙", "ㄗㄨˊ", "ㄖㄣˊ", "ㄉㄡ", "ㄅㄨˊ", "ㄓ", "ㄉㄠˋ"]}
+{"id": 241, "split": "dev", "category": "colloquial", "target": "並有即時監控系統", "readings": ["ㄅㄧㄥˋ", "ㄧㄡˇ", "ㄐㄧˊ", "ㄕˊ", "ㄐㄧㄢ", "ㄎㄨㄥˋ", "ㄒㄧˋ", "ㄊㄨㄥˇ"]}
+{"id": 242, "split": "test", "category": "colloquial", "target": "但是能夠做到回收和利用屬難能可貴", "readings": ["ㄉㄢˋ", "ㄕˋ", "ㄋㄥˊ", "ㄍㄡˋ", "ㄗㄨㄛˋ", "ㄉㄠˋ", "ㄏㄨㄟˊ", "ㄕㄡ", "ㄏㄢˋ", "ㄌㄧˋ", "ㄩㄥˋ", "ㄕㄨˇ", "ㄋㄢˊ", "ㄋㄥˊ", "ㄎㄜˇ", "ㄍㄨㄟˋ"]}
+{"id": 243, "split": "dev", "category": "colloquial", "target": "正修陪著馬玉龍吃完了飯", "readings": ["ㄓㄥˋ", "ㄒㄧㄡ", "ㄆㄟˊ", "ㄓㄜ˙", "ㄇㄚˇ", "ㄩˋ", "ㄌㄨㄥˊ", "ㄔ", "ㄨㄢˊ", "ㄌㄜ˙", "ㄈㄢˋ"]}
+{"id": 244, "split": "test", "category": "colloquial", "target": "此次在臺灣成功舉辦年會", "readings": ["ㄘˇ", "ㄘˋ", "ㄗㄞˋ", "ㄊㄞˊ", "ㄨㄢ", "ㄔㄥˊ", "ㄍㄨㄥ", "ㄐㄩˇ", "ㄅㄢˋ", "ㄋㄧㄢˊ", "ㄏㄨㄟˋ"]}
+{"id": 245, "split": "dev", "category": "colloquial", "target": "年的年會也辦在臺灣", "readings": ["ㄋㄧㄢˊ", "ㄉㄜ˙", "ㄋㄧㄢˊ", "ㄏㄨㄟˋ", "ㄧㄝˇ", "ㄅㄢˋ", "ㄗㄞˋ", "ㄊㄞˊ", "ㄨㄢ"]}
+{"id": 246, "split": "test", "category": "colloquial", "target": "另各職場如有團體接種需求", "readings": ["ㄌㄧㄥˋ", "ㄍㄜˋ", "ㄓˊ", "ㄔㄤˇ", "ㄖㄨˊ", "ㄧㄡˇ", "ㄊㄨㄢˊ", "ㄊㄧˇ", "ㄐㄧㄝ", "ㄓㄨㄥˇ", "ㄒㄩ", "ㄑㄧㄡˊ"]}
+{"id": 247, "split": "dev", "category": "colloquial", "target": "只要揪團滿", "readings": ["ㄓˇ", "ㄧㄠˋ", "ㄐㄧㄡ", "ㄊㄨㄢˊ", "ㄇㄢˇ"]}
+{"id": 248, "split": "test", "category": "colloquial", "target": "在戰國楚國貴族墓中", "readings": ["ㄗㄞˋ", "ㄓㄢˋ", "ㄍㄨㄛˊ", "ㄔㄨˇ", "ㄍㄨㄛˊ", "ㄍㄨㄟˋ", "ㄗㄨˊ", "ㄇㄨˋ", "ㄓㄨㄥ"]}
+{"id": 249, "split": "dev", "category": "colloquial", "target": "不用包含在權利人之年收入當中", "readings": ["ㄅㄨˊ", "ㄩㄥˋ", "ㄅㄠ", "ㄏㄢˊ", "ㄗㄞˋ", "ㄑㄩㄢˊ", "ㄌㄧˋ", "ㄖㄣˊ", "ㄓ", "ㄋㄧㄢˊ", "ㄕㄡ", "ㄖㄨˋ", "ㄉㄤ", "ㄓㄨㄥ"]}
+{"id": 250, "split": "test", "category": "colloquial", "target": "切斷原有船板並非不可接受的方法", "readings": ["ㄑㄧㄝ", "ㄉㄨㄢˋ", "ㄩㄢˊ", "ㄧㄡˇ", "ㄔㄨㄢˊ", "ㄅㄢˇ", "ㄅㄧㄥˋ", "ㄈㄟ", "ㄅㄨˋ", "ㄎㄜˇ", "ㄐㄧㄝ", "ㄕㄡˋ", "ㄉㄜ˙", "ㄈㄤ", "ㄈㄚˇ"]}
+{"id": 251, "split": "dev", "category": "colloquial", "target": "隆河三號就是一個很好的案例", "readings": ["ㄌㄨㄥˊ", "ㄏㄜˊ", "ㄙㄢ", "ㄏㄠˋ", "ㄐㄧㄡˋ", "ㄕˋ", "ㄧ", "ㄍㄜ˙", "ㄏㄣˇ", "ㄏㄠˇ", "ㄉㄜ˙", "ㄢˋ", "ㄌㄧˋ"]}
+{"id": 252, "split": "test", "category": "colloquial", "target": "其他資訊均來自歷年考試公告", "readings": ["ㄑㄧˊ", "ㄊㄚ", "ㄗ", "ㄒㄩㄣˋ", "ㄐㄩㄣ", "ㄌㄞˊ", "ㄗˋ", "ㄌㄧˋ", "ㄋㄧㄢˊ", "ㄎㄠˇ", "ㄕˋ", "ㄍㄨㄥ", "ㄍㄠˋ"]}
+{"id": 253, "split": "dev", "category": "colloquial", "target": "在彈藥部份", "readings": ["ㄗㄞˋ", "ㄉㄢˋ", "ㄧㄠˋ", "ㄅㄨˋ", "ㄈㄣˋ"]}
+{"id": 254, "split": "test", "category": "colloquial", "target": "另在攻勢作戰期間", "readings": ["ㄌㄧㄥˋ", "ㄗㄞˋ", "ㄍㄨㄥ", "ㄕˋ", "ㄗㄨㄛˋ", "ㄓㄢˋ", "ㄑㄧˊ", "ㄐㄧㄢ"]}
+{"id": 255, "split": "dev", "category": "colloquial", "target": "讓我們沒有生存活動空間的事實來看", "readings": ["ㄖㄤˋ", "ㄨㄛˇ", "ㄇㄣˊ", "ㄇㄟˊ", "ㄧㄡˇ", "ㄕㄥ", "ㄘㄨㄣˊ", "ㄏㄨㄛˊ", "ㄉㄨㄥˋ", "ㄎㄨㄥ", "ㄐㄧㄢ", "ㄉㄜ˙", "ㄕˋ", "ㄕˊ", "ㄌㄞˊ", "ㄎㄢˋ"]}
+{"id": 256, "split": "test", "category": "colloquial", "target": "表明他們願意和平共存的誠意", "readings": ["ㄅㄧㄠˇ", "ㄇㄧㄥˊ", "ㄊㄚ", "ㄇㄣˊ", "ㄩㄢˋ", "ㄧˋ", "ㄏㄜˊ", "ㄆㄧㄥˊ", "ㄍㄨㄥˋ", "ㄘㄨㄣˊ", "ㄉㄜ˙", "ㄔㄥˊ", "ㄧˋ"]}
+{"id": 257, "split": "dev", "category": "colloquial", "target": "僅有提供民間設施位置一項資訊", "readings": ["ㄐㄧㄣˇ", "ㄧㄡˇ", "ㄊㄧˊ", "ㄍㄨㄥ", "ㄇㄧㄣˊ", "ㄐㄧㄢ", "ㄕㄜˋ", "ㄕ", "ㄨㄟˋ", "ㄓˋ", "ㄧ", "ㄒㄧㄤˋ", "ㄗ", "ㄒㄩㄣˋ"]}
+{"id": 258, "split": "test", "category": "colloquial", "target": "要求課程內容既要包括最新知識", "readings": ["ㄧㄠ", "ㄑㄧㄡˊ", "ㄎㄜˋ", "ㄔㄥˊ", "ㄋㄟˋ", "ㄖㄨㄥˊ", "ㄐㄧˋ", "ㄧㄠˋ", "ㄅㄠ", "ㄍㄨㄚ", "ㄗㄨㄟˋ", "ㄒㄧㄣ", "ㄓ", "ㄕˋ"]}
+{"id": 259, "split": "dev", "category": "colloquial", "target": "她深知賴副總統有氣度", "readings": ["ㄊㄚ", "ㄕㄣ", "ㄓ", "ㄌㄞˋ", "ㄈㄨˋ", "ㄗㄨㄥˇ", "ㄊㄨㄥˇ", "ㄧㄡˇ", "ㄑㄧˋ", "ㄉㄨˋ"]}
+{"id": 260, "split": "test", "category": "colloquial", "target": "主要針對河床農田限制利用", "readings": ["ㄓㄨˇ", "ㄧㄠˋ", "ㄓㄣ", "ㄉㄨㄟˋ", "ㄏㄜˊ", "ㄔㄨㄤˊ", "ㄋㄨㄥˊ", "ㄊㄧㄢˊ", "ㄒㄧㄢˋ", "ㄓˋ", "ㄌㄧˋ", "ㄩㄥˋ"]}
+{"id": 261, "split": "dev", "category": "colloquial", "target": "採用其他方法消毒者", "readings": ["ㄘㄞˇ", "ㄩㄥˋ", "ㄑㄧˊ", "ㄊㄚ", "ㄈㄤ", "ㄈㄚˇ", "ㄒㄧㄠ", "ㄉㄨˊ", "ㄓㄜˇ"]}
+{"id": 262, "split": "test", "category": "colloquial", "target": "誰知這黃詹事卻向來是儉樸慣的", "readings": ["ㄕㄟˊ", "ㄓ", "ㄓㄜˋ", "ㄏㄨㄤˊ", "ㄓㄢ", "ㄕˋ", "ㄑㄩㄝˋ", "ㄒㄧㄤˋ", "ㄌㄞˊ", "ㄕˋ", "ㄐㄧㄢˇ", "ㄆㄨˊ", "ㄍㄨㄢˋ", "ㄉㄜ˙"]}
+{"id": 263, "split": "dev", "category": "colloquial", "target": "紹興人頂喜歡吃的一魚", "readings": ["ㄕㄠˋ", "ㄒㄧㄥ", "ㄖㄣˊ", "ㄉㄧㄥˇ", "ㄒㄧˇ", "ㄏㄨㄢ", "ㄔ", "ㄉㄜ˙", "ㄧ", "ㄩˊ"]}
+{"id": 264, "split": "test", "category": "colloquial", "target": "在運用本館藏品影像資料前", "readings": ["ㄗㄞˋ", "ㄩㄣˋ", "ㄩㄥˋ", "ㄅㄣˇ", "ㄍㄨㄢˇ", "ㄘㄤˊ", "ㄆㄧㄣˇ", "ㄧㄥˇ", "ㄒㄧㄤˋ", "ㄗ", "ㄌㄧㄠˋ", "ㄑㄧㄢˊ"]}
+{"id": 265, "split": "dev", "category": "colloquial", "target": "有效結合三個行政單位", "readings": ["ㄧㄡˇ", "ㄒㄧㄠˋ", "ㄐㄧㄝˊ", "ㄏㄜˊ", "ㄙㄢ", "ㄍㄜ˙", "ㄒㄧㄥˊ", "ㄓㄥˋ", "ㄉㄢ", "ㄨㄟˋ"]}
+{"id": 266, "split": "test", "category": "colloquial", "target": "坡面大概不可能來來去去", "readings": ["ㄆㄛ", "ㄇㄧㄢˋ", "ㄉㄚˋ", "ㄍㄞˋ", "ㄅㄨˋ", "ㄎㄜˇ", "ㄋㄥˊ", "ㄌㄞˊ", "ㄌㄞˊ", "ㄑㄩˋ", "ㄑㄩˋ"]}
+{"id": 267, "split": "dev", "category": "colloquial", "target": "鹽埕這個聚落位於西濱", "readings": ["ㄧㄢˊ", "ㄔㄥˊ", "ㄓㄜˋ", "ㄍㄜ˙", "ㄐㄩˋ", "ㄌㄨㄛˋ", "ㄨㄟˋ", "ㄩˊ", "ㄒㄧ", "ㄅㄧㄣ"]}
+{"id": 268, "split": "test", "category": "colloquial", "target": "另外還有許多一畦一畦的鹽田溼地", "readings": ["ㄌㄧㄥˋ", "ㄨㄞˋ", "ㄏㄞˊ", "ㄧㄡˇ", "ㄒㄩˇ", "ㄉㄨㄛ", "ㄧ", "ㄑㄧˊ", "ㄧ", "ㄑㄧˊ", "ㄉㄜ˙", "ㄧㄢˊ", "ㄊㄧㄢˊ", "ㄕ", "ㄉㄧˋ"]}
+{"id": 269, "split": "dev", "category": "colloquial", "target": "全越南只有", "readings": ["ㄑㄩㄢˊ", "ㄩㄝˋ", "ㄋㄢˊ", "ㄓˇ", "ㄧㄡˇ"]}
+{"id": 270, "split": "test", "category": "colloquial", "target": "其他部分也都依據規範要求", "readings": ["ㄑㄧˊ", "ㄊㄚ", "ㄅㄨˋ", "ㄈㄣˋ", "ㄧㄝˇ", "ㄉㄡ", "ㄧ", "ㄐㄩˋ", "ㄍㄨㄟ", "ㄈㄢˋ", "ㄧㄠ", "ㄑㄧㄡˊ"]}
+{"id": 271, "split": "dev", "category": "colloquial", "target": "放很久了沒煮", "readings": ["ㄈㄤˇ", "ㄏㄣˇ", "ㄐㄧㄡˇ", "ㄌㄜ˙", "ㄇㄟˊ", "ㄓㄨˇ"]}
+{"id": 272, "split": "test", "category": "colloquial", "target": "以做為改善系統的重要參考", "readings": ["ㄧˇ", "ㄗㄨㄛˋ", "ㄨㄟˊ", "ㄍㄞˇ", "ㄕㄢˋ", "ㄒㄧˋ", "ㄊㄨㄥˇ", "ㄉㄜ˙", "ㄓㄨㄥˋ", "ㄧㄠˋ", "ㄘㄢ", "ㄎㄠˇ"]}
+{"id": 273, "split": "dev", "category": "colloquial", "target": "還有意想不到的用途", "readings": ["ㄏㄞˊ", "ㄧㄡˇ", "ㄧˋ", "ㄒㄧㄤˇ", "ㄅㄨˊ", "ㄉㄠˋ", "ㄉㄜ˙", "ㄩㄥˋ", "ㄊㄨˊ"]}
+{"id": 274, "split": "test", "category": "colloquial", "target": "我們的課程是上午上英文科目", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄉㄜ˙", "ㄎㄜˋ", "ㄔㄥˊ", "ㄕˋ", "ㄕㄤˋ", "ㄨˇ", "ㄕㄤˋ", "ㄧㄥ", "ㄨㄣˊ", "ㄎㄜ", "ㄇㄨˋ"]}
+{"id": 275, "split": "dev", "category": "colloquial", "target": "有的是名為價買", "readings": ["ㄧㄡˇ", "ㄉㄜ˙", "ㄕˋ", "ㄇㄧㄥˊ", "ㄨㄟˊ", "ㄐㄧㄚˋ", "ㄇㄞˇ"]}
+{"id": 276, "split": "test", "category": "colloquial", "target": "有的是暗劫而來", "readings": ["ㄧㄡˇ", "ㄉㄜ˙", "ㄕˋ", "ㄢˋ", "ㄐㄧㄝˊ", "ㄦˊ", "ㄌㄞˊ"]}
+{"id": 277, "split": "dev", "category": "colloquial", "target": "特別是在講訴守法的作為時", "readings": ["ㄊㄜˋ", "ㄅㄧㄝˊ", "ㄕˋ", "ㄗㄞˋ", "ㄐㄧㄤˇ", "ㄙㄨˋ", "ㄕㄡˇ", "ㄈㄚˇ", "ㄉㄜ˙", "ㄗㄨㄛˋ", "ㄨㄟˊ", "ㄕˊ"]}
+{"id": 278, "split": "test", "category": "colloquial", "target": "並研議其他多元取得方式", "readings": ["ㄅㄧㄥˋ", "ㄧㄢˊ", "ㄧˋ", "ㄑㄧˊ", "ㄊㄚ", "ㄉㄨㄛ", "ㄩㄢˊ", "ㄑㄩˇ", "ㄉㄜˊ", "ㄈㄤ", "ㄕˋ"]}
+{"id": 279, "split": "dev", "category": "colloquial", "target": "我們也很喜歡將刊物介紹給在地人", "readings": ["ㄨㄛˇ", "ㄇㄣˊ", "ㄧㄝˇ", "ㄏㄣˇ", "ㄒㄧˇ", "ㄏㄨㄢ", "ㄐㄧㄤ", "ㄎㄢ", "ㄨˋ", "ㄐㄧㄝˋ", "ㄕㄠˋ", "ㄍㄟˇ", "ㄗㄞˋ", "ㄉㄧˋ", "ㄖㄣˊ"]}
+{"id": 280, "split": "test", "category": "colloquial", "target": "或者在外地生活的坪林人", "readings": ["ㄏㄨㄛˋ", "ㄓㄜˇ", "ㄗㄞˋ", "ㄨㄞˋ", "ㄉㄧˋ", "ㄕㄥ", "ㄏㄨㄛˊ", "ㄉㄜ˙", "ㄆㄧㄥˊ", "ㄌㄧㄣˊ", "ㄖㄣˊ"]}
+{"id": 281, "split": "dev", "category": "colloquial", "target": "在網路資源發達的時代", "readings": ["ㄗㄞˋ", "ㄨㄤˇ", "ㄌㄨˋ", "ㄗ", "ㄩㄢˊ", "ㄈㄚ", "ㄉㄚˊ", "ㄉㄜ˙", "ㄕˊ", "ㄉㄞˋ"]}
+{"id": 282, "split": "test", "category": "colloquial", "target": "他選物的方向很簡單", "readings": ["ㄊㄚ", "ㄒㄩㄢˇ", "ㄨˋ", "ㄉㄜ˙", "ㄈㄤ", "ㄒㄧㄤˋ", "ㄏㄣˇ", "ㄐㄧㄢˇ", "ㄉㄢ"]}
+{"id": 283, "split": "dev", "category": "colloquial", "target": "消費者生活中可以使用到的好器物", "readings": ["ㄒㄧㄠ", "ㄈㄟˋ", "ㄓㄜˇ", "ㄕㄥ", "ㄏㄨㄛˊ", "ㄓㄨㄥ", "ㄎㄜˇ", "ㄧˇ", "ㄕˇ", "ㄩㄥˋ", "ㄉㄠˋ", "ㄉㄜ˙", "ㄏㄠˇ", "ㄑㄧˋ", "ㄨˋ"]}
+{"id": 284, "split": "test", "category": "colloquial", "target": "都有可能成為明星商品", "readings": ["ㄉㄡ", "ㄧㄡˇ", "ㄎㄜˇ", "ㄋㄥˊ", "ㄔㄥˊ", "ㄨㄟˊ", "ㄇㄧㄥˊ", "ㄒㄧㄥ", "ㄕㄤ", "ㄆㄧㄣˇ"]}
+{"id": 285, "split": "dev", "category": "colloquial", "target": "有能力救人的醫生也被綁住", "readings": ["ㄧㄡˇ", "ㄋㄥˊ", "ㄌㄧˋ", "ㄐㄧㄡˋ", "ㄖㄣˊ", "ㄉㄜ˙", "ㄧ", "ㄕㄥ", "ㄧㄝˇ", "ㄅㄟˋ", "ㄅㄤˇ", "ㄓㄨˋ"]}
+{"id": 286, "split": "test", "category": "colloquial", "target": "生都生那麼大了", "readings": ["ㄕㄥ", "ㄉㄡ", "ㄕㄥ", "ㄋㄚˋ", "ㄇㄛ˙", "ㄉㄚˋ", "ㄌㄜ˙"]}
+{"id": 287, "split": "dev", "category": "colloquial", "target": "他似乎有些不捨", "readings": ["ㄊㄚ", "ㄙˋ", "ㄏㄨ", "ㄧㄡˇ", "ㄒㄧㄝ", "ㄅㄨˊ", "ㄕㄜˇ"]}
+{"id": 288, "split": "test", "category": "colloquial", "target": "研究顯示這個假設是錯誤的", "readings": ["ㄧㄢˊ", "ㄐㄧㄡˋ", "ㄒㄧㄢˇ", "ㄕˋ", "ㄓㄜˋ", "ㄍㄜ˙", "ㄐㄧㄚˇ", "ㄕㄜˋ", "ㄕˋ", "ㄘㄨㄛˋ", "ㄨˋ", "ㄉㄜ˙"]}
+{"id": 289, "split": "dev", "category": "colloquial", "target": "並在副總經理熊金鐸", "readings": ["ㄅㄧㄥˋ", "ㄗㄞˋ", "ㄈㄨˋ", "ㄗㄨㄥˇ", "ㄐㄧㄥ", "ㄌㄧˇ", "ㄒㄩㄥˊ", "ㄐㄧㄣ", "ㄉㄨㄛˊ"]}
+{"id": 290, "split": "test", "category": "colloquial", "target": "努力這麼久", "readings": ["ㄋㄨˇ", "ㄌㄧˋ", "ㄓㄜˋ", "ㄇㄛ˙", "ㄐㄧㄡˇ"]}
+{"id": 291, "split": "dev", "category": "colloquial", "target": "越需要國家實踐公平正義", "readings": ["ㄩㄝˋ", "ㄒㄩ", "ㄧㄠˋ", "ㄍㄨㄛˊ", "ㄐㄧㄚ", "ㄕˊ", "ㄐㄧㄢˋ", "ㄍㄨㄥ", "ㄆㄧㄥˊ", "ㄓㄥˋ", "ㄧˋ"]}
+{"id": 292, "split": "test", "category": "colloquial", "target": "此一部分於上一章節中已有詳細說明", "readings": ["ㄘˇ", "ㄧ", "ㄅㄨˋ", "ㄈㄣˋ", "ㄩˊ", "ㄕㄤˋ", "ㄧ", "ㄓㄤ", "ㄐㄧㄝˊ", "ㄓㄨㄥ", "ㄧˇ", "ㄧㄡˇ", "ㄒㄧㄤˊ", "ㄒㄧˋ", "ㄕㄨㄛ", "ㄇㄧㄥˊ"]}
+{"id": 293, "split": "dev", "category": "colloquial", "target": "保母本身有三個子女", "readings": ["ㄅㄠˇ", "ㄇㄨˇ", "ㄅㄣˇ", "ㄕㄣ", "ㄧㄡˇ", "ㄙㄢ", "ㄍㄜ˙", "ㄗˇ", "ㄋㄩˇ"]}
+{"id": 294, "split": "test", "category": "colloquial", "target": "我方在報告發布後", "readings": ["ㄨㄛˇ", "ㄈㄤ", "ㄗㄞˋ", "ㄅㄠˋ", "ㄍㄠˋ", "ㄈㄚ", "ㄅㄨˋ", "ㄏㄡˋ"]}
+{"id": 295, "split": "dev", "category": "colloquial", "target": "已減少我遠洋船隊強迫勞動情形", "readings": ["ㄧˇ", "ㄐㄧㄢˇ", "ㄕㄠˇ", "ㄨㄛˇ", "ㄩㄢˇ", "ㄧㄤˊ", "ㄔㄨㄢˊ", "ㄉㄨㄟˋ", "ㄑㄧㄤˇ", "ㄆㄛˋ", "ㄌㄠˊ", "ㄉㄨㄥˋ", "ㄑㄧㄥˊ", "ㄒㄧㄥˊ"]}
+{"id": 296, "split": "test", "category": "colloquial", "target": "時沒為銀海", "readings": ["ㄕˊ", "ㄇㄟˊ", "ㄨㄟˊ", "ㄧㄣˊ", "ㄏㄞˇ"]}
+{"id": 297, "split": "dev", "category": "colloquial", "target": "縣議員趙一先看到隊伍雄糾糾的姿勢", "readings": ["ㄒㄧㄢˋ", "ㄧˋ", "ㄩㄢˊ", "ㄓㄠˋ", "ㄧ", "ㄒㄧㄢ", "ㄎㄢˋ", "ㄉㄠˋ", "ㄉㄨㄟˋ", "ㄨˇ", "ㄒㄩㄥˊ", "ㄐㄧㄡ", "ㄐㄧㄡ", "ㄉㄜ˙", "ㄗ", "ㄕˋ"]}
+{"id": 298, "split": "test", "category": "colloquial", "target": "他相信能在這次的錦標賽勇奪佳績", "readings": ["ㄊㄚ", "ㄒㄧㄤ", "ㄒㄧㄣˋ", "ㄋㄥˊ", "ㄗㄞˋ", "ㄓㄜˋ", "ㄘˋ", "ㄉㄜ˙", "ㄐㄧㄣˇ", "ㄅㄧㄠ", "ㄙㄞˋ", "ㄩㄥˇ", "ㄉㄨㄛˊ", "ㄐㄧㄚ", "ㄐㄧ"]}
+{"id": 299, "split": "dev", "category": "colloquial", "target": "平時安份做自己工作應該不會", "readings": ["ㄆㄧㄥˊ", "ㄕˊ", "ㄢ", "ㄈㄣˋ", "ㄗㄨㄛˋ", "ㄗˋ", "ㄐㄧˇ", "ㄍㄨㄥ", "ㄗㄨㄛˋ", "ㄧㄥ", "ㄍㄞ", "ㄅㄨˊ", "ㄏㄨㄟˋ"]}
+{"id": 300, "split": "test", "category": "colloquial", "target": "有拿錢的人會更尊重不拿的人", "readings": ["ㄧㄡˇ", "ㄋㄚˊ", "ㄑㄧㄢˊ", "ㄉㄜ˙", "ㄖㄣˊ", "ㄏㄨㄟˋ", "ㄍㄥˋ", "ㄗㄨㄣ", "ㄓㄨㄥˋ", "ㄅㄨˋ", "ㄋㄚˊ", "ㄉㄜ˙", "ㄖㄣˊ"]}
+{"id": 301, "split": "dev", "category": "official", "target": "今年農業局續推大豆契作計畫", "readings": ["ㄐㄧㄣ", "ㄋㄧㄢˊ", "ㄋㄨㄥˊ", "ㄧㄝˋ", "ㄐㄩˊ", "ㄒㄩˋ", "ㄊㄨㄟ", "ㄉㄚˋ", "ㄉㄡˋ", "ㄑㄧˋ", "ㄗㄨㄛˋ", "ㄐㄧˋ", "ㄏㄨㄚˋ"]}
+{"id": 302, "split": "test", "category": "official", "target": "此模式將地方政府視為聯邦政府執行機關", "readings": ["ㄘˇ", "ㄇㄛˊ", "ㄕˋ", "ㄐㄧㄤ", "ㄉㄧˋ", "ㄈㄤ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄕˋ", "ㄨㄟˊ", "ㄌㄧㄢˊ", "ㄅㄤ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄓˊ", "ㄒㄧㄥˊ", "ㄐㄧ", "ㄍㄨㄢ"]}
+{"id": 303, "split": "dev", "category": "official", "target": "聯邦政府規劃整體政策", "readings": ["ㄌㄧㄢˊ", "ㄅㄤ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄍㄨㄟ", "ㄏㄨㄚˋ", "ㄓㄥˇ", "ㄊㄧˇ", "ㄓㄥˋ", "ㄘㄜˋ"]}
+{"id": 304, "split": "test", "category": "official", "target": "並經由州和地方政府執行其計畫", "readings": ["ㄅㄧㄥˋ", "ㄐㄧㄥ", "ㄧㄡˊ", "ㄓㄡ", "ㄏㄢˋ", "ㄉㄧˋ", "ㄈㄤ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄓˊ", "ㄒㄧㄥˊ", "ㄑㄧˊ", "ㄐㄧˋ", "ㄏㄨㄚˋ"]}
+{"id": 305, "split": "dev", "category": "official", "target": "定期召開戶政業務聯絡會報", "readings": ["ㄉㄧㄥˋ", "ㄑㄧˊ", "ㄓㄠˋ", "ㄎㄞ", "ㄏㄨˋ", "ㄓㄥˋ", "ㄧㄝˋ", "ㄨˋ", "ㄌㄧㄢˊ", "ㄌㄨㄛˋ", "ㄏㄨㄟˋ", "ㄅㄠˋ"]}
+{"id": 306, "split": "test", "category": "official", "target": "建立標準作業流程", "readings": ["ㄐㄧㄢˋ", "ㄌㄧˋ", "ㄅㄧㄠ", "ㄓㄨㄣˇ", "ㄗㄨㄛˋ", "ㄧㄝˋ", "ㄌㄧㄡˊ", "ㄔㄥˊ"]}
+{"id": 307, "split": "dev", "category": "official", "target": "簡化申辦手續", "readings": ["ㄐㄧㄢˇ", "ㄏㄨㄚˋ", "ㄕㄣ", "ㄅㄢˋ", "ㄕㄡˇ", "ㄒㄩˋ"]}
+{"id": 308, "split": "test", "category": "official", "target": "中止了對中國大陸的敵對關係", "readings": ["ㄓㄨㄥ", "ㄓˇ", "ㄌㄜ˙", "ㄉㄨㄟˋ", "ㄓㄨㄥ", "ㄍㄨㄛˊ", "ㄉㄚˋ", "ㄌㄨˋ", "ㄉㄜ˙", "ㄉㄧˊ", "ㄉㄨㄟˋ", "ㄍㄨㄢ", "ㄒㄧˋ"]}
+{"id": 309, "split": "dev", "category": "official", "target": "尤其政府組屋政策下", "readings": ["ㄧㄡˊ", "ㄑㄧˊ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄗㄨˇ", "ㄨ", "ㄓㄥˋ", "ㄘㄜˋ", "ㄒㄧㄚˋ"]}
+{"id": 310, "split": "test", "category": "official", "target": "於地面下或水面下施工者", "readings": ["ㄩˊ", "ㄉㄧˋ", "ㄇㄧㄢˋ", "ㄒㄧㄚˋ", "ㄏㄨㄛˋ", "ㄕㄨㄟˇ", "ㄇㄧㄢˋ", "ㄒㄧㄚˋ", "ㄕ", "ㄍㄨㄥ", "ㄓㄜˇ"]}
+{"id": 311, "split": "dev", "category": "official", "target": "文化景觀建築區域及行政程式等問題", "readings": ["ㄨㄣˊ", "ㄏㄨㄚˋ", "ㄐㄧㄥˇ", "ㄍㄨㄢ", "ㄐㄧㄢˋ", "ㄓㄨˊ", "ㄑㄩ", "ㄩˋ", "ㄐㄧˊ", "ㄒㄧㄥˊ", "ㄓㄥˋ", "ㄔㄥˊ", "ㄕˋ", "ㄉㄥˇ", "ㄨㄣˋ", "ㄊㄧˊ"]}
+{"id": 312, "split": "test", "category": "official", "target": "廟方一年唯一一次將廟門關閉", "readings": ["ㄇㄧㄠˋ", "ㄈㄤ", "ㄧ", "ㄋㄧㄢˊ", "ㄨㄟˊ", "ㄧ", "ㄧ", "ㄘˋ", "ㄐㄧㄤ", "ㄇㄧㄠˋ", "ㄇㄣˊ", "ㄍㄨㄢ", "ㄅㄧˋ"]}
+{"id": 313, "split": "dev", "category": "official", "target": "貼上兩條封條", "readings": ["ㄊㄧㄝ", "ㄕㄤˋ", "ㄌㄧㄤˇ", "ㄊㄧㄠˊ", "ㄈㄥ", "ㄊㄧㄠˊ"]}
+{"id": 314, "split": "test", "category": "official", "target": "又部分位處水庫集水區", "readings": ["ㄧㄡˋ", "ㄅㄨˋ", "ㄈㄣˋ", "ㄨㄟˋ", "ㄔㄨˇ", "ㄕㄨㄟˇ", "ㄎㄨˋ", "ㄐㄧˊ", "ㄕㄨㄟˇ", "ㄑㄩ"]}
+{"id": 315, "split": "dev", "category": "official", "target": "或供作露營場之違規林地", "readings": ["ㄏㄨㄛˋ", "ㄍㄨㄥ", "ㄗㄨㄛˋ", "ㄌㄨˋ", "ㄧㄥˊ", "ㄔㄤˇ", "ㄓ", "ㄨㄟˊ", "ㄍㄨㄟ", "ㄌㄧㄣˊ", "ㄉㄧˋ"]}
+{"id": 316, "split": "test", "category": "official", "target": "經本院立案調查", "readings": ["ㄐㄧㄥ", "ㄅㄣˇ", "ㄩㄢˋ", "ㄌㄧˋ", "ㄢˋ", "ㄉㄧㄠˋ", "ㄔㄚˊ"]}
+{"id": 317, "split": "dev", "category": "official", "target": "提供府內及所屬員工以更便捷的方式提供業務服務", "readings": ["ㄊㄧˊ", "ㄍㄨㄥ", "ㄈㄨˇ", "ㄋㄟˋ", "ㄐㄧˊ", "ㄙㄨㄛˇ", "ㄕㄨˇ", "ㄩㄢˊ", "ㄍㄨㄥ", "ㄧˇ", "ㄍㄥˋ", "ㄅㄧㄢˋ", "ㄐㄧㄝˊ", "ㄉㄜ˙", "ㄈㄤ", "ㄕˋ", "ㄊㄧˊ", "ㄍㄨㄥ", "ㄧㄝˋ", "ㄨˋ", "ㄈㄨˊ", "ㄨˋ"]}
+{"id": 318, "split": "test", "category": "official", "target": "絕大多數民眾支援政府推動重返聯合國", "readings": ["ㄐㄩㄝˊ", "ㄉㄚˋ", "ㄉㄨㄛ", "ㄕㄨˋ", "ㄇㄧㄣˊ", "ㄓㄨㄥˋ", "ㄓ", "ㄩㄢˊ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄊㄨㄟ", "ㄉㄨㄥˋ", "ㄔㄨㄥˊ", "ㄈㄢˇ", "ㄌㄧㄢˊ", "ㄏㄜˊ", "ㄍㄨㄛˊ"]}
+{"id": 319, "split": "dev", "category": "official", "target": "臺中市政府今日上午舉行線上市政會議", "readings": ["ㄊㄞˊ", "ㄓㄨㄥ", "ㄕˋ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄐㄧㄣ", "ㄖˋ", "ㄕㄤˋ", "ㄨˇ", "ㄐㄩˇ", "ㄒㄧㄥˊ", "ㄒㄧㄢˋ", "ㄕㄤˋ", "ㄕˋ", "ㄓㄥˋ", "ㄏㄨㄟˋ", "ㄧˋ"]}
+{"id": 320, "split": "test", "category": "official", "target": "由經濟發展局", "readings": ["ㄧㄡˊ", "ㄐㄧㄥ", "ㄐㄧˋ", "ㄈㄚ", "ㄓㄢˇ", "ㄐㄩˊ"]}
+{"id": 321, "split": "dev", "category": "official", "target": "現場準備了各式各樣的生活用品", "readings": ["ㄒㄧㄢˋ", "ㄔㄤˇ", "ㄓㄨㄣˇ", "ㄅㄟˋ", "ㄌㄜ˙", "ㄍㄜˋ", "ㄕˋ", "ㄍㄜˋ", "ㄧㄤˋ", "ㄉㄜ˙", "ㄕㄥ", "ㄏㄨㄛˊ", "ㄩㄥˋ", "ㄆㄧㄣˇ"]}
+{"id": 322, "split": "test", "category": "official", "target": "本計畫分為天然藥物", "readings": ["ㄅㄣˇ", "ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄈㄣ", "ㄨㄟˊ", "ㄊㄧㄢ", "ㄖㄢˊ", "ㄧㄠˋ", "ㄨˋ"]}
+{"id": 323, "split": "dev", "category": "official", "target": "臨床試驗及產業推動等七組", "readings": ["ㄌㄧㄣˊ", "ㄔㄨㄤˊ", "ㄕˋ", "ㄧㄢˋ", "ㄐㄧˊ", "ㄔㄢˇ", "ㄧㄝˋ", "ㄊㄨㄟ", "ㄉㄨㄥˋ", "ㄉㄥˇ", "ㄑㄧ", "ㄗㄨˇ"]}
+{"id": 324, "split": "test", "category": "official", "target": "並配合經濟部之法人科專與衛生署之臨床試驗", "readings": ["ㄅㄧㄥˋ", "ㄆㄟˋ", "ㄏㄜˊ", "ㄐㄧㄥ", "ㄐㄧˋ", "ㄅㄨˋ", "ㄓ", "ㄈㄚˇ", "ㄖㄣˊ", "ㄎㄜ", "ㄓㄨㄢ", "ㄩˇ", "ㄨㄟˋ", "ㄕㄥ", "ㄕㄨˇ", "ㄓ", "ㄌㄧㄣˊ", "ㄔㄨㄤˊ", "ㄕˋ", "ㄧㄢˋ"]}
+{"id": 325, "split": "dev", "category": "official", "target": "交請各權責機關依法查察", "readings": ["ㄐㄧㄠ", "ㄑㄧㄥˇ", "ㄍㄜˋ", "ㄑㄩㄢˊ", "ㄗㄜˊ", "ㄐㄧ", "ㄍㄨㄢ", "ㄧ", "ㄈㄚˇ", "ㄔㄚˊ", "ㄔㄚˊ"]}
+{"id": 326, "split": "test", "category": "official", "target": "對不肖廠商依法追究", "readings": ["ㄉㄨㄟˋ", "ㄅㄨˊ", "ㄒㄧㄠˋ", "ㄔㄤˇ", "ㄕㄤ", "ㄧ", "ㄈㄚˇ", "ㄓㄨㄟ", "ㄐㄧㄡˋ"]}
+{"id": 327, "split": "dev", "category": "official", "target": "配合經濟部本縣中小企業服務中心", "readings": ["ㄆㄟˋ", "ㄏㄜˊ", "ㄐㄧㄥ", "ㄐㄧˋ", "ㄅㄨˋ", "ㄅㄣˇ", "ㄒㄧㄢˋ", "ㄓㄨㄥ", "ㄒㄧㄠˇ", "ㄑㄧˋ", "ㄧㄝˋ", "ㄈㄨˊ", "ㄨˋ", "ㄓㄨㄥ", "ㄒㄧㄣ"]}
+{"id": 328, "split": "test", "category": "official", "target": "加強輔導中小企業", "readings": ["ㄐㄧㄚ", "ㄑㄧㄤˊ", "ㄈㄨˇ", "ㄉㄠˇ", "ㄓㄨㄥ", "ㄒㄧㄠˇ", "ㄑㄧˋ", "ㄧㄝˋ"]}
+{"id": 329, "split": "dev", "category": "official", "target": "七歲即為負擔家計替日本人帶孩子而失學", "readings": ["ㄑㄧ", "ㄙㄨㄟˋ", "ㄐㄧˊ", "ㄨㄟˊ", "ㄈㄨˋ", "ㄉㄢ", "ㄐㄧㄚ", "ㄐㄧˋ", "ㄊㄧˋ", "ㄖˋ", "ㄅㄣˇ", "ㄖㄣˊ", "ㄉㄞˋ", "ㄏㄞˊ", "ㄗ˙", "ㄦˊ", "ㄕ", "ㄒㄩㄝˊ"]}
+{"id": 330, "split": "test", "category": "official", "target": "直至五十歲才由誦經學習識字", "readings": ["ㄓˊ", "ㄓˋ", "ㄨˇ", "ㄕˊ", "ㄙㄨㄟˋ", "ㄘㄞˊ", "ㄧㄡˊ", "ㄙㄨㄥˋ", "ㄐㄧㄥ", "ㄒㄩㄝˊ", "ㄒㄧˊ", "ㄕˋ", "ㄗˋ"]}
+{"id": 331, "split": "dev", "category": "official", "target": "因此深深體會失學之苦", "readings": ["ㄧㄣ", "ㄘˇ", "ㄕㄣ", "ㄕㄣ", "ㄊㄧˇ", "ㄏㄨㄟˋ", "ㄕ", "ㄒㄩㄝˊ", "ㄓ", "ㄎㄨˇ"]}
+{"id": 332, "split": "test", "category": "official", "target": "接著由阿里山林業鐵路司機員", "readings": ["ㄐㄧㄝ", "ㄓㄜ˙", "ㄧㄡˊ", "ㄚ", "ㄌㄧˇ", "ㄕㄢ", "ㄌㄧㄣˊ", "ㄧㄝˋ", "ㄊㄧㄝˇ", "ㄌㄨˋ", "ㄙ", "ㄐㄧ", "ㄩㄢˊ"]}
+{"id": 333, "split": "dev", "category": "official", "target": "票務員以及林鐵處鐵路維護科科長擔任模特兒", "readings": ["ㄆㄧㄠˋ", "ㄨˋ", "ㄩㄢˊ", "ㄧˇ", "ㄐㄧˊ", "ㄌㄧㄣˊ", "ㄊㄧㄝˇ", "ㄔㄨˋ", "ㄊㄧㄝˇ", "ㄌㄨˋ", "ㄨㄟˊ", "ㄏㄨˋ", "ㄎㄜ", "ㄎㄜ", "ㄓㄤˇ", "ㄉㄢ", "ㄖㄣˋ", "ㄇㄛˊ", "ㄊㄜˋ", "ㄦ"]}
+{"id": 334, "split": "test", "category": "official", "target": "展示林鐵及文資處首款新制服", "readings": ["ㄓㄢˇ", "ㄕˋ", "ㄌㄧㄣˊ", "ㄊㄧㄝˇ", "ㄐㄧˊ", "ㄨㄣˊ", "ㄗ", "ㄔㄨˋ", "ㄕㄡˇ", "ㄎㄨㄢˇ", "ㄒㄧㄣ", "ㄓˋ", "ㄈㄨˊ"]}
+{"id": 335, "split": "dev", "category": "official", "target": "這個計畫統一隻出了新臺幣一億元左右", "readings": ["ㄓㄜˋ", "ㄍㄜ˙", "ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄊㄨㄥˇ", "ㄧ", "ㄓ", "ㄔㄨ", "ㄌㄜ˙", "ㄒㄧㄣ", "ㄊㄞˊ", "ㄅㄧˋ", "ㄧ", "ㄧˋ", "ㄩㄢˊ", "ㄗㄨㄛˇ", "ㄧㄡˋ"]}
+{"id": 336, "split": "test", "category": "official", "target": "國外建立的準則不能完全能適用在臺灣的海域調查", "readings": ["ㄍㄨㄛˊ", "ㄨㄞˋ", "ㄐㄧㄢˋ", "ㄌㄧˋ", "ㄉㄜ˙", "ㄓㄨㄣˇ", "ㄗㄜˊ", "ㄅㄨˋ", "ㄋㄥˊ", "ㄨㄢˊ", "ㄑㄩㄢˊ", "ㄋㄥˊ", "ㄕˋ", "ㄩㄥˋ", "ㄗㄞˋ", "ㄊㄞˊ", "ㄨㄢ", "ㄉㄜ˙", "ㄏㄞˇ", "ㄩˋ", "ㄉㄧㄠˋ", "ㄔㄚˊ"]}
+{"id": 337, "split": "dev", "category": "official", "target": "且為了保證公眾使用索本族語", "readings": ["ㄑㄧㄝˇ", "ㄨㄟˋ", "ㄌㄜ˙", "ㄅㄠˇ", "ㄓㄥˋ", "ㄍㄨㄥ", "ㄓㄨㄥˋ", "ㄕˇ", "ㄩㄥˋ", "ㄙㄨㄛˇ", "ㄅㄣˇ", "ㄗㄨˊ", "ㄩˇ"]}
+{"id": 338, "split": "test", "category": "official", "target": "於北側雷達站進行架高作業", "readings": ["ㄩˊ", "ㄅㄟˇ", "ㄘㄜˋ", "ㄌㄟˊ", "ㄉㄚˊ", "ㄓㄢˋ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄐㄧㄚˋ", "ㄍㄠ", "ㄗㄨㄛˋ", "ㄧㄝˋ"]}
+{"id": 339, "split": "dev", "category": "official", "target": "還能為學生提供廣闊的職業前景", "readings": ["ㄏㄞˊ", "ㄋㄥˊ", "ㄨㄟˊ", "ㄒㄩㄝˊ", "ㄕㄥ", "ㄊㄧˊ", "ㄍㄨㄥ", "ㄍㄨㄤˇ", "ㄎㄨㄛˋ", "ㄉㄜ˙", "ㄓˊ", "ㄧㄝˋ", "ㄑㄧㄢˊ", "ㄐㄧㄥˇ"]}
+{"id": 340, "split": "test", "category": "official", "target": "之後又遇到危機", "readings": ["ㄓ", "ㄏㄡˋ", "ㄧㄡˋ", "ㄩˋ", "ㄉㄠˋ", "ㄨㄟˊ", "ㄐㄧ"]}
+{"id": 341, "split": "dev", "category": "official", "target": "司隸奏湯無循行", "readings": ["ㄙ", "ㄌㄧˋ", "ㄗㄡˋ", "ㄊㄤ", "ㄨˊ", "ㄒㄩㄣˊ", "ㄒㄧㄥˊ"]}
+{"id": 342, "split": "test", "category": "official", "target": "前健保局將就重大傷病範圍", "readings": ["ㄑㄧㄢˊ", "ㄐㄧㄢˋ", "ㄅㄠˇ", "ㄐㄩˊ", "ㄐㄧㄤ", "ㄐㄧㄡˋ", "ㄓㄨㄥˋ", "ㄉㄚˋ", "ㄕㄤ", "ㄅㄧㄥˋ", "ㄈㄢˋ", "ㄨㄟˊ"]}
+{"id": 343, "split": "dev", "category": "official", "target": "免部分負擔範圍進行檢討", "readings": ["ㄇㄧㄢˇ", "ㄅㄨˋ", "ㄈㄣˋ", "ㄈㄨˋ", "ㄉㄢ", "ㄈㄢˋ", "ㄨㄟˊ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄐㄧㄢˇ", "ㄊㄠˇ"]}
+{"id": 344, "split": "test", "category": "official", "target": "進行相關議題之檢討", "readings": ["ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄒㄧㄤ", "ㄍㄨㄢ", "ㄧˋ", "ㄊㄧˊ", "ㄓ", "ㄐㄧㄢˇ", "ㄊㄠˇ"]}
+{"id": 345, "split": "dev", "category": "official", "target": "由於為教會工作", "readings": ["ㄧㄡˊ", "ㄩˊ", "ㄨㄟˊ", "ㄐㄧㄠˋ", "ㄏㄨㄟˋ", "ㄍㄨㄥ", "ㄗㄨㄛˋ"]}
+{"id": 346, "split": "test", "category": "official", "target": "經常與族人接觸", "readings": ["ㄐㄧㄥ", "ㄔㄤˊ", "ㄩˇ", "ㄗㄨˊ", "ㄖㄣˊ", "ㄐㄧㄝ", "ㄔㄨˋ"]}
+{"id": 347, "split": "dev", "category": "official", "target": "分別是溝渠清理", "readings": ["ㄈㄣ", "ㄅㄧㄝˊ", "ㄕˋ", "ㄍㄡ", "ㄑㄩˊ", "ㄑㄧㄥ", "ㄌㄧˇ"]}
+{"id": 348, "split": "test", "category": "official", "target": "廢棄物處理以及動物屍體", "readings": ["ㄈㄟˋ", "ㄑㄧˋ", "ㄨˋ", "ㄔㄨˇ", "ㄌㄧˇ", "ㄧˇ", "ㄐㄧˊ", "ㄉㄨㄥˋ", "ㄨˋ", "ㄕ", "ㄊㄧˇ"]}
+{"id": 349, "split": "dev", "category": "official", "target": "前關稅總局總局長簡良機等人", "readings": ["ㄑㄧㄢˊ", "ㄍㄨㄢ", "ㄕㄨㄟˋ", "ㄗㄨㄥˇ", "ㄐㄩˊ", "ㄗㄨㄥˇ", "ㄐㄩˊ", "ㄓㄤˇ", "ㄐㄧㄢˇ", "ㄌㄧㄤˊ", "ㄐㄧ", "ㄉㄥˇ", "ㄖㄣˊ"]}
+{"id": 350, "split": "test", "category": "official", "target": "波蘭及匈牙利海關暨舉辦雙邊關務會議報告", "readings": ["ㄅㄛ", "ㄌㄢˊ", "ㄐㄧˊ", "ㄒㄩㄥ", "ㄧㄚˊ", "ㄌㄧˋ", "ㄏㄞˇ", "ㄍㄨㄢ", "ㄐㄧˋ", "ㄐㄩˇ", "ㄅㄢˋ", "ㄕㄨㄤ", "ㄅㄧㄢ", "ㄍㄨㄢ", "ㄨˋ", "ㄏㄨㄟˋ", "ㄧˋ", "ㄅㄠˋ", "ㄍㄠˋ"]}
+{"id": 351, "split": "dev", "category": "official", "target": "我國駐歐盟兼駐比利時代表處林永樂代表", "readings": ["ㄨㄛˇ", "ㄍㄨㄛˊ", "ㄓㄨˋ", "ㄡ", "ㄇㄥˊ", "ㄐㄧㄢ", "ㄓㄨˋ", "ㄅㄧˇ", "ㄌㄧˋ", "ㄕˊ", "ㄉㄞˋ", "ㄅㄧㄠˇ", "ㄔㄨˋ", "ㄌㄧㄣˊ", "ㄩㄥˇ", "ㄌㄜˋ", "ㄉㄞˋ", "ㄅㄧㄠˇ"]}
+{"id": 352, "split": "test", "category": "official", "target": "文化組組長徐會文", "readings": ["ㄨㄣˊ", "ㄏㄨㄚˋ", "ㄗㄨˇ", "ㄗㄨˇ", "ㄓㄤˇ", "ㄒㄩˊ", "ㄏㄨㄟˋ", "ㄨㄣˊ"]}
+{"id": 353, "split": "dev", "category": "official", "target": "張榮發基金會代表等", "readings": ["ㄓㄤ", "ㄖㄨㄥˊ", "ㄈㄚ", "ㄐㄧ", "ㄐㄧㄣ", "ㄏㄨㄟˋ", "ㄉㄞˋ", "ㄅㄧㄠˇ", "ㄉㄥˇ"]}
+{"id": 354, "split": "test", "category": "official", "target": "這項計畫為他們未來的教育帶來許多希望", "readings": ["ㄓㄜˋ", "ㄒㄧㄤˋ", "ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄨㄟˋ", "ㄊㄚ", "ㄇㄣˊ", "ㄨㄟˋ", "ㄌㄞˊ", "ㄉㄜ˙", "ㄐㄧㄠˋ", "ㄩˋ", "ㄉㄞˋ", "ㄌㄞˊ", "ㄒㄩˇ", "ㄉㄨㄛ", "ㄒㄧ", "ㄨㄤˋ"]}
+{"id": 355, "split": "dev", "category": "official", "target": "影城除了提供基本配備的耳機外", "readings": ["ㄧㄥˇ", "ㄔㄥˊ", "ㄔㄨˊ", "ㄌㄜ˙", "ㄊㄧˊ", "ㄍㄨㄥ", "ㄐㄧ", "ㄅㄣˇ", "ㄆㄟˋ", "ㄅㄟˋ", "ㄉㄜ˙", "ㄦˇ", "ㄐㄧ", "ㄨㄞˋ"]}
+{"id": 356, "split": "test", "category": "official", "target": "亦可考慮開放觀眾自備耳機使用", "readings": ["ㄧˋ", "ㄎㄜˇ", "ㄎㄠˇ", "ㄌㄩˋ", "ㄎㄞ", "ㄈㄤˋ", "ㄍㄨㄢ", "ㄓㄨㄥˋ", "ㄗˋ", "ㄅㄟˋ", "ㄦˇ", "ㄐㄧ", "ㄕˇ", "ㄩㄥˋ"]}
+{"id": 357, "split": "dev", "category": "official", "target": "各路段交通量減輕與行駛速率提升效果不顯著", "readings": ["ㄍㄜˋ", "ㄌㄨˋ", "ㄉㄨㄢˋ", "ㄐㄧㄠ", "ㄊㄨㄥ", "ㄌㄧㄤˊ", "ㄐㄧㄢˇ", "ㄑㄧㄥ", "ㄩˇ", "ㄒㄧㄥˊ", "ㄕˇ", "ㄙㄨˋ", "ㄌㄩˋ", "ㄊㄧˊ", "ㄕㄥ", "ㄒㄧㄠˋ", "ㄍㄨㄛˇ", "ㄅㄨˊ", "ㄒㄧㄢˇ", "ㄓㄜ˙"]}
+{"id": 358, "split": "test", "category": "official", "target": "讓世臺會決定", "readings": ["ㄖㄤˋ", "ㄕˋ", "ㄊㄞˊ", "ㄏㄨㄟˋ", "ㄐㄩㄝˊ", "ㄉㄧㄥˋ"]}
+{"id": 359, "split": "dev", "category": "official", "target": "作為計算基礎", "readings": ["ㄗㄨㄛˋ", "ㄨㄟˊ", "ㄐㄧˋ", "ㄙㄨㄢˋ", "ㄐㄧ", "ㄔㄨˇ"]}
+{"id": 360, "split": "test", "category": "official", "target": "號墓的車馬出行圖", "readings": ["ㄏㄠˋ", "ㄇㄨˋ", "ㄉㄜ˙", "ㄔㄜ", "ㄇㄚˇ", "ㄔㄨ", "ㄒㄧㄥˊ", "ㄊㄨˊ"]}
+{"id": 361, "split": "dev", "category": "official", "target": "因屬為子女利益之社會保障給付", "readings": ["ㄧㄣ", "ㄕㄨˇ", "ㄨㄟˋ", "ㄗˇ", "ㄋㄩˇ", "ㄌㄧˋ", "ㄧˋ", "ㄓ", "ㄕㄜˋ", "ㄏㄨㄟˋ", "ㄅㄠˇ", "ㄓㄤˋ", "ㄐㄧˇ", "ㄈㄨˋ"]}
+{"id": 362, "split": "test", "category": "official", "target": "詳細設施與房型資訊未提供", "readings": ["ㄒㄧㄤˊ", "ㄒㄧˋ", "ㄕㄜˋ", "ㄕ", "ㄩˇ", "ㄈㄤˊ", "ㄒㄧㄥˊ", "ㄗ", "ㄒㄩㄣˋ", "ㄨㄟˋ", "ㄊㄧˊ", "ㄍㄨㄥ"]}
+{"id": 363, "split": "dev", "category": "official", "target": "從中共不斷地在國際外交行動中處處掣肘", "readings": ["ㄘㄨㄥˊ", "ㄓㄨㄥ", "ㄍㄨㄥˋ", "ㄅㄨˊ", "ㄉㄨㄢˋ", "ㄉㄜ˙", "ㄗㄞˋ", "ㄍㄨㄛˊ", "ㄐㄧˋ", "ㄨㄞˋ", "ㄐㄧㄠ", "ㄒㄧㄥˊ", "ㄉㄨㄥˋ", "ㄓㄨㄥ", "ㄔㄨˋ", "ㄔㄨˋ", "ㄔㄜˋ", "ㄓㄡˇ"]}
+{"id": 364, "split": "test", "category": "official", "target": "他們顯然一點也不願以最簡單的實際行動", "readings": ["ㄊㄚ", "ㄇㄣˊ", "ㄒㄧㄢˇ", "ㄖㄢˊ", "ㄧ", "ㄉㄧㄢˇ", "ㄧㄝˇ", "ㄅㄨˊ", "ㄩㄢˋ", "ㄧˇ", "ㄗㄨㄟˋ", "ㄐㄧㄢˇ", "ㄉㄢ", "ㄉㄜ˙", "ㄕˊ", "ㄐㄧˋ", "ㄒㄧㄥˊ", "ㄉㄨㄥˋ"]}
+{"id": 365, "split": "dev", "category": "official", "target": "依現行戰場情報準備結果", "readings": ["ㄧ", "ㄒㄧㄢˋ", "ㄒㄧㄥˊ", "ㄓㄢˋ", "ㄔㄤˇ", "ㄑㄧㄥˊ", "ㄅㄠˋ", "ㄓㄨㄣˇ", "ㄅㄟˋ", "ㄐㄧㄝˊ", "ㄍㄨㄛˇ"]}
+{"id": 366, "split": "test", "category": "official", "target": "其次是課程設計的挑戰", "readings": ["ㄑㄧˊ", "ㄘˋ", "ㄕˋ", "ㄎㄜˋ", "ㄔㄥˊ", "ㄕㄜˋ", "ㄐㄧˋ", "ㄉㄜ˙", "ㄊㄧㄠˇ", "ㄓㄢˋ"]}
+{"id": 367, "split": "dev", "category": "official", "target": "甚至超前於行業發展", "readings": ["ㄕㄣˋ", "ㄓˋ", "ㄔㄠ", "ㄑㄧㄢˊ", "ㄩˊ", "ㄏㄤˊ", "ㄧㄝˋ", "ㄈㄚ", "ㄓㄢˇ"]}
+{"id": 368, "split": "test", "category": "official", "target": "也使政府不得不正視此問題", "readings": ["ㄧㄝˇ", "ㄕˇ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄅㄨˋ", "ㄉㄜˊ", "ㄅㄨˊ", "ㄓㄥˋ", "ㄕˋ", "ㄘˇ", "ㄨㄣˋ", "ㄊㄧˊ"]}
+{"id": 369, "split": "dev", "category": "official", "target": "曾是立法院多年同事", "readings": ["ㄘㄥˊ", "ㄕˋ", "ㄌㄧˋ", "ㄈㄚˇ", "ㄩㄢˋ", "ㄉㄨㄛ", "ㄋㄧㄢˊ", "ㄊㄨㄥˊ", "ㄕˋ"]}
+{"id": 370, "split": "test", "category": "official", "target": "就算贏了也會願意來臺中為農民加油", "readings": ["ㄐㄧㄡˋ", "ㄙㄨㄢˋ", "ㄧㄥˊ", "ㄌㄜ˙", "ㄧㄝˇ", "ㄏㄨㄟˋ", "ㄩㄢˋ", "ㄧˋ", "ㄌㄞˊ", "ㄊㄞˊ", "ㄓㄨㄥ", "ㄨㄟˊ", "ㄋㄨㄥˊ", "ㄇㄧㄣˊ", "ㄐㄧㄚ", "ㄧㄡˊ"]}
+{"id": 371, "split": "dev", "category": "official", "target": "這次小小打賭目的是希望大家關注職棒及農友生計", "readings": ["ㄓㄜˋ", "ㄘˋ", "ㄒㄧㄠˇ", "ㄒㄧㄠˇ", "ㄉㄚˇ", "ㄉㄨˇ", "ㄇㄨˋ", "ㄉㄧˋ", "ㄕˋ", "ㄒㄧ", "ㄨㄤˋ", "ㄉㄚˋ", "ㄐㄧㄚ", "ㄍㄨㄢ", "ㄓㄨˋ", "ㄓˊ", "ㄅㄤˋ", "ㄐㄧˊ", "ㄋㄨㄥˊ", "ㄧㄡˇ", "ㄕㄥ", "ㄐㄧˋ"]}
+{"id": 372, "split": "test", "category": "official", "target": "倘若政府曾認真的探究這些因素並予以執行", "readings": ["ㄊㄤˇ", "ㄖㄨㄛˋ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄘㄥˊ", "ㄖㄣˋ", "ㄓㄣ", "ㄉㄜ˙", "ㄊㄢˋ", "ㄐㄧㄡˋ", "ㄓㄜˋ", "ㄒㄧㄝ", "ㄧㄣ", "ㄙㄨˋ", "ㄅㄧㄥˋ", "ㄩˇ", "ㄧˇ", "ㄓˊ", "ㄒㄧㄥˊ"]}
+{"id": 373, "split": "dev", "category": "official", "target": "年度蘭陽溪河川生態綠廊計畫", "readings": ["ㄋㄧㄢˊ", "ㄉㄨˋ", "ㄌㄢˊ", "ㄧㄤˊ", "ㄒㄧ", "ㄏㄜˊ", "ㄔㄨㄢ", "ㄕㄥ", "ㄊㄞˋ", "ㄌㄩˋ", "ㄌㄤˊ", "ㄐㄧˋ", "ㄏㄨㄚˋ"]}
+{"id": 374, "split": "test", "category": "official", "target": "尤其是河道改變區域及接近行水區崩塌地的部分", "readings": ["ㄧㄡˊ", "ㄑㄧˊ", "ㄕˋ", "ㄏㄜˊ", "ㄉㄠˋ", "ㄍㄞˇ", "ㄅㄧㄢˋ", "ㄑㄩ", "ㄩˋ", "ㄐㄧˊ", "ㄐㄧㄝ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄕㄨㄟˇ", "ㄑㄩ", "ㄅㄥ", "ㄊㄚ", "ㄉㄧˋ", "ㄉㄜ˙", "ㄅㄨˋ", "ㄈㄣˋ"]}
+{"id": 375, "split": "dev", "category": "official", "target": "應先報經衛生局核准", "readings": ["ㄧㄥ", "ㄒㄧㄢ", "ㄅㄠˋ", "ㄐㄧㄥ", "ㄨㄟˋ", "ㄕㄥ", "ㄐㄩˊ", "ㄏㄜˊ", "ㄓㄨㄣˇ"]}
+{"id": 376, "split": "test", "category": "official", "target": "以本計畫起始年之前一年", "readings": ["ㄧˇ", "ㄅㄣˇ", "ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄑㄧˇ", "ㄕˇ", "ㄋㄧㄢˊ", "ㄓ", "ㄑㄧㄢˊ", "ㄧ", "ㄋㄧㄢˊ"]}
+{"id": 377, "split": "dev", "category": "official", "target": "然而無論是在進行學術研究或商業授權", "readings": ["ㄖㄢˊ", "ㄦˊ", "ㄨˊ", "ㄌㄨㄣˋ", "ㄕˋ", "ㄗㄞˋ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄒㄩㄝˊ", "ㄕㄨˋ", "ㄧㄢˊ", "ㄐㄧㄡˋ", "ㄏㄨㄛˋ", "ㄕㄤ", "ㄧㄝˋ", "ㄕㄡˋ", "ㄑㄩㄢˊ"]}
+{"id": 378, "split": "test", "category": "official", "target": "必須進行藏品本身及其影像資料權利之確認", "readings": ["ㄅㄧˋ", "ㄒㄩ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄘㄤˊ", "ㄆㄧㄣˇ", "ㄅㄣˇ", "ㄕㄣ", "ㄐㄧˊ", "ㄑㄧˊ", "ㄧㄥˇ", "ㄒㄧㄤˋ", "ㄗ", "ㄌㄧㄠˋ", "ㄑㄩㄢˊ", "ㄌㄧˋ", "ㄓ", "ㄑㄩㄝˋ", "ㄖㄣˋ"]}
+{"id": 379, "split": "dev", "category": "official", "target": "才能合理使用與進行授權", "readings": ["ㄘㄞˊ", "ㄋㄥˊ", "ㄏㄜˊ", "ㄌㄧˇ", "ㄕˇ", "ㄩㄥˋ", "ㄩˇ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄕㄡˋ", "ㄑㄩㄢˊ"]}
+{"id": 380, "split": "test", "category": "official", "target": "經由檢察機關搜尋", "readings": ["ㄐㄧㄥ", "ㄧㄡˊ", "ㄐㄧㄢˇ", "ㄔㄚˊ", "ㄐㄧ", "ㄍㄨㄢ", "ㄙㄡ", "ㄒㄩㄣˊ"]}
+{"id": 381, "split": "dev", "category": "official", "target": "警政單位協助監聽及監控", "readings": ["ㄐㄧㄥˇ", "ㄓㄥˋ", "ㄉㄢ", "ㄨㄟˋ", "ㄒㄧㄝˊ", "ㄓㄨˋ", "ㄐㄧㄢ", "ㄊㄧㄥ", "ㄐㄧˊ", "ㄐㄧㄢ", "ㄎㄨㄥˋ"]}
+{"id": 382, "split": "test", "category": "official", "target": "環保單位專業稽查及分析研判", "readings": ["ㄏㄨㄢˊ", "ㄅㄠˇ", "ㄉㄢ", "ㄨㄟˋ", "ㄓㄨㄢ", "ㄧㄝˋ", "ㄐㄧ", "ㄔㄚˊ", "ㄐㄧˊ", "ㄈㄣ", "ㄒㄧ", "ㄧㄢˊ", "ㄆㄢˋ"]}
+{"id": 383, "split": "dev", "category": "official", "target": "運用團隊合作及專業能量", "readings": ["ㄩㄣˋ", "ㄩㄥˋ", "ㄊㄨㄢˊ", "ㄉㄨㄟˋ", "ㄏㄜˊ", "ㄗㄨㄛˋ", "ㄐㄧˊ", "ㄓㄨㄢ", "ㄧㄝˋ", "ㄋㄥˊ", "ㄌㄧㄤˋ"]}
+{"id": 384, "split": "test", "category": "official", "target": "有效打擊不法業者非法棄置之惡劣行徑", "readings": ["ㄧㄡˇ", "ㄒㄧㄠˋ", "ㄉㄚˇ", "ㄐㄧˊ", "ㄅㄨˋ", "ㄈㄚˇ", "ㄧㄝˋ", "ㄓㄜˇ", "ㄈㄟ", "ㄈㄚˇ", "ㄑㄧˋ", "ㄓˋ", "ㄓ", "ㄜˋ", "ㄌㄧㄝˋ", "ㄒㄧㄥˊ", "ㄐㄧㄥˋ"]}
+{"id": 385, "split": "dev", "category": "official", "target": "五峰等處將十餘名共犯傳訊到案", "readings": ["ㄨˇ", "ㄈㄥ", "ㄉㄥˇ", "ㄔㄨˋ", "ㄐㄧㄤ", "ㄕˊ", "ㄩˊ", "ㄇㄧㄥˊ", "ㄍㄨㄥˋ", "ㄈㄢˋ", "ㄔㄨㄢˊ", "ㄒㄩㄣˋ", "ㄉㄠˋ", "ㄢˋ"]}
+{"id": 386, "split": "test", "category": "official", "target": "故各項作為除了主管或承辦單位外", "readings": ["ㄍㄨˋ", "ㄍㄜˋ", "ㄒㄧㄤˋ", "ㄗㄨㄛˋ", "ㄨㄟˊ", "ㄔㄨˊ", "ㄌㄜ˙", "ㄓㄨˇ", "ㄍㄨㄢˇ", "ㄏㄨㄛˋ", "ㄔㄥˊ", "ㄅㄢˋ", "ㄉㄢ", "ㄨㄟˋ", "ㄨㄞˋ"]}
+{"id": 387, "split": "dev", "category": "official", "target": "對選定的引數進行容差檢測", "readings": ["ㄉㄨㄟˋ", "ㄒㄩㄢˇ", "ㄉㄧㄥˋ", "ㄉㄜ˙", "ㄧㄣˇ", "ㄕㄨˋ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄖㄨㄥˊ", "ㄔㄚ", "ㄐㄧㄢˇ", "ㄘㄜˋ"]}
+{"id": 388, "split": "test", "category": "official", "target": "由檢定人員逐項核實", "readings": ["ㄧㄡˊ", "ㄐㄧㄢˇ", "ㄉㄧㄥˋ", "ㄖㄣˊ", "ㄩㄢˊ", "ㄓㄨˊ", "ㄒㄧㄤˋ", "ㄏㄜˊ", "ㄕˊ"]}
+{"id": 389, "split": "dev", "category": "official", "target": "後續追蹤輔導工作方法", "readings": ["ㄏㄡˋ", "ㄒㄩˋ", "ㄓㄨㄟ", "ㄗㄨㄥ", "ㄈㄨˇ", "ㄉㄠˇ", "ㄍㄨㄥ", "ㄗㄨㄛˋ", "ㄈㄤ", "ㄈㄚˇ"]}
+{"id": 390, "split": "test", "category": "official", "target": "這個初次將美術創作種子撒向民間社會的田野經驗", "readings": ["ㄓㄜˋ", "ㄍㄜ˙", "ㄔㄨ", "ㄘˋ", "ㄐㄧㄤ", "ㄇㄟˇ", "ㄕㄨˋ", "ㄔㄨㄤˋ", "ㄗㄨㄛˋ", "ㄓㄨㄥˇ", "ㄗˇ", "ㄙㄚ", "ㄒㄧㄤˋ", "ㄇㄧㄣˊ", "ㄐㄧㄢ", "ㄕㄜˋ", "ㄏㄨㄟˋ", "ㄉㄜ˙", "ㄊㄧㄢˊ", "ㄧㄝˇ", "ㄐㄧㄥ", "ㄧㄢˋ"]}
+{"id": 391, "split": "dev", "category": "official", "target": "讓她察覺到民間所潛藏的美術生機", "readings": ["ㄖㄤˋ", "ㄊㄚ", "ㄔㄚˊ", "ㄐㄩㄝˊ", "ㄉㄠˋ", "ㄇㄧㄣˊ", "ㄐㄧㄢ", "ㄙㄨㄛˇ", "ㄑㄧㄢˊ", "ㄘㄤˊ", "ㄉㄜ˙", "ㄇㄟˇ", "ㄕㄨˋ", "ㄕㄥ", "ㄐㄧ"]}
+{"id": 392, "split": "test", "category": "official", "target": "系統會收集使用者操作時的反饋資訊", "readings": ["ㄒㄧˋ", "ㄊㄨㄥˇ", "ㄏㄨㄟˋ", "ㄕㄡ", "ㄐㄧˊ", "ㄕˇ", "ㄩㄥˋ", "ㄓㄜˇ", "ㄘㄠ", "ㄗㄨㄛˋ", "ㄕˊ", "ㄉㄜ˙", "ㄈㄢˇ", "ㄎㄨㄟˋ", "ㄗ", "ㄒㄩㄣˋ"]}
+{"id": 393, "split": "dev", "category": "official", "target": "貨幣的發行量須適度以免造成通貨膨脹", "readings": ["ㄏㄨㄛˋ", "ㄅㄧˋ", "ㄉㄜ˙", "ㄈㄚ", "ㄒㄧㄥˊ", "ㄌㄧㄤˋ", "ㄒㄩ", "ㄕˋ", "ㄉㄨˋ", "ㄧˇ", "ㄇㄧㄢˇ", "ㄗㄠˋ", "ㄔㄥˊ", "ㄊㄨㄥ", "ㄏㄨㄛˋ", "ㄆㄥˊ", "ㄓㄤˋ"]}
+{"id": 394, "split": "test", "category": "official", "target": "且發行貨幣仍需支付發行所需的印製", "readings": ["ㄑㄧㄝˇ", "ㄈㄚ", "ㄒㄧㄥˊ", "ㄏㄨㄛˋ", "ㄅㄧˋ", "ㄖㄥˊ", "ㄒㄩ", "ㄓ", "ㄈㄨˋ", "ㄈㄚ", "ㄒㄧㄥˊ", "ㄙㄨㄛˇ", "ㄒㄩ", "ㄉㄜ˙", "ㄧㄣˋ", "ㄓˋ"]}
+{"id": 395, "split": "dev", "category": "official", "target": "整理及銷毀等各項費用", "readings": ["ㄓㄥˇ", "ㄌㄧˇ", "ㄐㄧˊ", "ㄒㄧㄠ", "ㄏㄨㄟˇ", "ㄉㄥˇ", "ㄍㄜˋ", "ㄒㄧㄤˋ", "ㄈㄟˋ", "ㄩㄥˋ"]}
+{"id": 396, "split": "test", "category": "official", "target": "從而計算各土層下陷量", "readings": ["ㄗㄨㄥˋ", "ㄦˊ", "ㄐㄧˋ", "ㄙㄨㄢˋ", "ㄍㄜˋ", "ㄊㄨˇ", "ㄘㄥˊ", "ㄒㄧㄚˋ", "ㄒㄧㄢˋ", "ㄌㄧㄤˊ"]}
+{"id": 397, "split": "dev", "category": "official", "target": "以幫助企業提高職場健康管理", "readings": ["ㄧˇ", "ㄅㄤ", "ㄓㄨˋ", "ㄑㄧˋ", "ㄧㄝˋ", "ㄊㄧˊ", "ㄍㄠ", "ㄓˊ", "ㄔㄤˇ", "ㄐㄧㄢˋ", "ㄎㄤ", "ㄍㄨㄢˇ", "ㄌㄧˇ"]}
+{"id": 398, "split": "test", "category": "official", "target": "不是強調法則多麼清楚的訂定", "readings": ["ㄅㄨˊ", "ㄕˋ", "ㄑㄧㄤˊ", "ㄉㄧㄠˋ", "ㄈㄚˇ", "ㄗㄜˊ", "ㄉㄨㄛ", "ㄇㄛ˙", "ㄑㄧㄥ", "ㄔㄨˇ", "ㄉㄜ˙", "ㄉㄧㄥˋ", "ㄉㄧㄥˋ"]}
+{"id": 399, "split": "dev", "category": "official", "target": "而是強調其法則宗教精神", "readings": ["ㄦˊ", "ㄕˋ", "ㄑㄧㄤˊ", "ㄉㄧㄠˋ", "ㄑㄧˊ", "ㄈㄚˇ", "ㄗㄜˊ", "ㄗㄨㄥ", "ㄐㄧㄠˋ", "ㄐㄧㄥ", "ㄕㄣˊ"]}
+{"id": 400, "split": "test", "category": "official", "target": "之預定取得計畫", "readings": ["ㄓ", "ㄩˋ", "ㄉㄧㄥˋ", "ㄑㄩˇ", "ㄉㄜˊ", "ㄐㄧˋ", "ㄏㄨㄚˋ"]}
+{"id": 401, "split": "dev", "category": "official", "target": "目前已屆計畫期限", "readings": ["ㄇㄨˋ", "ㄑㄧㄢˊ", "ㄧˇ", "ㄐㄧㄝˋ", "ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄑㄧˊ", "ㄒㄧㄢˋ"]}
+{"id": 402, "split": "test", "category": "official", "target": "交通部公路總局允應儘速妥慎檢討修正", "readings": ["ㄐㄧㄠ", "ㄊㄨㄥ", "ㄅㄨˋ", "ㄍㄨㄥ", "ㄌㄨˋ", "ㄗㄨㄥˇ", "ㄐㄩˊ", "ㄩㄣˇ", "ㄧㄥ", "ㄐㄧㄣˇ", "ㄙㄨˋ", "ㄊㄨㄛˇ", "ㄕㄣˋ", "ㄐㄧㄢˇ", "ㄊㄠˇ", "ㄒㄧㄡ", "ㄓㄥˋ"]}
+{"id": 403, "split": "dev", "category": "official", "target": "俾加速取得已開闢未徵收之私有省道公路", "readings": ["ㄅㄧˋ", "ㄐㄧㄚ", "ㄙㄨˋ", "ㄑㄩˇ", "ㄉㄜˊ", "ㄧˇ", "ㄎㄞ", "ㄆㄧˋ", "ㄨㄟˋ", "ㄓㄥ", "ㄕㄡ", "ㄓ", "ㄙ", "ㄧㄡˇ", "ㄕㄥˇ", "ㄉㄠˋ", "ㄍㄨㄥ", "ㄌㄨˋ"]}
+{"id": 404, "split": "test", "category": "official", "target": "本府各局處團隊配合中央推行智慧國家", "readings": ["ㄅㄣˇ", "ㄈㄨˇ", "ㄍㄜˋ", "ㄐㄩˊ", "ㄔㄨˋ", "ㄊㄨㄢˊ", "ㄉㄨㄟˋ", "ㄆㄟˋ", "ㄏㄜˊ", "ㄓㄨㄥ", "ㄧㄤ", "ㄊㄨㄟ", "ㄒㄧㄥˊ", "ㄓˋ", "ㄏㄨㄟˋ", "ㄍㄨㄛˊ", "ㄐㄧㄚ"]}
+{"id": 405, "split": "dev", "category": "official", "target": "學術主管兼任情形迭反映大專校院經營困境", "readings": ["ㄒㄩㄝˊ", "ㄕㄨˋ", "ㄓㄨˇ", "ㄍㄨㄢˇ", "ㄐㄧㄢ", "ㄖㄣˋ", "ㄑㄧㄥˊ", "ㄒㄧㄥˊ", "ㄉㄧㄝˊ", "ㄈㄢˇ", "ㄧㄥˋ", "ㄉㄚˋ", "ㄓㄨㄢ", "ㄒㄧㄠˋ", "ㄩㄢˋ", "ㄐㄧㄥ", "ㄧㄥˊ", "ㄎㄨㄣˋ", "ㄐㄧㄥˋ"]}
+{"id": 406, "split": "test", "category": "official", "target": "亟待教育部積極追蹤處理", "readings": ["ㄐㄧˊ", "ㄉㄞˋ", "ㄐㄧㄠˋ", "ㄩˋ", "ㄅㄨˋ", "ㄐㄧ", "ㄐㄧˊ", "ㄓㄨㄟ", "ㄗㄨㄥ", "ㄔㄨˇ", "ㄌㄧˇ"]}
+{"id": 407, "split": "dev", "category": "official", "target": "強化學校經營", "readings": ["ㄑㄧㄤˊ", "ㄏㄨㄚˋ", "ㄒㄩㄝˊ", "ㄒㄧㄠˋ", "ㄐㄧㄥ", "ㄧㄥˊ"]}
+{"id": 408, "split": "test", "category": "official", "target": "作為零售業者", "readings": ["ㄗㄨㄛˋ", "ㄨㄟˊ", "ㄌㄧㄥˊ", "ㄕㄡˋ", "ㄧㄝˋ", "ㄓㄜˇ"]}
+{"id": 409, "split": "dev", "category": "official", "target": "成為中部地區唯二環保標章旅行社", "readings": ["ㄔㄥˊ", "ㄨㄟˊ", "ㄓㄨㄥ", "ㄅㄨˋ", "ㄉㄧˋ", "ㄑㄩ", "ㄨㄟˇ", "ㄦˋ", "ㄏㄨㄢˊ", "ㄅㄠˇ", "ㄅㄧㄠ", "ㄓㄤ", "ㄌㄩˇ", "ㄒㄧㄥˊ", "ㄕㄜˋ"]}
+{"id": 410, "split": "test", "category": "official", "target": "此兩家旅行社在行程規劃中皆匯入低碳旅遊元素", "readings": ["ㄘˇ", "ㄌㄧㄤˇ", "ㄐㄧㄚ", "ㄌㄩˇ", "ㄒㄧㄥˊ", "ㄕㄜˋ", "ㄗㄞˋ", "ㄏㄤˊ", "ㄔㄥˊ", "ㄍㄨㄟ", "ㄏㄨㄚˋ", "ㄓㄨㄥ", "ㄐㄧㄝ", "ㄏㄨㄟˋ", "ㄖㄨˋ", "ㄉㄧ", "ㄊㄢˋ", "ㄌㄩˇ", "ㄧㄡˊ", "ㄩㄢˊ", "ㄙㄨˋ"]}
+{"id": 411, "split": "dev", "category": "official", "target": "經過幾次艱難的交火後", "readings": ["ㄐㄧㄥ", "ㄍㄨㄛˋ", "ㄐㄧˇ", "ㄘˋ", "ㄐㄧㄢ", "ㄋㄢˊ", "ㄉㄜ˙", "ㄐㄧㄠ", "ㄏㄨㄛˇ", "ㄏㄡˋ"]}
+{"id": 412, "split": "test", "category": "official", "target": "年底前完成召開本縣國土計畫審議會審議期程", "readings": ["ㄋㄧㄢˊ", "ㄉㄧˇ", "ㄑㄧㄢˊ", "ㄨㄢˊ", "ㄔㄥˊ", "ㄓㄠˋ", "ㄎㄞ", "ㄅㄣˇ", "ㄒㄧㄢˋ", "ㄍㄨㄛˊ", "ㄊㄨˇ", "ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄕㄣˇ", "ㄧˋ", "ㄏㄨㄟˋ", "ㄕㄣˇ", "ㄧˋ", "ㄑㄧˊ", "ㄔㄥˊ"]}
+{"id": 413, "split": "dev", "category": "official", "target": "文化協會真是多事之秋", "readings": ["ㄨㄣˊ", "ㄏㄨㄚˋ", "ㄒㄧㄝˊ", "ㄏㄨㄟˋ", "ㄓㄣ", "ㄕˋ", "ㄉㄨㄛ", "ㄕˋ", "ㄓ", "ㄑㄧㄡ"]}
+{"id": 414, "split": "test", "category": "official", "target": "郡吏大府舉之延尉", "readings": ["ㄐㄩㄣˋ", "ㄌㄧˋ", "ㄉㄚˋ", "ㄈㄨˇ", "ㄐㄩˇ", "ㄓ", "ㄧㄢˊ", "ㄨㄟˋ"]}
+{"id": 415, "split": "dev", "category": "official", "target": "卓院長前往巨鎧精密工業公司參訪", "readings": ["ㄓㄨㄛˊ", "ㄩㄢˋ", "ㄓㄤˇ", "ㄑㄧㄢˊ", "ㄨㄤˇ", "ㄐㄩˋ", "ㄎㄞˇ", "ㄐㄧㄥ", "ㄇㄧˋ", "ㄍㄨㄥ", "ㄧㄝˋ", "ㄍㄨㄥ", "ㄙ", "ㄘㄢ", "ㄈㄤˇ"]}
+{"id": 416, "split": "test", "category": "official", "target": "瞭解公司車燈產品的設計與製造流程", "readings": ["ㄌㄧㄠˇ", "ㄐㄧㄝˇ", "ㄍㄨㄥ", "ㄙ", "ㄔㄜ", "ㄉㄥ", "ㄔㄢˇ", "ㄆㄧㄣˇ", "ㄉㄜ˙", "ㄕㄜˋ", "ㄐㄧˋ", "ㄩˇ", "ㄓˋ", "ㄗㄠˋ", "ㄌㄧㄡˊ", "ㄔㄥˊ"]}
+{"id": 417, "split": "dev", "category": "official", "target": "是本件評鑑辦理程式", "readings": ["ㄕˋ", "ㄅㄣˇ", "ㄐㄧㄢˋ", "ㄆㄧㄥˊ", "ㄐㄧㄢˋ", "ㄅㄢˋ", "ㄌㄧˇ", "ㄔㄥˊ", "ㄕˋ"]}
+{"id": 418, "split": "test", "category": "official", "target": "經核並無法定程式上之瑕疵", "readings": ["ㄐㄧㄥ", "ㄏㄜˊ", "ㄅㄧㄥˋ", "ㄨˊ", "ㄈㄚˇ", "ㄉㄧㄥˋ", "ㄔㄥˊ", "ㄕˋ", "ㄕㄤˋ", "ㄓ", "ㄒㄧㄚˊ", "ㄘ"]}
+{"id": 419, "split": "dev", "category": "official", "target": "後期增建之廚房處有火燒痕跡及天花佚失情形", "readings": ["ㄏㄡˋ", "ㄑㄧˊ", "ㄗㄥ", "ㄐㄧㄢˋ", "ㄓ", "ㄔㄨˊ", "ㄈㄤˊ", "ㄔㄨˋ", "ㄧㄡˇ", "ㄏㄨㄛˇ", "ㄕㄠ", "ㄏㄣˊ", "ㄐㄧ", "ㄐㄧˊ", "ㄊㄧㄢ", "ㄏㄨㄚ", "ㄧˋ", "ㄕ", "ㄑㄧㄥˊ", "ㄒㄧㄥˊ"]}
+{"id": 420, "split": "test", "category": "official", "target": "才能具備社會之穿透力", "readings": ["ㄘㄞˊ", "ㄋㄥˊ", "ㄐㄩˋ", "ㄅㄟˋ", "ㄕㄜˋ", "ㄏㄨㄟˋ", "ㄓ", "ㄔㄨㄢ", "ㄊㄡˋ", "ㄌㄧˋ"]}
+{"id": 421, "split": "dev", "category": "official", "target": "期待各機關能以此為努力之方向", "readings": ["ㄑㄧˊ", "ㄉㄞˋ", "ㄍㄜˋ", "ㄐㄧ", "ㄍㄨㄢ", "ㄋㄥˊ", "ㄧˇ", "ㄘˇ", "ㄨㄟˊ", "ㄋㄨˇ", "ㄌㄧˋ", "ㄓ", "ㄈㄤ", "ㄒㄧㄤˋ"]}
+{"id": 422, "split": "test", "category": "official", "target": "研究成果有效降低了風險評估的專業門檻", "readings": ["ㄧㄢˊ", "ㄐㄧㄡˋ", "ㄔㄥˊ", "ㄍㄨㄛˇ", "ㄧㄡˇ", "ㄒㄧㄠˋ", "ㄐㄧㄤˋ", "ㄉㄧ", "ㄌㄜ˙", "ㄈㄥ", "ㄒㄧㄢˇ", "ㄆㄧㄥˊ", "ㄍㄨ", "ㄉㄜ˙", "ㄓㄨㄢ", "ㄧㄝˋ", "ㄇㄣˊ", "ㄎㄢˇ"]}
+{"id": 423, "split": "dev", "category": "official", "target": "使非專業使用者亦能進行初步量化分析", "readings": ["ㄕˇ", "ㄈㄟ", "ㄓㄨㄢ", "ㄧㄝˋ", "ㄕˇ", "ㄩㄥˋ", "ㄓㄜˇ", "ㄧˋ", "ㄋㄥˊ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄔㄨ", "ㄅㄨˋ", "ㄌㄧㄤˋ", "ㄏㄨㄚˋ", "ㄈㄣ", "ㄒㄧ"]}
+{"id": 424, "split": "test", "category": "official", "target": "該工具可協助業界比較不同防護策略之效益", "readings": ["ㄍㄞ", "ㄍㄨㄥ", "ㄐㄩˋ", "ㄎㄜˇ", "ㄒㄧㄝˊ", "ㄓㄨˋ", "ㄧㄝˋ", "ㄐㄧㄝˋ", "ㄅㄧˇ", "ㄐㄧㄠˇ", "ㄅㄨˋ", "ㄊㄨㄥˊ", "ㄈㄤˊ", "ㄏㄨˋ", "ㄘㄜˋ", "ㄌㄩㄝˋ", "ㄓ", "ㄒㄧㄠˋ", "ㄧˋ"]}
+{"id": 425, "split": "dev", "category": "official", "target": "管理者及消防專業人員以量化依據", "readings": ["ㄍㄨㄢˇ", "ㄌㄧˇ", "ㄓㄜˇ", "ㄐㄧˊ", "ㄒㄧㄠ", "ㄈㄤˊ", "ㄓㄨㄢ", "ㄧㄝˋ", "ㄖㄣˊ", "ㄩㄢˊ", "ㄧˇ", "ㄌㄧㄤˋ", "ㄏㄨㄚˋ", "ㄧ", "ㄐㄩˋ"]}
+{"id": 426, "split": "test", "category": "official", "target": "明確掌握儲能系統的風險等級並據以制定防護決策", "readings": ["ㄇㄧㄥˊ", "ㄑㄩㄝˋ", "ㄓㄤˇ", "ㄨㄛˋ", "ㄔㄨˊ", "ㄋㄥˊ", "ㄒㄧˋ", "ㄊㄨㄥˇ", "ㄉㄜ˙", "ㄈㄥ", "ㄒㄧㄢˇ", "ㄉㄥˇ", "ㄐㄧˊ", "ㄅㄧㄥˋ", "ㄐㄩˋ", "ㄧˇ", "ㄓˋ", "ㄉㄧㄥˋ", "ㄈㄤˊ", "ㄏㄨˋ", "ㄐㄩㄝˊ", "ㄘㄜˋ"]}
+{"id": 427, "split": "dev", "category": "official", "target": "帶孩子的經驗相當豐富", "readings": ["ㄉㄞˋ", "ㄏㄞˊ", "ㄗ˙", "ㄉㄜ˙", "ㄐㄧㄥ", "ㄧㄢˋ", "ㄒㄧㄤ", "ㄉㄤ", "ㄈㄥ", "ㄈㄨˋ"]}
+{"id": 428, "split": "test", "category": "official", "target": "並數度與美方進行雙邊諮商", "readings": ["ㄅㄧㄥˋ", "ㄕㄨˋ", "ㄉㄨˋ", "ㄩˇ", "ㄇㄟˇ", "ㄈㄤ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄕㄨㄤ", "ㄅㄧㄢ", "ㄗ", "ㄕㄤ"]}
+{"id": 429, "split": "dev", "category": "official", "target": "以及保障漁工人權的行動與成果", "readings": ["ㄧˇ", "ㄐㄧˊ", "ㄅㄠˇ", "ㄓㄤˋ", "ㄩˊ", "ㄍㄨㄥ", "ㄖㄣˊ", "ㄑㄩㄢˊ", "ㄉㄜ˙", "ㄒㄧㄥˊ", "ㄉㄨㄥˋ", "ㄩˇ", "ㄔㄥˊ", "ㄍㄨㄛˇ"]}
+{"id": 430, "split": "test", "category": "official", "target": "由港務警察機關執行", "readings": ["ㄧㄡˊ", "ㄍㄤˇ", "ㄨˋ", "ㄐㄧㄥˇ", "ㄔㄚˊ", "ㄐㄧ", "ㄍㄨㄢ", "ㄓˊ", "ㄒㄧㄥˊ"]}
+{"id": 431, "split": "dev", "category": "official", "target": "代理教師待遇支給標準", "readings": ["ㄉㄞˋ", "ㄌㄧˇ", "ㄐㄧㄠˋ", "ㄕ", "ㄉㄞˋ", "ㄩˋ", "ㄓ", "ㄍㄟˇ", "ㄅㄧㄠ", "ㄓㄨㄣˇ"]}
+{"id": 432, "split": "test", "category": "official", "target": "比照編制內合格專任教師之規定", "readings": ["ㄅㄧˇ", "ㄓㄠˋ", "ㄅㄧㄢ", "ㄓˋ", "ㄋㄟˋ", "ㄏㄜˊ", "ㄍㄜˊ", "ㄓㄨㄢ", "ㄖㄣˋ", "ㄐㄧㄠˋ", "ㄕ", "ㄓ", "ㄍㄨㄟ", "ㄉㄧㄥˋ"]}
+{"id": 433, "split": "dev", "category": "official", "target": "另與經濟走勢關聯密切的稅收方面", "readings": ["ㄌㄧㄥˋ", "ㄩˇ", "ㄐㄧㄥ", "ㄐㄧˋ", "ㄗㄡˇ", "ㄕˋ", "ㄍㄨㄢ", "ㄌㄧㄢˊ", "ㄇㄧˋ", "ㄑㄧㄝˋ", "ㄉㄜ˙", "ㄕㄨㄟˋ", "ㄕㄡ", "ㄈㄤ", "ㄇㄧㄢˋ"]}
+{"id": 434, "split": "test", "category": "official", "target": "計畫執行與核定計畫內容不一致", "readings": ["ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄓˊ", "ㄒㄧㄥˊ", "ㄩˇ", "ㄏㄜˊ", "ㄉㄧㄥˋ", "ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄋㄟˋ", "ㄖㄨㄥˊ", "ㄅㄨˋ", "ㄧ", "ㄓˋ"]}
+{"id": 435, "split": "dev", "category": "official", "target": "使得設計發包之總經費遠高於規劃當時預估之經費", "readings": ["ㄕˇ", "ㄉㄜˊ", "ㄕㄜˋ", "ㄐㄧˋ", "ㄈㄚ", "ㄅㄠ", "ㄓ", "ㄗㄨㄥˇ", "ㄐㄧㄥ", "ㄈㄟˋ", "ㄩㄢˇ", "ㄍㄠ", "ㄩˊ", "ㄍㄨㄟ", "ㄏㄨㄚˋ", "ㄉㄤ", "ㄕˊ", "ㄩˋ", "ㄍㄨ", "ㄓ", "ㄐㄧㄥ", "ㄈㄟˋ"]}
+{"id": 436, "split": "test", "category": "official", "target": "多話才會被排擠", "readings": ["ㄉㄨㄛ", "ㄏㄨㄚˋ", "ㄘㄞˊ", "ㄏㄨㄟˋ", "ㄅㄟˋ", "ㄆㄞˊ", "ㄐㄧˇ"]}
+{"id": 437, "split": "dev", "category": "official", "target": "環路線圈偵測器與可變速限標誌的影響", "readings": ["ㄏㄨㄢˊ", "ㄌㄨˋ", "ㄒㄧㄢˋ", "ㄑㄩㄢ", "ㄓㄣ", "ㄘㄜˋ", "ㄑㄧˋ", "ㄩˇ", "ㄎㄜˇ", "ㄅㄧㄢˋ", "ㄙㄨˋ", "ㄒㄧㄢˋ", "ㄅㄧㄠ", "ㄓˋ", "ㄉㄜ˙", "ㄧㄥˇ", "ㄒㄧㄤˇ"]}
+{"id": 438, "split": "test", "category": "official", "target": "這批年輕本省政治犯", "readings": ["ㄓㄜˋ", "ㄆㄧ", "ㄋㄧㄢˊ", "ㄑㄧㄥ", "ㄅㄣˇ", "ㄕㄥˇ", "ㄓㄥˋ", "ㄓˋ", "ㄈㄢˋ"]}
+{"id": 439, "split": "dev", "category": "official", "target": "在經歷了十多年的緩慢進展之後", "readings": ["ㄗㄞˋ", "ㄐㄧㄥ", "ㄌㄧˋ", "ㄌㄜ˙", "ㄕˊ", "ㄉㄨㄛ", "ㄋㄧㄢˊ", "ㄉㄜ˙", "ㄏㄨㄢˇ", "ㄇㄢˋ", "ㄐㄧㄣˋ", "ㄓㄢˇ", "ㄓ", "ㄏㄡˋ"]}
+{"id": 440, "split": "test", "category": "official", "target": "並拜會海洋局", "readings": ["ㄅㄧㄥˋ", "ㄅㄞˋ", "ㄏㄨㄟˋ", "ㄏㄞˇ", "ㄧㄤˊ", "ㄐㄩˊ"]}
+{"id": 441, "split": "dev", "category": "official", "target": "就兩市海洋遊憩產業交流交換意見", "readings": ["ㄐㄧㄡˋ", "ㄌㄧㄤˇ", "ㄕˋ", "ㄏㄞˇ", "ㄧㄤˊ", "ㄧㄡˊ", "ㄑㄧˋ", "ㄔㄢˇ", "ㄧㄝˋ", "ㄐㄧㄠ", "ㄌㄧㄡˊ", "ㄐㄧㄠ", "ㄏㄨㄢˋ", "ㄧˋ", "ㄐㄧㄢˋ"]}
+{"id": 442, "split": "test", "category": "official", "target": "也被認定為參與了謀殺一個山豬毛社的首領", "readings": ["ㄧㄝˇ", "ㄅㄟˋ", "ㄖㄣˋ", "ㄉㄧㄥˋ", "ㄨㄟˊ", "ㄘㄢ", "ㄩˇ", "ㄌㄜ˙", "ㄇㄡˊ", "ㄕㄚ", "ㄧ", "ㄍㄜ˙", "ㄕㄢ", "ㄓㄨ", "ㄇㄠˊ", "ㄕㄜˋ", "ㄉㄜ˙", "ㄕㄡˇ", "ㄌㄧㄥˇ"]}
+{"id": 443, "split": "dev", "category": "official", "target": "他被熱蘭遮的法庭判決", "readings": ["ㄊㄚ", "ㄅㄟˋ", "ㄖㄜˋ", "ㄌㄢˊ", "ㄓㄜ", "ㄉㄜ˙", "ㄈㄚˇ", "ㄊㄧㄥˊ", "ㄆㄢˋ", "ㄐㄩㄝˊ"]}
+{"id": 444, "split": "test", "category": "official", "target": "秘書處處長擔任副召集人", "readings": ["ㄇㄧˋ", "ㄕㄨ", "ㄔㄨˋ", "ㄔㄨˋ", "ㄓㄤˇ", "ㄉㄢ", "ㄖㄣˋ", "ㄈㄨˋ", "ㄓㄠ", "ㄐㄧˊ", "ㄖㄣˊ"]}
+{"id": 445, "split": "dev", "category": "official", "target": "負責推動財政部檔案管理考評作業", "readings": ["ㄈㄨˋ", "ㄗㄜˊ", "ㄊㄨㄟ", "ㄉㄨㄥˋ", "ㄘㄞˊ", "ㄓㄥˋ", "ㄅㄨˋ", "ㄉㄤˇ", "ㄢˋ", "ㄍㄨㄢˇ", "ㄌㄧˇ", "ㄎㄠˇ", "ㄆㄧㄥˊ", "ㄗㄨㄛˋ", "ㄧㄝˋ"]}
+{"id": 446, "split": "test", "category": "official", "target": "並邀請學者專家及財政部代表共同負責考評工作", "readings": ["ㄅㄧㄥˋ", "ㄧㄠ", "ㄑㄧㄥˇ", "ㄒㄩㄝˊ", "ㄓㄜˇ", "ㄓㄨㄢ", "ㄐㄧㄚ", "ㄐㄧˊ", "ㄘㄞˊ", "ㄓㄥˋ", "ㄅㄨˋ", "ㄉㄞˋ", "ㄅㄧㄠˇ", "ㄍㄨㄥˋ", "ㄊㄨㄥˊ", "ㄈㄨˋ", "ㄗㄜˊ", "ㄎㄠˇ", "ㄆㄧㄥˊ", "ㄍㄨㄥ", "ㄗㄨㄛˋ"]}
+{"id": 447, "split": "dev", "category": "official", "target": "所以他們就會給出一個核准的報告", "readings": ["ㄙㄨㄛˇ", "ㄧˇ", "ㄊㄚ", "ㄇㄣˊ", "ㄐㄧㄡˋ", "ㄏㄨㄟˋ", "ㄍㄟˇ", "ㄔㄨ", "ㄧ", "ㄍㄜ˙", "ㄏㄜˊ", "ㄓㄨㄣˇ", "ㄉㄜ˙", "ㄅㄠˋ", "ㄍㄠˋ"]}
+{"id": 448, "split": "test", "category": "official", "target": "這樣中選會就只好認證了", "readings": ["ㄓㄜˋ", "ㄧㄤˋ", "ㄓㄨㄥ", "ㄒㄩㄢˇ", "ㄏㄨㄟˋ", "ㄐㄧㄡˋ", "ㄓˇ", "ㄏㄠˇ", "ㄖㄣˋ", "ㄓㄥˋ", "ㄌㄜ˙"]}
+{"id": 449, "split": "dev", "category": "official", "target": "得以邁向更公開", "readings": ["ㄉㄜˊ", "ㄧˇ", "ㄇㄞˋ", "ㄒㄧㄤˋ", "ㄍㄥˋ", "ㄍㄨㄥ", "ㄎㄞ"]}
+{"id": 450, "split": "test", "category": "official", "target": "更透明化的縣政推展", "readings": ["ㄍㄥˋ", "ㄊㄡˋ", "ㄇㄧㄥˊ", "ㄏㄨㄚˋ", "ㄉㄜ˙", "ㄒㄧㄢˋ", "ㄓㄥˋ", "ㄊㄨㄟ", "ㄓㄢˇ"]}
+{"id": 451, "split": "dev", "category": "official", "target": "羅東擴大都市計畫", "readings": ["ㄌㄨㄛˊ", "ㄉㄨㄥ", "ㄎㄨㄛˋ", "ㄉㄚˋ", "ㄉㄨ", "ㄕˋ", "ㄐㄧˋ", "ㄏㄨㄚˋ"]}
+{"id": 452, "split": "test", "category": "official", "target": "經內政部區委會同意", "readings": ["ㄐㄧㄥ", "ㄋㄟˋ", "ㄓㄥˋ", "ㄅㄨˋ", "ㄑㄩ", "ㄨㄟˇ", "ㄏㄨㄟˋ", "ㄊㄨㄥˊ", "ㄧˋ"]}
+{"id": 453, "split": "dev", "category": "official", "target": "衛生局長徐永年表示", "readings": ["ㄨㄟˋ", "ㄕㄥ", "ㄐㄩˊ", "ㄓㄤˇ", "ㄒㄩˊ", "ㄩㄥˇ", "ㄋㄧㄢˊ", "ㄅㄧㄠˇ", "ㄕˋ"]}
+{"id": 454, "split": "test", "category": "official", "target": "相較於食品業少的臺北每位稽查員稽查二", "readings": ["ㄒㄧㄤ", "ㄐㄧㄠˋ", "ㄩˊ", "ㄕˊ", "ㄆㄧㄣˇ", "ㄧㄝˋ", "ㄕㄠˇ", "ㄉㄜ˙", "ㄊㄞˊ", "ㄅㄟˇ", "ㄇㄟˇ", "ㄨㄟˋ", "ㄐㄧ", "ㄔㄚˊ", "ㄩㄢˊ", "ㄐㄧ", "ㄔㄚˊ", "ㄦˋ"]}
+{"id": 455, "split": "dev", "category": "official", "target": "標租案提供民間開闢停車場", "readings": ["ㄅㄧㄠ", "ㄗㄨ", "ㄢˋ", "ㄊㄧˊ", "ㄍㄨㄥ", "ㄇㄧㄣˊ", "ㄐㄧㄢ", "ㄎㄞ", "ㄆㄧˋ", "ㄊㄧㄥˊ", "ㄔㄜ", "ㄔㄤˇ"]}
+{"id": 456, "split": "test", "category": "official", "target": "更可提升財產管理效益", "readings": ["ㄍㄥˋ", "ㄎㄜˇ", "ㄊㄧˊ", "ㄕㄥ", "ㄘㄞˊ", "ㄔㄢˇ", "ㄍㄨㄢˇ", "ㄌㄧˇ", "ㄒㄧㄠˋ", "ㄧˋ"]}
+{"id": 457, "split": "dev", "category": "official", "target": "活絡地方經濟發展", "readings": ["ㄏㄨㄛˊ", "ㄌㄨㄛˋ", "ㄉㄧˋ", "ㄈㄤ", "ㄐㄧㄥ", "ㄐㄧˋ", "ㄈㄚ", "ㄓㄢˇ"]}
+{"id": 458, "split": "test", "category": "official", "target": "獎項的景緻或許會轉變", "readings": ["ㄐㄧㄤˇ", "ㄒㄧㄤˋ", "ㄉㄜ˙", "ㄐㄧㄥˇ", "ㄓˋ", "ㄏㄨㄛˋ", "ㄒㄩˇ", "ㄏㄨㄟˋ", "ㄓㄨㄢˇ", "ㄅㄧㄢˋ"]}
+{"id": 459, "split": "dev", "category": "official", "target": "但是過程中價值的議論才是獎項需傳遞的關鍵訊息", "readings": ["ㄉㄢˋ", "ㄕˋ", "ㄍㄨㄛˋ", "ㄔㄥˊ", "ㄓㄨㄥ", "ㄐㄧㄚˋ", "ㄓˊ", "ㄉㄜ˙", "ㄧˋ", "ㄌㄨㄣˋ", "ㄘㄞˊ", "ㄕˋ", "ㄐㄧㄤˇ", "ㄒㄧㄤˋ", "ㄒㄩ", "ㄔㄨㄢˊ", "ㄉㄧˋ", "ㄉㄜ˙", "ㄍㄨㄢ", "ㄐㄧㄢˋ", "ㄒㄩㄣˋ", "ㄒㄧˊ"]}
+{"id": 460, "split": "test", "category": "official", "target": "在實務上建立共同打擊犯罪機制", "readings": ["ㄗㄞˋ", "ㄕˊ", "ㄨˋ", "ㄕㄤˋ", "ㄐㄧㄢˋ", "ㄌㄧˋ", "ㄍㄨㄥˋ", "ㄊㄨㄥˊ", "ㄉㄚˇ", "ㄐㄧˊ", "ㄈㄢˋ", "ㄗㄨㄟˋ", "ㄐㄧ", "ㄓˋ"]}
+{"id": 461, "split": "dev", "category": "official", "target": "並設定體驗區讓兒童體驗操偶樂趣", "readings": ["ㄅㄧㄥˋ", "ㄕㄜˋ", "ㄉㄧㄥˋ", "ㄊㄧˇ", "ㄧㄢˋ", "ㄑㄩ", "ㄖㄤˋ", "ㄦˊ", "ㄊㄨㄥˊ", "ㄊㄧˇ", "ㄧㄢˋ", "ㄘㄠ", "ㄡˇ", "ㄌㄜˋ", "ㄑㄩˋ"]}
+{"id": 462, "split": "test", "category": "official", "target": "一是內容與應用的供應商的準備", "readings": ["ㄧ", "ㄕˋ", "ㄋㄟˋ", "ㄖㄨㄥˊ", "ㄩˇ", "ㄧㄥˋ", "ㄩㄥˋ", "ㄉㄜ˙", "ㄍㄨㄥ", "ㄧㄥˋ", "ㄕㄤ", "ㄉㄜ˙", "ㄓㄨㄣˇ", "ㄅㄟˋ"]}
+{"id": 463, "split": "dev", "category": "official", "target": "二是使用者裝置的供應商準備", "readings": ["ㄦˋ", "ㄕˋ", "ㄕˇ", "ㄩㄥˋ", "ㄓㄜˇ", "ㄓㄨㄤ", "ㄓˋ", "ㄉㄜ˙", "ㄍㄨㄥ", "ㄧㄥˋ", "ㄕㄤ", "ㄓㄨㄣˇ", "ㄅㄟˋ"]}
+{"id": 464, "split": "test", "category": "official", "target": "實施在所有相關利益者的技術設定", "readings": ["ㄕˊ", "ㄕ", "ㄗㄞˋ", "ㄙㄨㄛˇ", "ㄧㄡˇ", "ㄒㄧㄤ", "ㄍㄨㄢ", "ㄌㄧˋ", "ㄧˋ", "ㄓㄜˇ", "ㄉㄜ˙", "ㄐㄧˋ", "ㄕㄨˋ", "ㄕㄜˋ", "ㄉㄧㄥˋ"]}
+{"id": 465, "split": "dev", "category": "official", "target": "才能以獨佔規定去評價專利權人收取授權金之行為", "readings": ["ㄘㄞˊ", "ㄋㄥˊ", "ㄧˇ", "ㄉㄨˊ", "ㄓㄢˋ", "ㄍㄨㄟ", "ㄉㄧㄥˋ", "ㄑㄩˋ", "ㄆㄧㄥˊ", "ㄐㄧㄚˋ", "ㄓㄨㄢ", "ㄌㄧˋ", "ㄑㄩㄢˊ", "ㄖㄣˊ", "ㄕㄡ", "ㄑㄩˇ", "ㄕㄡˋ", "ㄑㄩㄢˊ", "ㄐㄧㄣ", "ㄓ", "ㄒㄧㄥˊ", "ㄨㄟˊ"]}
+{"id": 466, "split": "test", "category": "official", "target": "以順利執行毒化災救援任務", "readings": ["ㄧˇ", "ㄕㄨㄣˋ", "ㄌㄧˋ", "ㄓˊ", "ㄒㄧㄥˊ", "ㄉㄨˊ", "ㄏㄨㄚˋ", "ㄗㄞ", "ㄐㄧㄡˋ", "ㄩㄢˊ", "ㄖㄣˋ", "ㄨˋ"]}
+{"id": 467, "split": "dev", "category": "official", "target": "建議管理處未來可以規劃一個除了重建", "readings": ["ㄐㄧㄢˋ", "ㄧˋ", "ㄍㄨㄢˇ", "ㄌㄧˇ", "ㄔㄨˋ", "ㄨㄟˋ", "ㄌㄞˊ", "ㄎㄜˇ", "ㄧˇ", "ㄍㄨㄟ", "ㄏㄨㄚˋ", "ㄧ", "ㄍㄜ˙", "ㄔㄨˊ", "ㄌㄜ˙", "ㄔㄨㄥˊ", "ㄐㄧㄢˋ"]}
+{"id": 468, "split": "test", "category": "official", "target": "也包括後續營運整體規劃的案子", "readings": ["ㄧㄝˇ", "ㄅㄠ", "ㄍㄨㄚ", "ㄏㄡˋ", "ㄒㄩˋ", "ㄧㄥˊ", "ㄩㄣˋ", "ㄓㄥˇ", "ㄊㄧˇ", "ㄍㄨㄟ", "ㄏㄨㄚˋ", "ㄉㄜ˙", "ㄢˋ", "ㄗ˙"]}
+{"id": 469, "split": "dev", "category": "official", "target": "並提供公眾查詢", "readings": ["ㄅㄧㄥˋ", "ㄊㄧˊ", "ㄍㄨㄥ", "ㄍㄨㄥ", "ㄓㄨㄥˋ", "ㄔㄚˊ", "ㄒㄩㄣˊ"]}
+{"id": 470, "split": "test", "category": "official", "target": "確保政策執行的透明性", "readings": ["ㄑㄩㄝˋ", "ㄅㄠˇ", "ㄓㄥˋ", "ㄘㄜˋ", "ㄓˊ", "ㄒㄧㄥˊ", "ㄉㄜ˙", "ㄊㄡˋ", "ㄇㄧㄥˊ", "ㄒㄧㄥˋ"]}
+{"id": 471, "split": "dev", "category": "official", "target": "有效提升政府的公信力", "readings": ["ㄧㄡˇ", "ㄒㄧㄠˋ", "ㄊㄧˊ", "ㄕㄥ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄉㄜ˙", "ㄍㄨㄥ", "ㄒㄧㄣˋ", "ㄌㄧˋ"]}
+{"id": 472, "split": "test", "category": "official", "target": "實現良好的公共治理目標", "readings": ["ㄕˊ", "ㄒㄧㄢˋ", "ㄌㄧㄤˊ", "ㄏㄠˇ", "ㄉㄜ˙", "ㄍㄨㄥ", "ㄍㄨㄥˋ", "ㄓˋ", "ㄌㄧˇ", "ㄇㄨˋ", "ㄅㄧㄠ"]}
+{"id": 473, "split": "dev", "category": "official", "target": "透過持續辦理多元", "readings": ["ㄊㄡˋ", "ㄍㄨㄛˋ", "ㄔˊ", "ㄒㄩˋ", "ㄅㄢˋ", "ㄌㄧˇ", "ㄉㄨㄛ", "ㄩㄢˊ"]}
+{"id": 474, "split": "test", "category": "official", "target": "創新且具地方風格的觀光行銷作為", "readings": ["ㄔㄨㄤˋ", "ㄒㄧㄣ", "ㄑㄧㄝˇ", "ㄐㄩˋ", "ㄉㄧˋ", "ㄈㄤ", "ㄈㄥ", "ㄍㄜˊ", "ㄉㄜ˙", "ㄍㄨㄢ", "ㄍㄨㄤ", "ㄒㄧㄥˊ", "ㄒㄧㄠ", "ㄗㄨㄛˋ", "ㄨㄟˊ"]}
+{"id": 475, "split": "dev", "category": "official", "target": "由於部份頻段尚有業者使用", "readings": ["ㄧㄡˊ", "ㄩˊ", "ㄅㄨˋ", "ㄈㄣˋ", "ㄆㄧㄣˊ", "ㄉㄨㄢˋ", "ㄕㄤˋ", "ㄧㄡˇ", "ㄧㄝˋ", "ㄓㄜˇ", "ㄕˇ", "ㄩㄥˋ"]}
+{"id": 476, "split": "test", "category": "official", "target": "因此業者目前藉由", "readings": ["ㄧㄣ", "ㄘˇ", "ㄧㄝˋ", "ㄓㄜˇ", "ㄇㄨˋ", "ㄑㄧㄢˊ", "ㄐㄧㄝˋ", "ㄧㄡˊ"]}
+{"id": 477, "split": "dev", "category": "official", "target": "仍有其條件上之限制", "readings": ["ㄖㄥˊ", "ㄧㄡˇ", "ㄑㄧˊ", "ㄊㄧㄠˊ", "ㄐㄧㄢˋ", "ㄕㄤˋ", "ㄓ", "ㄒㄧㄢˋ", "ㄓˋ"]}
+{"id": 478, "split": "test", "category": "official", "target": "一為人口邁向高齡化社會", "readings": ["ㄧ", "ㄨㄟˊ", "ㄖㄣˊ", "ㄎㄡˇ", "ㄇㄞˋ", "ㄒㄧㄤˋ", "ㄍㄠ", "ㄌㄧㄥˊ", "ㄏㄨㄚˋ", "ㄕㄜˋ", "ㄏㄨㄟˋ"]}
+{"id": 479, "split": "dev", "category": "official", "target": "芬蘭堡及賀裡卡科學中心等文化設施", "readings": ["ㄈㄣ", "ㄌㄢˊ", "ㄅㄠˇ", "ㄐㄧˊ", "ㄏㄜˋ", "ㄌㄧˇ", "ㄎㄚˇ", "ㄎㄜ", "ㄒㄩㄝˊ", "ㄓㄨㄥ", "ㄒㄧㄣ", "ㄉㄥˇ", "ㄨㄣˊ", "ㄏㄨㄚˋ", "ㄕㄜˋ", "ㄕ"]}
+{"id": 480, "split": "test", "category": "official", "target": "瞭解其於公共文化空間中推廣語言多樣性", "readings": ["ㄌㄧㄠˇ", "ㄐㄧㄝˇ", "ㄑㄧˊ", "ㄩˊ", "ㄍㄨㄥ", "ㄍㄨㄥˋ", "ㄨㄣˊ", "ㄏㄨㄚˋ", "ㄎㄨㄥ", "ㄐㄧㄢ", "ㄓㄨㄥ", "ㄊㄨㄟ", "ㄍㄨㄤˇ", "ㄩˇ", "ㄧㄢˊ", "ㄉㄨㄛ", "ㄧㄤˋ", "ㄒㄧㄥˋ"]}
+{"id": 481, "split": "dev", "category": "official", "target": "依據經濟部物力調查實施辦法", "readings": ["ㄧ", "ㄐㄩˋ", "ㄐㄧㄥ", "ㄐㄧˋ", "ㄅㄨˋ", "ㄨˋ", "ㄌㄧˋ", "ㄉㄧㄠˋ", "ㄔㄚˊ", "ㄕˊ", "ㄕ", "ㄅㄢˋ", "ㄈㄚˇ"]}
+{"id": 482, "split": "test", "category": "official", "target": "增進與縣市政府互動合作", "readings": ["ㄗㄥ", "ㄐㄧㄣˋ", "ㄩˇ", "ㄒㄧㄢˋ", "ㄕˋ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄏㄨˋ", "ㄉㄨㄥˋ", "ㄏㄜˊ", "ㄗㄨㄛˋ"]}
+{"id": 483, "split": "dev", "category": "official", "target": "說明政府兩岸政策", "readings": ["ㄕㄨㄛ", "ㄇㄧㄥˊ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄌㄧㄤˇ", "ㄢˋ", "ㄓㄥˋ", "ㄘㄜˋ"]}
+{"id": 484, "split": "test", "category": "official", "target": "瞭解各縣市政府推動兩岸交流情形", "readings": ["ㄌㄧㄠˇ", "ㄐㄧㄝˇ", "ㄍㄜˋ", "ㄒㄧㄢˋ", "ㄕˋ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄊㄨㄟ", "ㄉㄨㄥˋ", "ㄌㄧㄤˇ", "ㄢˋ", "ㄐㄧㄠ", "ㄌㄧㄡˊ", "ㄑㄧㄥˊ", "ㄒㄧㄥˊ"]}
+{"id": 485, "split": "dev", "category": "official", "target": "並積極提供協處", "readings": ["ㄅㄧㄥˋ", "ㄐㄧ", "ㄐㄧˊ", "ㄊㄧˊ", "ㄍㄨㄥ", "ㄒㄧㄝˊ", "ㄔㄨˋ"]}
+{"id": 486, "split": "test", "category": "official", "target": "現階段僅能藉一般商業應用模式", "readings": ["ㄒㄧㄢˋ", "ㄐㄧㄝ", "ㄉㄨㄢˋ", "ㄐㄧㄣˇ", "ㄋㄥˊ", "ㄐㄧˊ", "ㄧ", "ㄅㄢ", "ㄕㄤ", "ㄧㄝˋ", "ㄧㄥˋ", "ㄩㄥˋ", "ㄇㄛˊ", "ㄕˋ"]}
+{"id": 487, "split": "dev", "category": "official", "target": "智庫均屬非營利機構", "readings": ["ㄓˋ", "ㄎㄨˋ", "ㄐㄩㄣ", "ㄕㄨˇ", "ㄈㄟ", "ㄧㄥˊ", "ㄌㄧˋ", "ㄐㄧ", "ㄍㄡˋ"]}
+{"id": 488, "split": "test", "category": "official", "target": "不受政府及財團控制", "readings": ["ㄅㄨˊ", "ㄕㄡˋ", "ㄓㄥˋ", "ㄈㄨˇ", "ㄐㄧˊ", "ㄘㄞˊ", "ㄊㄨㄢˊ", "ㄎㄨㄥˋ", "ㄓˋ"]}
+{"id": 489, "split": "dev", "category": "official", "target": "立刻覺得自己已經齋戒沐浴", "readings": ["ㄌㄧˋ", "ㄎㄜˋ", "ㄐㄩㄝˊ", "ㄉㄜˊ", "ㄗˋ", "ㄐㄧˇ", "ㄧˇ", "ㄐㄧㄥ", "ㄓㄞ", "ㄐㄧㄝˋ", "ㄇㄨˋ", "ㄩˋ"]}
+{"id": 490, "split": "test", "category": "official", "target": "桃園航空城計畫刻正於內政部進行審議", "readings": ["ㄊㄠˊ", "ㄩㄢˊ", "ㄏㄤˊ", "ㄎㄨㄥ", "ㄔㄥˊ", "ㄐㄧˋ", "ㄏㄨㄚˋ", "ㄎㄜ", "ㄓㄥˋ", "ㄩˊ", "ㄋㄟˋ", "ㄓㄥˋ", "ㄅㄨˋ", "ㄐㄧㄣˋ", "ㄒㄧㄥˊ", "ㄕㄣˇ", "ㄧˋ"]}
+{"id": 491, "split": "dev", "category": "official", "target": "航空城公司將投入更多準備工作", "readings": ["ㄏㄤˊ", "ㄎㄨㄥ", "ㄔㄥˊ", "ㄍㄨㄥ", "ㄙ", "ㄐㄧㄤ", "ㄊㄡˊ", "ㄖㄨˋ", "ㄍㄥˋ", "ㄉㄨㄛ", "ㄓㄨㄣˇ", "ㄅㄟˋ", "ㄍㄨㄥ", "ㄗㄨㄛˋ"]}
+{"id": 492, "split": "test", "category": "official", "target": "因此特別借重新任張董事長招商及產業引進的能力", "readings": ["ㄧㄣ", "ㄘˇ", "ㄊㄜˋ", "ㄅㄧㄝˊ", "ㄐㄧㄝˋ", "ㄓㄨㄥˋ", "ㄒㄧㄣ", "ㄖㄣˋ", "ㄓㄤ", "ㄉㄨㄥˇ", "ㄕˋ", "ㄓㄤˇ", "ㄓㄠ", "ㄕㄤ", "ㄐㄧˊ", "ㄔㄢˇ", "ㄧㄝˋ", "ㄧㄣˇ", "ㄐㄧㄣˋ", "ㄉㄜ˙", "ㄋㄥˊ", "ㄌㄧˋ"]}
+{"id": 493, "split": "dev", "category": "official", "target": "豬一戒與沙彌雖然保護唐長老前行", "readings": ["ㄓㄨ", "ㄧ", "ㄐㄧㄝˋ", "ㄩˇ", "ㄕㄚ", "ㄇㄧˊ", "ㄙㄨㄟ", "ㄖㄢˊ", "ㄅㄠˇ", "ㄏㄨˋ", "ㄊㄤˊ", "ㄓㄤˇ", "ㄌㄠˇ", "ㄑㄧㄢˊ", "ㄒㄧㄥˊ"]}
+{"id": 494, "split": "test", "category": "official", "target": "卻記掛著小行者", "readings": ["ㄑㄩㄝˋ", "ㄐㄧˋ", "ㄍㄨㄚˋ", "ㄓㄜ˙", "ㄒㄧㄠˇ", "ㄒㄧㄥˊ", "ㄓㄜˇ"]}
+{"id": 495, "split": "dev", "category": "official", "target": "包括教育公課費", "readings": ["ㄅㄠ", "ㄍㄨㄚ", "ㄐㄧㄠˋ", "ㄩˋ", "ㄍㄨㄥ", "ㄎㄜˋ", "ㄈㄟˋ"]}
+{"id": 496, "split": "test", "category": "official", "target": "也多少有些關聯", "readings": ["ㄧㄝˇ", "ㄉㄨㄛ", "ㄕㄠˇ", "ㄧㄡˇ", "ㄒㄧㄝ", "ㄍㄨㄢ", "ㄌㄧㄢˊ"]}
+{"id": 497, "split": "dev", "category": "official", "target": "公務及休閒生活", "readings": ["ㄍㄨㄥ", "ㄨˋ", "ㄐㄧˊ", "ㄒㄧㄡ", "ㄒㄧㄢˊ", "ㄕㄥ", "ㄏㄨㄛˊ"]}
+{"id": 498, "split": "test", "category": "official", "target": "政府補助友善病房看護", "readings": ["ㄓㄥˋ", "ㄈㄨˇ", "ㄅㄨˇ", "ㄓㄨˋ", "ㄧㄡˇ", "ㄕㄢˋ", "ㄅㄧㄥˋ", "ㄈㄤˊ", "ㄎㄢ", "ㄏㄨˋ"]}
+{"id": 499, "split": "dev", "category": "official", "target": "當天有許多單位舉辦集團結婚", "readings": ["ㄉㄤ", "ㄊㄧㄢ", "ㄧㄡˇ", "ㄒㄩˇ", "ㄉㄨㄛ", "ㄉㄢ", "ㄨㄟˋ", "ㄐㄩˇ", "ㄅㄢˋ", "ㄐㄧˊ", "ㄊㄨㄢˊ", "ㄐㄧㄝˊ", "ㄏㄨㄣ"]}
+{"id": 500, "split": "test", "category": "official", "target": "舉行他們的終身大典", "readings": ["ㄐㄩˇ", "ㄒㄧㄥˊ", "ㄊㄚ", "ㄇㄣˊ", "ㄉㄜ˙", "ㄓㄨㄥ", "ㄕㄣ", "ㄉㄚˋ", "ㄉㄧㄢˇ"]}
